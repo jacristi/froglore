@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkt2ohyxi3n1h"]
+
+[ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
+[ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_y1phm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(160, 112)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+polygon = PackedVector2Array(-64, -8, 32, -8, 32, -16, 56, -16, 56, -24, 80, -24, 80, -32, 104, -32, 104, 8, 16, 8, 16, 32, 144, 32, 144, -80, 168, -80, 168, 64, -168, 64, -168, -88, -136, -88, -136, -32, -120, -32, -120, -24, -112, -24, -112, -16, -104, -16, -104, -8, -96, -8, -96, 0, -88, 0, -88, 8, -80, 8, -72, 8, -72, 0, -64, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+color = Color(0.0335895, 0.132218, 0.0409762, 1)
+
+[node name="FrogCharacter" parent="." instance=ExtResource("2_x37gw")]
+position = Vector2(136, 112)
