@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=6 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
+[ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_n05my"]
+[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/bug1.tscn" id="4_5vcwi"]
+[ext_resource type="PackedScene" uid="uid://bnbs5dn1gn2wc" path="res://ui/ui_level_complete.tscn" id="5_nxmba"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_y1phm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(160, 112)
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, 8)
@@ -18,3 +22,23 @@ color = Color(0.0335895, 0.132218, 0.0409762, 1)
 
 [node name="FrogCharacter" parent="." instance=ExtResource("2_x37gw")]
 position = Vector2(136, 112)
+
+[node name="SpikesSmall" parent="." instance=ExtResource("3_n05my")]
+position = Vector2(152, 108)
+
+[node name="Bug" parent="." instance=ExtResource("4_5vcwi")]
+position = Vector2(80, 110)
+
+[node name="Bug2" parent="." instance=ExtResource("4_5vcwi")]
+position = Vector2(32, 81)
+
+[node name="Bug3" parent="." instance=ExtResource("4_5vcwi")]
+position = Vector2(107, 107)
+
+[node name="Bug4" parent="." instance=ExtResource("4_5vcwi")]
+position = Vector2(124, 107)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelComplete" parent="CanvasLayer" instance=ExtResource("5_nxmba")]
+visible = false

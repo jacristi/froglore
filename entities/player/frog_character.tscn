@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=22 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -141,7 +141,12 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57hb4"]
+size = Vector2(4, 2)
+
 [node name="FrogCharacter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_tl5hv")
 move_speed = 55.0
 hop_height = 120.0
@@ -161,3 +166,11 @@ frame_progress = 0.18608
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_57hb4")

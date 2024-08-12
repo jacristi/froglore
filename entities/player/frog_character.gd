@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hazard_detector: Area2D = $HazardDetector
+@onready var starting_position := global_position
 
 var face_direction := 0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -15,6 +17,11 @@ var state = states.IDLE
 
 var is_idle := true
 var is_falling := false
+
+
+func _ready() -> void:
+    hazard_detector.area_entered.connect(hit_hazard)
+
 
 func _physics_process(delta: float) -> void:
 
@@ -66,9 +73,12 @@ func hop_landed() -> void:
     animated_sprite_2d.play("idle")
 
 
+func hit_hazard(area: Area2D):
+    print("HIT HAZARD!")
+    global_position = starting_position
+
 
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor()
-
 func _is_hopping() -> bool: return velocity.y < 0
 func _has_fall_velocity() -> bool: return velocity.y > 0
 func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
