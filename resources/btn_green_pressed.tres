@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d3idstxkefkli"]
+
+[ext_resource type="Texture2D" uid="uid://dwm4215wtshtc" path="res://assets/spritesheets/spr-ui-buttons.png" id="1_6ugvx"]
+
+[resource]
+texture = ExtResource("1_6ugvx")
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(96, 0, 24, 16)

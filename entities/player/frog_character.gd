@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
     if not is_on_floor():
         velocity.y += gravity * delta
 
-    var direction := Input.get_axis("ui_left", "ui_right")
+    var direction := Input.get_axis("move_left", "move_right")
 
     if direction and can_hop() and is_on_floor():
         hop(delta)
@@ -74,7 +74,6 @@ func hop_landed() -> void:
 
 
 func hit_hazard(area: Area2D):
-    print("HIT HAZARD!")
     global_position = starting_position
 
 

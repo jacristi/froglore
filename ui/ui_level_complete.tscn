@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bnbs5dn1gn2wc"]
+[gd_scene load_steps=2 format=3 uid="uid://bnbs5dn1gn2wc"]
+
+[ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="1_6et6d"]
 
 [node name="LevelComplete" type="ColorRect"]
 anchors_preset = 15
@@ -18,4 +20,6 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
+theme = ExtResource("1_6et6d")
+theme_override_font_sizes/font_size = 8
 text = "Level Complete!"

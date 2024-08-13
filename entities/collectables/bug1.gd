@@ -2,7 +2,6 @@ extends Area2D
 
 
 func _on_body_entered(area: CharacterBody2D):
-    print("BUG COLLECTED (body)")
     var bugs = get_tree().get_nodes_in_group("Bugs")
     if bugs.size() == 1:
         Events.level_completed.emit()
