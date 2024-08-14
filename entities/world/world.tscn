@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=6 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
+[ext_resource type="Texture2D" uid="uid://k8ev0q1noqvv" path="res://assets/spritesheets/spr-bg-test.png" id="5_fna5j"]
 [ext_resource type="PackedScene" uid="uid://bnbs5dn1gn2wc" path="res://ui/ui_level_complete.tscn" id="5_nxmba"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 
@@ -18,3 +19,8 @@ visible = false
 
 [node name="GroundTileMap" parent="." instance=ExtResource("6_4c14t")]
 position = Vector2(28, -7)
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -15
+position = Vector2(122, 156)
+texture = ExtResource("5_fna5j")
