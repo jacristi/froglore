@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*res://events/Events.gd"
 LevelTransition="*res://entities/world/level_transition.tscn"
+MusicPlayer="*res://entities/world/music_player.tscn"
 
 [display]
 
