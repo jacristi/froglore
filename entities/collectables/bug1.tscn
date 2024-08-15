@@ -50,6 +50,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_lsbyy")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.833333, 0.162393)
 
 [node name="Bug" type="Area2D" groups=["Bugs"]]
 collision_layer = 0

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hazard_detector: Area2D = $HazardDetector
 @onready var starting_position := global_position
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 var face_direction := 0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -21,6 +22,7 @@ var is_falling := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
+    Events.level_completed.connect(hide_light_point)
 
 
 func _physics_process(delta: float) -> void:
@@ -76,6 +78,9 @@ func hop_landed() -> void:
 func hit_hazard(area: Area2D):
     global_position = starting_position
 
+
+func hide_light_point():
+    point_light_2d.enabled = false
 
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor()
 func _is_hopping() -> bool: return velocity.y < 0

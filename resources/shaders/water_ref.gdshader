@@ -10,7 +10,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 uniform sampler2D fast_noise : filter_nearest, repeat_enable;
 
 //speed at which waves move
-uniform vec2 speed = vec2(0.03, 0.07);
+uniform vec2 speed = vec2(0.02, 0.07);
 
 //strength of waves
 uniform float wave_strength = 2;
