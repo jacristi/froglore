@@ -2,29 +2,36 @@
 
 [ext_resource type="Script" path="res://ui/start_menu.gd" id="1_hflfg"]
 
-[node name="StartMenu" type="CenterContainer"]
+[node name="Panel" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StartMenu" type="CenterContainer" parent="."]
+layout_mode = 2
 script = ExtResource("1_hflfg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="StartMenu/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 24)
 layout_mode = 2
 text = "Play
 "
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="StartMenu/VBoxContainer"]
 custom_minimum_size = Vector2(96, 24)
 layout_mode = 2
 text = "Exit
 "
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/PlayButton" to="StartMenu" method="_on_play_pressed"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/ExitButton" to="StartMenu" method="_on_exit_pressed"]
