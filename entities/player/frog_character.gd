@@ -18,7 +18,7 @@ var state = states.IDLE
 
 var is_idle := true
 var is_falling := false
-
+var prep_jump := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+    prep_jump = false
     if velocity.x != 0:
         face_direction = velocity.x
         animated_sprite_2d.flip_h = (velocity.x < 0)
@@ -36,7 +36,9 @@ func _physics_process(delta: float) -> void:
 
     var direction := Input.get_axis("move_left", "move_right")
 
-    if direction and can_hop() and is_on_floor():
+    if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
+        hop(delta, 1.5)
+    elif direction and can_hop() and is_on_floor():
         hop(delta)
 
     if direction and (can_hop() or !is_on_floor()):
@@ -63,8 +65,8 @@ func _physics_process(delta: float) -> void:
         animated_sprite_2d.play("idle")
 
 
-func hop(delta: float) -> void:
-    velocity.y = -hop_height
+func hop(delta: float, hop_mod: float = 1.0) -> void:
+    velocity.y = -hop_height * hop_mod
 
 
 func hop_landed() -> void:

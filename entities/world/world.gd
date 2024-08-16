@@ -15,7 +15,7 @@ var light_incr_amt: float
 var is_level_completed:= false
 
 func _process(delta: float) -> void:
-    if is_level_completed and Input.is_action_just_pressed("ui_accept"):
+    if is_level_completed and Input.is_action_just_pressed("ui_accept") and !Input.is_action_pressed("jump"):
         go_to_next_level()
 
 
@@ -35,9 +35,10 @@ func show_level_completed() -> void:
 
 
 func go_to_next_level() -> void:
+    if not next_level is PackedScene: return
+
     get_tree().paused = true
     await get_tree().create_timer(1.0).timeout
-    if not next_level is PackedScene: return
     await LevelTransition.fade_to_black()
     get_tree().paused = false
     get_tree().change_scene_to_packed(next_level)
@@ -48,6 +49,7 @@ func handle_bug_collected():
     print("BUG COLLECTED!")
     bugs_collected += 1
     main_light.energy -= light_incr_amt*.5
+
     if bugs_collected == bugs_total:
         Events.level_completed.emit()
         main_light.energy = 0
