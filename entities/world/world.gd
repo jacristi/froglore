@@ -1,7 +1,9 @@
 extends Node2D
 
-@export var next_level: PackedScene
+@export var prev_level: String = "N/A"
+@export var next_level: String = "N/A"
 
+@onready var level_exit: Area2D = $LevelExit
 @onready var ui_level_complete: ColorRect = $CanvasLayer/LevelComplete
 
 var main_light: DirectionalLight2D
@@ -15,14 +17,13 @@ var light_incr_amt: float
 var is_level_completed:= false
 
 
-func _process(delta: float) -> void:
-    if is_level_completed and Input.is_action_just_pressed("ui_accept") and !Input.is_action_pressed("jump"):
-        go_to_next_level()
-
-
 func _ready() -> void:
+    level_exit.hide()
+    level_exit.process_mode = 4
     Events.level_completed.connect(show_level_completed)
     Events.bug_collected.connect(handle_bug_collected)
+    Events.go_to_next_level.connect(go_to_next_level)
+    Events.go_to_prev_level.connect(go_to_prev_level)
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
     initial_light_energy = main_light.energy
 
@@ -31,23 +32,25 @@ func _ready() -> void:
 
 
 func show_level_completed() -> void:
+    level_exit.process_mode = 0
+    level_exit.show()
     ui_level_complete.show()
     is_level_completed = true
 
 
 func go_to_next_level() -> void:
-    if not next_level is PackedScene: return
+    if next_level == "N/A":
+        return
+    Events.go_to_level.emit(next_level)
 
-    get_tree().paused = true
-    await get_tree().create_timer(1.0).timeout
-    await LevelTransition.fade_to_black()
-    get_tree().paused = false
-    get_tree().change_scene_to_packed(next_level)
-    await LevelTransition.fade_from_black()
+
+func go_to_prev_level() -> void:
+    if prev_level == "N/A":
+        return
+    Events.go_to_level.emit(prev_level)
 
 
 func handle_bug_collected():
-    print("BUG COLLECTED!")
     bugs_collected += 1
     main_light.energy -= light_incr_amt*.4
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=13 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Shader" path="res://resources/shaders/water_ref.gdshader" id="6_s1ybx"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
+[ext_resource type="PackedScene" uid="uid://djt7soxcfhakp" path="res://entities/world/level_exit.tscn" id="8_tjbdh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2nh86"]
 frequency = 0.001
@@ -24,7 +25,7 @@ shader_parameter/CAST_COLOR = Color(0, 0, 0, 0)
 shader_parameter/speed = Vector2(0.02, 0.07)
 shader_parameter/wave_strength = 1.0
 shader_parameter/scale_y = 100.0
-shader_parameter/y_zoom = 3.5636
+shader_parameter/y_zoom = 15.102
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_vci8x")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8qxa7"]
@@ -36,6 +37,7 @@ script = ExtResource("1_y1phm")
 move_speed = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="LevelComplete" parent="CanvasLayer" instance=ExtResource("5_nxmba")]
 visible = false
@@ -51,7 +53,6 @@ position = Vector2(122, 156)
 texture = ExtResource("5_fna5j")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." groups=["MainLight"]]
-visible = false
 position = Vector2(111, -40)
 color = Color(0.862745, 1, 0.882353, 1)
 energy = 0.9
@@ -66,3 +67,7 @@ script = ExtResource("7_ayoaj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(120, 67)
+
+[node name="LevelExit" parent="." instance=ExtResource("8_tjbdh")]
+process_mode = 4
+position = Vector2(19, -4)

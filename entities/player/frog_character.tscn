@@ -383,3 +383,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_57hb4")
+
+[node name="InteractDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_57hb4")

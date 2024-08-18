@@ -7,8 +7,11 @@ extends CharacterBody2D
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hazard_detector: Area2D = $HazardDetector
+@onready var interact_detector: Area2D = $InteractDetector
 @onready var starting_position := global_position
 @onready var point_light_2d: PointLight2D = $PointLight2D
+
+var current_interactable: Area2D
 
 var face_direction := 0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,6 +26,8 @@ var prep_jump := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
+    interact_detector.area_entered.connect(enter_interactable)
+    interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(hide_light_point)
 
 
@@ -36,6 +41,14 @@ func _physics_process(delta: float) -> void:
         velocity.y += gravity * delta
 
     var direction := Input.get_axis("move_left", "move_right")
+
+    if (Input.is_action_just_pressed("up")):
+        if (current_interactable != null and current_interactable.is_in_group("exit_point")):
+            Events.go_to_next_level.emit()
+
+    if (Input.is_action_just_pressed("down")):
+        if (current_interactable != null and current_interactable.is_in_group("exit_point")):
+            Events.go_to_prev_level.emit()
 
     if (Input.is_action_just_pressed("action") and has_control() and state != states.CROAKING):
         croak()
@@ -90,6 +103,15 @@ func hit_hazard(area: Area2D):
     animated_sprite_2d.play("respawn")
     await animated_sprite_2d.animation_finished
     state = states.IDLE
+    animated_sprite_2d.play("idle")
+
+
+func enter_interactable(area: Area2D):
+    current_interactable = area
+
+
+func exit_interactable(area: Area2D):
+    current_interactable = null
 
 
 func croak() -> void:
