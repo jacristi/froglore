@@ -63,7 +63,8 @@ func _physics_process(delta: float) -> void:
     else:
         velocity.x = move_toward(velocity.x, 0, move_speed)
 
-    move_and_slide()
+    if not velocity.is_zero_approx():
+        move_and_slide()
 
     if _has_fall_velocity() and state != states.HOP_LAND:
         animated_sprite_2d.play("hop_fall")
