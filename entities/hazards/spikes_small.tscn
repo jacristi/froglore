@@ -25,6 +25,7 @@ size = Vector2(5, 3)
 position = Vector2(0, -4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_5j8ir")
 
 [node name="HazardArea" parent="." instance=ExtResource("2_it3em")]

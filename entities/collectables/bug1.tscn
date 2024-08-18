@@ -43,8 +43,8 @@ animations = [{
 size = Vector2(4, 5)
 
 [sub_resource type="Gradient" id="Gradient_lsbyy"]
-offsets = PackedFloat32Array(0, 0.341549)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.00352113, 0.492958)
+colors = PackedColorArray(1, 1, 1, 1, 0.953271, 0.953271, 0.953271, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gjt5t"]
 gradient = SubResource("Gradient_lsbyy")

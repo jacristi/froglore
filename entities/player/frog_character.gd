@@ -13,12 +13,13 @@ extends CharacterBody2D
 var face_direction := 0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-enum states {IDLE, HOP_START, FALLING, HOP_LAND}
+enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING}
 var state = states.IDLE
 
 var is_idle := true
 var is_falling := false
 var prep_jump := false
+
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
@@ -78,14 +79,23 @@ func hop_landed() -> void:
 
 
 func hit_hazard(area: Area2D):
+    state = states.HIT_HAZARD
+    animated_sprite_2d.play("hit_hazard")
+    await animated_sprite_2d.animation_finished
+    print("NOW RESPAWN")
+    state = states.RESPAWNING
     global_position = starting_position
+    animated_sprite_2d.play("respawn")
+    await animated_sprite_2d.animation_finished
+    state = states.IDLE
 
 
 func hide_light_point():
     point_light_2d.enabled = false
 
-func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor()
+func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING
+func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
 func _is_hopping() -> bool: return velocity.y < 0
 func _has_fall_velocity() -> bool: return velocity.y > 0
 func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
-func _is_idle() -> bool: return velocity.x == 0 and is_on_floor()
+func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_control()

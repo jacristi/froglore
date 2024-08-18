@@ -14,6 +14,7 @@ var light_incr_amt: float
 
 var is_level_completed:= false
 
+
 func _process(delta: float) -> void:
     if is_level_completed and Input.is_action_just_pressed("ui_accept") and !Input.is_action_pressed("jump"):
         go_to_next_level()
@@ -48,7 +49,7 @@ func go_to_next_level() -> void:
 func handle_bug_collected():
     print("BUG COLLECTED!")
     bugs_collected += 1
-    main_light.energy -= light_incr_amt*.5
+    main_light.energy -= light_incr_amt*.4
 
     if bugs_collected == bugs_total:
         Events.level_completed.emit()
