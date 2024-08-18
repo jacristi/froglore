@@ -2,7 +2,7 @@ extends Node
 
 
 signal level_completed(level_key: String)
-signal bug_collected
+signal light_bug_collected
 
 signal go_to_level(level_key: String)
 signal go_to_next_level()

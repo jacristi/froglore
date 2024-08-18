@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3d2fu36qniq8"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_r82ow"]
-[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/bug1.tscn" id="2_a4x6c"]
+[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_a4x6c"]
 
 [node name="Level4" instance=ExtResource("1_r82ow")]
 curr_level = "level_4"

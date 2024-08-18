@@ -11,8 +11,8 @@ var level_state = LevelManager.level_states.NOT_COMPLETED
 var main_light: DirectionalLight2D
 var initial_light_energy: float
 
-var bugs_total: int
-var bugs_collected: int
+var light_bugs_total: int
+var light_bugs_collected: int
 
 var light_incr_amt: float
 
@@ -23,14 +23,14 @@ func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = 4
     Events.level_completed.connect(show_level_completed)
-    Events.bug_collected.connect(handle_bug_collected)
+    Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.go_to_next_level.connect(go_to_next_level)
     Events.go_to_prev_level.connect(go_to_prev_level)
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
     initial_light_energy = main_light.energy
 
-    bugs_total = get_tree().get_nodes_in_group("Bugs").size()
-    light_incr_amt = initial_light_energy / bugs_total
+    light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
+    light_incr_amt = initial_light_energy / light_bugs_total
 
     level_state = LevelManager.get_level_state(curr_level)
     update_bug_state()
@@ -39,7 +39,7 @@ func _ready() -> void:
 func update_bug_state():
     if level_state == LevelManager.level_states.COMPLETED or level_state == LevelManager.level_states.PURIFIED:
         Events.level_completed.emit(curr_level)
-        for bug in get_tree().get_nodes_in_group("Bugs"):
+        for bug in get_tree().get_nodes_in_group("LightBugs"):
             bug.queue_free()
 
 
@@ -62,10 +62,10 @@ func go_to_prev_level() -> void:
     Events.go_to_level.emit(prev_level)
 
 
-func handle_bug_collected():
-    bugs_collected += 1
+func handle_light_bug_collected():
+    light_bugs_collected += 1
     main_light.energy -= light_incr_amt*.4
 
-    if bugs_collected == bugs_total:
+    if light_bugs_collected == light_bugs_total:
         Events.level_completed.emit(curr_level)
         await get_tree().create_timer(.5).timeout

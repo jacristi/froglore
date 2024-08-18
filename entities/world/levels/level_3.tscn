@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5vfimpaovice"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_3wnbo"]
-[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/bug1.tscn" id="2_rxlc4"]
+[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_rxlc4"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_0535l"]
 
 [node name="World" instance=ExtResource("1_3wnbo")]
