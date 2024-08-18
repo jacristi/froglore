@@ -33,9 +33,18 @@ func _ready() -> void:
     light_incr_amt = initial_light_energy / bugs_total
 
     level_state = LevelManager.get_level_state(curr_level)
+    update_bug_state()
+
+
+func update_bug_state():
+    if level_state == LevelManager.level_states.COMPLETED or level_state == LevelManager.level_states.PURIFIED:
+        Events.level_completed.emit(curr_level)
+        for bug in get_tree().get_nodes_in_group("Bugs"):
+            bug.queue_free()
 
 
 func show_level_completed(_level_key: String) -> void:
+    main_light.energy = 0
     level_exit.process_mode = 0
     level_exit.show()
     is_level_completed = true
@@ -59,5 +68,4 @@ func handle_bug_collected():
 
     if bugs_collected == bugs_total:
         Events.level_completed.emit(curr_level)
-        main_light.energy = 0
         await get_tree().create_timer(.5).timeout
