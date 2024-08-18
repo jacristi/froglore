@@ -13,7 +13,7 @@ extends CharacterBody2D
 var face_direction := 0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING}
+enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING}
 var state = states.IDLE
 
 var is_idle := true
@@ -36,6 +36,9 @@ func _physics_process(delta: float) -> void:
         velocity.y += gravity * delta
 
     var direction := Input.get_axis("move_left", "move_right")
+
+    if (Input.is_action_just_pressed("action") and has_control() and state != states.CROAKING):
+        croak()
 
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
         hop(delta, 1.5)
@@ -82,7 +85,6 @@ func hit_hazard(area: Area2D):
     state = states.HIT_HAZARD
     animated_sprite_2d.play("hit_hazard")
     await animated_sprite_2d.animation_finished
-    print("NOW RESPAWN")
     state = states.RESPAWNING
     global_position = starting_position
     animated_sprite_2d.play("respawn")
@@ -90,10 +92,19 @@ func hit_hazard(area: Area2D):
     state = states.IDLE
 
 
+func croak() -> void:
+    state = states.CROAKING
+    # interact with object if exists
+    animated_sprite_2d.play("croak")
+    await animated_sprite_2d.animation_finished
+    state = states.IDLE
+    animated_sprite_2d.play("idle")
+
+
 func hide_light_point():
     point_light_2d.enabled = false
 
-func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING
+func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
 func _is_hopping() -> bool: return velocity.y < 0
 func _has_fall_velocity() -> bool: return velocity.y > 0
