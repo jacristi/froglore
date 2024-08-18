@@ -1,10 +1,12 @@
 extends Node2D
 
+@export var curr_level: String = "N/A"
 @export var prev_level: String = "N/A"
 @export var next_level: String = "N/A"
 
 @onready var level_exit: Area2D = $LevelExit
-@onready var ui_level_complete: ColorRect = $CanvasLayer/LevelComplete
+
+var level_state = LevelManager.level_states.NOT_COMPLETED
 
 var main_light: DirectionalLight2D
 var initial_light_energy: float
@@ -30,11 +32,12 @@ func _ready() -> void:
     bugs_total = get_tree().get_nodes_in_group("Bugs").size()
     light_incr_amt = initial_light_energy / bugs_total
 
+    level_state = LevelManager.get_level_state(curr_level)
 
-func show_level_completed() -> void:
+
+func show_level_completed(_level_key: String) -> void:
     level_exit.process_mode = 0
     level_exit.show()
-    ui_level_complete.show()
     is_level_completed = true
 
 
@@ -55,10 +58,6 @@ func handle_bug_collected():
     main_light.energy -= light_incr_amt*.4
 
     if bugs_collected == bugs_total:
-        Events.level_completed.emit()
+        Events.level_completed.emit(curr_level)
         main_light.energy = 0
         await get_tree().create_timer(.5).timeout
-        show_level_completed()
-
-
-

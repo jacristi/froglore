@@ -123,7 +123,7 @@ func croak() -> void:
     animated_sprite_2d.play("idle")
 
 
-func hide_light_point():
+func hide_light_point(_level_key: String):
     point_light_2d.enabled = false
 
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING

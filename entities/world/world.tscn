@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=12 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
 [ext_resource type="Texture2D" uid="uid://k8ev0q1noqvv" path="res://assets/spritesheets/spr-bg-test.png" id="5_fna5j"]
-[ext_resource type="PackedScene" uid="uid://bnbs5dn1gn2wc" path="res://ui/ui_level_complete.tscn" id="5_nxmba"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Shader" path="res://resources/shaders/water_ref.gdshader" id="6_s1ybx"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
@@ -35,14 +34,6 @@ script = ExtResource("1_y1phm")
 
 [node name="FrogCharacter" parent="." instance=ExtResource("2_x37gw")]
 move_speed = 60.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="LevelComplete" parent="CanvasLayer" instance=ExtResource("5_nxmba")]
-visible = false
-size_flags_vertical = 0
-color = Color(0.0588235, 0.0588235, 0.0588235, 0)
 
 [node name="GroundTileMap" parent="." instance=ExtResource("6_4c14t")]
 position = Vector2(28, -7)
