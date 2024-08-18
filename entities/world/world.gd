@@ -40,7 +40,7 @@ func update_bug_state():
     if level_state == LevelManager.level_states.COMPLETED or level_state == LevelManager.level_states.PURIFIED:
         Events.level_completed.emit(curr_level)
         for bug in get_tree().get_nodes_in_group("LightBugs"):
-            bug.queue_free()
+            bug.set_self_inactive()
 
 
 func show_level_completed(_level_key: String) -> void:
@@ -63,6 +63,7 @@ func go_to_prev_level() -> void:
 
 
 func handle_light_bug_collected():
+    print()
     light_bugs_collected += 1
     main_light.energy -= light_incr_amt*.4
 
