@@ -34,7 +34,7 @@ position = Vector2(80, 93)
 position = Vector2(216, 69)
 
 [node name="LevelExit" parent="." index="12"]
-position = Vector2(99, 77)
+position = Vector2(99, 78)
 
 [node name="DarkBug" parent="." index="13" instance=ExtResource("4_p6ufu")]
 position = Vector2(125, 88)
