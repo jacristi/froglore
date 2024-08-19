@@ -91,7 +91,8 @@ func handle_dark_bug_collected():
     Events.level_reset.emit(curr_level)
     main_light.energy = initial_light_energy
     for bug in get_tree().get_nodes_in_group("DarkBugs"):
-        bug.set_self_inactive()
+        if not bug.is_collected:
+            bug.set_self_inactive()
 
 
 func handle_level_reset(_level_key: String):

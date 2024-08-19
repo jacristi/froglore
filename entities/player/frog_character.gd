@@ -26,6 +26,7 @@ var prep_jump := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
+    Events.dark_bug_collected.connect(collected_dark_bug)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(hide_light_point)
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
     if not velocity.is_zero_approx():
         move_and_slide()
 
-    if _has_fall_velocity() and state != states.HOP_LAND:
+    if _has_fall_velocity() and state != states.HOP_LAND and has_control():
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
 
@@ -79,7 +80,7 @@ func _physics_process(delta: float) -> void:
         state = states.HOP_START
         animated_sprite_2d.play("hop_start")
 
-    if _is_idle() and state != states.IDLE:
+    if _is_idle() and state != states.IDLE and has_control():
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
@@ -91,6 +92,8 @@ func hop(_delta: float, hop_mod: float = 1.0) -> void:
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
+    if not has_control(): return
+    if state == states.HIT_HAZARD: return
     animated_sprite_2d.play("hop_land")
     await animated_sprite_2d.animation_finished
     animated_sprite_2d.play("idle")
@@ -107,6 +110,10 @@ func hit_hazard(_area: Area2D):
     state = states.IDLE
     animated_sprite_2d.play("idle")
 
+
+func collected_dark_bug():
+    show_light_point("")
+    #hit_hazard(null)
 
 func enter_interactable(area: Area2D):
     current_interactable = area
@@ -128,9 +135,11 @@ func croak() -> void:
 func hide_light_point(_level_key: String):
     point_light_2d.enabled = false
 
+
 func show_light_point(_level_key: String):
-    await get_tree().create_timer(1.0).timeout
+    #await get_tree().create_timer(1.0).timeout
     point_light_2d.enabled = true
+
 
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()

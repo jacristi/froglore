@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3aahlhugb6w"
-path="res://.godot/imported/spr-bugs1.png-31b72a1f9cc849e6d5479d7308a5cb99.ctex"
+uid="uid://bcgtp8v43hdj2"
+path="res://.godot/imported/spr-light-dark-bugs-12x48.png-1d7db8d9a194724fad1a2194953827bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/spr-bugs1.png"
-dest_files=["res://.godot/imported/spr-bugs1.png-31b72a1f9cc849e6d5479d7308a5cb99.ctex"]
+source_file="res://assets/spritesheets/spr-light-dark-bugs-12x48.png"
+dest_files=["res://.godot/imported/spr-light-dark-bugs-12x48.png-1d7db8d9a194724fad1a2194953827bb.ctex"]
 
 [params]
 
