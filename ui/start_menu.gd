@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_play_pressed() -> void:
-    await LevelTransition.fade_to_black(false)
+    await LevelTransition.fade_to_black()
     get_tree().change_scene_to_file("res://entities/world/levels/level_1.tscn")
     await LevelTransition.fade_from_black()
 

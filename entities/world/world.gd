@@ -21,7 +21,7 @@ var is_level_completed:= false
 
 func _ready() -> void:
     level_exit.hide()
-    level_exit.process_mode = 4
+    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     Events.level_completed.connect(show_level_completed)
     Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.go_to_next_level.connect(go_to_next_level)
@@ -45,7 +45,7 @@ func update_bug_state():
 
 func show_level_completed(_level_key: String) -> void:
     main_light.energy = 0
-    level_exit.process_mode = 0
+    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
     is_level_completed = true
 

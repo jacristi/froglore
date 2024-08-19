@@ -34,7 +34,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     prep_jump = false
     if velocity.x != 0:
-        face_direction = velocity.x
+        face_direction = int(velocity.x)
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
     if not is_on_floor():
@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
         animated_sprite_2d.play("idle")
 
 
-func hop(delta: float, hop_mod: float = 1.0) -> void:
+func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
 
 
@@ -95,7 +95,7 @@ func hop_landed() -> void:
     animated_sprite_2d.play("idle")
 
 
-func hit_hazard(area: Area2D):
+func hit_hazard(_area: Area2D):
     state = states.HIT_HAZARD
     animated_sprite_2d.play("hit_hazard")
     await animated_sprite_2d.animation_finished
@@ -111,7 +111,7 @@ func enter_interactable(area: Area2D):
     current_interactable = area
 
 
-func exit_interactable(area: Area2D):
+func exit_interactable(_area: Area2D):
     current_interactable = null
 
 

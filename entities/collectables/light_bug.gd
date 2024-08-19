@@ -4,7 +4,7 @@ extends Area2D
 var is_collected := false
 
 
-func _on_body_entered(area: CharacterBody2D):
+func _on_body_entered(_area: CharacterBody2D):
     if is_collected: return
 
     collect()
