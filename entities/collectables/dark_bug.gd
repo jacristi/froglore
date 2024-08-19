@@ -3,14 +3,14 @@ extends Area2D
 var is_collected := false
 
 
-func _on_body_entered(_area: CharacterBody2D):
+func _on_body_entered(_body: Node2D) -> void:
     if is_collected: return
 
     collect()
 
 
 func collect():
-    Events.light_bug_collected.emit()
+    Events.dark_bug_collected.emit()
     set_self_inactive()
 
 

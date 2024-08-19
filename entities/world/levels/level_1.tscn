@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn5s1cqkxgw47"]
+[gd_scene load_steps=5 format=3 uid="uid://bn5s1cqkxgw47"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_rjwai"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_j2v6k"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_amwk7"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="4_p6ufu"]
 
 [node name="Level1" instance=ExtResource("1_rjwai")]
 curr_level = "level_1"
@@ -34,3 +35,15 @@ position = Vector2(216, 69)
 
 [node name="LevelExit" parent="." index="12"]
 position = Vector2(99, 77)
+
+[node name="DarkBug" parent="." index="13" instance=ExtResource("4_p6ufu")]
+position = Vector2(125, 88)
+
+[node name="DarkBug2" parent="." index="14" instance=ExtResource("4_p6ufu")]
+position = Vector2(146, 88)
+
+[node name="DarkBug3" parent="." index="15" instance=ExtResource("4_p6ufu")]
+position = Vector2(21, 76)
+
+[node name="DarkBug4" parent="." index="16" instance=ExtResource("4_p6ufu")]
+position = Vector2(187, 59)

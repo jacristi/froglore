@@ -22,8 +22,10 @@ var is_level_completed:= false
 func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
-    Events.level_completed.connect(show_level_completed)
+    Events.level_completed.connect(handle_level_completed)
+    Events.level_reset.connect(handle_level_reset)
     Events.light_bug_collected.connect(handle_light_bug_collected)
+    Events.dark_bug_collected.connect(handle_dark_bug_collected)
     Events.go_to_next_level.connect(go_to_next_level)
     Events.go_to_prev_level.connect(go_to_prev_level)
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
@@ -41,9 +43,24 @@ func update_bug_state():
         Events.level_completed.emit(curr_level)
         for bug in get_tree().get_nodes_in_group("LightBugs"):
             bug.set_self_inactive()
+    else:
+        for bug in get_tree().get_nodes_in_group("DarkBugs"):
+            bug.set_self_inactive()
 
 
-func show_level_completed(_level_key: String) -> void:
+func respawn_light_bugs():
+    for bug in get_tree().get_nodes_in_group("LightBugs"):
+        bug.set_self_active()
+        await get_tree().create_timer(1.0).timeout
+
+
+func respawn_dark_bugs():
+    for bug in get_tree().get_nodes_in_group("DarkBugs"):
+        bug.set_self_active()
+        await get_tree().create_timer(1.0).timeout
+
+
+func handle_level_completed(_level_key: String) -> void:
     main_light.energy = 0
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
@@ -63,10 +80,23 @@ func go_to_prev_level() -> void:
 
 
 func handle_light_bug_collected():
-    print()
     light_bugs_collected += 1
-    main_light.energy -= light_incr_amt*.4
+    main_light.energy -= light_incr_amt*.6
 
     if light_bugs_collected == light_bugs_total:
         Events.level_completed.emit(curr_level)
-        await get_tree().create_timer(.5).timeout
+
+
+func handle_dark_bug_collected():
+    Events.level_reset.emit(curr_level)
+    main_light.energy = initial_light_energy
+    for bug in get_tree().get_nodes_in_group("DarkBugs"):
+        bug.set_self_inactive()
+
+
+func handle_level_reset(_level_key: String):
+    level_state = LevelManager.level_states.NOT_COMPLETED
+    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
+    level_exit.hide()
+    await get_tree().create_timer(5.0).timeout
+    respawn_light_bugs()

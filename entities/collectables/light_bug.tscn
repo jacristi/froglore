@@ -42,12 +42,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46sa1"]
 size = Vector2(4, 5)
 
-[sub_resource type="Gradient" id="Gradient_lsbyy"]
+[sub_resource type="Gradient" id="Gradient_3wsvx"]
 offsets = PackedFloat32Array(0, 0.00352113, 0.492958)
 colors = PackedColorArray(1, 1, 1, 1, 0.953271, 0.953271, 0.953271, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gjt5t"]
-gradient = SubResource("Gradient_lsbyy")
+gradient = SubResource("Gradient_3wsvx")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.833333, 0.162393)
@@ -61,8 +61,7 @@ script = ExtResource("1_scjtg")
 sprite_frames = SubResource("SpriteFrames_p2avf")
 animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.899398
+frame_progress = 0.853743
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

@@ -29,6 +29,7 @@ func _ready() -> void:
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(hide_light_point)
+    Events.level_reset.connect(show_light_point)
 
 
 func _physics_process(delta: float) -> void:
@@ -126,6 +127,10 @@ func croak() -> void:
 
 func hide_light_point(_level_key: String):
     point_light_2d.enabled = false
+
+func show_light_point(_level_key: String):
+    await get_tree().create_timer(1.0).timeout
+    point_light_2d.enabled = true
 
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
