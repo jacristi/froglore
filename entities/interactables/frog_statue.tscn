@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://btrfu5gdv336r"]
+[gd_scene load_steps=47 format=3 uid="uid://btrfu5gdv336r"]
 
 [ext_resource type="Texture2D" uid="uid://dyeoppdof3n0o" path="res://assets/spritesheets/spr-frog-statue-12x48.png" id="1_eafvf"]
 [ext_resource type="Script" path="res://entities/interactables/frog_statue.gd" id="1_jf8qr"]
@@ -417,6 +417,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf633"]
 size = Vector2(9, 10)
 
+[sub_resource type="Gradient" id="Gradient_3wsvx"]
+offsets = PackedFloat32Array(0, 0.00352113, 0.492958)
+colors = PackedColorArray(1, 1, 1, 1, 0.953271, 0.953271, 0.953271, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkj38"]
+gradient = SubResource("Gradient_3wsvx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.833333, 0.162393)
+
 [node name="FrogStatue" type="Area2D" groups=["FrogStatues"]]
 collision_layer = 8
 collision_mask = 0
@@ -433,3 +443,7 @@ autoplay = "inactive"
 position = Vector2(-0.5, -5)
 shape = SubResource("RectangleShape2D_qf633")
 debug_color = Color(0, 0.6, 0.701961, 0.105882)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_hkj38")

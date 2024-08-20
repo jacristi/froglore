@@ -359,7 +359,6 @@ hop_height = 120.0
 hop_cooldown = 0.35
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 texture = SubResource("GradientTexture2D_fwe1r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
