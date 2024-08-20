@@ -112,7 +112,6 @@ func handle_frog_statue_activated():
 
     count_statues_active += 1
     if count_statues_active == count_total_statues:
-        print("PURIFY LEVEL!!!")
         Events.level_purified.emit(curr_level)
 
 
