@@ -296,6 +296,7 @@ shape = SubResource("RectangleShape2D_46sa1")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 texture = SubResource("GradientTexture2D_gjt5t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

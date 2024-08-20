@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://5vfimpaovice"]
+[gd_scene load_steps=6 format=3 uid="uid://5vfimpaovice"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_3wnbo"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_rxlc4"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_0535l"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="4_plavw"]
+[ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="5_3d2r2"]
 
 [node name="World" instance=ExtResource("1_3wnbo")]
 curr_level = "level_3"
@@ -33,3 +34,15 @@ position = Vector2(88, 93)
 
 [node name="DarkBug" parent="." index="11" instance=ExtResource("4_plavw")]
 position = Vector2(44, 82)
+
+[node name="FrogStatue" parent="." index="12" instance=ExtResource("5_3d2r2")]
+position = Vector2(126, 89)
+
+[node name="FrogStatue2" parent="." index="13" instance=ExtResource("5_3d2r2")]
+position = Vector2(164, 89)
+
+[node name="DarkBug2" parent="." index="14" instance=ExtResource("4_plavw")]
+position = Vector2(96, 88)
+
+[node name="DarkBug3" parent="." index="15" instance=ExtResource("4_plavw")]
+position = Vector2(198, 73)

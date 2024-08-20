@@ -7,5 +7,7 @@ signal light_bug_collected
 signal dark_bug_collected
 
 signal go_to_level(level_key: String)
-signal go_to_next_level()
-signal go_to_prev_level()
+signal go_to_next_level
+signal go_to_prev_level
+
+signal frog_statue_activated

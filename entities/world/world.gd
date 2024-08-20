@@ -26,6 +26,7 @@ func _ready() -> void:
     Events.level_reset.connect(handle_level_reset)
     Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.dark_bug_collected.connect(handle_dark_bug_collected)
+    Events.frog_statue_activated.connect(handle_frog_statue_activated)
     Events.go_to_next_level.connect(go_to_next_level)
     Events.go_to_prev_level.connect(go_to_prev_level)
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
@@ -36,6 +37,7 @@ func _ready() -> void:
 
     level_state = LevelManager.get_level_state(curr_level)
     update_bug_state()
+    update_statues_states()
 
 
 func update_bug_state():
@@ -46,6 +48,16 @@ func update_bug_state():
     else:
         for bug in get_tree().get_nodes_in_group("DarkBugs"):
             bug.set_self_inactive()
+
+
+func update_statues_states():
+    for statue in get_tree().get_nodes_in_group("FrogStatues"):
+        if level_state == LevelManager.level_states.NOT_COMPLETED:
+            statue.set_state_inactive()
+        if level_state == LevelManager.level_states.COMPLETED:
+            statue.set_state_ready()
+        if level_state == LevelManager.level_states.PURIFIED:
+            statue.set_state_active()
 
 
 func respawn_light_bugs():
@@ -90,9 +102,12 @@ func handle_light_bug_collected():
 func handle_dark_bug_collected():
     Events.level_reset.emit(curr_level)
     main_light.energy = initial_light_energy
-    for bug in get_tree().get_nodes_in_group("DarkBugs"):
-        if not bug.is_collected:
-            bug.set_self_inactive()
+
+
+func handle_frog_statue_activated():
+    print("FROG STATUE ACTIVATED!")
+    # check if all are activated
+    # if so PURIFY LEVEL!
 
 
 func handle_level_reset(_level_key: String):
