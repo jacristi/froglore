@@ -21,8 +21,7 @@ uniform float y_zoom;
 
 void vertex() {
     //move water up and down
-    VERTEX.y += sin(TIME) * 0.033
-    ;
+    VERTEX.y += sin(TIME) * 0.033;
 }
 
 void fragment() {
