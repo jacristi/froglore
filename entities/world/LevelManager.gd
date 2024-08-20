@@ -9,7 +9,7 @@ var level_states_dict: Dictionary
 
 
 func _ready() -> void:
-    Events.level_completed.connect(update_level_state)
+    Events.level_completed.connect(update_leveL_completed)
     Events.level_reset.connect(update_level_reset)
     Events.level_purified.connect(update_level_purified)
     Events.go_to_level.connect(go_to_level)
@@ -32,7 +32,7 @@ func go_to_level(level_key: String) -> void:
     get_tree().paused = false
 
 
-func update_level_state(level_key: String, new_state: level_states = level_states.COMPLETED):
+func update_level_state(level_key: String, new_state: level_states):
     var cur_state = level_states_dict[level_key]
 
     # Do not update if purified
@@ -45,10 +45,11 @@ func update_level_state(level_key: String, new_state: level_states = level_state
 func get_level_state(level_key: String) -> level_states:
     return level_states_dict[level_key]
 
+func update_leveL_completed(level_key:String, _on_start: bool):
+     update_level_state(level_key, level_states.COMPLETED)
 
-func update_level_reset(level_key: String):
+func update_level_reset(level_key: String, _on_start: bool):
     update_level_state(level_key, level_states.NOT_COMPLETED)
 
-
-func update_level_purified(level_key: String):
+func update_level_purified(level_key: String, _on_start: bool):
     update_level_state(level_key, level_states.PURIFIED)

@@ -1,0 +1,62 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxq28plxba3el"]
+
+[ext_resource type="Script" path="res://entities/world/AudioManager.gd" id="1_bmmmj"]
+[ext_resource type="AudioStream" uid="uid://cddh62upudvni" path="res://assets/audio/Musinova Ambient Music Pack - Mystical Land.wav" id="1_wucp5"]
+[ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
+[ext_resource type="AudioStream" uid="uid://dnqsu416def4n" path="res://assets/audio/level_complete.wav" id="4_xla2n"]
+[ext_resource type="AudioStream" uid="uid://dq3cwk0f6dwqc" path="res://assets/audio/level_reset.wav" id="5_7o0t7"]
+[ext_resource type="AudioStream" uid="uid://27hq7ilednww" path="res://assets/audio/level_purified.wav" id="6_sjmel"]
+[ext_resource type="AudioStream" uid="uid://dhkumr3j62gr0" path="res://assets/audio/frog_statue_activated.wav" id="7_72olg"]
+[ext_resource type="AudioStream" uid="uid://cu52oh3bmg50a" path="res://assets/audio/light_bug_spawn.wav" id="8_e0p0f"]
+[ext_resource type="AudioStream" uid="uid://cdt6ekdf1rwb2" path="res://assets/audio/hit_hazard.wav" id="9_eadus"]
+[ext_resource type="AudioStream" uid="uid://jm785or560nt" path="res://assets/audio/player_respawn.wav" id="10_q486s"]
+[ext_resource type="AudioStream" uid="uid://6xrhe681ij0f" path="res://assets/audio/enter_unpurifed_level.wav" id="11_lty0w"]
+[ext_resource type="AudioStream" uid="uid://cldm0u1b1luu5" path="res://assets/audio/enter_new_level.wav" id="12_yuqcn"]
+[ext_resource type="AudioStream" uid="uid://cin0r7ilxek0q" path="res://assets/audio/goto_level_next.wav" id="13_dv0op"]
+[ext_resource type="AudioStream" uid="uid://dlupxs56o5wly" path="res://assets/audio/goto_level_prev.wav" id="14_4bcwi"]
+
+[node name="AudioManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_bmmmj")
+play_music_loop = false
+
+[node name="MusicLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_wucp5")
+volume_db = -14.857
+area_mask = 0
+
+[node name="AudioLightBugCollect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5vvyn")
+
+[node name="AudioLevelComplete" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xla2n")
+
+[node name="AudioLevelReset" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7o0t7")
+
+[node name="AudioLevelPurified" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_sjmel")
+
+[node name="AudioStatueActivated" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_72olg")
+
+[node name="AudioLightBugSpawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_e0p0f")
+
+[node name="AudioHitHazard" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_eadus")
+
+[node name="AudioPlayerRespawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_q486s")
+
+[node name="AudioEnterUnpurified" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_lty0w")
+
+[node name="AudioEnterLevelNew" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_yuqcn")
+
+[node name="AudioGoToNext" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_dv0op")
+
+[node name="AudioGoToPrev" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_4bcwi")

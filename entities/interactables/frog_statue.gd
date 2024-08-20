@@ -30,6 +30,7 @@ func set_state_ready():
 func set_state_active():
     if state == states.ACTIVE or state == states.ACTIVATING: return
     state = states.ACTIVATING
+    Events.frog_statue_activating.emit()
     animated_sprite_2d.play("activating")
     await animated_sprite_2d.animation_finished
     state = states.ACTIVE

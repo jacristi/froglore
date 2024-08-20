@@ -30,6 +30,7 @@ func _ready() -> void:
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(hide_light_point)
+    Events.level_purified.connect(hide_light_point)
     Events.level_reset.connect(show_light_point)
 
 
@@ -100,20 +101,22 @@ func hop_landed() -> void:
 
 
 func hit_hazard(_area: Area2D):
+    Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
     animated_sprite_2d.play("hit_hazard")
     await animated_sprite_2d.animation_finished
     state = states.RESPAWNING
     global_position = starting_position
     animated_sprite_2d.play("respawn")
+    Events.player_respawn.emit()
     await animated_sprite_2d.animation_finished
     state = states.IDLE
     animated_sprite_2d.play("idle")
 
 
 func collected_dark_bug():
-    show_light_point("")
-    #hit_hazard(null)
+    show_light_point("", false)
+
 
 func enter_interactable(area: Area2D):
     current_interactable = area
@@ -135,11 +138,11 @@ func croak() -> void:
     animated_sprite_2d.play("idle")
 
 
-func hide_light_point(_level_key: String):
+func hide_light_point(_level_key: String, _on_start: bool):
     point_light_2d.enabled = false
 
 
-func show_light_point(_level_key: String):
+func show_light_point(_level_key: String, _on_start: bool):
     #await get_tree().create_timer(1.0).timeout
     point_light_2d.enabled = true
 

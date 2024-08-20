@@ -43,7 +43,7 @@ func set_self_active():
     is_collected = false
 
 
-func collect_as_purified(_level_key: String):
+func collect_as_purified(_level_key: String, _on_start: bool):
     is_collected = true
     animated_sprite_2d.play("purified")
     await animated_sprite_2d.animation_finished

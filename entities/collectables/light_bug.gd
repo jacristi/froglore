@@ -29,6 +29,7 @@ func set_self_inactive():
 func set_self_active():
     show()
     animated_sprite_2d.play("spawn")
+    Events.light_bug_spawn.emit()
     await animated_sprite_2d.animation_finished
     point_light_2d.enabled = true
     animated_sprite_2d.play("idle")
