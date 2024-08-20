@@ -15,6 +15,11 @@ extends Node
 @onready var audio_enter_level_new: AudioStreamPlayer2D = $AudioEnterLevelNew
 @onready var audio_go_to_next: AudioStreamPlayer2D = $AudioGoToNext
 @onready var audio_go_to_prev: AudioStreamPlayer2D = $AudioGoToPrev
+@onready var audio_hop: AudioStreamPlayer2D = $AudioHop
+@onready var audio_hop_landed: AudioStreamPlayer2D = $AudioHopLanded
+@onready var audio_croak: AudioStreamPlayer2D = $AudioCroak
+@onready var audio_play_button_clicked: AudioStreamPlayer2D = $AudioPlayButtonClicked
+@onready var audio_exit_button_clicked: AudioStreamPlayer2D = $AudioExitButtonClicked
 
 
 func _ready() -> void:
@@ -29,6 +34,11 @@ func _ready() -> void:
     Events.frog_statue_activating.connect(play_statue_activated)
     Events.player_hit_hazard.connect(play_hit_hazard)
     Events.player_respawn.connect(play_player_respawn)
+    Events.player_hopped.connect(play_hop)
+    Events.player_hop_landed.connect(play_hop_landed)
+    Events.player_croaked.connect(play_croak)
+    Events.ui_play_button_clicked.connect(play_play_button_clicked)
+    Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
 
     if play_music_loop:
         music_loop.play()
@@ -71,3 +81,18 @@ func play_goto_next():
 
 func play_goto_prev():
     audio_go_to_prev.play()
+
+func play_hop():
+    audio_hop.play()
+
+func play_hop_landed():
+    audio_hop_landed.play()
+
+func play_croak():
+    audio_croak.play()
+
+func play_play_button_clicked():
+    audio_play_button_clicked.play()
+
+func play_exit_button_clicked():
+    audio_exit_button_clicked.play()

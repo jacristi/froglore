@@ -12,6 +12,9 @@ signal dark_bug_spawn
 
 signal player_hit_hazard
 signal player_respawn
+signal player_hopped
+signal player_hop_landed
+signal player_croaked
 
 signal go_to_level(level_key: String)
 signal try_go_to_next_level
@@ -22,3 +25,8 @@ signal cannot_go_to_level
 
 signal frog_statue_activating
 signal frog_statue_activated
+
+signal ui_play_button_clicked
+signal ui_exit_button_clicked
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=20 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" path="res://entities/world/AudioManager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://cddh62upudvni" path="res://assets/audio/Musinova Ambient Music Pack - Mystical Land.wav" id="1_wucp5"]
@@ -14,6 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://cldm0u1b1luu5" path="res://assets/audio/enter_new_level.wav" id="12_yuqcn"]
 [ext_resource type="AudioStream" uid="uid://cin0r7ilxek0q" path="res://assets/audio/goto_level_next.wav" id="13_dv0op"]
 [ext_resource type="AudioStream" uid="uid://dlupxs56o5wly" path="res://assets/audio/goto_level_prev.wav" id="14_4bcwi"]
+[ext_resource type="AudioStream" uid="uid://cuxhto680ffjn" path="res://assets/audio/hop.wav" id="15_nv5hr"]
+[ext_resource type="AudioStream" uid="uid://cqi3kqbej5a6p" path="res://assets/audio/hop_land.wav" id="16_rub5u"]
+[ext_resource type="AudioStream" uid="uid://br0tgnu7iujkn" path="res://assets/audio/croak.wav" id="17_sv6ye"]
+[ext_resource type="AudioStream" uid="uid://6w1j3oh4vp7f" path="res://assets/audio/play_button_clicked.wav" id="18_mdd3b"]
+[ext_resource type="AudioStream" uid="uid://13jvn5b6feo5" path="res://assets/audio/exit_button_clicked.wav" id="19_0bmiy"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -60,3 +65,20 @@ stream = ExtResource("13_dv0op")
 
 [node name="AudioGoToPrev" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_4bcwi")
+
+[node name="AudioHop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_nv5hr")
+volume_db = -20.0
+
+[node name="AudioHopLanded" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_rub5u")
+volume_db = -20.0
+
+[node name="AudioCroak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_sv6ye")
+
+[node name="AudioPlayButtonClicked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_mdd3b")
+
+[node name="AudioExitButtonClicked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_0bmiy")

@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
         if (current_interactable != null and current_interactable.is_in_group("exit_point")):
             Events.try_go_to_prev_level.emit()
 
-    if (Input.is_action_just_pressed("action") and has_control() and state != states.CROAKING):
+    if (Input.is_action_just_pressed("action") and can_croak()):
         croak()
 
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
-
+    Events.player_hopped.emit()
 
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
@@ -96,6 +96,7 @@ func hop_landed() -> void:
     if not has_control(): return
     if state == states.HIT_HAZARD: return
     animated_sprite_2d.play("hop_land")
+    Events.player_hop_landed.emit()
     await animated_sprite_2d.animation_finished
     animated_sprite_2d.play("idle")
 
@@ -128,12 +129,14 @@ func exit_interactable(_area: Area2D):
 
 func croak() -> void:
     state = states.CROAKING
+    Events.player_croaked.emit()
+
+    animated_sprite_2d.play("croak")
+    await animated_sprite_2d.animation_finished
 
     if current_interactable and current_interactable.is_in_group("FrogStatues"):
         current_interactable.try_activate()
 
-    animated_sprite_2d.play("croak")
-    await animated_sprite_2d.animation_finished
     state = states.IDLE
     animated_sprite_2d.play("idle")
 
@@ -146,7 +149,7 @@ func show_light_point(_level_key: String, _on_start: bool):
     #await get_tree().create_timer(1.0).timeout
     point_light_2d.enabled = true
 
-
+func can_croak() -> bool: return state == states.IDLE
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
 func _is_hopping() -> bool: return velocity.y < 0
