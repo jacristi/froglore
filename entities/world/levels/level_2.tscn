@@ -51,10 +51,10 @@ position = Vector2(24, 69)
 position = Vector2(198, 89)
 
 [node name="DarkBug2" parent="." index="17" instance=ExtResource("4_7ua7u")]
-position = Vector2(116, 84)
+position = Vector2(113, 51)
 
 [node name="DarkBug3" parent="." index="18" instance=ExtResource("4_7ua7u")]
-position = Vector2(158, 83)
+position = Vector2(158, 52)
 
 [node name="FrogStatue2" parent="." index="19" instance=ExtResource("5_epxac")]
 position = Vector2(214, 89)

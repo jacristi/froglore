@@ -18,6 +18,8 @@ var light_incr_amt: float
 
 var is_level_completed:= false
 
+var count_total_statues: int
+var count_statues_active: int = 0
 
 func _ready() -> void:
     level_exit.hide()
@@ -35,6 +37,8 @@ func _ready() -> void:
     light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
     light_incr_amt = initial_light_energy / light_bugs_total
 
+    count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
+
     level_state = LevelManager.get_level_state(curr_level)
     update_bug_state()
     update_statues_states()
@@ -45,7 +49,7 @@ func update_bug_state():
         Events.level_completed.emit(curr_level)
         for bug in get_tree().get_nodes_in_group("LightBugs"):
             bug.set_self_inactive()
-    else:
+    if level_state == LevelManager.level_states.NOT_COMPLETED or level_state == LevelManager.level_states.PURIFIED:
         for bug in get_tree().get_nodes_in_group("DarkBugs"):
             bug.set_self_inactive()
 
@@ -57,7 +61,7 @@ func update_statues_states():
         if level_state == LevelManager.level_states.COMPLETED:
             statue.set_state_ready()
         if level_state == LevelManager.level_states.PURIFIED:
-            statue.set_state_active()
+            statue.set_state_active_start()
 
 
 func respawn_light_bugs():
@@ -105,9 +109,11 @@ func handle_dark_bug_collected():
 
 
 func handle_frog_statue_activated():
-    print("FROG STATUE ACTIVATED!")
-    # check if all are activated
-    # if so PURIFY LEVEL!
+
+    count_statues_active += 1
+    if count_statues_active == count_total_statues:
+        print("PURIFY LEVEL!!!")
+        Events.level_purified.emit(curr_level)
 
 
 func handle_level_reset(_level_key: String):

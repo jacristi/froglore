@@ -125,7 +125,10 @@ func exit_interactable(_area: Area2D):
 
 func croak() -> void:
     state = states.CROAKING
-    # interact with object if exists
+
+    if current_interactable and current_interactable.is_in_group("FrogStatues"):
+        current_interactable.try_activate()
+
     animated_sprite_2d.play("croak")
     await animated_sprite_2d.animation_finished
     state = states.IDLE

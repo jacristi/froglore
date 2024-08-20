@@ -205,7 +205,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3hlvr")
 }],
-"loop": true,
+"loop": false,
 "name": &"activating",
 "speed": 8.0
 }, {
@@ -426,7 +426,7 @@ script = ExtResource("1_jf8qr")
 z_index = -1
 position = Vector2(0, -23)
 sprite_frames = SubResource("SpriteFrames_ax1id")
-animation = &"active"
+animation = &"activating"
 autoplay = "inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

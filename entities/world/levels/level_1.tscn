@@ -35,10 +35,10 @@ position = Vector2(80, 93)
 position = Vector2(107, 86)
 
 [node name="DarkBug" parent="." index="12" instance=ExtResource("4_p6ufu")]
-position = Vector2(92, 84)
+position = Vector2(106, 53)
 
 [node name="DarkBug2" parent="." index="13" instance=ExtResource("4_p6ufu")]
-position = Vector2(146, 88)
+position = Vector2(145, 52)
 
 [node name="DarkBug3" parent="." index="14" instance=ExtResource("4_p6ufu")]
 position = Vector2(20, 83)
@@ -47,7 +47,7 @@ position = Vector2(20, 83)
 position = Vector2(199, 85)
 
 [node name="FrogStatue" parent="." index="16" instance=ExtResource("5_4p8ec")]
-position = Vector2(136, 97)
+position = Vector2(91, 89)
 
 [node name="FrogStatue2" parent="." index="17" instance=ExtResource("5_4p8ec")]
 position = Vector2(185, 89)

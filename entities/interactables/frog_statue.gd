@@ -1,7 +1,7 @@
 extends Area2D
 
 
-enum states {INACTIVE, READY, ACTIVE}
+enum states {INACTIVE, READY, ACTIVATING, ACTIVE}
 var state = states.INACTIVE
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -28,7 +28,19 @@ func set_state_ready():
 
 
 func set_state_active():
-    animated_sprite_2d.play("activing")
+    if state == states.ACTIVE or state == states.ACTIVATING: return
+    state = states.ACTIVATING
+    animated_sprite_2d.play("activating")
     await animated_sprite_2d.animation_finished
     state = states.ACTIVE
     Events.frog_statue_activated.emit()
+
+
+func set_state_active_start():
+    state = states.ACTIVE
+
+
+func try_activate():
+    if state != states.READY: return
+    set_state_active()
+
