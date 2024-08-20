@@ -28,8 +28,8 @@ func _ready() -> void:
     Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.dark_bug_collected.connect(handle_dark_bug_collected)
     Events.frog_statue_activated.connect(handle_frog_statue_activated)
-    Events.go_to_next_level.connect(go_to_next_level)
-    Events.go_to_prev_level.connect(go_to_prev_level)
+    Events.try_go_to_next_level.connect(go_to_next_level)
+    Events.try_go_to_prev_level.connect(go_to_prev_level)
 
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
     initial_light_energy = main_light.energy
@@ -92,13 +92,17 @@ func handle_level_completed(_level_key: String, _on_start: bool) -> void:
 
 func go_to_next_level() -> void:
     if next_level == "N/A":
+        Events.cannot_go_to_level.emit()
         return
+    Events.go_to_next_level.emit()
     Events.go_to_level.emit(next_level)
 
 
 func go_to_prev_level() -> void:
     if prev_level == "N/A":
+        Events.cannot_go_to_level.emit()
         return
+    Events.go_to_prev_level.emit()
     Events.go_to_level.emit(prev_level)
 
 

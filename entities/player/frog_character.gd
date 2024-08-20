@@ -47,11 +47,11 @@ func _physics_process(delta: float) -> void:
 
     if (Input.is_action_just_pressed("up")):
         if (current_interactable != null and current_interactable.is_in_group("exit_point")):
-            Events.go_to_next_level.emit()
+            Events.try_go_to_next_level.emit()
 
     if (Input.is_action_just_pressed("down")):
         if (current_interactable != null and current_interactable.is_in_group("exit_point")):
-            Events.go_to_prev_level.emit()
+            Events.try_go_to_prev_level.emit()
 
     if (Input.is_action_just_pressed("action") and has_control() and state != states.CROAKING):
         croak()

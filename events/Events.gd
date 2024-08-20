@@ -14,8 +14,11 @@ signal player_hit_hazard
 signal player_respawn
 
 signal go_to_level(level_key: String)
+signal try_go_to_next_level
+signal try_go_to_prev_level
 signal go_to_next_level
 signal go_to_prev_level
+signal cannot_go_to_level
 
 signal frog_statue_activating
 signal frog_statue_activated
