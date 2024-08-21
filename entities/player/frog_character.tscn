@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=51 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -46,6 +46,10 @@ region = Rect2(96, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4xsl"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfg30"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2t3o"]
 atlas = ExtResource("1_2oguq")
@@ -216,6 +220,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sfg30")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b2t3o")
 }, {
 "duration": 1.0,
@@ -357,6 +369,9 @@ script = ExtResource("1_tl5hv")
 move_speed = 55.0
 hop_height = 120.0
 hop_cooldown = 0.35
+dash_velocity_x = 200.0
+dash_velocity_y = 10.0
+dash_duration = 0.1
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_fwe1r")
@@ -366,12 +381,10 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_kbbra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"croak"
+animation = &"dash"
 autoplay = "idle"
-frame = 7
-frame_progress = 0.664245
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true

@@ -13,16 +13,20 @@ extends CharacterBody2D
 
 var current_interactable: Area2D
 
-var face_direction := 0
+var face_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING}
+enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING, DASHING}
 var state = states.IDLE
 
 var is_idle := true
 var is_falling := false
 var prep_jump := false
 
+@export var dash_velocity_x: float
+@export var dash_velocity_y: float
+@export var dash_duration: float
+var curr_velocity: Vector2
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
@@ -37,10 +41,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     prep_jump = false
     if velocity.x != 0:
-        face_direction = int(velocity.x)
+        face_direction = -1 if velocity.x < 0 else 1
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
-    if not is_on_floor():
+    if not is_on_floor() and not _is_dashing():
         velocity.y += gravity * delta
 
     var direction := Input.get_axis("move_left", "move_right")
@@ -56,35 +60,49 @@ func _physics_process(delta: float) -> void:
     if (Input.is_action_just_pressed("action") and can_croak()):
         croak()
 
+    if (Input.is_action_just_pressed("dash") and can_dash()):
+        dash()
+
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
         hop(delta, 1.5)
     elif direction and can_hop() and is_on_floor():
         hop(delta)
 
-    if direction and (can_hop() or !is_on_floor()):
+    if direction and (can_hop() or !is_on_floor()) and state != states.DASHING:
         velocity.x = direction * move_speed
-    else:
+    elif state != states.DASHING:
         velocity.x = move_toward(velocity.x, 0, move_speed)
+
 
     if not velocity.is_zero_approx():
         move_and_slide()
 
     if _has_fall_velocity() and state != states.HOP_LAND and has_control():
+        print(">>> SET STATE FALLING")
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
 
     if is_on_floor() and state == states.FALLING:
+        print(">>> SET STATE HOP LAND")
         state = states.HOP_LAND
         hop_landed()
 
-    if _is_hopping() and state != states.HOP_START:
+    if _is_hopping() and state != states.HOP_START and state != states.DASHING:
+        print(">>> SET STATE HOP START")
         state = states.HOP_START
         animated_sprite_2d.play("hop_start")
 
     if _is_idle() and state != states.IDLE and has_control():
+        print(">>> SET STATE IDLE")
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
+    if _is_dashing():
+        print(">>> DASHING")
+        velocity.x = dash_velocity_x * face_direction
+        velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
+
+    curr_velocity = velocity
 
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
@@ -111,8 +129,9 @@ func hit_hazard(_area: Area2D):
     animated_sprite_2d.play("respawn")
     Events.player_respawn.emit()
     await animated_sprite_2d.animation_finished
-    state = states.IDLE
-    animated_sprite_2d.play("idle")
+    if state == states.RESPAWNING:
+        state = states.IDLE
+        animated_sprite_2d.play("idle")
 
 
 func collected_dark_bug():
@@ -144,8 +163,21 @@ func croak() -> void:
         if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED and LevelManager.current_level != "level_0":
             Events.go_to_level.emit("level_0")
 
-    state = states.IDLE
-    animated_sprite_2d.play("idle")
+    if state == states.CROAKING:
+        state = states.IDLE
+        animated_sprite_2d.play("idle")
+
+
+func dash():
+
+    state = states.DASHING
+    velocity.x = dash_velocity_x * face_direction
+    velocity.y = -dash_velocity_y
+    animated_sprite_2d.play("dash")
+    await get_tree().create_timer(dash_duration).timeout
+    # start dash cooldown timer
+    if state == states.DASHING:
+        state = states.FALLING
 
 
 func hide_light_point(_level_key: String, _on_start: bool):
@@ -156,10 +188,13 @@ func show_light_point(_level_key: String, _on_start: bool):
     #await get_tree().create_timer(1.0).timeout
     point_light_2d.enabled = true
 
+
+func can_dash() -> bool: return has_control() and true # check dash timer
 func can_croak() -> bool: return state == states.IDLE
-func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING
+func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING and state != states.DASHING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
-func _is_hopping() -> bool: return velocity.y < 0
+func _is_hopping() -> bool: return velocity.y < 0 and state != states.DASHING
 func _has_fall_velocity() -> bool: return velocity.y > 0
 func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
 func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_control()
+func _is_dashing() -> bool: return state == states.DASHING and true # check conditions that break dash (is_on_floor, is on wall)e.g.
