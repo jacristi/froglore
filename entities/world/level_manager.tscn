@@ -5,6 +5,7 @@
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_85043")
 levels_dict = {
+"level_0": "res://entities/world/levels/level_0.tscn",
 "level_1": "res://entities/world/levels/level_1.tscn",
 "level_2": "res://entities/world/levels/level_2.tscn",
 "level_3": "res://entities/world/levels/level_3.tscn",
