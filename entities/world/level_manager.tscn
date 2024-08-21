@@ -11,3 +11,4 @@ levels_dict = {
 "level_3": "res://entities/world/levels/level_3.tscn",
 "level_4": "res://entities/world/levels/level_4.tscn"
 }
+purified_overrides = Array[String](["level_0"])

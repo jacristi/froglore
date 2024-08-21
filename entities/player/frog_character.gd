@@ -137,6 +137,9 @@ func croak() -> void:
     if current_interactable and current_interactable.is_in_group("FrogStatues"):
         current_interactable.try_activate()
 
+    if current_interactable and current_interactable.is_in_group("WarpStatues"):
+        current_interactable.try_activate()
+
     state = states.IDLE
     animated_sprite_2d.play("idle")
 

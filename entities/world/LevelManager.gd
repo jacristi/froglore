@@ -7,6 +7,7 @@ var current_level = ''
 enum level_states {NOT_COMPLETED, COMPLETED, PURIFIED}
 var level_states_dict: Dictionary
 
+@export var purified_overrides: Array[String]
 
 func _ready() -> void:
     Events.level_completed.connect(update_leveL_completed)
@@ -17,6 +18,9 @@ func _ready() -> void:
     ### LOAD LEVEL STATES
     for level in levels_dict:
         level_states_dict[level] = level_states.NOT_COMPLETED
+
+    for level in purified_overrides:
+        level_states_dict[level] = level_states.PURIFIED
 
 
 func get_level_by_key(level_key: String):
