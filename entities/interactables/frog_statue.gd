@@ -8,9 +8,12 @@ var state = states.INACTIVE
 
 func _ready() -> void:
     Events.dark_bug_collected.connect(set_state_inactive)
+    handle_initial_states()
 
 
-func _process(_delta: float) -> void:
+func handle_initial_states() -> void:
+    randomize()
+    await get_tree().create_timer(randf_range(0, 1.5)).timeout
     if state == states.INACTIVE:
         animated_sprite_2d.play("inactive")
     if state == states.READY:
@@ -21,10 +24,13 @@ func _process(_delta: float) -> void:
 
 func set_state_inactive():
     state = states.INACTIVE
+    animated_sprite_2d.play("inactive")
 
 
 func set_state_ready():
     state = states.READY
+    await get_tree().create_timer(randf_range(0, 1.5)).timeout
+    animated_sprite_2d.play("ready")
 
 
 func set_state_active():
@@ -34,11 +40,14 @@ func set_state_active():
     animated_sprite_2d.play("activating")
     await animated_sprite_2d.animation_finished
     state = states.ACTIVE
+    animated_sprite_2d.play("active")
     Events.frog_statue_activated.emit()
 
 
 func set_state_active_start():
     state = states.ACTIVE
+    await get_tree().create_timer(randf_range(0, 1.5)).timeout
+    animated_sprite_2d.play("active")
 
 
 func try_activate():

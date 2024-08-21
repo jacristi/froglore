@@ -7,6 +7,12 @@ var level_state
 
 func _ready() -> void:
     level_state = LevelManager.get_level_state(level_key)
+    handle_initial_states()
+
+
+func handle_initial_states():
+    randomize()
+    await get_tree().create_timer(randf_range(0, 1.5)).timeout
     if level_state == LevelManager.level_states.NOT_COMPLETED:
         animated_sprite_2d.play("inactive")
     if level_state == LevelManager.level_states.COMPLETED:
