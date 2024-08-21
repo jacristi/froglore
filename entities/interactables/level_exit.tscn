@@ -118,7 +118,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g313c"]
 size = Vector2(8, 13)
 
-[node name="LevelExit" type="Area2D" groups=["exit_point"]]
+[node name="LevelExit" type="Area2D" groups=["LevelExit"]]
 collision_layer = 8
 collision_mask = 0
 

@@ -23,5 +23,4 @@ func handle_initial_states():
 
 func try_activate():
     if level_state == LevelManager.level_states.NOT_COMPLETED: return
-    print("TRY ACTIVATE")
     Events.go_to_level.emit(level_key)

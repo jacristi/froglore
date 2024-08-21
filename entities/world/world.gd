@@ -33,6 +33,8 @@ func _ready() -> void:
     Events.try_go_to_next_level.connect(go_to_next_level)
     Events.try_go_to_prev_level.connect(go_to_prev_level)
 
+    LevelManager.current_level = curr_level
+
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
     initial_light_energy = main_light.energy
 

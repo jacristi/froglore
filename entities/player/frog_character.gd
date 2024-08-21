@@ -46,11 +46,11 @@ func _physics_process(delta: float) -> void:
     var direction := Input.get_axis("move_left", "move_right")
 
     if (Input.is_action_just_pressed("up")):
-        if (current_interactable != null and current_interactable.is_in_group("exit_point")):
+        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
             Events.try_go_to_next_level.emit()
 
     if (Input.is_action_just_pressed("down")):
-        if (current_interactable != null and current_interactable.is_in_group("exit_point")):
+        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
             Events.try_go_to_prev_level.emit()
 
     if (Input.is_action_just_pressed("action") and can_croak()):
@@ -139,6 +139,10 @@ func croak() -> void:
 
     if current_interactable and current_interactable.is_in_group("WarpStatues"):
         current_interactable.try_activate()
+
+    if current_interactable and current_interactable.is_in_group("LevelExit"):
+        if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED and LevelManager.current_level != "level_0":
+            Events.go_to_level.emit("level_0")
 
     state = states.IDLE
     animated_sprite_2d.play("idle")
