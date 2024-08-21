@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var interact_detector: Area2D = $InteractDetector
 @onready var starting_position := global_position
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 var current_interactable: Area2D
 
@@ -23,9 +24,11 @@ var is_idle := true
 var is_falling := false
 var prep_jump := false
 
+var dash_used:= false
 @export var dash_velocity_x: float
 @export var dash_velocity_y: float
 @export var dash_duration: float
+@export var dash_cooldown_duration:= 1.0
 var curr_velocity: Vector2
 
 func _ready() -> void:
@@ -36,6 +39,7 @@ func _ready() -> void:
     Events.level_completed.connect(hide_light_point)
     Events.level_purified.connect(hide_light_point)
     Events.level_reset.connect(show_light_point)
+    dash_cooldown_timer.wait_time = dash_cooldown_duration
 
 
 func _physics_process(delta: float) -> void:
@@ -73,34 +77,31 @@ func _physics_process(delta: float) -> void:
     elif state != states.DASHING:
         velocity.x = move_toward(velocity.x, 0, move_speed)
 
-
     if not velocity.is_zero_approx():
         move_and_slide()
 
     if _has_fall_velocity() and state != states.HOP_LAND and has_control():
-        print(">>> SET STATE FALLING")
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
 
     if is_on_floor() and state == states.FALLING:
-        print(">>> SET STATE HOP LAND")
         state = states.HOP_LAND
         hop_landed()
 
     if _is_hopping() and state != states.HOP_START and state != states.DASHING:
-        print(">>> SET STATE HOP START")
         state = states.HOP_START
         animated_sprite_2d.play("hop_start")
 
     if _is_idle() and state != states.IDLE and has_control():
-        print(">>> SET STATE IDLE")
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
     if _is_dashing():
-        print(">>> DASHING")
         velocity.x = dash_velocity_x * face_direction
         velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
+
+    if state == states.IDLE:
+        dash_used = false
 
     curr_velocity = velocity
 
@@ -111,6 +112,7 @@ func hop(_delta: float, hop_mod: float = 1.0) -> void:
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
+    dash_used = false
     if not has_control(): return
     if state == states.HIT_HAZARD: return
     animated_sprite_2d.play("hop_land")
@@ -169,13 +171,13 @@ func croak() -> void:
 
 
 func dash():
-
+    dash_used = true
     state = states.DASHING
     velocity.x = dash_velocity_x * face_direction
     velocity.y = -dash_velocity_y
     animated_sprite_2d.play("dash")
     await get_tree().create_timer(dash_duration).timeout
-    # start dash cooldown timer
+    dash_cooldown_timer.start()
     if state == states.DASHING:
         state = states.FALLING
 
@@ -189,7 +191,7 @@ func show_light_point(_level_key: String, _on_start: bool):
     point_light_2d.enabled = true
 
 
-func can_dash() -> bool: return has_control() and true # check dash timer
+func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
 func can_croak() -> bool: return state == states.IDLE
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING and state != states.DASHING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
