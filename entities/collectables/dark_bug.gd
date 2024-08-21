@@ -26,7 +26,6 @@ func collect():
 
 
 func collect_along_others():
-    if is_collected: return
     animated_sprite_2d.play("collect")
     point_light_2d.enabled = false
     await animated_sprite_2d.animation_finished

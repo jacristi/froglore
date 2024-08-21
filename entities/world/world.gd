@@ -19,6 +19,8 @@ var light_incr_amt: float
 var count_total_statues: int
 var count_statues_active: int = 0
 
+var can_respawn_dark_bugs := false
+
 func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
@@ -40,6 +42,7 @@ func _ready() -> void:
     count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
 
     level_state = LevelManager.get_level_state(curr_level)
+
     handle_on_start_level_state()
     update_bug_state()
     update_statues_states()
@@ -76,18 +79,24 @@ func respawn_light_bugs():
     for bug in get_tree().get_nodes_in_group("LightBugs"):
         bug.set_self_active()
         await get_tree().create_timer(1.0).timeout
+    update_statues_states()
 
 
 func respawn_dark_bugs():
     for bug in get_tree().get_nodes_in_group("DarkBugs"):
         bug.set_self_active()
         await get_tree().create_timer(1.0).timeout
+    level_state = LevelManager.level_states.COMPLETED
+    update_statues_states()
 
 
 func handle_level_completed(_level_key: String, _on_start: bool) -> void:
     main_light.energy = 0
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
+    if can_respawn_dark_bugs:
+        await get_tree().create_timer(5.0).timeout
+        respawn_dark_bugs()
 
 
 func go_to_next_level() -> void:
@@ -127,7 +136,10 @@ func handle_frog_statue_activated():
 
 func handle_level_reset(_level_key: String, _on_start:bool):
     level_state = LevelManager.level_states.NOT_COMPLETED
+    light_bugs_collected = 0
+    count_statues_active = 0
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     level_exit.hide()
     await get_tree().create_timer(5.0).timeout
     respawn_light_bugs()
+    can_respawn_dark_bugs = true
