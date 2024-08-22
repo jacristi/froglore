@@ -10,6 +10,7 @@
 [resource]
 Button/colors/font_color = Color(0.129412, 0.117647, 0.156863, 1)
 Button/colors/font_focus_color = Color(0.509804, 0.819608, 0.886275, 1)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0.94902, 0)
 Button/font_sizes/font_size = 8
 Button/styles/disabled = ExtResource("1_401kt")
 Button/styles/focus = SubResource("StyleBoxEmpty_wm8to")
