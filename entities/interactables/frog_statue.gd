@@ -5,6 +5,7 @@ enum states {INACTIVE, READY, ACTIVATING, ACTIVE}
 var state = states.INACTIVE
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var override_active_state:= false
 
 func _ready() -> void:
     Events.dark_bug_collected.connect(set_state_inactive)
@@ -18,7 +19,7 @@ func handle_initial_states() -> void:
         animated_sprite_2d.play("inactive")
     if state == states.READY:
         animated_sprite_2d.play("ready")
-    if state == states.ACTIVE:
+    if state == states.ACTIVE or override_active_state:
         animated_sprite_2d.play("active")
 
 
