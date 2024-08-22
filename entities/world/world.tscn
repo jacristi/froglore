@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
-[ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/space-bg.png" id="4_eqns3"]
+[ext_resource type="Texture2D" uid="uid://k8ev0q1noqvv" path="res://assets/spritesheets/spr-bg-test.png" id="5_fna5j"]
 [ext_resource type="Shader" path="res://resources/shaders/water_ref_2.gdshader" id="5_gv7sv"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
@@ -19,7 +19,7 @@ noise = SubResource("FastNoiseLite_lu0cl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_gv7sv")
 shader_parameter/scale = Vector2(240, 42)
-shader_parameter/y_zoom = 20.1587
+shader_parameter/y_zoom = 1.0
 shader_parameter/water_color = Color(0.439216, 0.0980392, 0.458824, 0.0941176)
 shader_parameter/distortion_scale = Vector2(0, 0.05)
 shader_parameter/intensity = 0.01
@@ -43,7 +43,7 @@ position = Vector2(28, -7)
 [node name="background" type="Sprite2D" parent="."]
 z_index = -15
 position = Vector2(122, 156)
-texture = ExtResource("4_eqns3")
+texture = ExtResource("5_fna5j")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." groups=["MainLight"]]
 position = Vector2(111, -40)

@@ -25,7 +25,7 @@ func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     Events.level_completed.connect(handle_level_completed)
-    Events.level_purified.connect(handle_level_completed)
+    Events.level_purified.connect(handle_leveL_purified)
     Events.level_reset.connect(handle_level_reset)
     Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.dark_bug_collected.connect(handle_dark_bug_collected)
@@ -99,6 +99,12 @@ func handle_level_completed(_level_key: String, _on_start: bool) -> void:
     if can_respawn_dark_bugs:
         await get_tree().create_timer(5.0).timeout
         respawn_dark_bugs()
+
+
+func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
+    main_light.energy = 0
+    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
+    level_exit.show()
 
 
 func go_to_next_level() -> void:

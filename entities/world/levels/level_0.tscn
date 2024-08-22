@@ -5,7 +5,7 @@
 
 [node name="Level0" instance=ExtResource("1_cp077")]
 curr_level = "level_0"
-prev_level = "level_4"
+prev_level = "level_8"
 next_level = "level_1"
 
 [node name="FrogCharacter" parent="." index="0"]
@@ -36,3 +36,19 @@ level_key = "level_3"
 [node name="WarpStatue4" parent="." index="10" instance=ExtResource("4_l2rno")]
 position = Vector2(79, 97)
 level_key = "level_4"
+
+[node name="WarpStatue5" parent="." index="11" instance=ExtResource("4_l2rno")]
+position = Vector2(160, 97)
+level_key = "level_5"
+
+[node name="WarpStatue6" parent="." index="12" instance=ExtResource("4_l2rno")]
+position = Vector2(178, 97)
+level_key = "level_6"
+
+[node name="WarpStatue7" parent="." index="13" instance=ExtResource("4_l2rno")]
+position = Vector2(197, 97)
+level_key = "level_7"
+
+[node name="WarpStatue8" parent="." index="14" instance=ExtResource("4_l2rno")]
+position = Vector2(217, 97)
+level_key = "level_8"

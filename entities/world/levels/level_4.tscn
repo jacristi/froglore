@@ -8,7 +8,7 @@
 [node name="Level4" instance=ExtResource("1_r82ow")]
 curr_level = "level_4"
 prev_level = "level_3"
-next_level = "level_0"
+next_level = "level_5"
 
 [node name="FrogCharacter" parent="." index="0"]
 position = Vector2(24, 58)
