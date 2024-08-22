@@ -26,7 +26,9 @@ signal cannot_go_to_level
 signal frog_statue_activating
 signal frog_statue_activated
 
+signal ready_world_statue
+signal activating_world_statue
+signal activated_world_statue
+
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
-
-

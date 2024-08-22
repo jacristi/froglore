@@ -161,6 +161,9 @@ func croak() -> void:
     if current_interactable and current_interactable.is_in_group("WarpStatues"):
         current_interactable.try_activate()
 
+    if current_interactable and current_interactable.is_in_group("WorldStatues"):
+        current_interactable.try_activate()
+
     if current_interactable and current_interactable.is_in_group("LevelExit"):
         if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED and LevelManager.current_level != "level_0":
             Events.go_to_level.emit("level_0")
