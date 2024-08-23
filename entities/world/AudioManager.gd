@@ -21,6 +21,9 @@ extends Node
 @onready var audio_play_button_clicked: AudioStreamPlayer2D = $AudioPlayButtonClicked
 @onready var audio_exit_button_clicked: AudioStreamPlayer2D = $AudioExitButtonClicked
 
+var level_new_has_played:= false
+var level_unpurified_has_played:= false
+
 
 func _ready() -> void:
     Events.light_bug_spawn.connect(play_light_bug_spawn)
@@ -48,7 +51,8 @@ func play_light_bug_collect():
     audio_light_bug_collect.play()
 
 func play_level_complete(_level_key: String, _on_start: bool):
-    if _on_start:
+    if _on_start and not level_unpurified_has_played:
+        level_unpurified_has_played = true
         audio_enter_unpurified.play()
     else:
         audio_level_complete.play()
@@ -62,6 +66,8 @@ func play_level_reset(_level_key: String, _on_start: bool):
     audio_level_reset.play()
 
 func play_leveL_new(_level_key: String, _on_start: bool):
+    if level_new_has_played: return
+    level_new_has_played = true
     audio_enter_level_new.play()
 
 func play_statue_activated():
