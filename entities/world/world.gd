@@ -166,7 +166,11 @@ func handle_level_reset(_level_key: String, _on_start:bool):
 func start_end_credits():
     end_credits.show()
     LevelManager.in_semi_pause_state = true
+    level_exit.hide()
+    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     await get_tree().create_timer(10.0).timeout
     LevelManager.in_semi_pause_state = false
     end_credits.hide()
+    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
+    level_exit.show()
 
