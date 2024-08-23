@@ -30,7 +30,6 @@ func set_state_inactive():
 
 func set_state_ready():
     state = states.READY
-    await get_tree().create_timer(randf_range(0, 1.5)).timeout
     animated_sprite_2d.play("ready")
 
 
@@ -47,7 +46,6 @@ func set_state_active():
 
 func set_state_active_start():
     state = states.ACTIVE
-    await get_tree().create_timer(randf_range(0, 1.5)).timeout
     animated_sprite_2d.play("active")
 
 
