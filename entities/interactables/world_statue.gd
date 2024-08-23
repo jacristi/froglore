@@ -5,6 +5,7 @@ var state = states.inactive
 var all_completed:= false
 var all_purified:= false
 
+@onready var ready_label: Label = $ReadyLabel
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -39,6 +40,7 @@ func set_state():
     elif all_completed:
         animated_sprite_2d.play("inactive")
         state = states.inactive
+        ready_label.show()
     else:
         animated_sprite_2d.play("inactive")
         state = states.inactive
@@ -51,6 +53,7 @@ func try_activate():
         animated_sprite_2d.play("ready")
         Events.ready_world_statue.emit()
         print('ready state')
+        ready_label.hide()
 
     if state == states.active:
         state = states.activating
@@ -61,3 +64,4 @@ func try_activate():
         state = states.active
         animated_sprite_2d.play("active")
         Events.activated_world_statue.emit()
+        ready_label.hide()
