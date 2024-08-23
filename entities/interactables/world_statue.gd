@@ -45,6 +45,7 @@ func set_state():
 
 
 func try_activate():
+    if LevelManager.in_semi_pause_state: return
     if state == states.inactive and all_completed:
         state = states.ready
         animated_sprite_2d.play("ready")

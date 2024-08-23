@@ -21,6 +21,9 @@ var count_statues_active: int = 0
 
 var can_respawn_dark_bugs := false
 
+@onready var end_credits: Control = $EndCredits
+
+
 func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
@@ -32,6 +35,8 @@ func _ready() -> void:
     Events.frog_statue_activated.connect(handle_frog_statue_activated)
     Events.try_go_to_next_level.connect(go_to_next_level)
     Events.try_go_to_prev_level.connect(go_to_prev_level)
+    Events.ready_world_statue.connect(start_end_credits)
+    Events.activated_world_statue.connect(start_end_credits)
 
     LevelManager.current_level = curr_level
 
@@ -108,6 +113,7 @@ func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
 
 
 func go_to_next_level() -> void:
+    if LevelManager.in_semi_pause_state: return
     if next_level == "N/A":
         Events.cannot_go_to_level.emit()
         return
@@ -116,6 +122,7 @@ func go_to_next_level() -> void:
 
 
 func go_to_prev_level() -> void:
+    if LevelManager.in_semi_pause_state: return
     if prev_level == "N/A":
         Events.cannot_go_to_level.emit()
         return
@@ -154,3 +161,12 @@ func handle_level_reset(_level_key: String, _on_start:bool):
     await get_tree().create_timer(5.0).timeout
     respawn_light_bugs()
     can_respawn_dark_bugs = true
+
+
+func start_end_credits():
+    end_credits.show()
+    LevelManager.in_semi_pause_state = true
+    await get_tree().create_timer(10.0).timeout
+    LevelManager.in_semi_pause_state = false
+    end_credits.hide()
+

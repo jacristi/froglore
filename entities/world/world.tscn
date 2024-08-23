@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=13 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/water_ref_2.gdshader" id="5_gv7sv"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
+[ext_resource type="PackedScene" uid="uid://l56w4y52ls8x" path="res://ui/end_credits.tscn" id="8_iuul8"]
 [ext_resource type="PackedScene" uid="uid://djt7soxcfhakp" path="res://entities/interactables/level_exit.tscn" id="8_tjbdh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lu0cl"]
@@ -19,7 +20,7 @@ noise = SubResource("FastNoiseLite_lu0cl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_gv7sv")
 shader_parameter/scale = Vector2(240, 42)
-shader_parameter/y_zoom = 7.12719
+shader_parameter/y_zoom = 3.1748
 shader_parameter/water_color = Color(0.439216, 0.0980392, 0.458824, 0.0941176)
 shader_parameter/distortion_scale = Vector2(0, 0.05)
 shader_parameter/intensity = 0.01
@@ -65,5 +66,12 @@ position = Vector2(120, 67)
 [node name="LevelExit" parent="." instance=ExtResource("8_tjbdh")]
 process_mode = 4
 position = Vector2(19, -4)
+
+[node name="EndCredits" parent="." instance=ExtResource("8_iuul8")]
+visible = false
+offset_left = 115.0
+offset_top = 9.0
+offset_right = 115.0
+offset_bottom = 9.0
 
 [connection signal="item_rect_changed" from="Water" to="Water" method="_on_item_rect_changed"]

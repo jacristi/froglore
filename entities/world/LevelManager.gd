@@ -9,6 +9,8 @@ var level_states_dict: Dictionary
 
 @export var purified_overrides: Array[String]
 
+var in_semi_pause_state:= false
+
 func _ready() -> void:
     Events.level_completed.connect(update_leveL_completed)
     Events.level_reset.connect(update_level_reset)

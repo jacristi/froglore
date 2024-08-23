@@ -22,5 +22,6 @@ func handle_initial_states():
 
 
 func try_activate():
+    if LevelManager.in_semi_pause_state: return
     if level_state == LevelManager.level_states.NOT_COMPLETED: return
     Events.go_to_level.emit(level_key)

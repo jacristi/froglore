@@ -50,6 +50,7 @@ func set_state_active_start():
 
 
 func try_activate():
+    if LevelManager.in_semi_pause_state: return
     if state != states.READY: return
     set_state_active()
 
