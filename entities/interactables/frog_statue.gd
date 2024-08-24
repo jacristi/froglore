@@ -4,6 +4,7 @@ extends Area2D
 enum states {INACTIVE, READY, ACTIVATING, ACTIVE}
 var state = states.INACTIVE
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 @export var override_active_state:= false
 
@@ -15,10 +16,13 @@ func _ready() -> void:
 func handle_initial_states() -> void:
     if state == states.INACTIVE:
         animated_sprite_2d.play("inactive")
+        point_light_2d.enabled = false
     if state == states.READY:
         animated_sprite_2d.play("ready")
+        point_light_2d.enabled = true
     if state == states.ACTIVE or override_active_state:
         animated_sprite_2d.play("active")
+        point_light_2d.enabled = false
 
 
 func set_state_inactive():
@@ -29,6 +33,7 @@ func set_state_inactive():
 func set_state_ready():
     state = states.READY
     animated_sprite_2d.play("ready")
+    point_light_2d.enabled = true
 
 
 func set_state_active():
