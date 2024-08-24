@@ -417,17 +417,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf633"]
 size = Vector2(9, 10)
 
-[sub_resource type="Gradient" id="Gradient_3wsvx"]
-offsets = PackedFloat32Array(0, 0.00352113, 0.492958)
-colors = PackedColorArray(1, 1, 1, 1, 0.953271, 0.953271, 0.953271, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_ptijo"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.512048)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkj38"]
-gradient = SubResource("Gradient_3wsvx")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cpf1t"]
+gradient = SubResource("Gradient_ptijo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.833333, 0.162393)
+fill_to = Vector2(0.913043, 0.0869565)
 
 [node name="FrogStatue" type="Area2D" groups=["FrogStatues"]]
+light_mask = 0
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_jf8qr")
@@ -445,5 +447,5 @@ shape = SubResource("RectangleShape2D_qf633")
 debug_color = Color(0, 0.6, 0.701961, 0.105882)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-texture = SubResource("GradientTexture2D_hkj38")
+blend_mode = 2
+texture = SubResource("GradientTexture2D_cpf1t")

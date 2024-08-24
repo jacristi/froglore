@@ -25,6 +25,7 @@ func get_warp_statue_states():
         if statue.level_state == LevelManager.level_states.COMPLETED:
             count_completed += 1
         if statue.level_state == LevelManager.level_states.PURIFIED:
+            count_completed += 1
             count_purified += 1
 
     if count_completed == total:
@@ -37,10 +38,15 @@ func set_state():
     if all_purified:
         state = states.active
         animated_sprite_2d.play("ready")
+        if not LevelManager.has_finished_all_purified:
+            ready_label.show()
+
     elif all_completed:
         animated_sprite_2d.play("inactive")
         state = states.inactive
-        ready_label.show()
+        if not LevelManager.has_finished_all_completed:
+            ready_label.show()
+
     else:
         animated_sprite_2d.play("inactive")
         state = states.inactive
@@ -48,14 +54,15 @@ func set_state():
 
 func try_activate():
     if LevelManager.in_semi_pause_state: return
-    if state == states.inactive and all_completed:
+    if state == states.inactive and all_completed and not LevelManager.has_finished_all_completed:
         state = states.ready
         animated_sprite_2d.play("ready")
         Events.ready_world_statue.emit()
         print('ready state')
         ready_label.hide()
+        LevelManager.has_finished_all_completed = true
 
-    if state == states.active:
+    if state == states.active and not LevelManager.has_finished_all_purified:
         state = states.activating
         Events.activating_world_statue.emit()
         animated_sprite_2d.play("activating")
@@ -65,3 +72,4 @@ func try_activate():
         animated_sprite_2d.play("active")
         Events.activated_world_statue.emit()
         ready_label.hide()
+        LevelManager.has_finished_all_purified = true

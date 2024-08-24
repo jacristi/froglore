@@ -51,8 +51,9 @@ func play_light_bug_collect():
     audio_light_bug_collect.play()
 
 func play_level_complete(_level_key: String, _on_start: bool):
-    if level_unpurified_has_played: return
+
     if _on_start:
+        if level_unpurified_has_played: return
         level_unpurified_has_played = true
         audio_enter_unpurified.play()
     else:

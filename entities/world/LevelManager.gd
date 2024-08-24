@@ -11,6 +11,9 @@ var level_states_dict: Dictionary
 
 var in_semi_pause_state:= false
 
+var has_finished_all_completed:= false
+var has_finished_all_purified:= false
+
 func _ready() -> void:
     Events.level_completed.connect(update_leveL_completed)
     Events.level_reset.connect(update_level_reset)

@@ -10,11 +10,16 @@ var level_state = LevelManager.level_states.NOT_COMPLETED
 
 var main_light: DirectionalLight2D
 var initial_light_energy: float
+@export var light_energy_not_complete := 0.9
+@export var light_energy_not_purified := 0.9
 
+var dark_bugs_total: int
 var light_bugs_total: int
 var light_bugs_collected: int
 
-var light_incr_amt: float
+var light_incr_amt_bugs: float
+var light_incr_amt_statue: float
+var light_decr_amt_bugs: float
 
 var count_total_statues: int
 var count_statues_active: int = 0
@@ -38,28 +43,34 @@ func _ready() -> void:
     Events.ready_world_statue.connect(start_end_credits)
     Events.activated_world_statue.connect(start_end_credits)
 
-    LevelManager.current_level = curr_level
-
     main_light = get_tree().get_nodes_in_group("MainLight")[0]
+
+    LevelManager.current_level = curr_level
+    level_state = LevelManager.get_level_state(curr_level)
+    handle_on_start_level_state()
     initial_light_energy = main_light.energy
 
     light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
-    light_incr_amt = initial_light_energy / light_bugs_total
+    light_incr_amt_bugs = initial_light_energy / light_bugs_total
+
+    dark_bugs_total = get_tree().get_nodes_in_group("DarkBugs").size()
+    light_decr_amt_bugs = light_energy_not_purified / dark_bugs_total
 
     count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
+    light_incr_amt_statue  = initial_light_energy / light_bugs_total
 
-    level_state = LevelManager.get_level_state(curr_level)
-
-    handle_on_start_level_state()
     update_bug_state()
     update_statues_states()
 
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:
+        main_light.energy = light_energy_not_complete
         Events.level_new.emit(curr_level, true)
     if level_state == LevelManager.level_states.COMPLETED:
+        main_light.energy = light_energy_not_purified
         Events.level_completed.emit(curr_level, true)
     if level_state == LevelManager.level_states.PURIFIED:
+        main_light.energy = 0
         Events.level_purified.emit(curr_level, true)
 
 
@@ -92,13 +103,17 @@ func respawn_light_bugs():
 func respawn_dark_bugs():
     for bug in get_tree().get_nodes_in_group("DarkBugs"):
         bug.set_self_active()
+        main_light.energy += light_decr_amt_bugs
+        Events.dark_bug_spawn.emit()
         await get_tree().create_timer(1.0).timeout
     level_state = LevelManager.level_states.COMPLETED
     update_statues_states()
 
 
 func handle_level_completed(_level_key: String, _on_start: bool) -> void:
-    main_light.energy = 0
+    if not _on_start:
+        main_light.energy = 0
+
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
     if can_respawn_dark_bugs:
@@ -135,7 +150,7 @@ func go_to_prev_level() -> void:
 
 func handle_light_bug_collected():
     light_bugs_collected += 1
-    main_light.energy -= light_incr_amt*.6
+    main_light.energy -= light_incr_amt_bugs*.6
 
     if light_bugs_collected == light_bugs_total:
         Events.level_completed.emit(curr_level, false)

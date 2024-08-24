@@ -13,8 +13,6 @@ func _ready() -> void:
 
 
 func handle_initial_states() -> void:
-    randomize()
-    await get_tree().create_timer(randf_range(0, 1.5)).timeout
     if state == states.INACTIVE:
         animated_sprite_2d.play("inactive")
     if state == states.READY:

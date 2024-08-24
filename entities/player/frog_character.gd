@@ -33,12 +33,13 @@ var curr_velocity: Vector2
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
-    Events.dark_bug_collected.connect(collected_dark_bug)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
-    Events.level_completed.connect(hide_light_point)
-    Events.level_purified.connect(hide_light_point)
+    Events.level_completed.connect(on_level_complete)
+    Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(show_light_point)
+    Events.dark_bug_spawn.connect(show_light_point)
+    Events.dark_bug_collected.connect(show_light_point)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
 
 
@@ -136,10 +137,6 @@ func hit_hazard(_area: Area2D):
         animated_sprite_2d.play("idle")
 
 
-func collected_dark_bug():
-    show_light_point("", false)
-
-
 func enter_interactable(area: Area2D):
     current_interactable = area
 
@@ -185,12 +182,23 @@ func dash():
         state = states.FALLING
 
 
-func hide_light_point(_level_key: String, _on_start: bool):
+func on_level_complete(_level_key: String, _on_start: bool):
+    if not _on_start:
+        hide_light_point()
+
+
+func on_level_purified(_level_key: String, _on_start: bool):
+    if not _on_start:
+        hide_light_point()
+
+func on_level_reset(_level_key: String, _on_start: bool):
+    show_light_point()
+
+func hide_light_point():
     point_light_2d.enabled = false
 
 
-func show_light_point(_level_key: String, _on_start: bool):
-    #await get_tree().create_timer(1.0).timeout
+func show_light_point():
     point_light_2d.enabled = true
 
 

@@ -414,15 +414,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8hbu"]
 size = Vector2(6, 4)
 
-[sub_resource type="Gradient" id="Gradient_6lee8"]
-offsets = PackedFloat32Array(0, 0.549153)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_pve8n"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.391566, 1)
+colors = PackedColorArray(1, 1, 1, 0.309804, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tvbx5"]
-gradient = SubResource("Gradient_6lee8")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_maulp"]
+gradient = SubResource("Gradient_pve8n")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.833333, 0.162393)
+fill_to = Vector2(0.5, 0.339)
 
 [node name="DarkBug" type="Area2D" groups=["DarkBugs"]]
 collision_layer = 0
@@ -439,8 +440,8 @@ autoplay = "idle"
 shape = SubResource("RectangleShape2D_d8hbu")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-blend_mode = 1
-texture = SubResource("GradientTexture2D_tvbx5")
+energy = 0.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_maulp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -244,6 +244,7 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_cn5k3")
 
 [node name="ReadyLabel" type="Label" parent="."]
+visible = false
 offset_left = -19.0
 offset_top = -27.0
 offset_right = 21.0

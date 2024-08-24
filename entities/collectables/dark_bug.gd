@@ -40,8 +40,8 @@ func set_self_inactive():
 func set_self_active():
     show()
     animated_sprite_2d.play("spawn")
-    await animated_sprite_2d.animation_finished
     point_light_2d.enabled = true
+    await animated_sprite_2d.animation_finished
     animated_sprite_2d.play("idle")
     is_collected = false
 
