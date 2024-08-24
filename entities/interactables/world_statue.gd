@@ -34,6 +34,7 @@ func get_warp_statue_states():
     if count_purified == total:
         all_purified = true
 
+
 func set_state():
     if all_purified:
         state = states.active
@@ -58,7 +59,6 @@ func try_activate():
         state = states.ready
         animated_sprite_2d.play("ready")
         Events.ready_world_statue.emit()
-        print('ready state')
         ready_label.hide()
         LevelManager.has_finished_all_completed = true
 
