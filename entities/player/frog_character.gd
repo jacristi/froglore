@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var dash_velocity_y = 10.0
 @export var dash_duration = 0.1
 @export var dash_cooldown_duration := 1.0
-@export var wall_cling_cooldown := 0.5
+@export var wall_cling_cooldown := 0.3
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -25,7 +25,18 @@ var v_direction: float
 var face_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING, DASHING, WALL_CLINGING}
+enum states {
+    IDLE,
+    HOP_START,
+    FALLING,
+    HOP_LAND,
+    HIT_HAZARD,
+    RESPAWNING,
+    CROAKING,
+    DASHING,
+    WALL_CLINGING,
+    WALL_CLING_CROAKING
+    }
 var state = states.IDLE
 
 var is_idle := true
@@ -152,10 +163,15 @@ func exit_interactable(_area: Area2D):
 
 
 func croak() -> void:
-    state = states.CROAKING
+    if _is_wall_clinging():
+        state = states.WALL_CLING_CROAKING
+        animated_sprite_2d.play("wall_cling_croak")
+    else:
+        state = states.CROAKING
+        animated_sprite_2d.play("croak")
     Events.player_croaked.emit()
 
-    animated_sprite_2d.play("croak")
+
     await animated_sprite_2d.animation_finished
 
     if current_interactable and current_interactable.is_in_group("FrogStatues"):
@@ -174,6 +190,9 @@ func croak() -> void:
     if state == states.CROAKING:
         state = states.IDLE
         animated_sprite_2d.play("idle")
+    if state == states.WALL_CLING_CROAKING:
+        state = states.WALL_CLINGING
+        animated_sprite_2d.play("wall_cling")
 
 
 func handle_croaking():
@@ -258,6 +277,9 @@ func handle_states_animations():
         animated_sprite_2d.play("wall_cling")
         velocity.y = 0
 
+    if state == states.WALL_CLING_CROAKING and has_control():
+        velocity.y = 0
+
     curr_velocity = velocity
 
 
@@ -275,15 +297,16 @@ func handle_wall_cling():
 
 
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
-func can_croak() -> bool: return state == states.IDLE
+func can_croak() -> bool: return state == states.IDLE or _is_wall_clinging()
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING and state != states.DASHING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and has_control() and (is_on_floor() or _is_wall_clinging())
+func _is_croaking() -> bool: return state == states.CROAKING or state == states.WALL_CLING_CROAKING
 func _is_hopping() -> bool: return velocity.y < 0 and state != states.DASHING
 func _has_fall_velocity() -> bool: return velocity.y > 0
 func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
 func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_control()
 func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
-func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING
+func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 
 func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0
 

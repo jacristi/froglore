@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=61 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -189,7 +189,43 @@ region = Rect2(112, 64, 16, 16)
 atlas = ExtResource("1_2oguq")
 region = Rect2(128, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0necp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_plx7h"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44ic2"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugkpn"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5hyx"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65lo6"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb0lt"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04a2r"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_202m6"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icq7r"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttcac"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(32, 80, 16, 16)
 
@@ -366,11 +402,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0necp")
+"texture": SubResource("AtlasTexture_plx7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44ic2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugkpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5hyx")
 }],
 "loop": true,
 "name": &"wall_cling",
-"speed": 8.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65lo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb0lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04a2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_202m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icq7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttcac")
+}],
+"loop": false,
+"name": &"wall_cling_croak",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57hb4"]
@@ -391,10 +459,12 @@ position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_kbbra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"wall_cling"
+animation = &"wall_cling_croak"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true
