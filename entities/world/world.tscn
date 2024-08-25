@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=19 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
 [ext_resource type="PackedScene" uid="uid://l56w4y52ls8x" path="res://ui/end_credits.tscn" id="8_iuul8"]
 [ext_resource type="PackedScene" uid="uid://djt7soxcfhakp" path="res://entities/interactables/level_exit.tscn" id="8_tjbdh"]
+[ext_resource type="PackedScene" uid="uid://djsrnisg8j1yc" path="res://entities/camera/camera_main.tscn" id="9_jx6nn"]
+[ext_resource type="PackedScene" uid="uid://dly3jxemtyvxq" path="res://entities/hazards/hazard_area.tscn" id="10_3m536"]
+[ext_resource type="PackedScene" uid="uid://b3d7jwjser3yq" path="res://entities/camera/camera_move_trigger.tscn" id="11_4f8v6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
 light_mode = 2
@@ -22,8 +25,8 @@ noise = SubResource("FastNoiseLite_lu0cl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_gv7sv")
-shader_parameter/scale = Vector2(240, 42)
-shader_parameter/y_zoom = 4.75683
+shader_parameter/scale = Vector2(720, 28)
+shader_parameter/y_zoom = 3.1748
 shader_parameter/water_color = Color(0.439216, 0.0980392, 0.458824, 0.0941176)
 shader_parameter/distortion_scale = Vector2(0, 0.05)
 shader_parameter/intensity = 0.01
@@ -34,6 +37,12 @@ shader_parameter/wave_period = 0.47
 shader_parameter/noise = SubResource("NoiseTexture2D_4h8we")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8qxa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
+size = Vector2(733, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evjnc"]
+size = Vector2(20, 239)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_y1phm")
@@ -61,13 +70,10 @@ blend_mode = 1
 [node name="Water" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(240, 135)
-scale = Vector2(240, 28)
+position = Vector2(479, 135)
+scale = Vector2(720, 28)
 texture = SubResource("CanvasTexture_8qxa7")
 script = ExtResource("7_ayoaj")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(120, 67)
 
 [node name="LevelExit" parent="." instance=ExtResource("8_tjbdh")]
 process_mode = 4
@@ -79,5 +85,48 @@ offset_left = 115.0
 offset_top = 9.0
 offset_right = 115.0
 offset_bottom = 9.0
+
+[node name="CameraMain" parent="." instance=ExtResource("9_jx6nn")]
+position = Vector2(126, 67)
+limit_left = 0
+limit_right = 240
+
+[node name="BottomBounds" parent="." instance=ExtResource("10_3m536")]
+position = Vector2(85, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBounds"]
+position = Vector2(28.5, 0)
+shape = SubResource("RectangleShape2D_8hb6v")
+
+[node name="LeftBounds" parent="." instance=ExtResource("10_3m536")]
+position = Vector2(-262, 43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBounds"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_evjnc")
+
+[node name="RightBounds" parent="." instance=ExtResource("10_3m536")]
+position = Vector2(489, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBounds"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_evjnc")
+
+[node name="CameraMoveTrigger" parent="." instance=ExtResource("11_4f8v6")]
+position = Vector2(-10, 55)
+scroll_left_val = -240
+
+[node name="CameraMoveTrigger2" parent="." instance=ExtResource("11_4f8v6")]
+position = Vector2(10, 54)
+scroll_right_val = 240
+
+[node name="CameraMoveTrigger3" parent="." instance=ExtResource("11_4f8v6")]
+position = Vector2(230, 53)
+scroll_right_val = 240
+
+[node name="CameraMoveTrigger4" parent="." instance=ExtResource("11_4f8v6")]
+position = Vector2(251, 53)
+scroll_left_val = 240
+scroll_right_val = 480
 
 [connection signal="item_rect_changed" from="Water" to="Water" method="_on_item_rect_changed"]

@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
-@export var move_speed := 50.0
-@export var hop_height := 125.0
-@export var hop_cooldown := 1.5
+@export var move_speed := 55.0
+@export var hop_height := 120.0
+@export var hop_cooldown := .35
+@export var dash_velocity_x = 200.0
+@export var dash_velocity_y = 10.0
+@export var dash_duration = 0.1
+@export var dash_cooldown_duration:= 1.0
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -25,11 +29,9 @@ var is_falling := false
 var prep_jump := false
 
 var dash_used:= false
-@export var dash_velocity_x: float
-@export var dash_velocity_y: float
-@export var dash_duration: float
-@export var dash_cooldown_duration:= 1.0
+
 var curr_velocity: Vector2
+
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard)
@@ -37,7 +39,7 @@ func _ready() -> void:
     interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
-    Events.level_reset.connect(show_light_point)
+    Events.level_reset.connect(on_level_reset)
     Events.dark_bug_spawn.connect(show_light_point)
     Events.dark_bug_collected.connect(show_light_point)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
@@ -106,9 +108,11 @@ func _physics_process(delta: float) -> void:
 
     curr_velocity = velocity
 
+
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
     Events.player_hopped.emit()
+
 
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
@@ -191,8 +195,10 @@ func on_level_purified(_level_key: String, _on_start: bool):
     if not _on_start:
         hide_light_point()
 
+
 func on_level_reset(_level_key: String, _on_start: bool):
     show_light_point()
+
 
 func hide_light_point():
     point_light_2d.enabled = false
