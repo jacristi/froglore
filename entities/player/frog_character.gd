@@ -6,7 +6,8 @@ extends CharacterBody2D
 @export var dash_velocity_x = 200.0
 @export var dash_velocity_y = 10.0
 @export var dash_duration = 0.1
-@export var dash_cooldown_duration:= 1.0
+@export var dash_cooldown_duration := 1.0
+@export var wall_cling_cooldown := 0.5
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -15,6 +16,7 @@ extends CharacterBody2D
 @onready var starting_position := global_position
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
+@onready var wall_cling_timer: Timer = $WallClingTimer
 
 var current_interactable: Area2D
 
@@ -23,13 +25,13 @@ var v_direction: float
 var face_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING, DASHING}
+enum states {IDLE, HOP_START, FALLING, HOP_LAND, HIT_HAZARD, RESPAWNING, CROAKING, DASHING, WALL_CLINGING}
 var state = states.IDLE
 
 var is_idle := true
 var is_falling := false
 var prep_jump := false
-
+var is_climbing := false
 var dash_used:= false
 
 var curr_velocity: Vector2
@@ -59,6 +61,7 @@ func _physics_process(delta: float) -> void:
     handle_dashing()
     handle_hopping(delta)
     handle_h_movement()
+    handle_wall_cling()
 
     if not velocity.is_zero_approx():
         move_and_slide()
@@ -86,8 +89,17 @@ func hop_landed() -> void:
 func handle_hopping(delta):
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
         hop(delta, 1.5)
-    elif h_direction and can_hop() and is_on_floor():
+        return
+
+    if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
+        hop(delta, 1.5)
+        wall_cling_timer.wait_time = wall_cling_cooldown
+        wall_cling_timer.start()
+        return
+
+    if h_direction and can_hop() and is_on_floor():
         hop(delta)
+        return
 
 
 func handle_h_movement():
@@ -111,6 +123,7 @@ func handle_move_directions():
 func apply_gravity(delta):
     if is_on_floor(): return
     if _is_dashing(): return
+    if _is_wall_clinging(): return
 
     velocity.y += gravity * delta
 
@@ -218,7 +231,7 @@ func handle_interacts_with_up_down():
 
 
 func handle_states_animations():
-    if _has_fall_velocity() and state != states.HOP_LAND and has_control():
+    if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging():
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
 
@@ -226,7 +239,7 @@ func handle_states_animations():
         state = states.HOP_LAND
         hop_landed()
 
-    if _is_hopping() and state != states.HOP_START and state != states.DASHING:
+    if _is_hopping() and state != states.HOP_START and state != states.DASHING and not _is_wall_clinging():
         state = states.HOP_START
         animated_sprite_2d.play("hop_start")
 
@@ -241,15 +254,36 @@ func handle_states_animations():
     if state == states.IDLE:
         dash_used = false
 
+    if state == states.WALL_CLINGING and has_control():
+        animated_sprite_2d.play("wall_cling")
+        velocity.y = 0
+
     curr_velocity = velocity
+
+
+func handle_wall_cling():
+    if state != states.WALL_CLINGING and not v_direction: return
+
+    if not _can_cling_to_wall() and state == states.WALL_CLINGING:
+        state = states.FALLING
+        return
+
+    if not _can_cling_to_wall(): return
+    if not has_control(): return
+
+    state = states.WALL_CLINGING
 
 
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
 func can_croak() -> bool: return state == states.IDLE
 func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING and state != states.DASHING
-func can_hop() -> bool: return move_hop_timer.time_left <= 0 and is_on_floor() and has_control()
+func can_hop() -> bool: return move_hop_timer.time_left <= 0 and has_control() and (is_on_floor() or _is_wall_clinging())
 func _is_hopping() -> bool: return velocity.y < 0 and state != states.DASHING
 func _has_fall_velocity() -> bool: return velocity.y > 0
 func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
 func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_control()
-func _is_dashing() -> bool: return state == states.DASHING and true # check conditions that break dash (is_on_floor, is on wall)e.g.
+func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
+func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING
+
+func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0
+

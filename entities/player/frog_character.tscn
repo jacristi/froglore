@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=52 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -15,7 +15,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.85, 0.15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbbra"]
-size = Vector2(4, 2)
+size = Vector2(3, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vptwo"]
 atlas = ExtResource("1_2oguq")
@@ -189,6 +189,10 @@ region = Rect2(112, 64, 16, 16)
 atlas = ExtResource("1_2oguq")
 region = Rect2(128, 64, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0necp"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(32, 80, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hwbhw"]
 animations = [{
 "frames": [{
@@ -359,12 +363,21 @@ animations = [{
 "loop": false,
 "name": &"respawn",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0necp")
+}],
+"loop": true,
+"name": &"wall_cling",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57hb4"]
 size = Vector2(4, 2)
 
 [node name="FrogCharacter" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_tl5hv")
@@ -374,13 +387,13 @@ blend_mode = 2
 texture = SubResource("GradientTexture2D_bm2qu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_kbbra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"dash"
+animation = &"wall_cling"
 autoplay = "idle"
 
 [node name="MoveHopTimer" type="Timer" parent="."]
@@ -403,4 +416,8 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_57hb4")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WallClingTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
