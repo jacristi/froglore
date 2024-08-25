@@ -142,7 +142,7 @@ func apply_gravity(delta):
 func hit_hazard(_area: Area2D):
     Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
-    animated_sprite_2d.play("hit_hazard")
+    animated_sprite_2d.play("despawn")
     await animated_sprite_2d.animation_finished
     state = states.RESPAWNING
     global_position = starting_position

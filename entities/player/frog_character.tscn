@@ -297,7 +297,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_dfsv5")
 }],
 "loop": false,
-"name": &"hit_hazard",
+"name": &"despawn",
 "speed": 8.0
 }, {
 "frames": [{
@@ -461,10 +461,8 @@ shape = SubResource("RectangleShape2D_kbbra")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"wall_cling_croak"
+animation = &"despawn"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true
