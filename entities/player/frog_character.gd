@@ -18,6 +18,8 @@ extends CharacterBody2D
 
 var current_interactable: Area2D
 
+var h_direction: float
+var v_direction: float
 var face_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -47,66 +49,21 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
     prep_jump = false
-    if velocity.x != 0:
-        face_direction = -1 if velocity.x < 0 else 1
-        animated_sprite_2d.flip_h = (velocity.x < 0)
+    handle_face_direction()
+    handle_move_directions()
+    apply_gravity(delta)
 
-    if not is_on_floor() and not _is_dashing():
-        velocity.y += gravity * delta
+    handle_interacts_with_up_down()
 
-    var direction := Input.get_axis("move_left", "move_right")
-
-    if (Input.is_action_just_pressed("up")):
-        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
-            Events.try_go_to_next_level.emit()
-
-    if (Input.is_action_just_pressed("down")):
-        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
-            Events.try_go_to_prev_level.emit()
-
-    if (Input.is_action_just_pressed("action") and can_croak()):
-        croak()
-
-    if (Input.is_action_just_pressed("dash") and can_dash()):
-        dash()
-
-    if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
-        hop(delta, 1.5)
-    elif direction and can_hop() and is_on_floor():
-        hop(delta)
-
-    if direction and (can_hop() or !is_on_floor()) and state != states.DASHING:
-        velocity.x = direction * move_speed
-    elif state != states.DASHING:
-        velocity.x = move_toward(velocity.x, 0, move_speed)
+    handle_croaking()
+    handle_dashing()
+    handle_hopping(delta)
+    handle_h_movement()
 
     if not velocity.is_zero_approx():
         move_and_slide()
 
-    if _has_fall_velocity() and state != states.HOP_LAND and has_control():
-        animated_sprite_2d.play("hop_fall")
-        state = states.FALLING
-
-    if is_on_floor() and state == states.FALLING:
-        state = states.HOP_LAND
-        hop_landed()
-
-    if _is_hopping() and state != states.HOP_START and state != states.DASHING:
-        state = states.HOP_START
-        animated_sprite_2d.play("hop_start")
-
-    if _is_idle() and state != states.IDLE and has_control():
-        state = states.IDLE
-        animated_sprite_2d.play("idle")
-
-    if _is_dashing():
-        velocity.x = dash_velocity_x * face_direction
-        velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
-
-    if state == states.IDLE:
-        dash_used = false
-
-    curr_velocity = velocity
+    handle_states_animations()
 
 
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
@@ -124,6 +81,38 @@ func hop_landed() -> void:
     Events.player_hop_landed.emit()
     await animated_sprite_2d.animation_finished
     animated_sprite_2d.play("idle")
+
+
+func handle_hopping(delta):
+    if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
+        hop(delta, 1.5)
+    elif h_direction and can_hop() and is_on_floor():
+        hop(delta)
+
+
+func handle_h_movement():
+    if h_direction and (can_hop() or !is_on_floor()) and state != states.DASHING:
+        velocity.x = h_direction * move_speed
+    elif state != states.DASHING:
+        velocity.x = move_toward(velocity.x, 0, move_speed)
+
+
+func handle_face_direction():
+    if velocity.x != 0:
+        face_direction = -1 if velocity.x < 0 else 1
+        animated_sprite_2d.flip_h = (velocity.x < 0)
+
+
+func handle_move_directions():
+    h_direction = Input.get_axis("move_left", "move_right")
+    v_direction = Input.get_axis("down", "up")
+
+
+func apply_gravity(delta):
+    if is_on_floor(): return
+    if _is_dashing(): return
+
+    velocity.y += gravity * delta
 
 
 func hit_hazard(_area: Area2D):
@@ -174,6 +163,11 @@ func croak() -> void:
         animated_sprite_2d.play("idle")
 
 
+func handle_croaking():
+    if (Input.is_action_just_pressed("action") and can_croak()):
+        croak()
+
+
 func dash():
     dash_used = true
     state = states.DASHING
@@ -184,6 +178,11 @@ func dash():
     dash_cooldown_timer.start()
     if state == states.DASHING:
         state = states.FALLING
+
+
+func handle_dashing():
+    if (Input.is_action_just_pressed("dash") and can_dash()):
+        dash()
 
 
 func on_level_complete(_level_key: String, _on_start: bool):
@@ -206,6 +205,43 @@ func hide_light_point():
 
 func show_light_point():
     point_light_2d.enabled = true
+
+
+func handle_interacts_with_up_down():
+    if (Input.is_action_just_pressed("up")):
+        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
+            Events.try_go_to_next_level.emit()
+
+    if (Input.is_action_just_pressed("down")):
+        if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
+            Events.try_go_to_prev_level.emit()
+
+
+func handle_states_animations():
+    if _has_fall_velocity() and state != states.HOP_LAND and has_control():
+        animated_sprite_2d.play("hop_fall")
+        state = states.FALLING
+
+    if is_on_floor() and state == states.FALLING:
+        state = states.HOP_LAND
+        hop_landed()
+
+    if _is_hopping() and state != states.HOP_START and state != states.DASHING:
+        state = states.HOP_START
+        animated_sprite_2d.play("hop_start")
+
+    if _is_idle() and state != states.IDLE and has_control():
+        state = states.IDLE
+        animated_sprite_2d.play("idle")
+
+    if _is_dashing():
+        velocity.x = dash_velocity_x * face_direction
+        velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
+
+    if state == states.IDLE:
+        dash_used = false
+
+    curr_velocity = velocity
 
 
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
