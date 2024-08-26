@@ -23,6 +23,7 @@ var current_interactable: Area2D
 var h_direction: float
 var v_direction: float
 var face_direction := 1
+var dash_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 enum states {
@@ -202,8 +203,11 @@ func handle_croaking():
 
 func dash():
     dash_used = true
+    dash_direction = face_direction
+    if _is_wall_clinging():
+        dash_direction = -dash_direction
     state = states.DASHING
-    velocity.x = dash_velocity_x * face_direction
+    velocity.x = dash_velocity_x * dash_direction
     velocity.y = -dash_velocity_y
     animated_sprite_2d.play("dash")
     await get_tree().create_timer(dash_duration).timeout
@@ -267,7 +271,7 @@ func handle_states_animations():
         animated_sprite_2d.play("idle")
 
     if _is_dashing():
-        velocity.x = dash_velocity_x * face_direction
+        velocity.x = dash_velocity_x * dash_direction
         velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
 
     if state == states.IDLE:
