@@ -33,13 +33,13 @@ position = Vector2(208, 81)
 position = Vector2(93, 54)
 
 [node name="DarkBug4" parent="." index="11" instance=ExtResource("3_024yw")]
-position = Vector2(77, 51)
+position = Vector2(85, 47)
 
 [node name="DarkBug5" parent="." index="12" instance=ExtResource("3_024yw")]
-position = Vector2(62, 46)
+position = Vector2(76, 39)
 
 [node name="DarkBug6" parent="." index="13" instance=ExtResource("3_024yw")]
-position = Vector2(62, 46)
+position = Vector2(63, 88)
 
 [node name="DarkBug2" parent="." index="14" instance=ExtResource("3_024yw")]
 position = Vector2(128, 59)

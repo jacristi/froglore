@@ -21,7 +21,7 @@ layer_0/tile_data = PackedInt32Array(1179654, 262145, 1, 1114118, 262145, 1, 104
 position = Vector2(112, 86)
 
 [node name="LightBug1" parent="." index="7" instance=ExtResource("2_rxlc4")]
-position = Vector2(34, 75)
+position = Vector2(29, 81)
 
 [node name="LightBug2" parent="." index="8" instance=ExtResource("2_rxlc4")]
 position = Vector2(205, 84)
@@ -54,7 +54,7 @@ position = Vector2(185, 45)
 position = Vector2(206, 31)
 
 [node name="DarkBug8" parent="." index="18" instance=ExtResource("4_plavw")]
-position = Vector2(32, 40)
+position = Vector2(28, 39)
 
 [node name="FrogStatue" parent="." index="19" instance=ExtResource("5_3d2r2")]
 position = Vector2(222, 41)
