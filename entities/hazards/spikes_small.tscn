@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufexl"]
-size = Vector2(5, 3)
+size = Vector2(6, 3)
 
 [node name="SpikesSmall" type="Node2D"]
 position = Vector2(0, -4)
@@ -31,5 +31,5 @@ sprite_frames = SubResource("SpriteFrames_5j8ir")
 [node name="HazardArea" parent="." instance=ExtResource("2_it3em")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
-position = Vector2(-0.5, 2.5)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ufexl")
