@@ -78,7 +78,6 @@ func play_leveL_new(_level_key: String, _on_start: bool):
     audio_enter_level_new.play()
 
 func play_statue_activated():
-    if audio_statue_activated.playing: return
     audio_statue_activated.play()
 
 func play_light_bug_spawn():
@@ -110,7 +109,6 @@ func play_hop_landed():
     audio_hop_landed.play()
 
 func play_croak():
-    if audio_croak.playing: return
     audio_croak.play()
 
 func play_play_button_clicked():
