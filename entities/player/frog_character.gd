@@ -144,6 +144,8 @@ func hit_hazard(_area: Area2D):
     Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
     animated_sprite_2d.play("despawn")
+    velocity.x = 0
+    velocity.y = 0
     await animated_sprite_2d.animation_finished
     state = states.RESPAWNING
     global_position = starting_position
@@ -258,11 +260,11 @@ func handle_states_animations():
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
 
-    if is_on_floor() and state == states.FALLING:
+    if is_on_floor() and state == states.FALLING and has_control():
         state = states.HOP_LAND
         hop_landed()
 
-    if _is_hopping() and state != states.HOP_START and state != states.DASHING and not _is_wall_clinging():
+    if _is_hopping() and state != states.HOP_START and state != states.DASHING and not _is_wall_clinging() and has_control():
         state = states.HOP_START
         animated_sprite_2d.play("hop_start")
 
