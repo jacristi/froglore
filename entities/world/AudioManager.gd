@@ -55,15 +55,20 @@ func play_level_complete(_level_key: String, _on_start: bool):
     if _on_start:
         if level_unpurified_has_played: return
         level_unpurified_has_played = true
+        if audio_enter_unpurified.playing: return
         audio_enter_unpurified.play()
+
     else:
+        if audio_level_complete.playing: return
         audio_level_complete.play()
 
 func play_level_purified(_level_key: String, _on_start: bool):
     if _on_start: return
+    if audio_level_purified.playing: return
     audio_level_purified.play()
 
 func play_level_reset(_level_key: String, _on_start: bool):
+    if audio_level_reset.playing: return
     if _on_start: return
     audio_level_reset.play()
 
@@ -73,34 +78,45 @@ func play_leveL_new(_level_key: String, _on_start: bool):
     audio_enter_level_new.play()
 
 func play_statue_activated():
+    if audio_statue_activated.playing: return
     audio_statue_activated.play()
 
 func play_light_bug_spawn():
+    if audio_light_bug_spawn.playing: return
     audio_light_bug_spawn.play()
 
 func play_hit_hazard():
+    if audio_hit_hazard.playing: return
     audio_hit_hazard.play()
 
 func play_player_respawn():
+    if audio_player_respawn.playing: return
     audio_player_respawn.play()
 
 func play_goto_next():
+    if audio_go_to_next.playing: return
     audio_go_to_next.play()
 
 func play_goto_prev():
+    if audio_go_to_prev.playing: return
     audio_go_to_prev.play()
 
 func play_hop():
+    if audio_hop.playing: return
     audio_hop.play()
 
 func play_hop_landed():
+    if audio_hop_landed.playing: return
     audio_hop_landed.play()
 
 func play_croak():
+    if audio_croak.playing: return
     audio_croak.play()
 
 func play_play_button_clicked():
+    if audio_play_button_clicked.playing: return
     audio_play_button_clicked.play()
 
 func play_exit_button_clicked():
+    if audio_exit_button_clicked.playing: return
     audio_exit_button_clicked.play()
