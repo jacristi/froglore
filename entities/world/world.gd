@@ -101,12 +101,14 @@ func respawn_light_bugs():
 
 
 func respawn_dark_bugs():
+    level_state = LevelManager.level_states.COMPLETED
     for bug in get_tree().get_nodes_in_group("DarkBugs"):
+        if level_state == LevelManager.level_states.NOT_COMPLETED:
+            return
         bug.set_self_active()
         main_light.energy += light_decr_amt_bugs
         Events.dark_bug_spawn.emit()
-        await get_tree().create_timer(1.0).timeout
-    level_state = LevelManager.level_states.COMPLETED
+        await get_tree().create_timer(0.5).timeout
     update_statues_states()
 
 
