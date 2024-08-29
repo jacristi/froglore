@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://nvjmvg5q00tq"]
+[gd_scene load_steps=43 format=3 uid="uid://nvjmvg5q00tq"]
 
 [ext_resource type="Script" path="res://entities/collectables/light_bug.gd" id="1_scjtg"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_2yodk"]
+[ext_resource type="PackedScene" uid="uid://dfplncsgfx1ek" path="res://effects/collect_light_bug_effect.tscn" id="3_ssafp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4ljx"]
 atlas = ExtResource("2_2yodk")
@@ -299,5 +300,8 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 blend_mode = 2
 texture = SubResource("GradientTexture2D_xgjg2")
+
+[node name="CollectLightBugEffect" parent="." instance=ExtResource("3_ssafp")]
+position = Vector2(0, -1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

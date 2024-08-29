@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bdn6d7q17ldrc"]
+
+[node name="RainEffect" type="CPUParticles2D"]
+amount = 240
+lifetime = 0.6
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(180, 1)
+gravity = Vector2(-75, 980)
+scale_amount_min = 0.2
+color = Color(0.435294, 0.898039, 1, 0.458824)

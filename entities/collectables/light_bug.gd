@@ -4,6 +4,7 @@ var is_collected := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var collect_light_bug_effect: CPUParticles2D = $CollectLightBugEffect
 
 
 func _on_body_entered(_area: CharacterBody2D):
@@ -14,6 +15,7 @@ func _on_body_entered(_area: CharacterBody2D):
 
 func collect():
     is_collected = true
+    collect_light_bug_effect.emitting = true
     point_light_2d.enabled = false
     animated_sprite_2d.play("collect")
     Events.light_bug_collected.emit()

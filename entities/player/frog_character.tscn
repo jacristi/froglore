@@ -1,7 +1,8 @@
-[gd_scene load_steps=61 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=62 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
+[ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
 
 [sub_resource type="Gradient" id="Gradient_x15j4"]
 interpolation_mode = 1
@@ -489,3 +490,5 @@ one_shot = true
 [node name="WallClingTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="HopLandEffect" parent="." instance=ExtResource("3_kt63j")]

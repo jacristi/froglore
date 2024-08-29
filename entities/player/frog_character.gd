@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
+@onready var hop_land_effect: CPUParticles2D = $HopLandEffect
 
 var current_interactable: Area2D
 
@@ -25,6 +26,7 @@ var v_direction: float
 var face_direction := 1
 var dash_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var has_big_fall_velocity:= false
 
 enum states {
     IDLE,
@@ -90,6 +92,8 @@ func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
+    if has_big_fall_velocity:
+        hop_land_effect.emitting = true
     if not has_control(): return
     if state == states.HIT_HAZARD: return
     animated_sprite_2d.play("hop_land")
@@ -256,9 +260,11 @@ func handle_interacts_with_up_down():
 
 
 func handle_states_animations():
+
     if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging():
         animated_sprite_2d.play("hop_fall")
         state = states.FALLING
+        has_big_fall_velocity = true if velocity.y > 150 else false
 
     if is_on_floor() and state == states.FALLING and has_control():
         state = states.HOP_LAND
