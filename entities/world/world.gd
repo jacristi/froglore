@@ -143,9 +143,7 @@ func go_to_prev_level() -> void:
     if prev_level == "N/A":
         Events.cannot_go_to_level.emit()
         return
-    if prev_level == "level_0" and LevelManager.get_level_state("level_8") < LevelManager.level_states.COMPLETED:
-        Events.cannot_go_to_level.emit()
-        return
+
     Events.go_to_prev_level.emit()
     Events.go_to_level.emit(prev_level)
 
