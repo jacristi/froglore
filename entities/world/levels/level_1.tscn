@@ -26,10 +26,10 @@ metadata/_edit_group_ = true
 position = Vector2(61, 83)
 
 [node name="LightBug2" parent="." index="4" instance=ExtResource("2_j2v6k")]
-position = Vector2(147, 87)
+position = Vector2(149, 84)
 
 [node name="LightBug3" parent="." index="5" instance=ExtResource("2_j2v6k")]
-position = Vector2(209, 78)
+position = Vector2(213, 82)
 
 [node name="SpikesSmall" parent="." index="6" instance=ExtResource("3_amwk7")]
 position = Vector2(32, 93)
