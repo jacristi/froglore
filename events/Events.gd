@@ -23,6 +23,8 @@ signal go_to_next_level
 signal go_to_prev_level
 signal cannot_go_to_level
 
+signal try_exit_game
+
 signal frog_statue_activating
 signal frog_statue_activated
 

@@ -21,6 +21,5 @@ func _on_play_pressed() -> void:
 
 func _on_exit_pressed() -> void:
     Events.ui_exit_button_clicked.emit()
-    await get_tree().create_timer(.5).timeout
-    get_tree().quit()
+    Events.try_exit_game.emit()
 

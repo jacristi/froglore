@@ -14,7 +14,7 @@ func _ready():
 func _process(delta: float) -> void:
     var pos_x = offset_x if player.face_direction > 0 else -offset_x
     position.x = move_toward(
-        position.x,
+        pos_x,
         player.position.x,
         delta*camera_move_value
         )

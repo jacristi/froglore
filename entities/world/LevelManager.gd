@@ -19,6 +19,7 @@ func _ready() -> void:
     Events.level_reset.connect(update_level_reset)
     Events.level_purified.connect(update_level_purified)
     Events.go_to_level.connect(go_to_level)
+    Events.try_exit_game.connect(exit_game)
 
     ### LOAD LEVEL STATES
     for level in levels_dict:
@@ -62,3 +63,7 @@ func update_level_reset(level_key: String, _on_start: bool):
 
 func update_level_purified(level_key: String, _on_start: bool):
     update_level_state(level_key, level_states.PURIFIED)
+
+func exit_game():
+    await get_tree().create_timer(.5).timeout
+    get_tree().quit()

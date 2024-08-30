@@ -191,7 +191,9 @@ func croak() -> void:
         current_interactable.try_activate()
 
     if current_interactable and current_interactable.is_in_group("LevelExit"):
-        if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED and LevelManager.current_level != "level_0":
+        if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED \
+            and LevelManager.current_level != "level_0" \
+            and LevelManager.current_level != "title_scene":
             Events.go_to_level.emit("level_0")
 
     if state == states.CROAKING:
@@ -257,6 +259,10 @@ func handle_interacts_with_up_down():
     if (Input.is_action_just_pressed("down")):
         if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
             Events.try_go_to_prev_level.emit()
+
+    if (Input.is_action_just_pressed("up")):
+        if (current_interactable != null and current_interactable.is_in_group("GameExit")):
+            Events.try_exit_game.emit()
 
 
 func handle_states_animations():
