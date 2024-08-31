@@ -181,13 +181,7 @@ func croak() -> void:
 
     await animated_sprite_2d.animation_finished
 
-    if current_interactable and current_interactable.is_in_group("FrogStatues"):
-        current_interactable.try_activate()
-
-    if current_interactable and current_interactable.is_in_group("WarpStatues"):
-        current_interactable.try_activate()
-
-    if current_interactable and current_interactable.is_in_group("WorldStatues"):
+    if can_try_activate_interactable():
         current_interactable.try_activate()
 
     if current_interactable and current_interactable.is_in_group("LevelExit"):
@@ -330,3 +324,9 @@ func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state 
 
 func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0
 
+func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
+current_interactable.is_in_group("FrogStatues") \
+or current_interactable.is_in_group("WarpStatues") \
+or current_interactable.is_in_group("WorldStatues") \
+or current_interactable.is_in_group("InteractableEnviron") \
+)

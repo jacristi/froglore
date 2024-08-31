@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxec108m3jn0l"]
+[gd_scene load_steps=16 format=3 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
 [ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="2_kmcy5"]
@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="8_50ycs"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="9_nj7d1"]
 [ext_resource type="PackedScene" uid="uid://8rw6friubsqp" path="res://entities/environs/touchable_environs/touchable_flowers_1.tscn" id="10_b1f76"]
-[ext_resource type="PackedScene" uid="uid://c52l0rjfmskjs" path="res://entities/environs/touchable_environs/touchable_flowers_2.tscn" id="11_j56te"]
 [ext_resource type="PackedScene" uid="uid://biqsylskoj24a" path="res://entities/environs/touchable_environs/touchable_flowers_3.tscn" id="12_uwqaw"]
+[ext_resource type="PackedScene" uid="uid://yigc46dwqc5j" path="res://entities/environs/interactable_environs/interactable_flower_1.tscn" id="13_gwsvl"]
+[ext_resource type="PackedScene" uid="uid://d0d8p50828t5h" path="res://entities/environs/interactable_environs/interactable_flower_2.tscn" id="14_sscfq"]
+[ext_resource type="PackedScene" uid="uid://d3ddxivf1da08" path="res://entities/environs/interactable_environs/interactable_flower_3.tscn" id="15_w0of5"]
+[ext_resource type="PackedScene" uid="uid://cr66nst5n0rdw" path="res://entities/environs/interactable_environs/interactable_flower_4.tscn" id="16_odlqg"]
 
 [node name="TitleScene" instance=ExtResource("1_nut4y")]
 curr_level = "title_scene"
@@ -131,16 +134,26 @@ position = Vector2(64, 97)
 position = Vector2(165, 97)
 
 [node name="TouchableFlower1" parent="." index="28" instance=ExtResource("10_b1f76")]
-position = Vector2(182, 89)
+position = Vector2(19, 88)
 
-[node name="TouchableFlowers2" parent="." index="29" instance=ExtResource("11_j56te")]
-position = Vector2(22, 89)
-
-[node name="TouchableFlowers3" parent="." index="30" instance=ExtResource("12_uwqaw")]
+[node name="TouchableFlowers3" parent="." index="29" instance=ExtResource("12_uwqaw")]
 position = Vector2(207, 33)
 
-[node name="TouchableGrass5" parent="." index="31" instance=ExtResource("7_l5171")]
+[node name="TouchableGrass5" parent="." index="30" instance=ExtResource("7_l5171")]
 position = Vector2(225, 81)
 
-[node name="TouchableGrass6" parent="." index="32" instance=ExtResource("8_50ycs")]
+[node name="TouchableGrass6" parent="." index="31" instance=ExtResource("8_50ycs")]
 position = Vector2(187, 33)
+
+[node name="InteractableFlower1" parent="." index="32" instance=ExtResource("13_gwsvl")]
+position = Vector2(30, 41)
+activate_once = true
+
+[node name="InteractableFlower2" parent="." index="33" instance=ExtResource("14_sscfq")]
+position = Vector2(53, 88)
+
+[node name="InteractableFlower3" parent="." index="34" instance=ExtResource("15_w0of5")]
+position = Vector2(198, 32)
+
+[node name="InteractableFlower4" parent="." index="35" instance=ExtResource("16_odlqg")]
+position = Vector2(180, 89)

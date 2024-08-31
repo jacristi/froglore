@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdn7b6j5j1ydn"]
+
+[ext_resource type="Script" path="res://entities/environs/interactable_environs/interactable_environ.gd" id="1_7hx3p"]
+
+[node name="InteractableEnviron" type="Area2D" groups=["InteractableEnviron"]]
+z_index = 2
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_7hx3p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
