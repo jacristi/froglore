@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1feig1dx48to"]
+
+[ext_resource type="Script" path="res://entities/environs/touchable_environs/touchable_environ.gd" id="1_c2tqd"]
+
+[node name="TouchableEnviron" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_c2tqd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

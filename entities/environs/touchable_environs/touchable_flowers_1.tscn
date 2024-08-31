@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://8rw6friubsqp"]
+
+[ext_resource type="PackedScene" uid="uid://b1feig1dx48to" path="res://entities/environs/touchable_environs/touchable_environ.tscn" id="1_j7gv3"]
+[ext_resource type="Texture2D" uid="uid://dllre78owste1" path="res://assets/spritesheets/spr-environs-interactable.png" id="2_idv0a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1k0f"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk138"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv5r8"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klom0"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h528y"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwo6x"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts16u"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmlf5"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sf06"]
+atlas = ExtResource("2_idv0a")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ji3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1k0f")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk138")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv5r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klom0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h528y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwo6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts16u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmlf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sf06")
+}],
+"loop": false,
+"name": &"touched",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxxcw"]
+size = Vector2(6, 9)
+
+[node name="TouchableFlower1" instance=ExtResource("1_j7gv3")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_2ji3s")
+animation = &"touched"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_hxxcw")

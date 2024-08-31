@@ -5,7 +5,11 @@ extends Area2D
 
 var is_touched := false
 
-func _on_body_entered(body: Node2D) -> void:
+func _ready() -> void:
+    animated_sprite_2d.play("idle")
+
+
+func _on_body_entered(_body: Node2D) -> void:
     if is_touched: return
     is_touched = true
     animated_sprite_2d.play("touched")
