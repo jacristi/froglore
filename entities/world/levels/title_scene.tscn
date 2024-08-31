@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
-[ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/space-bg.png" id="2_kmcy5"]
+[ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="2_kmcy5"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
 [ext_resource type="PackedScene" uid="uid://p4ptkm4dvrk3" path="res://entities/interactables/game_exit.tscn" id="5_263as"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="5_xt6q0"]

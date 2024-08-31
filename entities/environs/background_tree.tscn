@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ih1rdit48sbb"]
+
+[ext_resource type="Texture2D" uid="uid://c222jys21jndw" path="res://assets/spritesheets/spr-64x64-trees.png" id="1_m77cj"]
+
+[node name="BackgroundTree" type="Sprite2D"]
+z_index = -2
+texture = ExtResource("1_m77cj")
+region_enabled = true
+region_rect = Rect2(128, 64, 64, 64)
