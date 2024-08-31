@@ -252,6 +252,8 @@ func show_light_point():
 
 
 func handle_interacts_with_up_down():
+    if state != states.IDLE: return
+
     if (Input.is_action_just_pressed("up")):
         if (current_interactable != null and current_interactable.is_in_group("LevelExit")):
             Events.try_go_to_next_level.emit()

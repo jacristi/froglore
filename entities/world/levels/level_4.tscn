@@ -27,70 +27,73 @@ position = Vector2(146, 62)
 position = Vector2(90, 82)
 
 [node name="LightBug3" parent="." index="9" instance=ExtResource("2_a4x6c")]
-position = Vector2(208, 81)
+position = Vector2(186, 23)
 
-[node name="DarkBug" parent="." index="10" instance=ExtResource("3_024yw")]
+[node name="LightBug4" parent="." index="10" instance=ExtResource("2_a4x6c")]
+position = Vector2(137, 24)
+
+[node name="DarkBug" parent="." index="11" instance=ExtResource("3_024yw")]
 position = Vector2(93, 54)
 
-[node name="DarkBug4" parent="." index="11" instance=ExtResource("3_024yw")]
+[node name="DarkBug4" parent="." index="12" instance=ExtResource("3_024yw")]
 position = Vector2(85, 47)
 
-[node name="DarkBug5" parent="." index="12" instance=ExtResource("3_024yw")]
+[node name="DarkBug5" parent="." index="13" instance=ExtResource("3_024yw")]
 position = Vector2(76, 39)
 
-[node name="DarkBug6" parent="." index="13" instance=ExtResource("3_024yw")]
+[node name="DarkBug6" parent="." index="14" instance=ExtResource("3_024yw")]
 position = Vector2(63, 88)
 
-[node name="DarkBug2" parent="." index="14" instance=ExtResource("3_024yw")]
+[node name="DarkBug2" parent="." index="15" instance=ExtResource("3_024yw")]
 position = Vector2(128, 59)
 
-[node name="DarkBug3" parent="." index="15" instance=ExtResource("3_024yw")]
+[node name="DarkBug3" parent="." index="16" instance=ExtResource("3_024yw")]
 position = Vector2(190, 48)
 
-[node name="DarkBug7" parent="." index="16" instance=ExtResource("3_024yw")]
+[node name="DarkBug7" parent="." index="17" instance=ExtResource("3_024yw")]
 position = Vector2(179, 48)
 
-[node name="DarkBug8" parent="." index="17" instance=ExtResource("3_024yw")]
+[node name="DarkBug8" parent="." index="18" instance=ExtResource("3_024yw")]
 position = Vector2(150, 29)
 
-[node name="DarkBug9" parent="." index="18" instance=ExtResource("3_024yw")]
+[node name="DarkBug9" parent="." index="19" instance=ExtResource("3_024yw")]
 position = Vector2(137, 29)
 
-[node name="DarkBug10" parent="." index="19" instance=ExtResource("3_024yw")]
+[node name="DarkBug10" parent="." index="20" instance=ExtResource("3_024yw")]
 position = Vector2(123, 29)
 
-[node name="FrogStatue" parent="." index="20" instance=ExtResource("4_70tmp")]
+[node name="FrogStatue" parent="." index="21" instance=ExtResource("4_70tmp")]
 position = Vector2(32, 73)
 
-[node name="FrogStatue2" parent="." index="21" instance=ExtResource("4_70tmp")]
+[node name="FrogStatue2" parent="." index="22" instance=ExtResource("4_70tmp")]
 position = Vector2(205, 41)
 
-[node name="FrogStatue3" parent="." index="22" instance=ExtResource("4_70tmp")]
+[node name="FrogStatue3" parent="." index="23" instance=ExtResource("4_70tmp")]
 position = Vector2(164, 25)
 
-[node name="CameraMoveTrigger" parent="." index="27"]
+[node name="CameraMoveTrigger" parent="." index="28"]
 position = Vector2(-10, -38)
 
-[node name="CameraMoveTrigger2" parent="." index="28"]
+[node name="CameraMoveTrigger2" parent="." index="29"]
 position = Vector2(10, -39)
 
-[node name="CameraMoveTrigger3" parent="." index="29"]
+[node name="CameraMoveTrigger3" parent="." index="30"]
 position = Vector2(230, -44)
 
-[node name="CameraMoveTrigger4" parent="." index="30"]
+[node name="CameraMoveTrigger4" parent="." index="31"]
 position = Vector2(251, -44)
 
-[node name="SpikesSmall" parent="." index="31" instance=ExtResource("5_p6hlb")]
+[node name="SpikesSmall" parent="." index="32" instance=ExtResource("5_p6hlb")]
 position = Vector2(80, 93)
 
-[node name="SpikesSmall2" parent="." index="32" instance=ExtResource("5_p6hlb")]
+[node name="SpikesSmall2" parent="." index="33" instance=ExtResource("5_p6hlb")]
 position = Vector2(72, 93)
 
-[node name="SpikesSmall3" parent="." index="33" instance=ExtResource("5_p6hlb")]
+[node name="SpikesSmall3" parent="." index="34" instance=ExtResource("5_p6hlb")]
 position = Vector2(64, 93)
 
-[node name="SpikesSmall4" parent="." index="34" instance=ExtResource("5_p6hlb")]
+[node name="SpikesSmall4" parent="." index="35" instance=ExtResource("5_p6hlb")]
 position = Vector2(56, 93)
 
-[node name="SpikesSmall5" parent="." index="35" instance=ExtResource("5_p6hlb")]
+[node name="SpikesSmall5" parent="." index="36" instance=ExtResource("5_p6hlb")]
 position = Vector2(48, 93)
