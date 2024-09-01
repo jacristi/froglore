@@ -128,3 +128,7 @@ position = Vector2(106, 89)
 
 [node name="TouchableGrass6" parent="." index="37" instance=ExtResource("11_1gpaj")]
 position = Vector2(187, 89)
+
+[node name="BackgroundTree2" parent="." index="38" instance=ExtResource("7_l4qpi")]
+position = Vector2(56, 57)
+region_rect = Rect2(64, 64, 64, 64)

@@ -283,7 +283,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbwc6"]
-size = Vector2(4, 6)
+size = Vector2(8, 4)
 
 [node name="InteractableFlower2" instance=ExtResource("1_jrg6a")]
 
@@ -294,5 +294,5 @@ animation = &"inactive"
 autoplay = "inactive"
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -3)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_rbwc6")
