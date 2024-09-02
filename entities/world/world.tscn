@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
-[ext_resource type="Texture2D" uid="uid://k8ev0q1noqvv" path="res://assets/spritesheets/spr-bg-test.png" id="5_fna5j"]
+[ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="4_ov4qh"]
 [ext_resource type="Shader" path="res://resources/shaders/water_ref_2.gdshader" id="5_gv7sv"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
@@ -26,7 +26,7 @@ noise = SubResource("FastNoiseLite_lu0cl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_gv7sv")
 shader_parameter/scale = Vector2(720, 28)
-shader_parameter/y_zoom = 5.99323
+shader_parameter/y_zoom = 2.0
 shader_parameter/water_color = Color(0.439216, 0.0980392, 0.458824, 0.0941176)
 shader_parameter/distortion_scale = Vector2(0, 0.05)
 shader_parameter/intensity = 0.01
@@ -66,7 +66,7 @@ blend_mode = 1
 z_index = -15
 texture_repeat = 2
 position = Vector2(-38, 281)
-texture = ExtResource("5_fna5j")
+texture = ExtResource("4_ov4qh")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
@@ -91,8 +91,8 @@ offset_bottom = 9.0
 
 [node name="CameraMain" parent="." instance=ExtResource("9_jx6nn")]
 position = Vector2(126, 67)
-limit_left = 0
-limit_right = 240
+limit_left = -4
+limit_right = 236
 
 [node name="BottomBounds" parent="." instance=ExtResource("10_3m536")]
 position = Vector2(85, 146)
@@ -117,19 +117,22 @@ shape = SubResource("RectangleShape2D_evjnc")
 
 [node name="CameraMoveTrigger" parent="." instance=ExtResource("11_4f8v6")]
 position = Vector2(-10, 55)
-scroll_left_val = -240
+scroll_left_val = -244
+scroll_right_val = -4
 
 [node name="CameraMoveTrigger2" parent="." instance=ExtResource("11_4f8v6")]
 position = Vector2(10, 54)
-scroll_right_val = 240
+scroll_left_val = -4
+scroll_right_val = 236
 
 [node name="CameraMoveTrigger3" parent="." instance=ExtResource("11_4f8v6")]
 position = Vector2(230, 53)
-scroll_right_val = 240
+scroll_left_val = -4
+scroll_right_val = 236
 
 [node name="CameraMoveTrigger4" parent="." instance=ExtResource("11_4f8v6")]
 position = Vector2(251, 53)
-scroll_left_val = 240
-scroll_right_val = 480
+scroll_left_val = 236
+scroll_right_val = 476
 
 [connection signal="item_rect_changed" from="Water" to="Water" method="_on_item_rect_changed"]

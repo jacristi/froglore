@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2vxaroe50jaq"
-path="res://.godot/imported/ts-grassy-red-dirt.png-de5fc1a22e65a6c2c229f71991f09212.ctex"
+path="res://.godot/imported/ts-dirt.png-77e8d06332ca3c14a07feab91ed0bcd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/ts-grassy-red-dirt.png"
-dest_files=["res://.godot/imported/ts-grassy-red-dirt.png-de5fc1a22e65a6c2c229f71991f09212.ctex"]
+source_file="res://assets/spritesheets/ts-dirt.png"
+dest_files=["res://.godot/imported/ts-dirt.png-77e8d06332ca3c14a07feab91ed0bcd8.ctex"]
 
 [params]
 
