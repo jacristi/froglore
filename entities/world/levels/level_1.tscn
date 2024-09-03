@@ -32,75 +32,78 @@ metadata/_edit_group_ = true
 position = Vector2(61, 83)
 
 [node name="LightBug2" parent="." index="4" instance=ExtResource("2_j2v6k")]
-position = Vector2(149, 84)
+position = Vector2(149, 88)
 
-[node name="LightBug3" parent="." index="5" instance=ExtResource("2_j2v6k")]
+[node name="LightBug4" parent="." index="5" instance=ExtResource("2_j2v6k")]
+position = Vector2(124, 88)
+
+[node name="LightBug3" parent="." index="6" instance=ExtResource("2_j2v6k")]
 position = Vector2(213, 82)
 
-[node name="SpikesSmall" parent="." index="6" instance=ExtResource("3_amwk7")]
+[node name="SpikesSmall" parent="." index="7" instance=ExtResource("3_amwk7")]
 position = Vector2(32, 93)
 
-[node name="SpikesSmall2" parent="." index="7" instance=ExtResource("3_amwk7")]
+[node name="SpikesSmall2" parent="." index="8" instance=ExtResource("3_amwk7")]
 position = Vector2(80, 93)
 
-[node name="LevelExit" parent="." index="10"]
+[node name="LevelExit" parent="." index="11"]
 position = Vector2(136, 94)
 
-[node name="DarkBug" parent="." index="12" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug" parent="." index="13" instance=ExtResource("4_p6ufu")]
 position = Vector2(39, 78)
 
-[node name="DarkBug2" parent="." index="13" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug2" parent="." index="14" instance=ExtResource("4_p6ufu")]
 position = Vector2(109, 57)
 
-[node name="DarkBug3" parent="." index="14" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug3" parent="." index="15" instance=ExtResource("4_p6ufu")]
 position = Vector2(119, 66)
 
-[node name="DarkBug4" parent="." index="15" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug4" parent="." index="16" instance=ExtResource("4_p6ufu")]
 position = Vector2(174, 63)
 
-[node name="DarkBug5" parent="." index="16" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug5" parent="." index="17" instance=ExtResource("4_p6ufu")]
 position = Vector2(174, 85)
 
-[node name="DarkBug6" parent="." index="17" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug6" parent="." index="18" instance=ExtResource("4_p6ufu")]
 position = Vector2(109, 80)
 
-[node name="DarkBug7" parent="." index="18" instance=ExtResource("4_p6ufu")]
+[node name="DarkBug7" parent="." index="19" instance=ExtResource("4_p6ufu")]
 position = Vector2(109, 72)
 
-[node name="FrogStatue" parent="." index="19" instance=ExtResource("5_4p8ec")]
+[node name="FrogStatue" parent="." index="20" instance=ExtResource("5_4p8ec")]
 position = Vector2(20, 73)
 
-[node name="FrogStatue2" parent="." index="20" instance=ExtResource("5_4p8ec")]
+[node name="FrogStatue2" parent="." index="21" instance=ExtResource("5_4p8ec")]
 position = Vector2(201, 89)
 
-[node name="FrogStatue3" parent="." index="21" instance=ExtResource("5_4p8ec")]
+[node name="FrogStatue3" parent="." index="22" instance=ExtResource("5_4p8ec")]
 position = Vector2(96, 89)
 
-[node name="CameraMain" parent="." index="22"]
+[node name="CameraMain" parent="." index="23"]
 limit_top = 0
 
-[node name="BottomBounds" parent="." index="23"]
+[node name="BottomBounds" parent="." index="24"]
 position = Vector2(2, 154)
 
-[node name="LeftBounds" parent="." index="24"]
+[node name="LeftBounds" parent="." index="25"]
 position = Vector2(-372, 45)
 
-[node name="RightBounds" parent="." index="25"]
+[node name="RightBounds" parent="." index="26"]
 position = Vector2(519, 56)
 
-[node name="CameraMoveTrigger" parent="." index="26"]
+[node name="CameraMoveTrigger" parent="." index="27"]
 position = Vector2(-9, -59)
 
-[node name="CameraMoveTrigger2" parent="." index="27"]
+[node name="CameraMoveTrigger2" parent="." index="28"]
 position = Vector2(11, -60)
 
-[node name="CameraMoveTrigger3" parent="." index="28"]
+[node name="CameraMoveTrigger3" parent="." index="29"]
 position = Vector2(232, -41)
 
-[node name="CameraMoveTrigger4" parent="." index="29"]
+[node name="CameraMoveTrigger4" parent="." index="30"]
 position = Vector2(253, -41)
 
-[node name="SceneTransitionArea" parent="." index="30" instance=ExtResource("6_oiu7s")]
+[node name="SceneTransitionArea" parent="." index="31" instance=ExtResource("6_oiu7s")]
 position = Vector2(497, 52)
 go_to_level_key = "level_2"
 
@@ -108,27 +111,27 @@ go_to_level_key = "level_2"
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_tefl4")
 
-[node name="BackgroundTree" parent="." index="31" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree" parent="." index="32" instance=ExtResource("7_l4qpi")]
 position = Vector2(173, 57)
 
-[node name="TouchableGrass1" parent="." index="32" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass1" parent="." index="33" instance=ExtResource("8_0knea")]
 position = Vector2(144, 97)
 
-[node name="TouchableGrass4" parent="." index="33" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass4" parent="." index="34" instance=ExtResource("8_0knea")]
 position = Vector2(16, 73)
 
-[node name="TouchableGrass5" parent="." index="34" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass5" parent="." index="35" instance=ExtResource("8_0knea")]
 position = Vector2(212, 89)
 
-[node name="TouchableFlowers" parent="." index="35" instance=ExtResource("9_d47ed")]
+[node name="TouchableFlowers" parent="." index="36" instance=ExtResource("9_d47ed")]
 position = Vector2(69, 89)
 
-[node name="TouchableGrass3" parent="." index="36" instance=ExtResource("10_2xo51")]
+[node name="TouchableGrass3" parent="." index="37" instance=ExtResource("10_2xo51")]
 position = Vector2(106, 89)
 
-[node name="TouchableGrass6" parent="." index="37" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass6" parent="." index="38" instance=ExtResource("11_1gpaj")]
 position = Vector2(164, 89)
 
-[node name="BackgroundTree2" parent="." index="38" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree2" parent="." index="39" instance=ExtResource("7_l4qpi")]
 position = Vector2(56, 57)
 region_rect = Rect2(64, 64, 64, 64)
