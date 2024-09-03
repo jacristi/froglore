@@ -27,23 +27,17 @@ layer_0/tile_data = PackedInt32Array(1310717, 262145, 1, 1245181, 262145, 1, 117
 [node name="background" parent="." index="3"]
 position = Vector2(-21, 270)
 
-[node name="Water" parent="." index="4"]
-position = Vector2(-244, 107)
-
-[node name="LevelExit" parent="." index="5"]
+[node name="LevelExit" parent="." index="6"]
 position = Vector2(80, 94)
 
-[node name="CameraMoveTrigger" parent="." index="11"]
+[node name="CameraMoveTrigger" parent="." index="12"]
 position = Vector2(-11, -52)
 
-[node name="CameraMoveTrigger2" parent="." index="12"]
+[node name="CameraMoveTrigger2" parent="." index="13"]
 position = Vector2(9, -53)
 
-[node name="CameraMoveTrigger3" parent="." index="13"]
+[node name="CameraMoveTrigger3" parent="." index="14"]
 position = Vector2(229, -54)
-
-[node name="CameraMoveTrigger4" parent="." index="14"]
-position = Vector2(250, -54)
 
 [node name="Control" type="Control" parent="." index="15"]
 layout_mode = 3
@@ -155,3 +149,6 @@ position = Vector2(198, 33)
 
 [node name="FrogStatue2" parent="." index="35" instance=ExtResource("13_ekmps")]
 position = Vector2(29, 41)
+
+[node name="CameraMoveTrigger4" parent="." index="36"]
+position = Vector2(250, -54)
