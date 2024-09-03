@@ -223,7 +223,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn5k3"]
-size = Vector2(10, 12)
+size = Vector2(22, 8)
 
 [node name="WorldStatue" type="Area2D" groups=["WorldStatues"]]
 z_index = -1
@@ -240,7 +240,7 @@ frame = 12
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_cn5k3")
 
 [node name="ReadyLabel" type="Label" parent="."]

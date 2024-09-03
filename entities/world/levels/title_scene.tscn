@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxec108m3jn0l"]
+[gd_scene load_steps=14 format=3 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
-[ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="2_kmcy5"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
 [ext_resource type="PackedScene" uid="uid://p4ptkm4dvrk3" path="res://entities/interactables/game_exit.tscn" id="5_263as"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="5_xt6q0"]
@@ -10,11 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="8_50ycs"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="9_nj7d1"]
 [ext_resource type="PackedScene" uid="uid://8rw6friubsqp" path="res://entities/environs/touchable_environs/touchable_flowers_1.tscn" id="10_b1f76"]
+[ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="13_ekmps"]
 [ext_resource type="PackedScene" uid="uid://yigc46dwqc5j" path="res://entities/environs/interactable_environs/interactable_flower_1.tscn" id="13_gwsvl"]
 [ext_resource type="PackedScene" uid="uid://d0d8p50828t5h" path="res://entities/environs/interactable_environs/interactable_flower_2.tscn" id="14_sscfq"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
-[ext_resource type="PackedScene" uid="uid://d3ddxivf1da08" path="res://entities/environs/interactable_environs/interactable_flower_3.tscn" id="15_w0of5"]
-[ext_resource type="PackedScene" uid="uid://cr66nst5n0rdw" path="res://entities/environs/interactable_environs/interactable_flower_4.tscn" id="16_odlqg"]
 
 [node name="TitleScene" instance=ExtResource("1_nut4y")]
 curr_level = "title_scene"
@@ -28,7 +26,6 @@ layer_0/tile_data = PackedInt32Array(1310717, 262145, 1, 1245181, 262145, 1, 117
 
 [node name="background" parent="." index="3"]
 position = Vector2(-21, 270)
-texture = ExtResource("2_kmcy5")
 
 [node name="LevelExit" parent="." index="5"]
 position = Vector2(80, 94)
@@ -140,18 +137,18 @@ position = Vector2(225, 81)
 position = Vector2(187, 33)
 
 [node name="InteractableFlower1" parent="." index="31" instance=ExtResource("13_gwsvl")]
-position = Vector2(30, 41)
+position = Vector2(181, 88)
 activate_once = true
 metadata/_edit_group_ = true
 
 [node name="InteractableFlower2" parent="." index="32" instance=ExtResource("14_sscfq")]
 position = Vector2(54, 89)
 
-[node name="InteractableFlower3" parent="." index="33" instance=ExtResource("15_w0of5")]
-position = Vector2(207, 32)
-
-[node name="InteractableFlower4" parent="." index="34" instance=ExtResource("16_odlqg")]
-position = Vector2(183, 89)
-
-[node name="BackgroundTree" parent="." index="35" instance=ExtResource("15_u0ohn")]
+[node name="BackgroundTree" parent="." index="33" instance=ExtResource("15_u0ohn")]
 position = Vector2(115, 57)
+
+[node name="FrogStatue" parent="." index="34" instance=ExtResource("13_ekmps")]
+position = Vector2(198, 33)
+
+[node name="FrogStatue2" parent="." index="35" instance=ExtResource("13_ekmps")]
+position = Vector2(29, 41)

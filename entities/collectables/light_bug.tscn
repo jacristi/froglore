@@ -268,7 +268,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46sa1"]
-size = Vector2(6, 5)
+size = Vector2(8, 7)
 
 [sub_resource type="Gradient" id="Gradient_w5c74"]
 interpolation_mode = 1

@@ -179,7 +179,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eb5a"]
-size = Vector2(9, 16)
+size = Vector2(12, 8)
 
 [node name="WarpStatue" type="Area2D" groups=["WarpStatues"]]
 z_index = -1
@@ -195,5 +195,5 @@ autoplay = "inactive"
 frame_progress = 0.354445
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -8)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_4eb5a")

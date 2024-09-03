@@ -415,7 +415,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf633"]
-size = Vector2(9, 10)
+size = Vector2(12, 6)
 
 [sub_resource type="Gradient" id="Gradient_ptijo"]
 interpolation_mode = 1
@@ -442,7 +442,7 @@ animation = &"activating"
 autoplay = "inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -5)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_qf633")
 debug_color = Color(0, 0.6, 0.701961, 0.105882)
 
