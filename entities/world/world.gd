@@ -188,4 +188,3 @@ func start_end_credits():
     end_credits.hide()
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
-

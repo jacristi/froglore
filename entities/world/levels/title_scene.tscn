@@ -27,6 +27,9 @@ layer_0/tile_data = PackedInt32Array(1310717, 262145, 1, 1245181, 262145, 1, 117
 [node name="background" parent="." index="3"]
 position = Vector2(-21, 270)
 
+[node name="Water" parent="." index="4"]
+position = Vector2(-244, 107)
+
 [node name="LevelExit" parent="." index="5"]
 position = Vector2(80, 94)
 
