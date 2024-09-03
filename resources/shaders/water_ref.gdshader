@@ -13,7 +13,7 @@ uniform sampler2D fast_noise : filter_nearest, repeat_enable;
 uniform vec2 speed = vec2(0.02, 0.07);
 
 //strength of waves
-uniform float wave_strength = 2;
+uniform float wave_strength = 0;
 
 //scale and zoom parameters for when editor changes (set from script)
 uniform float scale_y;
@@ -21,7 +21,7 @@ uniform float y_zoom;
 
 void vertex() {
     //move water up and down
-    VERTEX.y += sin(TIME) * 0.033;
+    //VERTEX.y += sin(TIME) * 0.033;
 }
 
 void fragment() {

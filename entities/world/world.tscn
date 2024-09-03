@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
 [ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="4_ov4qh"]
-[ext_resource type="Shader" path="res://resources/shaders/water_ref_2.gdshader" id="5_gv7sv"]
+[ext_resource type="Shader" path="res://resources/shaders/water_ref.gdshader" id="5_nq1wp"]
 [ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
 [ext_resource type="PackedScene" uid="uid://l56w4y52ls8x" path="res://ui/end_credits.tscn" id="8_iuul8"]
@@ -15,25 +15,20 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
 light_mode = 2
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lu0cl"]
-seed = 1
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hh4t4"]
+frequency = 0.0001
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4h8we"]
-seamless = true
-noise = SubResource("FastNoiseLite_lu0cl")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f6x80"]
+noise = SubResource("FastNoiseLite_hh4t4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
-shader = ExtResource("5_gv7sv")
-shader_parameter/scale = Vector2(720, 28)
-shader_parameter/y_zoom = 4.0
-shader_parameter/water_color = Color(0.439216, 0.0980392, 0.458824, 0.0941176)
-shader_parameter/distortion_scale = Vector2(0, 0.05)
-shader_parameter/intensity = 0.01
-shader_parameter/speed = 0.025
-shader_parameter/wave_amplitude = 0.1
-shader_parameter/wave_speed = 1.0
-shader_parameter/wave_period = 0.47
-shader_parameter/noise = SubResource("NoiseTexture2D_4h8we")
+shader = ExtResource("5_nq1wp")
+shader_parameter/CAST_COLOR = Color(4.73787e-08, 0.0426247, 0.0621301, 1)
+shader_parameter/speed = Vector2(0, 0)
+shader_parameter/wave_strength = 0.0
+shader_parameter/scale_y = 50.0
+shader_parameter/y_zoom = 8.0
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8qxa7"]
 
@@ -56,7 +51,6 @@ move_speed = 60.0
 position = Vector2(28, -7)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." groups=["MainLight"]]
-visible = false
 position = Vector2(111, -40)
 color = Color(0.862745, 1, 0.882353, 1)
 energy = 0.9
@@ -71,6 +65,15 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
 
 [node name="Water" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_hpxcl")
+position = Vector2(-244, 107)
+scale = Vector2(720, 28)
+texture = SubResource("CanvasTexture_8qxa7")
+script = ExtResource("7_ayoaj")
+
+[node name="WaterSimple" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_hpxcl")
 position = Vector2(-244, 107)
@@ -136,3 +139,4 @@ scroll_left_val = 236
 scroll_right_val = 476
 
 [connection signal="item_rect_changed" from="Water" to="Water" method="_on_item_rect_changed"]
+[connection signal="item_rect_changed" from="WaterSimple" to="WaterSimple" method="_on_item_rect_changed"]
