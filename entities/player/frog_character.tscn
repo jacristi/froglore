@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=63 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -93,6 +93,10 @@ region = Rect2(128, 48, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bijpy"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqfd5"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e48k0"]
 atlas = ExtResource("1_2oguq")
@@ -304,10 +308,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bijpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
 }],
 "loop": false,
 "name": &"hop_fall",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -462,7 +469,7 @@ shape = SubResource("RectangleShape2D_kbbra")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"idle"
+animation = &"hop_fall"
 autoplay = "idle"
 
 [node name="MoveHopTimer" type="Timer" parent="."]

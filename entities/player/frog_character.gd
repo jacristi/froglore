@@ -264,7 +264,8 @@ func handle_interacts_with_up_down():
 func handle_states_animations():
 
     if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging():
-        animated_sprite_2d.play("hop_fall")
+        if state != states.FALLING:
+            animated_sprite_2d.play("hop_fall")
         state = states.FALLING
         has_big_fall_velocity = true if velocity.y > 150 else false
 
