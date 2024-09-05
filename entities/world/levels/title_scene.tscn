@@ -119,7 +119,7 @@ position = Vector2(105, 89)
 position = Vector2(139, 97)
 
 [node name="TouchableGrass3" parent="." index="26" instance=ExtResource("9_nj7d1")]
-position = Vector2(64, 97)
+position = Vector2(64, 98)
 
 [node name="TouchableGrass4" parent="." index="27" instance=ExtResource("7_l5171")]
 position = Vector2(165, 97)

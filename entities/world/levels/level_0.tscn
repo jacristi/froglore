@@ -22,7 +22,7 @@ layer_0/tile_data = PackedInt32Array(1376253, 1, 1, 1310717, 1, 1, 1245181, 1, 1
 visible = false
 position = Vector2(114, -40)
 
-[node name="LevelExit" parent="." index="5"]
+[node name="LevelExit" parent="." index="6"]
 position = Vector2(120, 94)
 
 [node name="WarpStatue1" parent="." index="7" instance=ExtResource("4_l2rno")]
