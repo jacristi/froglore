@@ -300,6 +300,30 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfd5")
 }],
 "loop": false,
 "name": &"hop_fall",
@@ -454,7 +478,7 @@ shape = SubResource("RectangleShape2D_kbbra")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"idle"
+animation = &"hop_fall"
 autoplay = "idle"
 
 [node name="MoveHopTimer" type="Timer" parent="."]

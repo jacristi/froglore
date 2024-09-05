@@ -46,8 +46,11 @@ position = Vector2(32, 93)
 [node name="SpikesSmall2" parent="." index="8" instance=ExtResource("3_amwk7")]
 position = Vector2(80, 93)
 
-[node name="LevelExit" parent="." index="12"]
+[node name="LevelExit" parent="." index="10"]
 position = Vector2(136, 94)
+
+[node name="CameraMain" parent="." index="12"]
+limit_top = 0
 
 [node name="DarkBug" parent="." index="13" instance=ExtResource("4_p6ufu")]
 position = Vector2(39, 78)
@@ -76,28 +79,28 @@ position = Vector2(201, 89)
 [node name="FrogStatue3" parent="." index="21" instance=ExtResource("5_4p8ec")]
 position = Vector2(96, 89)
 
-[node name="CameraMain" parent="." index="23"]
-limit_top = 0
-
-[node name="BottomBounds" parent="." index="24"]
+[node name="BottomBounds" parent="." index="22"]
 position = Vector2(2, 154)
 
-[node name="LeftBounds" parent="." index="25"]
+[node name="LeftBounds" parent="." index="23"]
 position = Vector2(-372, 45)
 
-[node name="RightBounds" parent="." index="26"]
+[node name="RightBounds" parent="." index="24"]
 position = Vector2(519, 56)
 
-[node name="CameraMoveTrigger" parent="." index="27"]
+[node name="CameraMoveTrigger" parent="." index="25"]
 position = Vector2(-9, -59)
 
-[node name="CameraMoveTrigger2" parent="." index="28"]
+[node name="CameraMoveTrigger2" parent="." index="26"]
 position = Vector2(11, -60)
 
-[node name="CameraMoveTrigger3" parent="." index="29"]
+[node name="CameraMoveTrigger3" parent="." index="27"]
 position = Vector2(232, -41)
 
-[node name="SceneTransitionArea" parent="." index="30" instance=ExtResource("6_oiu7s")]
+[node name="CameraMoveTrigger4" parent="." index="28"]
+position = Vector2(253, -41)
+
+[node name="SceneTransitionArea" parent="." index="29" instance=ExtResource("6_oiu7s")]
 position = Vector2(497, 52)
 go_to_level_key = "level_2"
 
@@ -105,30 +108,27 @@ go_to_level_key = "level_2"
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_tefl4")
 
-[node name="BackgroundTree" parent="." index="31" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree" parent="." index="30" instance=ExtResource("7_l4qpi")]
 position = Vector2(173, 57)
 
-[node name="TouchableGrass1" parent="." index="32" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass1" parent="." index="31" instance=ExtResource("8_0knea")]
 position = Vector2(144, 97)
 
-[node name="TouchableGrass4" parent="." index="33" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass4" parent="." index="32" instance=ExtResource("8_0knea")]
 position = Vector2(16, 73)
 
-[node name="TouchableGrass5" parent="." index="34" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass5" parent="." index="33" instance=ExtResource("8_0knea")]
 position = Vector2(212, 89)
 
-[node name="TouchableFlowers" parent="." index="35" instance=ExtResource("9_d47ed")]
+[node name="TouchableFlowers" parent="." index="34" instance=ExtResource("9_d47ed")]
 position = Vector2(69, 89)
 
-[node name="TouchableGrass3" parent="." index="36" instance=ExtResource("10_2xo51")]
+[node name="TouchableGrass3" parent="." index="35" instance=ExtResource("10_2xo51")]
 position = Vector2(106, 89)
 
-[node name="TouchableGrass6" parent="." index="37" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass6" parent="." index="36" instance=ExtResource("11_1gpaj")]
 position = Vector2(164, 89)
 
-[node name="BackgroundTree2" parent="." index="38" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree2" parent="." index="37" instance=ExtResource("7_l4qpi")]
 position = Vector2(56, 57)
 region_rect = Rect2(64, 64, 64, 64)
-
-[node name="CameraMoveTrigger4" parent="." index="39"]
-position = Vector2(253, -41)
