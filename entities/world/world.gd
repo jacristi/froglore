@@ -8,18 +8,9 @@ extends Node2D
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
 
-var main_light: DirectionalLight2D
-var initial_light_energy: float
-@export var light_energy_not_complete := 0.9
-@export var light_energy_not_purified := 0.9
-
 var dark_bugs_total: int
 var light_bugs_total: int
 var light_bugs_collected: int
-
-var light_incr_amt_bugs: float
-var light_incr_amt_statue: float
-var light_decr_amt_bugs: float
 
 var count_total_statues: int
 var count_statues_active: int = 0
@@ -30,161 +21,146 @@ var can_respawn_dark_bugs := false
 
 
 func _ready() -> void:
-    level_exit.hide()
-    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
-    Events.level_completed.connect(handle_level_completed)
-    Events.level_purified.connect(handle_leveL_purified)
-    Events.level_reset.connect(handle_level_reset)
-    Events.light_bug_collected.connect(handle_light_bug_collected)
-    Events.dark_bug_collected.connect(handle_dark_bug_collected)
-    Events.frog_statue_activated.connect(handle_frog_statue_activated)
-    Events.try_go_to_next_level.connect(go_to_next_level)
-    Events.try_go_to_prev_level.connect(go_to_prev_level)
-    Events.ready_world_statue.connect(start_end_credits)
-    Events.activated_world_statue.connect(start_end_credits)
+	level_exit.hide()
+	level_exit.process_mode = Node.PROCESS_MODE_DISABLED
+	Events.level_completed.connect(handle_level_completed)
+	Events.level_purified.connect(handle_leveL_purified)
+	Events.level_reset.connect(handle_level_reset)
+	Events.light_bug_collected.connect(handle_light_bug_collected)
+	Events.dark_bug_collected.connect(handle_dark_bug_collected)
+	Events.frog_statue_activated.connect(handle_frog_statue_activated)
+	Events.try_go_to_next_level.connect(go_to_next_level)
+	Events.try_go_to_prev_level.connect(go_to_prev_level)
+	Events.ready_world_statue.connect(start_end_credits)
+	Events.activated_world_statue.connect(start_end_credits)
 
-    main_light = get_tree().get_nodes_in_group("MainLight")[0]
+	LevelManager.current_level = curr_level
+	level_state = LevelManager.get_level_state(curr_level)
+	handle_on_start_level_state()
 
-    LevelManager.current_level = curr_level
-    level_state = LevelManager.get_level_state(curr_level)
-    handle_on_start_level_state()
-    initial_light_energy = main_light.energy
+	light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
 
-    light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
-    light_incr_amt_bugs = initial_light_energy / light_bugs_total
+	dark_bugs_total = get_tree().get_nodes_in_group("DarkBugs").size()
 
-    dark_bugs_total = get_tree().get_nodes_in_group("DarkBugs").size()
-    light_decr_amt_bugs = light_energy_not_purified / dark_bugs_total
+	count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
 
-    count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
-    light_incr_amt_statue  = initial_light_energy / light_bugs_total
-
-    update_bug_state()
-    update_statues_states()
+	update_bug_state()
+	update_statues_states()
 
 func handle_on_start_level_state():
-    if level_state == LevelManager.level_states.NOT_COMPLETED:
-        main_light.energy = light_energy_not_complete
-        Events.level_new.emit(curr_level, true)
-    if level_state == LevelManager.level_states.COMPLETED:
-        main_light.energy = light_energy_not_purified
-        Events.level_completed.emit(curr_level, true)
-    if level_state == LevelManager.level_states.PURIFIED:
-        main_light.energy = 0
-        Events.level_purified.emit(curr_level, true)
+	if level_state == LevelManager.level_states.NOT_COMPLETED:
+		Events.level_new.emit(curr_level, true)
+	if level_state == LevelManager.level_states.COMPLETED:
+		Events.level_completed.emit(curr_level, true)
+	if level_state == LevelManager.level_states.PURIFIED:
+		Events.level_purified.emit(curr_level, true)
 
 
 func update_bug_state():
-    if level_state == LevelManager.level_states.COMPLETED or level_state == LevelManager.level_states.PURIFIED:
-        for bug in get_tree().get_nodes_in_group("LightBugs"):
-            bug.set_self_inactive()
-    if level_state == LevelManager.level_states.NOT_COMPLETED or level_state == LevelManager.level_states.PURIFIED:
-        for bug in get_tree().get_nodes_in_group("DarkBugs"):
-            bug.set_self_inactive()
+	if level_state == LevelManager.level_states.COMPLETED or level_state == LevelManager.level_states.PURIFIED:
+		for bug in get_tree().get_nodes_in_group("LightBugs"):
+			bug.set_self_inactive()
+	if level_state == LevelManager.level_states.NOT_COMPLETED or level_state == LevelManager.level_states.PURIFIED:
+		for bug in get_tree().get_nodes_in_group("DarkBugs"):
+			bug.set_self_inactive()
 
 
 func update_statues_states():
-    for statue in get_tree().get_nodes_in_group("FrogStatues"):
-        if level_state == LevelManager.level_states.NOT_COMPLETED:
-            statue.set_state_inactive()
-        if level_state == LevelManager.level_states.COMPLETED:
-            statue.set_state_ready()
-        if level_state == LevelManager.level_states.PURIFIED:
-            statue.set_state_active_start()
+	for statue in get_tree().get_nodes_in_group("FrogStatues"):
+		if level_state == LevelManager.level_states.NOT_COMPLETED:
+			statue.set_state_inactive()
+		if level_state == LevelManager.level_states.COMPLETED:
+			statue.set_state_ready()
+		if level_state == LevelManager.level_states.PURIFIED:
+			statue.set_state_active_start()
 
 
 func respawn_light_bugs():
-    for bug in get_tree().get_nodes_in_group("LightBugs"):
-        bug.set_self_active()
-        await get_tree().create_timer(1.0).timeout
-    update_statues_states()
+	for bug in get_tree().get_nodes_in_group("LightBugs"):
+		bug.set_self_active()
+		await get_tree().create_timer(1.0).timeout
+	update_statues_states()
 
 
 func respawn_dark_bugs():
-    level_state = LevelManager.level_states.COMPLETED
-    for bug in get_tree().get_nodes_in_group("DarkBugs"):
-        if level_state == LevelManager.level_states.NOT_COMPLETED:
-            return
-        bug.set_self_active()
-        main_light.energy += light_decr_amt_bugs
-        Events.dark_bug_spawn.emit()
-        await get_tree().create_timer(0.5).timeout
-    update_statues_states()
+	level_state = LevelManager.level_states.COMPLETED
+	for bug in get_tree().get_nodes_in_group("DarkBugs"):
+		if level_state == LevelManager.level_states.NOT_COMPLETED:
+			return
+		bug.set_self_active()
+		Events.dark_bug_spawn.emit()
+		await get_tree().create_timer(0.5).timeout
+	update_statues_states()
 
 
 func handle_level_completed(_level_key: String, _on_start: bool) -> void:
-    if not _on_start:
-        main_light.energy = 0
 
-    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
-    level_exit.show()
-    if can_respawn_dark_bugs:
-        await get_tree().create_timer(5.0).timeout
-        respawn_dark_bugs()
+	level_exit.process_mode = Node.PROCESS_MODE_INHERIT
+	level_exit.show()
+	if can_respawn_dark_bugs:
+		await get_tree().create_timer(5.0).timeout
+		respawn_dark_bugs()
 
 
 func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
-    main_light.energy = 0
-    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
-    level_exit.show()
+	level_exit.process_mode = Node.PROCESS_MODE_INHERIT
+	level_exit.show()
 
 
 func go_to_next_level() -> void:
-    if LevelManager.in_semi_pause_state: return
-    if next_level == "N/A":
-        Events.cannot_go_to_level.emit()
-        return
-    Events.go_to_next_level.emit()
-    Events.go_to_level.emit(next_level)
+	if LevelManager.in_semi_pause_state: return
+	if next_level == "N/A":
+		Events.cannot_go_to_level.emit()
+		return
+	Events.go_to_next_level.emit()
+	Events.go_to_level.emit(next_level)
 
 
 func go_to_prev_level() -> void:
-    if LevelManager.in_semi_pause_state: return
-    if prev_level == "N/A":
-        Events.cannot_go_to_level.emit()
-        return
+	if LevelManager.in_semi_pause_state: return
+	if prev_level == "N/A":
+		Events.cannot_go_to_level.emit()
+		return
 
-    Events.go_to_prev_level.emit()
-    Events.go_to_level.emit(prev_level)
+	Events.go_to_prev_level.emit()
+	Events.go_to_level.emit(prev_level)
 
 
 func handle_light_bug_collected():
-    light_bugs_collected += 1
-    main_light.energy -= light_incr_amt_bugs*.6
-
-    if light_bugs_collected == light_bugs_total:
-        Events.level_completed.emit(curr_level, false)
+	light_bugs_collected += 1
+	
+	if light_bugs_collected == light_bugs_total:
+		Events.level_completed.emit(curr_level, false)
 
 
 func handle_dark_bug_collected():
-    Events.level_reset.emit(curr_level, false)
-    main_light.energy = initial_light_energy
-
+	Events.level_reset.emit(curr_level, false)
+	
 
 func handle_frog_statue_activated():
-    count_statues_active += 1
-    if count_statues_active == count_total_statues:
-        Events.level_purified.emit(curr_level, false)
+	count_statues_active += 1
+	if count_statues_active == count_total_statues:
+		Events.level_purified.emit(curr_level, false)
 
 
 func handle_level_reset(_level_key: String, _on_start:bool):
-    level_state = LevelManager.level_states.NOT_COMPLETED
-    light_bugs_collected = 0
-    count_statues_active = 0
-    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
-    level_exit.hide()
-    await get_tree().create_timer(5.0).timeout
-    respawn_light_bugs()
-    can_respawn_dark_bugs = true
+	level_state = LevelManager.level_states.NOT_COMPLETED
+	light_bugs_collected = 0
+	count_statues_active = 0
+	level_exit.process_mode = Node.PROCESS_MODE_DISABLED
+	level_exit.hide()
+	await get_tree().create_timer(5.0).timeout
+	respawn_light_bugs()
+	can_respawn_dark_bugs = true
 
 
 func start_end_credits():
-    end_credits.show()
-    LevelManager.in_semi_pause_state = true
-    level_exit.hide()
-    level_exit.process_mode = Node.PROCESS_MODE_DISABLED
-    await get_tree().create_timer(10.0).timeout
-    LevelManager.in_semi_pause_state = false
-    end_credits.hide()
-    level_exit.process_mode = Node.PROCESS_MODE_INHERIT
-    level_exit.show()
+	end_credits.show()
+	LevelManager.in_semi_pause_state = true
+	level_exit.hide()
+	level_exit.process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer(10.0).timeout
+	LevelManager.in_semi_pause_state = false
+	end_credits.hide()
+	level_exit.process_mode = Node.PROCESS_MODE_INHERIT
+	level_exit.show()

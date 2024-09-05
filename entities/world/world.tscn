@@ -27,7 +27,7 @@ shader_parameter/CAST_COLOR = Color(4.73787e-08, 0.0426247, 0.0621301, 1)
 shader_parameter/speed = Vector2(0, 0)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 50.0
-shader_parameter/y_zoom = 11.3137
+shader_parameter/y_zoom = 0.5
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8qxa7"]
@@ -40,8 +40,6 @@ size = Vector2(20, 239)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_y1phm")
-light_energy_not_complete = 0.5
-light_energy_not_purified = 0.5
 
 [node name="FrogCharacter" parent="." instance=ExtResource("2_x37gw")]
 material = SubResource("CanvasItemMaterial_f0182")
@@ -50,12 +48,6 @@ move_speed = 60.0
 [node name="GroundTileMap" parent="." instance=ExtResource("6_4c14t")]
 position = Vector2(28, -7)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." groups=["MainLight"]]
-position = Vector2(111, -40)
-color = Color(0.862745, 1, 0.882353, 1)
-energy = 0.9
-blend_mode = 1
-
 [node name="background" type="Sprite2D" parent="."]
 z_index = -15
 texture_repeat = 2
@@ -63,15 +55,6 @@ position = Vector2(-38, 281)
 texture = ExtResource("4_ov4qh")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
-
-[node name="Water" type="Sprite2D" parent="."]
-visible = false
-z_index = 1
-material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(-244, 107)
-scale = Vector2(720, 28)
-texture = SubResource("CanvasTexture_8qxa7")
-script = ExtResource("7_ayoaj")
 
 [node name="WaterSimple" type="Sprite2D" parent="."]
 z_index = 1
@@ -138,5 +121,4 @@ position = Vector2(251, 53)
 scroll_left_val = 236
 scroll_right_val = 476
 
-[connection signal="item_rect_changed" from="Water" to="Water" method="_on_item_rect_changed"]
 [connection signal="item_rect_changed" from="WaterSimple" to="WaterSimple" method="_on_item_rect_changed"]

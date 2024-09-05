@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=19 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" path="res://entities/world/AudioManager.gd" id="1_bmmmj"]
-[ext_resource type="AudioStream" uid="uid://cddh62upudvni" path="res://assets/audio/Musinova Ambient Music Pack - Mystical Land.wav" id="1_wucp5"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
 [ext_resource type="AudioStream" uid="uid://dnqsu416def4n" path="res://assets/audio/level_complete.wav" id="4_xla2n"]
 [ext_resource type="AudioStream" uid="uid://dq3cwk0f6dwqc" path="res://assets/audio/level_reset.wav" id="5_7o0t7"]
@@ -23,12 +22,6 @@
 [node name="AudioManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_bmmmj")
-play_music_loop = false
-
-[node name="MusicLoop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_wucp5")
-volume_db = -14.857
-area_mask = 0
 
 [node name="AudioLightBugCollect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5vvyn")
