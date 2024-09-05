@@ -116,33 +116,35 @@ position = Vector2(152, 98)
 position = Vector2(117, 78)
 
 [node name="TouchableGrass1" parent="." index="23" instance=ExtResource("7_l5171")]
-position = Vector2(105, 89)
+position = Vector2(105, 90)
+scale = Vector2(1.0004, 1)
 
 [node name="TouchableGrass2" parent="." index="24" instance=ExtResource("8_50ycs")]
-position = Vector2(139, 97)
+position = Vector2(139, 98)
 
 [node name="TouchableGrass3" parent="." index="25" instance=ExtResource("9_nj7d1")]
 position = Vector2(64, 98)
 
 [node name="TouchableGrass4" parent="." index="26" instance=ExtResource("7_l5171")]
-position = Vector2(165, 97)
+position = Vector2(165, 98)
 
 [node name="TouchableFlower1" parent="." index="27" instance=ExtResource("10_b1f76")]
-position = Vector2(21, 89)
+position = Vector2(21, 90)
 
 [node name="TouchableGrass5" parent="." index="28" instance=ExtResource("7_l5171")]
-position = Vector2(225, 81)
+position = Vector2(225, 82)
 
 [node name="TouchableGrass6" parent="." index="29" instance=ExtResource("8_50ycs")]
-position = Vector2(187, 33)
+position = Vector2(187, 34)
 
 [node name="InteractableFlower1" parent="." index="30" instance=ExtResource("13_gwsvl")]
-position = Vector2(181, 88)
+position = Vector2(181, 89)
 activate_once = true
 metadata/_edit_group_ = true
 
 [node name="InteractableFlower2" parent="." index="31" instance=ExtResource("14_sscfq")]
-position = Vector2(54, 89)
+position = Vector2(54, 90)
+activate_once = true
 
 [node name="BackgroundTree" parent="." index="32" instance=ExtResource("15_u0ohn")]
 position = Vector2(115, 57)
