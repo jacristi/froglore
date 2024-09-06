@@ -166,7 +166,8 @@ position = Vector2(152, 94)
 dialogue_text = "Press 'UP' to exit"
 show_sprite = false
 
-[node name="DialogueSignExit2" parent="." index="38" instance=ExtResource("14_pnpma")]
+[node name="DialogueSignMove" parent="." index="38" instance=ExtResource("14_pnpma")]
 position = Vector2(116, 85)
 dialogue_text = "Move left/right!"
 show_sprite = false
+show_once = true
