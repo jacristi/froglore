@@ -75,7 +75,8 @@ position = Vector2(18, 26)
 
 [node name="DialogueSign" parent="." index="30"]
 position = Vector2(68, 53)
-dialogue_text = "You can croak at statues, if they are listening they will respond"
+dialogue_text = "You can croak at statues.
+If they are listening they will respond"
 
 [node name="DialogueSign2" parent="." index="31" instance=ExtResource("7_v58wr")]
 position = Vector2(172, 53)
