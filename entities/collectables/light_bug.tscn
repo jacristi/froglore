@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://nvjmvg5q00tq"]
+[gd_scene load_steps=41 format=3 uid="uid://nvjmvg5q00tq"]
 
 [ext_resource type="Script" path="res://entities/collectables/light_bug.gd" id="1_scjtg"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_2yodk"]
@@ -270,17 +270,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46sa1"]
 size = Vector2(8, 7)
 
-[sub_resource type="Gradient" id="Gradient_mt6x6"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.512048)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xgjg2"]
-gradient = SubResource("Gradient_mt6x6")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.743478, 0.273913)
-
 [node name="LightBug" type="Area2D" groups=["LightBugs"]]
 collision_layer = 0
 collision_mask = 2
@@ -296,11 +285,6 @@ autoplay = "idle"
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_46sa1")
 debug_color = Color(0, 0.6, 0.701961, 0)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 1.5
-blend_mode = 2
-texture = SubResource("GradientTexture2D_xgjg2")
 
 [node name="CollectLightBugEffect" parent="." instance=ExtResource("3_ssafp")]
 position = Vector2(0, -1)

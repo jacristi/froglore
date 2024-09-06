@@ -14,7 +14,6 @@ extends CharacterBody2D
 @onready var hazard_detector: Area2D = $HazardDetector
 @onready var interact_detector: Area2D = $InteractDetector
 @onready var starting_position := global_position
-@onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
 @onready var hop_land_effect: CPUParticles2D = $HopLandEffect
@@ -58,8 +57,6 @@ func _ready() -> void:
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
-    Events.dark_bug_spawn.connect(show_light_point)
-    Events.dark_bug_collected.connect(show_light_point)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
 
 
@@ -178,7 +175,6 @@ func croak() -> void:
         animated_sprite_2d.play("croak")
     Events.player_croaked.emit()
 
-
     await animated_sprite_2d.animation_finished
 
     if can_try_activate_interactable():
@@ -224,25 +220,15 @@ func handle_dashing():
 
 
 func on_level_complete(_level_key: String, _on_start: bool):
-    if not _on_start:
-        hide_light_point()
+    pass
 
 
 func on_level_purified(_level_key: String, _on_start: bool):
-    if not _on_start:
-        hide_light_point()
+    pass
 
 
 func on_level_reset(_level_key: String, _on_start: bool):
-    show_light_point()
-
-
-func hide_light_point():
-    point_light_2d.enabled = false
-
-
-func show_light_point():
-    point_light_2d.enabled = true
+    pass
 
 
 func handle_interacts_with_up_down():
@@ -329,5 +315,5 @@ func can_try_activate_interactable() -> bool: return current_interactable != nul
 current_interactable.is_in_group("FrogStatues") \
 or current_interactable.is_in_group("WarpStatues") \
 or current_interactable.is_in_group("WorldStatues") \
-or current_interactable.is_in_group("InteractableEnviron") \
+or current_interactable.is_in_group("InteractableEnviron")
 )

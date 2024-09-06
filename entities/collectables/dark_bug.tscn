@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bmmx4og05hydg"]
+[gd_scene load_steps=60 format=3 uid="uid://bmmx4og05hydg"]
 
 [ext_resource type="Script" path="res://entities/collectables/dark_bug.gd" id="1_q0lch"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_3nqlo"]
@@ -414,17 +414,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8hbu"]
 size = Vector2(6, 4)
 
-[sub_resource type="Gradient" id="Gradient_w5c74"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.512048)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lsa3b"]
-gradient = SubResource("Gradient_w5c74")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.743478, 0.273913)
-
 [node name="DarkBug" type="Area2D" groups=["DarkBugs"]]
 collision_layer = 0
 collision_mask = 2
@@ -438,10 +427,5 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d8hbu")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.85
-blend_mode = 2
-texture = SubResource("GradientTexture2D_lsa3b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

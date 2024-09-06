@@ -4,22 +4,18 @@ extends Node2D
 @export var prev_level: String = "N/A"
 @export var next_level: String = "N/A"
 
+@export_multiline var dialogue_new: String = "N/A"
+@export_multiline var dialogue_completed: String = "N/A"
+@export_multiline var dialogue_purified: String = "N/A"
+
 @onready var level_exit: Area2D = $LevelExit
+@onready var dialogue_sign: Area2D = $DialogueSign
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
-
-var main_light: DirectionalLight2D
-var initial_light_energy: float
-@export var light_energy_not_complete := 0.9
-@export var light_energy_not_purified := 0.9
 
 var dark_bugs_total: int
 var light_bugs_total: int
 var light_bugs_collected: int
-
-var light_incr_amt_bugs: float
-var light_incr_amt_statue: float
-var light_decr_amt_bugs: float
 
 var count_total_statues: int
 var count_statues_active: int = 0
@@ -27,7 +23,8 @@ var count_statues_active: int = 0
 var can_respawn_dark_bugs := false
 
 @onready var end_credits: Control = $EndCredits
-
+@onready var pause_canvas: CanvasLayer = $PauseCanvas
+var is_paused := false
 
 func _ready() -> void:
     level_exit.hide()
@@ -43,35 +40,30 @@ func _ready() -> void:
     Events.ready_world_statue.connect(start_end_credits)
     Events.activated_world_statue.connect(start_end_credits)
 
-    main_light = get_tree().get_nodes_in_group("MainLight")[0]
-
     LevelManager.current_level = curr_level
     level_state = LevelManager.get_level_state(curr_level)
     handle_on_start_level_state()
-    initial_light_energy = main_light.energy
 
     light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
-    light_incr_amt_bugs = initial_light_energy / light_bugs_total
 
     dark_bugs_total = get_tree().get_nodes_in_group("DarkBugs").size()
-    light_decr_amt_bugs = light_energy_not_purified / dark_bugs_total
 
     count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
-    light_incr_amt_statue  = initial_light_energy / light_bugs_total
 
     update_bug_state()
     update_statues_states()
 
+
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:
-        main_light.energy = light_energy_not_complete
         Events.level_new.emit(curr_level, true)
+        if dialogue_new != 'N/A': dialogue_sign.set_text(dialogue_new)
     if level_state == LevelManager.level_states.COMPLETED:
-        main_light.energy = light_energy_not_purified
         Events.level_completed.emit(curr_level, true)
+        if dialogue_completed != 'N/A': dialogue_sign.set_text(dialogue_completed)
     if level_state == LevelManager.level_states.PURIFIED:
-        main_light.energy = 0
         Events.level_purified.emit(curr_level, true)
+        if dialogue_purified != 'N/A': dialogue_sign.set_text(dialogue_purified)
 
 
 func update_bug_state():
@@ -106,15 +98,12 @@ func respawn_dark_bugs():
         if level_state == LevelManager.level_states.NOT_COMPLETED:
             return
         bug.set_self_active()
-        main_light.energy += light_decr_amt_bugs
         Events.dark_bug_spawn.emit()
         await get_tree().create_timer(0.5).timeout
     update_statues_states()
 
 
 func handle_level_completed(_level_key: String, _on_start: bool) -> void:
-    if not _on_start:
-        main_light.energy = 0
 
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
@@ -124,7 +113,6 @@ func handle_level_completed(_level_key: String, _on_start: bool) -> void:
 
 
 func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
-    main_light.energy = 0
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
 
@@ -150,7 +138,6 @@ func go_to_prev_level() -> void:
 
 func handle_light_bug_collected():
     light_bugs_collected += 1
-    main_light.energy -= light_incr_amt_bugs*.6
 
     if light_bugs_collected == light_bugs_total:
         Events.level_completed.emit(curr_level, false)
@@ -158,7 +145,6 @@ func handle_light_bug_collected():
 
 func handle_dark_bug_collected():
     Events.level_reset.emit(curr_level, false)
-    main_light.energy = initial_light_energy
 
 
 func handle_frog_statue_activated():

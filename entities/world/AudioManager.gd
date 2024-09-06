@@ -1,8 +1,5 @@
 extends Node
 
-@export var play_music_loop := true
-
-@onready var music_loop: AudioStreamPlayer2D = $MusicLoop
 @onready var audio_light_bug_collect: AudioStreamPlayer2D = $AudioLightBugCollect
 @onready var audio_level_complete: AudioStreamPlayer2D = $AudioLevelComplete
 @onready var audio_level_reset: AudioStreamPlayer2D = $AudioLevelReset
@@ -42,9 +39,6 @@ func _ready() -> void:
     Events.player_croaked.connect(play_croak)
     Events.ui_play_button_clicked.connect(play_play_button_clicked)
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
-
-    if play_music_loop:
-        music_loop.play()
 
 
 func play_light_bug_collect():

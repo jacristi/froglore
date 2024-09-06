@@ -52,7 +52,7 @@ position = Vector2(96, 93)
 [node name="SpikesSmall9" parent="." index="12" instance=ExtResource("3_380p4")]
 position = Vector2(104, 93)
 
-[node name="LevelExit" parent="." index="15"]
+[node name="LevelExit" parent="." index="14"]
 position = Vector2(136, 94)
 
 [node name="DarkBug" parent="." index="17" instance=ExtResource("4_7ua7u")]
@@ -85,29 +85,33 @@ position = Vector2(193, 41)
 [node name="FrogStatue3" parent="." index="26" instance=ExtResource("5_epxac")]
 position = Vector2(209, 89)
 
-[node name="CameraMoveTrigger" parent="." index="31"]
+[node name="CameraMoveTrigger" parent="." index="30"]
 position = Vector2(-9, -45)
 
-[node name="CameraMoveTrigger2" parent="." index="32"]
+[node name="CameraMoveTrigger2" parent="." index="31"]
 position = Vector2(11, -46)
 
-[node name="CameraMoveTrigger3" parent="." index="33"]
+[node name="CameraMoveTrigger3" parent="." index="32"]
 position = Vector2(231, -47)
 
-[node name="CameraMoveTrigger4" parent="." index="34"]
+[node name="CameraMoveTrigger4" parent="." index="33"]
 position = Vector2(252, -47)
 
-[node name="TouchableFlower1" parent="." index="35" instance=ExtResource("6_dubqr")]
-position = Vector2(88, 89)
+[node name="TouchableFlower1" parent="." index="34" instance=ExtResource("6_dubqr")]
+position = Vector2(88, 90)
 
-[node name="TouchableGrass1" parent="." index="36" instance=ExtResource("7_oh8fg")]
-position = Vector2(29, 65)
+[node name="TouchableGrass1" parent="." index="35" instance=ExtResource("7_oh8fg")]
+position = Vector2(29, 66)
 
-[node name="TouchableGrass2" parent="." index="37" instance=ExtResource("8_1qxgk")]
-position = Vector2(178, 41)
+[node name="TouchableGrass2" parent="." index="36" instance=ExtResource("8_1qxgk")]
+position = Vector2(178, 42)
 
-[node name="TouchableGrass3" parent="." index="38" instance=ExtResource("9_smge0")]
-position = Vector2(192, 89)
+[node name="TouchableGrass3" parent="." index="37" instance=ExtResource("9_smge0")]
+position = Vector2(192, 90)
 
-[node name="TouchableGrass4" parent="." index="39" instance=ExtResource("7_oh8fg")]
-position = Vector2(144, 97)
+[node name="TouchableGrass4" parent="." index="38" instance=ExtResource("7_oh8fg")]
+position = Vector2(144, 98)
+
+[node name="DialogueSign" parent="." index="40"]
+position = Vector2(136, 62)
+dialogue_text = "Hold 'Jump' for bigger hops"
