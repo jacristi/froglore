@@ -42,6 +42,8 @@ signal hide_dialogue
 
 signal pause_pressed
 
+signal cutscene_start
+signal cutscene_end
 
 func _process(delta: float) -> void:
     if Input.is_action_just_pressed("pause"):

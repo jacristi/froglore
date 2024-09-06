@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://l56w4y52ls8x"]
+[gd_scene load_steps=2 format=3 uid="uid://l56w4y52ls8x"]
+
+[ext_resource type="Script" path="res://ui/end_credits.gd" id="1_rfd6m"]
 
 [node name="EndCredits" type="Control"]
 layout_mode = 3
@@ -9,14 +11,54 @@ offset_top = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rfd6m")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Thank you for
-playing!"
+text = "Froglore"
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 4
+text = "A game by jacristi"
+horizontal_alignment = 1
+
+[node name="ThankYou" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 23.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="StillMore" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 4
+text = "There's still more to do ;)"
 horizontal_alignment = 1

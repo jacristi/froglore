@@ -22,6 +22,10 @@ layer_0/tile_data = PackedInt32Array(1376253, 1, 1, 1310717, 1, 1, 1245181, 1, 1
 [node name="LevelExit" parent="." index="4"]
 position = Vector2(120, 94)
 
+[node name="EndCredits" parent="." index="5"]
+offset_top = 4.0
+offset_bottom = 4.0
+
 [node name="WarpStatue1" parent="." index="7" instance=ExtResource("4_l2rno")]
 position = Vector2(20, 97)
 level_key = "level_1"
@@ -86,3 +90,6 @@ dialogue_text = "You can go UP or DOWN level portals"
 position = Vector2(204, 62)
 dialogue_text = "Be careful of dark bugs! 
 Collecting one will rest the level"
+
+[node name="PauseCanvas" parent="." index="33"]
+visible = false

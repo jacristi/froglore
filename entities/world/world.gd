@@ -39,6 +39,8 @@ func _ready() -> void:
     Events.try_go_to_prev_level.connect(go_to_prev_level)
     Events.ready_world_statue.connect(start_end_credits)
     Events.activated_world_statue.connect(start_end_credits)
+    Events.cutscene_start.connect(cutscene_started)
+    Events.cutscene_end.connect(cutscene_ended)
 
     LevelManager.current_level = curr_level
     level_state = LevelManager.get_level_state(curr_level)
@@ -52,7 +54,6 @@ func _ready() -> void:
 
     update_bug_state()
     update_statues_states()
-
 
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:
@@ -163,14 +164,17 @@ func handle_level_reset(_level_key: String, _on_start:bool):
     respawn_light_bugs()
     can_respawn_dark_bugs = true
 
-
-func start_end_credits():
-    end_credits.show()
+func cutscene_started():
     LevelManager.in_semi_pause_state = true
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
-    await get_tree().create_timer(10.0).timeout
+
+func cutscene_ended():
     LevelManager.in_semi_pause_state = false
-    end_credits.hide()
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
+    end_credits.hide()
+
+func start_end_credits():
+    end_credits.show()
+    end_credits.show_credits()
