@@ -23,7 +23,8 @@ var count_statues_active: int = 0
 var can_respawn_dark_bugs := false
 
 @onready var end_credits: Control = $EndCredits
-
+@onready var pause_canvas: CanvasLayer = $PauseCanvas
+var is_paused := false
 
 func _ready() -> void:
     level_exit.hide()
@@ -51,6 +52,7 @@ func _ready() -> void:
 
     update_bug_state()
     update_statues_states()
+
 
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:

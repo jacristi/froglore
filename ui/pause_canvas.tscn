@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ofnxnvttha7"]
+
+[ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="1_i6y7g"]
+[ext_resource type="Script" path="res://ui/pause_canvas.gd" id="1_r2cha"]
+
+[node name="PauseCanvas" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_r2cha")
+
+[node name="PauseTexture" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -41.5
+offset_right = 20.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i6y7g")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="PauseTextLabel" type="Label" parent="PauseTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
+theme_override_font_sizes/font_size = 8
+text = "Paused
+"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseTexture"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 1.0
+offset_top = 17.0
+offset_right = 41.0
+offset_bottom = 34.0
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+theme_override_font_sizes/font_size = 5
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="PauseTexture"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 41.0
+offset_bottom = 49.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_font_sizes/font_size = 5
+text = "EXIT
+"
+
+[connection signal="pressed" from="PauseTexture/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseTexture/ExitButton" to="." method="_on_exit_button_pressed"]

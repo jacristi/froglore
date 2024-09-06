@@ -33,7 +33,7 @@ offset_right = -3.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
 theme_override_font_sizes/font_size = 4
 text = "Temporary Dialogue Text that i am using to communicate things to players while playing the game
 "

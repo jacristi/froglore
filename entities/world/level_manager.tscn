@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://entities/world/LevelManager.gd" id="1_85043"]
 
 [node name="LevelManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_85043")
 levels_dict = {
 "level_0": "res://entities/world/levels/level_0.tscn",

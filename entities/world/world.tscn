@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=22 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b3d7jwjser3yq" path="res://entities/camera/camera_move_trigger.tscn" id="11_4f8v6"]
 [ext_resource type="PackedScene" uid="uid://c65ftqd1l6lwh" path="res://ui/dialogue_box.tscn" id="12_vydkd"]
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="13_oxus6"]
+[ext_resource type="PackedScene" uid="uid://b1ofnxnvttha7" path="res://ui/pause_canvas.tscn" id="14_eju75"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
 light_mode = 2
@@ -29,7 +30,7 @@ shader_parameter/CAST_COLOR = Color(4.73787e-08, 0.0426247, 0.0621301, 1)
 shader_parameter/speed = Vector2(0, 0)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 50.0
-shader_parameter/y_zoom = 2.66968
+shader_parameter/y_zoom = 2.99661
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8qxa7"]
@@ -127,5 +128,7 @@ scroll_right_val = 476
 
 [node name="DialogueSign" parent="." instance=ExtResource("13_oxus6")]
 position = Vector2(-8, -4)
+
+[node name="PauseCanvas" parent="." instance=ExtResource("14_eju75")]
 
 [connection signal="item_rect_changed" from="WaterSimple" to="WaterSimple" method="_on_item_rect_changed"]
