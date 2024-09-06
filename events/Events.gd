@@ -36,3 +36,6 @@ signal ui_play_button_clicked
 signal ui_exit_button_clicked
 
 signal camera_change_scroll_vals(scroll_left: int, scroll_right: int)
+
+signal show_dialogue(text_to_show: String, timer: float)
+signal hide_dialogue

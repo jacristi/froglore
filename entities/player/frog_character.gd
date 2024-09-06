@@ -175,7 +175,6 @@ func croak() -> void:
         animated_sprite_2d.play("croak")
     Events.player_croaked.emit()
 
-
     await animated_sprite_2d.animation_finished
 
     if can_try_activate_interactable():
@@ -316,5 +315,5 @@ func can_try_activate_interactable() -> bool: return current_interactable != nul
 current_interactable.is_in_group("FrogStatues") \
 or current_interactable.is_in_group("WarpStatues") \
 or current_interactable.is_in_group("WorldStatues") \
-or current_interactable.is_in_group("InteractableEnviron") \
+or current_interactable.is_in_group("InteractableEnviron")
 )

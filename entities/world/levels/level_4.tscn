@@ -143,3 +143,7 @@ position = Vector2(165, 26)
 
 [node name="TouchableFlower1" parent="." index="48" instance=ExtResource("10_470ud")]
 position = Vector2(224, 82)
+
+[node name="DialogueSign" parent="." index="50"]
+position = Vector2(112, 53)
+dialogue_text = "Dash to cover large gaps"

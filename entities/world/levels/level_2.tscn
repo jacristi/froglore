@@ -111,3 +111,7 @@ position = Vector2(192, 90)
 
 [node name="TouchableGrass4" parent="." index="38" instance=ExtResource("7_oh8fg")]
 position = Vector2(144, 98)
+
+[node name="DialogueSign" parent="." index="40"]
+position = Vector2(136, 62)
+dialogue_text = "Hold 'Jump' for bigger hops"

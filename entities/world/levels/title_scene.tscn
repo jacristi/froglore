@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxec108m3jn0l"]
+[gd_scene load_steps=15 format=3 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://8rw6friubsqp" path="res://entities/environs/touchable_environs/touchable_flowers_1.tscn" id="10_b1f76"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="13_ekmps"]
 [ext_resource type="PackedScene" uid="uid://yigc46dwqc5j" path="res://entities/environs/interactable_environs/interactable_flower_1.tscn" id="13_gwsvl"]
+[ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="14_pnpma"]
 [ext_resource type="PackedScene" uid="uid://d0d8p50828t5h" path="res://entities/environs/interactable_environs/interactable_flower_2.tscn" id="14_sscfq"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
 
@@ -154,3 +155,18 @@ position = Vector2(198, 33)
 
 [node name="FrogStatue2" parent="." index="34" instance=ExtResource("13_ekmps")]
 position = Vector2(29, 41)
+
+[node name="DialogueSign" parent="." index="36"]
+position = Vector2(79, 93)
+dialogue_text = "Press 'UP' to play"
+show_sprite = false
+
+[node name="DialogueSignExit" parent="." index="37" instance=ExtResource("14_pnpma")]
+position = Vector2(152, 94)
+dialogue_text = "Press 'UP' to exit"
+show_sprite = false
+
+[node name="DialogueSignExit2" parent="." index="38" instance=ExtResource("14_pnpma")]
+position = Vector2(116, 85)
+dialogue_text = "Move left/right!"
+show_sprite = false

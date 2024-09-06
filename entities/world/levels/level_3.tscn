@@ -104,3 +104,7 @@ position = Vector2(204, 50)
 
 [node name="TouchableFlowers3" parent="." index="36" instance=ExtResource("9_ew3h4")]
 position = Vector2(135, 98)
+
+[node name="DialogueSign" parent="." index="38"]
+position = Vector2(111, 53)
+dialogue_text = "Cling to walls with 'UP'"

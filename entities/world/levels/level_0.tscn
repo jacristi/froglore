@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqul61c7w5j23"]
+[gd_scene load_steps=8 format=3 uid="uid://cqul61c7w5j23"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_cp077"]
 [ext_resource type="PackedScene" uid="uid://c2hv75bvf8pcc" path="res://entities/interactables/world_statue.tscn" id="3_hf6fm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="4_w5xms"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="5_pq1af"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="6_2bf5w"]
+[ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="7_v58wr"]
 
 [node name="Level0" instance=ExtResource("1_cp077")]
 curr_level = "level_0"
@@ -71,3 +72,16 @@ position = Vector2(220, 26)
 
 [node name="TouchableGrass10" parent="." index="28" instance=ExtResource("4_w5xms")]
 position = Vector2(18, 26)
+
+[node name="DialogueSign" parent="." index="30"]
+position = Vector2(68, 53)
+dialogue_text = "You can croak at statues, if they are listening they will respond"
+
+[node name="DialogueSign2" parent="." index="31" instance=ExtResource("7_v58wr")]
+position = Vector2(172, 53)
+dialogue_text = "You can go UP or DOWN level portals"
+
+[node name="DialogueSign3" parent="." index="32" instance=ExtResource("7_v58wr")]
+position = Vector2(204, 62)
+dialogue_text = "Be careful of dark bugs! 
+Collecting one will rest the level"

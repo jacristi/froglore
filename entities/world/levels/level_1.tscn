@@ -132,3 +132,7 @@ position = Vector2(164, 90)
 [node name="BackgroundTree2" parent="." index="37" instance=ExtResource("7_l4qpi")]
 position = Vector2(56, 57)
 region_rect = Rect2(64, 64, 64, 64)
+
+[node name="DialogueSign" parent="." index="39"]
+position = Vector2(135, 62)
+dialogue_text = "Collect light bugs to complete levels"
