@@ -153,16 +153,16 @@ position = Vector2(115, 93)
 position = Vector2(139, 93)
 
 [node name="TouchableGrass2" parent="." index="53" instance=ExtResource("6_cwiyb")]
-position = Vector2(25, 97)
+position = Vector2(25, 98)
 
 [node name="TouchableGrass1" parent="." index="54" instance=ExtResource("7_cg27m")]
-position = Vector2(173, 81)
+position = Vector2(173, 82)
 
 [node name="TouchableGrass3" parent="." index="55" instance=ExtResource("8_tcoxn")]
-position = Vector2(202, 49)
+position = Vector2(202, 50)
 
 [node name="TouchableGrass4" parent="." index="56" instance=ExtResource("8_tcoxn")]
-position = Vector2(76, 41)
+position = Vector2(76, 42)
 
 [node name="TouchableGrass5" parent="." index="57" instance=ExtResource("7_cg27m")]
-position = Vector2(116, 17)
+position = Vector2(116, 18)

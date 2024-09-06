@@ -116,7 +116,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g313c"]
-size = Vector2(8, 13)
+size = Vector2(8, 14)
 
 [node name="LevelExit" type="Area2D" groups=["LevelExit"]]
 collision_layer = 8
@@ -129,5 +129,5 @@ autoplay = "default"
 frame_progress = 0.674938
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_g313c")

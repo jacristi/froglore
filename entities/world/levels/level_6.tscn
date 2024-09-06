@@ -96,31 +96,31 @@ position = Vector2(73, 101)
 position = Vector2(81, 101)
 
 [node name="TouchableGrass2" parent="." index="38" instance=ExtResource("6_vou1w")]
-position = Vector2(91, 97)
+position = Vector2(91, 98)
 
 [node name="TouchableGrass1" parent="." index="39" instance=ExtResource("7_0fptp")]
-position = Vector2(110, 97)
+position = Vector2(110, 98)
 
 [node name="TouchableGrass3" parent="." index="40" instance=ExtResource("7_0fptp")]
-position = Vector2(208, 97)
+position = Vector2(208, 98)
 
 [node name="TouchableGrass4" parent="." index="41" instance=ExtResource("8_jpryt")]
-position = Vector2(225, 57)
+position = Vector2(225, 58)
 
 [node name="TouchableGrass5" parent="." index="42" instance=ExtResource("6_vou1w")]
-position = Vector2(163, 97)
+position = Vector2(163, 98)
 
 [node name="TouchableGrass6" parent="." index="43" instance=ExtResource("7_0fptp")]
-position = Vector2(64, 49)
+position = Vector2(64, 50)
 
 [node name="TouchableGrass7" parent="." index="44" instance=ExtResource("8_jpryt")]
-position = Vector2(94, 17)
+position = Vector2(94, 18)
 
 [node name="TouchableGrass8" parent="." index="45" instance=ExtResource("7_0fptp")]
-position = Vector2(72, 17)
+position = Vector2(72, 18)
 
 [node name="TouchableGrass9" parent="." index="46" instance=ExtResource("6_vou1w")]
-position = Vector2(83, 17)
+position = Vector2(83, 18)
 
 [node name="TouchableGrass10" parent="." index="47" instance=ExtResource("6_vou1w")]
-position = Vector2(158, 33)
+position = Vector2(158, 34)

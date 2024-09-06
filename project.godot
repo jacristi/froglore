@@ -26,8 +26,8 @@ AudioManager="*res://entities/world/AudioManager.tscn"
 
 window/size/viewport_width=240
 window/size/viewport_height=135
-window/size/window_width_override=1280
-window/size/window_height_override=820
+window/size/window_width_override=1200
+window/size/window_height_override=675
 window/stretch/mode="canvas_items"
 
 [gui]

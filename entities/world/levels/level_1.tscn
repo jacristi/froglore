@@ -112,22 +112,22 @@ shape = SubResource("RectangleShape2D_tefl4")
 position = Vector2(173, 57)
 
 [node name="TouchableGrass1" parent="." index="31" instance=ExtResource("8_0knea")]
-position = Vector2(144, 97)
+position = Vector2(144, 98)
 
 [node name="TouchableGrass4" parent="." index="32" instance=ExtResource("8_0knea")]
-position = Vector2(16, 73)
+position = Vector2(16, 74)
 
 [node name="TouchableGrass5" parent="." index="33" instance=ExtResource("8_0knea")]
-position = Vector2(212, 89)
+position = Vector2(212, 90)
 
 [node name="TouchableFlowers" parent="." index="34" instance=ExtResource("9_d47ed")]
-position = Vector2(69, 89)
+position = Vector2(69, 90)
 
 [node name="TouchableGrass3" parent="." index="35" instance=ExtResource("10_2xo51")]
-position = Vector2(106, 89)
+position = Vector2(106, 90)
 
 [node name="TouchableGrass6" parent="." index="36" instance=ExtResource("11_1gpaj")]
-position = Vector2(164, 89)
+position = Vector2(164, 90)
 
 [node name="BackgroundTree2" parent="." index="37" instance=ExtResource("7_l4qpi")]
 position = Vector2(56, 57)

@@ -49,25 +49,25 @@ level_key = "level_6"
 position = Vector2(120, 57)
 
 [node name="TouchableGrass2" parent="." index="21" instance=ExtResource("4_w5xms")]
-position = Vector2(102, 97)
+position = Vector2(102, 98)
 
 [node name="TouchableGrass4" parent="." index="22" instance=ExtResource("5_pq1af")]
-position = Vector2(75, 97)
+position = Vector2(75, 98)
 
 [node name="TouchableGrass5" parent="." index="23" instance=ExtResource("6_2bf5w")]
-position = Vector2(179, 97)
+position = Vector2(179, 98)
 
 [node name="TouchableGrass6" parent="." index="24" instance=ExtResource("5_pq1af")]
-position = Vector2(210, 97)
+position = Vector2(210, 98)
 
 [node name="TouchableGrass7" parent="." index="25" instance=ExtResource("4_w5xms")]
-position = Vector2(204, 65)
+position = Vector2(204, 66)
 
 [node name="TouchableGrass8" parent="." index="26" instance=ExtResource("6_2bf5w")]
-position = Vector2(36, 65)
+position = Vector2(36, 66)
 
 [node name="TouchableGrass9" parent="." index="27" instance=ExtResource("4_w5xms")]
-position = Vector2(220, 25)
+position = Vector2(220, 26)
 
 [node name="TouchableGrass10" parent="." index="28" instance=ExtResource("4_w5xms")]
-position = Vector2(18, 25)
+position = Vector2(18, 26)
