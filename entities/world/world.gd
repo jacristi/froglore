@@ -4,7 +4,12 @@ extends Node2D
 @export var prev_level: String = "N/A"
 @export var next_level: String = "N/A"
 
+@export_multiline var dialogue_new: String = "N/A"
+@export_multiline var dialogue_completed: String = "N/A"
+@export_multiline var dialogue_purified: String = "N/A"
+
 @onready var level_exit: Area2D = $LevelExit
+@onready var dialogue_sign: Area2D = $DialogueSign
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
 
@@ -50,10 +55,13 @@ func _ready() -> void:
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:
         Events.level_new.emit(curr_level, true)
+        if dialogue_new != 'N/A': dialogue_sign.set_text(dialogue_new)
     if level_state == LevelManager.level_states.COMPLETED:
         Events.level_completed.emit(curr_level, true)
+        if dialogue_completed != 'N/A': dialogue_sign.set_text(dialogue_completed)
     if level_state == LevelManager.level_states.PURIFIED:
         Events.level_purified.emit(curr_level, true)
+        if dialogue_purified != 'N/A': dialogue_sign.set_text(dialogue_purified)
 
 
 func update_bug_state():

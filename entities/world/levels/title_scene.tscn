@@ -168,6 +168,6 @@ show_sprite = false
 
 [node name="DialogueSignMove" parent="." index="38" instance=ExtResource("14_pnpma")]
 position = Vector2(116, 85)
-dialogue_text = "Move left/right!"
+dialogue_text = "Move left or right"
 show_sprite = false
 show_once = true

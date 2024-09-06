@@ -19,6 +19,7 @@ size = Vector2(20, 62)
 curr_level = "level_1"
 prev_level = "level_0"
 next_level = "level_2"
+dialogue_completed = "Watch out for dark bugs!"
 
 [node name="FrogCharacter" parent="." index="0"]
 position = Vector2(135, 66)

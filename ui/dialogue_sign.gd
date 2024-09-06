@@ -20,3 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
     Events.hide_dialogue.emit()
+
+func set_text(text_to_set: String):
+    dialogue_text = text_to_set
