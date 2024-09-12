@@ -17,7 +17,9 @@ extends Node
 @onready var audio_croak: AudioStreamPlayer2D = $AudioCroak
 @onready var audio_play_button_clicked: AudioStreamPlayer2D = $AudioPlayButtonClicked
 @onready var audio_exit_button_clicked: AudioStreamPlayer2D = $AudioExitButtonClicked
+@onready var audio_game_started: AudioStreamPlayer2D = $AudioGameStarted
 
+var game_started_has_played:= false
 var level_new_has_played:= false
 var level_unpurified_has_played:= false
 
@@ -39,6 +41,8 @@ func _ready() -> void:
     Events.player_croaked.connect(play_croak)
     Events.ui_play_button_clicked.connect(play_play_button_clicked)
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
+    await get_tree().create_timer(0.5).timeout
+    play_game_start()
 
 
 func play_light_bug_collect():
@@ -112,3 +116,8 @@ func play_play_button_clicked():
 func play_exit_button_clicked():
     if audio_exit_button_clicked.playing: return
     audio_exit_button_clicked.play()
+
+func play_game_start():
+    if game_started_has_played: return
+    audio_game_started.play()
+    game_started_has_played = true
