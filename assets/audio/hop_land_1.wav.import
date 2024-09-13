@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cuxhto680ffjn"
-path="res://.godot/imported/hop.wav-cad010ed019beb222695f942aec5ffa1.sample"
+uid="uid://cqi3kqbej5a6p"
+path="res://.godot/imported/hop_land_1.wav-2a2fd7ad401bb2d7dfaba7225be9d492.sample"
 
 [deps]
 
-source_file="res://assets/audio/hop.wav"
-dest_files=["res://.godot/imported/hop.wav-cad010ed019beb222695f942aec5ffa1.sample"]
+source_file="res://assets/audio/hop_land_1.wav"
+dest_files=["res://.godot/imported/hop_land_1.wav-2a2fd7ad401bb2d7dfaba7225be9d492.sample"]
 
 [params]
 

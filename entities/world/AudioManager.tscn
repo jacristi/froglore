@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=26 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" path="res://entities/world/AudioManager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
@@ -13,12 +13,18 @@
 [ext_resource type="AudioStream" uid="uid://cldm0u1b1luu5" path="res://assets/audio/enter_new_level.wav" id="12_yuqcn"]
 [ext_resource type="AudioStream" uid="uid://cin0r7ilxek0q" path="res://assets/audio/goto_level_next.wav" id="13_dv0op"]
 [ext_resource type="AudioStream" uid="uid://dlupxs56o5wly" path="res://assets/audio/goto_level_prev.wav" id="14_4bcwi"]
-[ext_resource type="AudioStream" uid="uid://cuxhto680ffjn" path="res://assets/audio/hop.wav" id="15_nv5hr"]
-[ext_resource type="AudioStream" uid="uid://cqi3kqbej5a6p" path="res://assets/audio/hop_land.wav" id="16_rub5u"]
+[ext_resource type="AudioStream" uid="uid://ou4kl524gm1e" path="res://assets/audio/hop_2.wav" id="15_bfvqw"]
+[ext_resource type="AudioStream" uid="uid://cuxhto680ffjn" path="res://assets/audio/hop_1.wav" id="15_nv5hr"]
+[ext_resource type="AudioStream" uid="uid://cvwlp0dvo4oii" path="res://assets/audio/hop_3.wav" id="16_5xncl"]
+[ext_resource type="AudioStream" uid="uid://cqi3kqbej5a6p" path="res://assets/audio/hop_land_1.wav" id="16_rub5u"]
 [ext_resource type="AudioStream" uid="uid://br0tgnu7iujkn" path="res://assets/audio/croak.wav" id="17_sv6ye"]
+[ext_resource type="AudioStream" uid="uid://cvpvh4j0efo2v" path="res://assets/audio/hop_land_2.wav" id="18_3ejxq"]
 [ext_resource type="AudioStream" uid="uid://6w1j3oh4vp7f" path="res://assets/audio/play_button_clicked.wav" id="18_mdd3b"]
 [ext_resource type="AudioStream" uid="uid://13jvn5b6feo5" path="res://assets/audio/exit_button_clicked.wav" id="19_0bmiy"]
 [ext_resource type="AudioStream" uid="uid://myd45eikncpk" path="res://assets/audio/game_start.wav" id="19_qmuw1"]
+[ext_resource type="AudioStream" uid="uid://b0xjgtecvg7ml" path="res://assets/audio/grass_rustle_1.wav" id="20_6foan"]
+[ext_resource type="AudioStream" uid="uid://b1hwgj8il65ka" path="res://assets/audio/grass_rustle_2.wav" id="21_8l4cy"]
+[ext_resource type="AudioStream" uid="uid://rs1x2eh58nnl" path="res://assets/audio/grass_rustle_3.wav" id="22_r4c7e"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -60,12 +66,24 @@ stream = ExtResource("13_dv0op")
 [node name="AudioGoToPrev" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_4bcwi")
 
-[node name="AudioHop" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHop1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_nv5hr")
 volume_db = -20.0
 
-[node name="AudioHopLanded" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHop2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_bfvqw")
+volume_db = -20.0
+
+[node name="AudioHop3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_5xncl")
+volume_db = -20.0
+
+[node name="AudioHopLanded1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_rub5u")
+volume_db = -20.0
+
+[node name="AudioHopLanded2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_3ejxq")
 volume_db = -20.0
 
 [node name="AudioCroak" type="AudioStreamPlayer2D" parent="."]
@@ -79,3 +97,13 @@ stream = ExtResource("19_0bmiy")
 
 [node name="AudioGameStarted" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_qmuw1")
+
+[node name="AudioGrass1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_6foan")
+volume_db = -10.0
+
+[node name="AudioGrass2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_8l4cy")
+
+[node name="AudioGrass3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_r4c7e")

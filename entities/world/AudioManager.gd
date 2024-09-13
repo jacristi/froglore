@@ -12,17 +12,25 @@ extends Node
 @onready var audio_enter_level_new: AudioStreamPlayer2D = $AudioEnterLevelNew
 @onready var audio_go_to_next: AudioStreamPlayer2D = $AudioGoToNext
 @onready var audio_go_to_prev: AudioStreamPlayer2D = $AudioGoToPrev
-@onready var audio_hop: AudioStreamPlayer2D = $AudioHop
-@onready var audio_hop_landed: AudioStreamPlayer2D = $AudioHopLanded
+@onready var audio_hop_1: AudioStreamPlayer2D = $AudioHop1
+@onready var audio_hop_2: AudioStreamPlayer2D = $AudioHop2
+@onready var audio_hop_3: AudioStreamPlayer2D = $AudioHop3
+@onready var audio_hop_landed_1: AudioStreamPlayer2D = $AudioHopLanded1
+@onready var audio_hop_landed_2: AudioStreamPlayer2D = $AudioHopLanded2
+
 @onready var audio_croak: AudioStreamPlayer2D = $AudioCroak
 @onready var audio_play_button_clicked: AudioStreamPlayer2D = $AudioPlayButtonClicked
 @onready var audio_exit_button_clicked: AudioStreamPlayer2D = $AudioExitButtonClicked
 @onready var audio_game_started: AudioStreamPlayer2D = $AudioGameStarted
+@onready var audio_grass_1: AudioStreamPlayer2D = $AudioGrass1
+@onready var audio_grass_2: AudioStreamPlayer2D = $AudioGrass2
+@onready var audio_grass_3: AudioStreamPlayer2D = $AudioGrass3
+
 
 var game_started_has_played:= false
 var level_new_has_played:= false
 var level_unpurified_has_played:= false
-
+var environ_audio_playing:= false
 
 func _ready() -> void:
     Events.light_bug_spawn.connect(play_light_bug_spawn)
@@ -41,6 +49,7 @@ func _ready() -> void:
     Events.player_croaked.connect(play_croak)
     Events.ui_play_button_clicked.connect(play_play_button_clicked)
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
+    Events.grass_rustled.connect(play_grass_rustle)
     await get_tree().create_timer(0.5).timeout
     play_game_start()
 
@@ -99,12 +108,12 @@ func play_goto_prev():
     audio_go_to_prev.play()
 
 func play_hop():
-    if audio_hop.playing: return
-    audio_hop.play()
+    var hop: AudioStreamPlayer2D = [audio_hop_1, audio_hop_2, audio_hop_3].pick_random()
+    hop.play()
 
 func play_hop_landed():
-    if audio_hop_landed.playing: return
-    audio_hop_landed.play()
+    var hop_land: AudioStreamPlayer2D = [audio_hop_landed_1, audio_hop_landed_2].pick_random()
+    hop_land.play()
 
 func play_croak():
     audio_croak.play()
@@ -121,3 +130,11 @@ func play_game_start():
     if game_started_has_played: return
     audio_game_started.play()
     game_started_has_played = true
+
+func play_grass_rustle():
+    if environ_audio_playing: return
+    var audio_grass: AudioStreamPlayer2D = [audio_grass_1, audio_grass_2, audio_grass_3].pick_random()
+    environ_audio_playing = true
+    audio_grass.play()
+    await audio_grass.finished
+    environ_audio_playing = false

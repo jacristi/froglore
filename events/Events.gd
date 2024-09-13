@@ -45,6 +45,8 @@ signal pause_pressed
 signal cutscene_start
 signal cutscene_end
 
+signal grass_rustled
+
 func _process(delta: float) -> void:
     if Input.is_action_just_pressed("pause"):
         pause_pressed.emit()
