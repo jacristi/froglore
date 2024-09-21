@@ -90,6 +90,3 @@ dialogue_text = "You can go UP or DOWN level portals"
 position = Vector2(204, 62)
 dialogue_text = "Be careful of dark bugs! 
 Collecting one will rest the level"
-
-[node name="PauseCanvas" parent="." index="33"]
-visible = false

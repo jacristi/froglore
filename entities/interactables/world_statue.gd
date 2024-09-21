@@ -70,6 +70,6 @@ func try_activate():
         print("THE FINAL CROAK!")
         state = states.active
         animated_sprite_2d.play("active")
+        LevelManager.has_finished_all_purified = true
         Events.activated_world_statue.emit()
         ready_label.hide()
-        LevelManager.has_finished_all_purified = true

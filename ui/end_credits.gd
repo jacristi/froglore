@@ -7,6 +7,9 @@ extends Control
 
 
 func show_credits():
+    if LevelManager.has_finished_all_purified:
+        still_more.text = "Nice job! You did everything (for now)!"
+
     Events.cutscene_start.emit()
     await get_tree().create_timer(.5).timeout
     title.show()
@@ -14,10 +17,8 @@ func show_credits():
     credits.show()
     await get_tree().create_timer(2.5).timeout
     thank_you.show()
-
-    if not LevelManager.has_finished_all_purified:
-        await get_tree().create_timer(1.0).timeout
-        still_more.show()
+    await get_tree().create_timer(1.0).timeout
+    still_more.show()
 
     await get_tree().create_timer(8.0).timeout
     title.hide()
