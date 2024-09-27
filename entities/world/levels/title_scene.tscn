@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="8_50ycs"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="9_nj7d1"]
 [ext_resource type="PackedScene" uid="uid://8rw6friubsqp" path="res://entities/environs/touchable_environs/touchable_flowers_1.tscn" id="10_b1f76"]
-[ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="13_ekmps"]
 [ext_resource type="PackedScene" uid="uid://yigc46dwqc5j" path="res://entities/environs/interactable_environs/interactable_flower_1.tscn" id="13_gwsvl"]
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="14_pnpma"]
 [ext_resource type="PackedScene" uid="uid://d0d8p50828t5h" path="res://entities/environs/interactable_environs/interactable_flower_2.tscn" id="14_sscfq"]
+[ext_resource type="PackedScene" uid="uid://b0ulg5b4wnxjq" path="res://entities/environs/interactable_environs/interactable_statue.tscn" id="15_b417t"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
 
 [node name="TitleScene" instance=ExtResource("1_nut4y")]
@@ -139,35 +139,37 @@ position = Vector2(225, 82)
 position = Vector2(187, 34)
 
 [node name="InteractableFlower1" parent="." index="30" instance=ExtResource("13_gwsvl")]
+z_index = 2
 position = Vector2(181, 89)
 activate_once = true
 metadata/_edit_group_ = true
 
 [node name="InteractableFlower2" parent="." index="31" instance=ExtResource("14_sscfq")]
+z_index = 2
 position = Vector2(54, 90)
 activate_once = true
 
 [node name="BackgroundTree" parent="." index="32" instance=ExtResource("15_u0ohn")]
 position = Vector2(115, 57)
 
-[node name="FrogStatue" parent="." index="33" instance=ExtResource("13_ekmps")]
-position = Vector2(198, 33)
-
-[node name="FrogStatue2" parent="." index="34" instance=ExtResource("13_ekmps")]
-position = Vector2(29, 41)
-
-[node name="DialogueSign" parent="." index="36"]
+[node name="DialogueSign" parent="." index="34"]
 position = Vector2(79, 93)
 dialogue_text = "Press 'UP' to play"
 show_sprite = false
 
-[node name="DialogueSignExit" parent="." index="37" instance=ExtResource("14_pnpma")]
+[node name="DialogueSignExit" parent="." index="35" instance=ExtResource("14_pnpma")]
 position = Vector2(152, 94)
 dialogue_text = "Press 'UP' to exit"
 show_sprite = false
 
-[node name="DialogueSignMove" parent="." index="38" instance=ExtResource("14_pnpma")]
+[node name="DialogueSignMove" parent="." index="36" instance=ExtResource("14_pnpma")]
 position = Vector2(116, 85)
 dialogue_text = "Move left or right"
 show_sprite = false
 show_once = true
+
+[node name="InteractableStatue" parent="." index="38" instance=ExtResource("15_b417t")]
+position = Vector2(29, 41)
+
+[node name="InteractableStatue2" parent="." index="39" instance=ExtResource("15_b417t")]
+position = Vector2(199, 34)
