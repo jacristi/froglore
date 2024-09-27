@@ -8,7 +8,7 @@ extends Control
 
 func show_credits():
     if LevelManager.has_finished_all_purified:
-        still_more.text = "Nice job! You did everything (for now)!"
+        still_more.text = "Nice job! You've done everything (for now)!"
 
     Events.cutscene_start.emit()
     await get_tree().create_timer(.5).timeout

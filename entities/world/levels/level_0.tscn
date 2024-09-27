@@ -89,4 +89,4 @@ dialogue_text = "You can go UP or DOWN level portals"
 [node name="DialogueSign3" parent="." index="32" instance=ExtResource("7_v58wr")]
 position = Vector2(204, 62)
 dialogue_text = "Be careful of dark bugs! 
-Collecting one will rest the level"
+Collecting one will reset the level"
