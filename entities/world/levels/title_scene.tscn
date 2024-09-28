@@ -139,13 +139,11 @@ position = Vector2(225, 82)
 position = Vector2(187, 34)
 
 [node name="InteractableFlower1" parent="." index="30" instance=ExtResource("13_gwsvl")]
-z_index = 2
 position = Vector2(181, 89)
 activate_once = true
 metadata/_edit_group_ = true
 
 [node name="InteractableFlower2" parent="." index="31" instance=ExtResource("14_sscfq")]
-z_index = 2
 position = Vector2(54, 90)
 activate_once = true
 

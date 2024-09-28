@@ -1,6 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://b0ulg5b4wnxjq"]
+[gd_scene load_steps=43 format=3 uid="uid://b0ulg5b4wnxjq"]
 
-[ext_resource type="PackedScene" path="res://entities/environs/interactable_environs/interactable_environ.tscn" id="1_786op"]
+[ext_resource type="PackedScene" uid="uid://cdn7b6j5j1ydn" path="res://entities/environs/interactable_environs/interactable_environ.tscn" id="1_786op"]
 [ext_resource type="Texture2D" uid="uid://dyeoppdof3n0o" path="res://assets/spritesheets/spr-frog-statue-12x48.png" id="2_8evjd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hhmk"]
@@ -110,6 +110,50 @@ region = Rect2(144, 48, 12, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vju1e"]
 atlas = ExtResource("2_8evjd")
 region = Rect2(0, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukvxi"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(0, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fnhc"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(12, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_losxl"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(24, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqd38"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(36, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4je5"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(48, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssdks"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(60, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdg7m"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(72, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv6mf"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(84, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ygns"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(96, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bshco"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(108, 0, 12, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myed2"]
+atlas = ExtResource("2_8evjd")
+region = Rect2(120, 0, 12, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxjsy"]
 animations = [{
@@ -222,6 +266,69 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vju1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukvxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fnhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_losxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqd38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4je5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssdks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdg7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv6mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ygns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bshco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myed2")
 }],
 "loop": true,
 "name": &"inactive",
@@ -237,7 +344,7 @@ z_index = -1
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -23)
 sprite_frames = SubResource("SpriteFrames_gxjsy")
-animation = &"activated"
+animation = &"inactive"
 autoplay = "inactive"
 
 [node name="CollisionShape2D" parent="." index="1"]
