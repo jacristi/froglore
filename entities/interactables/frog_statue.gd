@@ -22,6 +22,10 @@ func handle_initial_states() -> void:
 
 
 func set_state_inactive():
+    if state != states.INACTIVE:
+        animated_sprite_2d.play("deactivating")
+        await animated_sprite_2d.animation_finished
+
     state = states.INACTIVE
     animated_sprite_2d.play("inactive")
 
