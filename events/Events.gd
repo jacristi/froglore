@@ -11,10 +11,12 @@ signal light_bug_spawn
 signal dark_bug_spawn
 
 signal player_hit_hazard
-signal player_respawn
+signal player_has_respawned
 signal player_hopped
 signal player_hop_landed
 signal player_croaked
+signal player_should_despawn
+signal player_should_respawn
 
 signal go_to_level(level_key: String)
 signal try_go_to_next_level

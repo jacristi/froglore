@@ -43,7 +43,7 @@ func _ready() -> void:
     Events.level_new.connect(play_leveL_new)
     Events.frog_statue_activating.connect(play_statue_activated)
     Events.player_hit_hazard.connect(play_hit_hazard)
-    Events.player_respawn.connect(play_player_respawn)
+    Events.player_has_respawned.connect(play_player_respawn)
     Events.player_hopped.connect(play_hop)
     Events.player_hop_landed.connect(play_hop_landed)
     Events.player_croaked.connect(play_croak)

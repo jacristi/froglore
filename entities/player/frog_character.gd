@@ -46,18 +46,21 @@ var is_falling := false
 var prep_jump := false
 var is_climbing := false
 var dash_used:= false
+var wall_clinged_used := false
 
 var curr_velocity: Vector2
 
 
 func _ready() -> void:
-    hazard_detector.area_entered.connect(hit_hazard)
+    hazard_detector.area_entered.connect(hit_hazard_and_respawn)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
+    Events.player_should_despawn.connect(despawn_player)
+    Events.player_should_respawn.connect(respawn_player)
 
 
 func _physics_process(delta: float) -> void:
@@ -89,23 +92,30 @@ func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
+    wall_clinged_used = false
+
     if has_big_fall_velocity:
         hop_land_effect.emitting = true
+
     if not has_control(): return
-    if state == states.HIT_HAZARD: return
     animated_sprite_2d.play("hop_land")
     Events.player_hop_landed.emit()
     await animated_sprite_2d.animation_finished
+
+    if not has_control(): return
     animated_sprite_2d.play("idle")
 
 
 func handle_hopping(delta):
+    if not has_control(): return
+
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
         hop(delta, 1.5)
         return
 
     if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
         hop(delta, 1.5)
+        wall_clinged_used = true
         wall_cling_timer.wait_time = wall_cling_cooldown
         wall_cling_timer.start()
         return
@@ -116,7 +126,9 @@ func handle_hopping(delta):
 
 
 func handle_h_movement():
-    if h_direction and (can_hop() or !is_on_floor()) and state != states.DASHING:
+    if not has_control(): return
+
+    if h_direction and (can_hop() or !is_on_floor()) and state != states.DASHING and not _is_wall_clinging():
         velocity.x = h_direction * move_speed
     elif state != states.DASHING:
         velocity.x = move_toward(velocity.x, 0, move_speed)
@@ -137,26 +149,40 @@ func apply_gravity(delta):
     if is_on_floor(): return
     if _is_dashing(): return
     if _is_wall_clinging(): return
+    if _is_hazard_respawning(): return
 
     velocity.y += gravity * delta
 
+func hit_special_hazard(respawn_wait_time:float=0):
+    despawn_player()
+    await get_tree().create_timer(respawn_wait_time).timeout
+    respawn_player()
 
-func hit_hazard(_area: Area2D):
+
+func hit_hazard_and_respawn(_area: Area2D):
+    despawn_player()
+    await animated_sprite_2d.animation_finished
+    respawn_player()
+
+
+func despawn_player():
     Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
     animated_sprite_2d.play("despawn")
     velocity.x = 0
     velocity.y = 0
-    await animated_sprite_2d.animation_finished
+
+
+func respawn_player():
     state = states.RESPAWNING
     global_position = starting_position
     animated_sprite_2d.play("respawn")
-    Events.player_respawn.emit()
+    Events.player_has_respawned.emit()
     await animated_sprite_2d.animation_finished
+
     if state == states.RESPAWNING:
         state = states.IDLE
         animated_sprite_2d.play("idle")
-
 
 func enter_interactable(area: Area2D):
     current_interactable = area
@@ -204,6 +230,7 @@ func dash():
     dash_direction = face_direction
     if _is_wall_clinging():
         dash_direction = -dash_direction
+        wall_clinged_used = true
     state = states.DASHING
     velocity.x = dash_velocity_x * dash_direction
     velocity.y = -dash_velocity_y
@@ -273,6 +300,7 @@ func handle_states_animations():
 
     if state == states.IDLE:
         dash_used = false
+        wall_clinged_used = false
 
     if state == states.WALL_CLINGING and has_control():
         animated_sprite_2d.play("wall_cling")
@@ -299,7 +327,7 @@ func handle_wall_cling():
 
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
 func can_croak() -> bool: return state == states.IDLE or _is_wall_clinging()
-func has_control() -> bool: return state != states.HIT_HAZARD and state != states.RESPAWNING and state != states.CROAKING and state != states.DASHING
+func has_control() -> bool: return !_is_hazard_respawning() and state != states.CROAKING and state != states.DASHING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and has_control() and (is_on_floor() or _is_wall_clinging())
 func _is_croaking() -> bool: return state == states.CROAKING or state == states.WALL_CLING_CROAKING
 func _is_hopping() -> bool: return velocity.y < 0 and state != states.DASHING
@@ -308,8 +336,9 @@ func _is_falling() -> bool: return _has_fall_velocity() and not is_on_floor()
 func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_control()
 func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
+func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
 
-func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0
+func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_clinged_used == false
 
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \

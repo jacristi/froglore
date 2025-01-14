@@ -100,18 +100,17 @@ func respawn_dark_bugs():
             return
         bug.set_self_active()
         Events.dark_bug_spawn.emit()
-        await get_tree().create_timer(0.5).timeout
+        await get_tree().create_timer(0.1).timeout
     update_statues_states()
 
 
-func handle_level_completed(_level_key: String, _on_start: bool) -> void:
+func handle_level_completed(_level_key: String, _on_start: bool, respawn_wait_time: float=5) -> void:
 
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
     if can_respawn_dark_bugs:
-        await get_tree().create_timer(5.0).timeout
+        await get_tree().create_timer(respawn_wait_time).timeout
         respawn_dark_bugs()
-
 
 func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
@@ -155,14 +154,17 @@ func handle_frog_statue_activated():
 
 
 func handle_level_reset(_level_key: String, _on_start:bool):
-    level_state = LevelManager.level_states.NOT_COMPLETED
-    light_bugs_collected = 0
+    level_state = LevelManager.level_states.COMPLETED
     count_statues_active = 0
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     level_exit.hide()
-    await get_tree().create_timer(5.0).timeout
-    respawn_light_bugs()
+    Events.player_should_despawn.emit()
+    await get_tree().create_timer(1.0).timeout
     can_respawn_dark_bugs = true
+    handle_level_completed(curr_level, false, .5)
+    await get_tree().create_timer(1.5).timeout
+    Events.player_should_respawn.emit()
+
 
 func cutscene_started():
     LevelManager.in_semi_pause_state = true
