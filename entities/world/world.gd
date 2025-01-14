@@ -13,13 +13,6 @@ extends Node2D
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
 
-var dark_bugs_total: int
-var light_bugs_total: int
-var light_bugs_collected: int
-
-var count_total_statues: int
-var count_statues_active: int = 0
-
 var can_respawn_dark_bugs := false
 
 @onready var end_credits: Control = $EndCredits
@@ -45,12 +38,6 @@ func _ready() -> void:
     LevelManager.current_level = curr_level
     level_state = LevelManager.get_level_state(curr_level)
     handle_on_start_level_state()
-
-    light_bugs_total = get_tree().get_nodes_in_group("LightBugs").size()
-
-    dark_bugs_total = get_tree().get_nodes_in_group("DarkBugs").size()
-
-    count_total_statues = get_tree().get_nodes_in_group("FrogStatues").size()
 
     update_bug_state()
     update_statues_states()
@@ -137,9 +124,12 @@ func go_to_prev_level() -> void:
 
 
 func handle_light_bug_collected():
-    light_bugs_collected += 1
+    var all_light_bugs_collected = true
+    for light_bug in get_tree().get_nodes_in_group("LightBugs"):
+        if !light_bug.is_collected:
+            all_light_bugs_collected = false
 
-    if light_bugs_collected == light_bugs_total:
+    if all_light_bugs_collected:
         Events.level_completed.emit(curr_level, false)
 
 
@@ -148,21 +138,26 @@ func handle_dark_bug_collected():
 
 
 func handle_frog_statue_activated():
-    count_statues_active += 1
-    if count_statues_active == count_total_statues:
+    var all_statues_activated = true
+    for statue in get_tree().get_nodes_in_group("FrogStatues"):
+        if statue.state == statue.states.READY:
+            all_statues_activated = false
+
+    if all_statues_activated:
         Events.level_purified.emit(curr_level, false)
+
 
 
 func handle_level_reset(_level_key: String, _on_start:bool):
     level_state = LevelManager.level_states.COMPLETED
-    count_statues_active = 0
+
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     level_exit.hide()
     Events.player_should_despawn.emit()
     await get_tree().create_timer(1.0).timeout
     can_respawn_dark_bugs = true
     handle_level_completed(curr_level, false, .5)
-    await get_tree().create_timer(1.5).timeout
+    await get_tree().create_timer(2).timeout
     Events.player_should_respawn.emit()
 
 
