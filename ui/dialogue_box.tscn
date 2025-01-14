@@ -8,19 +8,21 @@ script = ExtResource("1_4e02l")
 
 [node name="BoxTexture" type="NinePatchRect" parent="."]
 clip_contents = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -82.0
-offset_top = 110.0
-offset_right = 82.0
-offset_bottom = 134.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
 grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
 texture = ExtResource("1_ecc07")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="TextLabel" type="Label" parent="BoxTexture"]
 layout_mode = 1
@@ -34,9 +36,9 @@ offset_right = -3.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
-theme_override_font_sizes/font_size = 4
-text = "Temporary Dialogue Text that i am using to communicate things to players while playing the game
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+text = "Temporary Dialogue Text that i am using to communicate things
 "
 horizontal_alignment = 1
 vertical_alignment = 1
