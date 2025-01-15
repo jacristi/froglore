@@ -54,7 +54,8 @@ var is_falling := false
 var prep_jump := false
 var is_climbing := false
 var dash_used:= false
-var wall_clinged_used := false
+var wall_cling_used_count:= 0
+var wall_cling_used_max:= 1
 
 var curr_velocity: Vector2
 var button_down_held_time: float = 0
@@ -73,6 +74,7 @@ func _ready() -> void:
     dash_cooldown_timer.wait_time = dash_cooldown_duration
     Events.player_should_despawn.connect(despawn_player)
     Events.player_should_respawn.connect(respawn_player)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -105,7 +107,7 @@ func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
-    wall_clinged_used = false
+    wall_cling_used_count = 0
 
     if has_big_fall_velocity:
         hop_land_effect.emitting = true
@@ -131,7 +133,7 @@ func handle_hopping(delta):
 
     if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
         hop(delta, 1.5)
-        wall_clinged_used = true
+        wall_cling_used_count += 1
         wall_cling_timer.wait_time = wall_cling_cooldown
         wall_cling_timer.start()
         return
@@ -256,7 +258,7 @@ func dash():
     dash_direction = face_direction
     if _is_wall_clinging():
         dash_direction = -dash_direction
-        wall_clinged_used = true
+        wall_cling_used_count += 1
     state = states.DASHING
     velocity.x = dash_velocity_x * dash_direction
     velocity.y = -dash_velocity_y
@@ -356,7 +358,7 @@ func handle_states_animations():
 
     if state == states.IDLE:
         dash_used = false
-        wall_clinged_used = false
+        wall_cling_used_count = 0
 
         if current_dialogue != null:
             Events.should_show_dialogue.emit()
@@ -398,7 +400,7 @@ func _is_dashing() -> bool: return state == states.DASHING # and check condition
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
 
-func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_clinged_used == false and wall_cling_unlocked
+func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
 func can_prep_big_jump() -> bool: return state == states.IDLE and big_hop_unlocked
 
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
