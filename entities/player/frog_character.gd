@@ -373,7 +373,7 @@ func handle_states_animations():
 
 
 func handle_wall_cling():
-    if state != states.WALL_CLINGING and not v_direction: return
+    if state != states.WALL_CLINGING and v_direction <= 0: return
 
     if not _can_cling_to_wall() and state == states.WALL_CLINGING:
         state = states.FALLING
