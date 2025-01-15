@@ -124,7 +124,7 @@ func handle_hopping(delta):
 
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
         if button_down_held_time > 1:
-            hop(delta, 1.5 * clamp(button_down_held_time, 1, 2))
+            hop(delta, 1.5 * clamp(button_down_held_time, 1, 2) * .8)
         else:
             hop(delta, 1.5)
         return
@@ -405,5 +405,6 @@ func can_try_activate_interactable() -> bool: return current_interactable != nul
 current_interactable.is_in_group("FrogStatues") \
 or current_interactable.is_in_group("WarpStatues") \
 or current_interactable.is_in_group("WorldStatues") \
-or current_interactable.is_in_group("InteractableEnviron")
+or current_interactable.is_in_group("InteractableEnviron") \
+or current_interactable.is_in_group("ButterflyStatues")
 )

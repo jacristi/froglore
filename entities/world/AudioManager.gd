@@ -27,6 +27,8 @@ extends Node
 @onready var audio_grass_3: AudioStreamPlayer2D = $AudioGrass3
 @onready var audio_big_hop_prep_1: AudioStreamPlayer2D = $AudioBigHopPrep1
 @onready var audio_big_hop_prep_2: AudioStreamPlayer2D = $AudioBigHopPrep2
+@onready var audio_butterfly_activate: AudioStreamPlayer2D = $AudioButterflyActivate
+@onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
 
 
 var game_started_has_played:= false
@@ -53,6 +55,9 @@ func _ready() -> void:
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
     Events.grass_rustled.connect(play_grass_rustle)
     Events.player_big_hop_prep.connect(play_big_hop_prep)
+    Events.butterfly_statue_activated.connect(play_butterfly_activate)
+    Events.butterfly_statue_deactivated.connect(play_butterfly_deactivate)
+
     await get_tree().create_timer(0.5).timeout
     play_game_start()
 
@@ -148,3 +153,9 @@ func play_big_hop_prep(level: int):
 
     if level == 2:
         audio_big_hop_prep_2.play()
+
+func play_butterfly_activate(_color: String):
+    audio_butterfly_activate.play()
+
+func play_butterfly_deactivate(_color: String):
+    audio_butterfly_deactivate.play()

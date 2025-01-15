@@ -35,6 +35,9 @@ signal ready_world_statue
 signal activating_world_statue
 signal activated_world_statue
 
+signal butterfly_statue_activated(color: String)
+signal butterfly_statue_deactivated(color: String)
+
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
 

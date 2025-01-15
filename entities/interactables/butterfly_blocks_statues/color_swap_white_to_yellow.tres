@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ceboxeoegi1v"]
+
+[ext_resource type="Shader" path="res://effects/shaders/ColorSwap.gdshader" id="1_yt3dh"]
+
+[resource]
+shader = ExtResource("1_yt3dh")
+shader_parameter/target_color_1 = Color(0.12, 0.11, 0.15, 1)
+shader_parameter/target_color_2 = Color(0.61, 0.71, 0.72, 1)
+shader_parameter/target_color_3 = Color(0.91, 0.92, 0.92, 1)
+shader_parameter/target_color_4 = Color(1, 1, 1, 1)
+shader_parameter/replace_color_1 = Color(0.176471, 0.113725, 0.0901961, 1)
+shader_parameter/replace_color_2 = Color(0.85098, 0.427451, 0.129412, 1)
+shader_parameter/replace_color_3 = Color(0.976471, 0.713726, 0.329412, 1)
+shader_parameter/replace_color_4 = Color(0.988235, 0.815686, 0.564706, 1)
+shader_parameter/tolerance = 0.02

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv1pxtccbfm8b"]
+
+[ext_resource type="PackedScene" uid="uid://bu0hnnoc44or1" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block.tscn" id="1_abl6x"]
+[ext_resource type="Material" uid="uid://cgivwdxuk4iaj" path="res://entities/interactables/butterfly_blocks_statues/color_swap_white_to_green.tres" id="2_qr0gy"]
+
+[node name="ButterflyBlockGreen" instance=ExtResource("1_abl6x")]
+block_color = "green"
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = ExtResource("2_qr0gy")

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bpbekmtqewrvp"]
+
+[ext_resource type="Shader" path="res://effects/shaders/ColorSwap.gdshader" id="1_vfah5"]
+
+[resource]
+shader = ExtResource("1_vfah5")
+shader_parameter/target_color_1 = Color(0.12, 0.11, 0.15, 1)
+shader_parameter/target_color_2 = Color(0.61, 0.71, 0.72, 1)
+shader_parameter/target_color_3 = Color(0.91, 0.92, 0.92, 1)
+shader_parameter/target_color_4 = Color(1, 1, 1, 1)
+shader_parameter/replace_color_1 = Color(0.0784314, 0.0431373, 0.101961, 1)
+shader_parameter/replace_color_2 = Color(0.305882, 0.0235294, 0.541176, 1)
+shader_parameter/replace_color_3 = Color(0.745098, 0.352941, 0.992157, 1)
+shader_parameter/replace_color_4 = Color(0.984314, 0.737255, 1, 1)
+shader_parameter/tolerance = 0.02
