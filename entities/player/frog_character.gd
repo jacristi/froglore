@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hazard_detector: Area2D = $HazardDetector
 @onready var interact_detector: Area2D = $InteractDetector
+@onready var dialogue_detector: Area2D = $DialogueDetector
 @onready var starting_position := global_position
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
@@ -25,6 +26,7 @@ extends CharacterBody2D
 @onready var big_hop_unlocked:= true
 
 var current_interactable: Area2D
+var current_dialogue: Area2D
 
 var h_direction: float
 var v_direction: float
@@ -63,6 +65,8 @@ func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
+    dialogue_detector.area_entered.connect(enter_dialogue)
+    dialogue_detector.area_exited.connect(exit_dialogue)
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
@@ -196,12 +200,21 @@ func respawn_player():
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
+
 func enter_interactable(area: Area2D):
     current_interactable = area
 
 
 func exit_interactable(_area: Area2D):
     current_interactable = null
+
+
+func enter_dialogue(area: Area2D):
+    current_dialogue = area
+
+
+func exit_dialogue(area: Area2D):
+    current_dialogue = null
 
 
 func croak() -> void:
@@ -341,6 +354,9 @@ func handle_states_animations():
     if state == states.IDLE:
         dash_used = false
         wall_clinged_used = false
+
+        if current_dialogue != null:
+            Events.should_show_dialogue.emit()
 
     if state == states.WALL_CLINGING and has_control():
         animated_sprite_2d.play("wall_cling")

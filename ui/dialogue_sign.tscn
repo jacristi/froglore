@@ -7,7 +7,7 @@
 size = Vector2(5, 10)
 
 [node name="DialogueSign" type="Area2D" groups=["DialogueSign"]]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_6jaen")
 
