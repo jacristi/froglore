@@ -25,6 +25,8 @@ extends Node
 @onready var audio_grass_1: AudioStreamPlayer2D = $AudioGrass1
 @onready var audio_grass_2: AudioStreamPlayer2D = $AudioGrass2
 @onready var audio_grass_3: AudioStreamPlayer2D = $AudioGrass3
+@onready var audio_big_hop_prep_1: AudioStreamPlayer2D = $AudioBigHopPrep1
+@onready var audio_big_hop_prep_2: AudioStreamPlayer2D = $AudioBigHopPrep2
 
 
 var game_started_has_played:= false
@@ -50,6 +52,7 @@ func _ready() -> void:
     Events.ui_play_button_clicked.connect(play_play_button_clicked)
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
     Events.grass_rustled.connect(play_grass_rustle)
+    Events.player_big_hop_prep.connect(play_big_hop_prep)
     await get_tree().create_timer(0.5).timeout
     play_game_start()
 
@@ -138,3 +141,12 @@ func play_grass_rustle():
     audio_grass.play()
     await audio_grass.finished
     environ_audio_playing = false
+
+func play_big_hop_prep(level: int):
+    if level == 1:
+        print('play hop prep 1')
+        audio_big_hop_prep_1.play()
+
+    if level == 2:
+        print('play hop prep 2')
+        audio_big_hop_prep_2.play()

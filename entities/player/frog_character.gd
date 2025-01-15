@@ -17,6 +17,9 @@ extends CharacterBody2D
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
 @onready var hop_land_effect: CPUParticles2D = $HopLandEffect
+@onready var flash_sprite_component: FlashSpriteComponent = $FlashSpriteComponent
+@onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
+
 
 var current_interactable: Area2D
 
@@ -49,7 +52,9 @@ var dash_used:= false
 var wall_clinged_used := false
 
 var curr_velocity: Vector2
-
+var button_down_held_time: float = 0
+var big_hop_prep_1_reached := false
+var big_hop_prep_2_reached := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
@@ -70,6 +75,7 @@ func _physics_process(delta: float) -> void:
     apply_gravity(delta)
 
     handle_interacts_with_up_down()
+    handle_buttons_held()
 
     handle_croaking()
     handle_dashing()
@@ -110,7 +116,10 @@ func handle_hopping(delta):
     if not has_control(): return
 
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
-        hop(delta, 1.5)
+        if button_down_held_time > 1:
+            hop(delta, 1.5 * clamp(button_down_held_time, 1, 2))
+        else:
+            hop(delta, 1.5)
         return
 
     if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
@@ -215,6 +224,7 @@ func croak() -> void:
     if state == states.CROAKING:
         state = states.IDLE
         animated_sprite_2d.play("idle")
+
     if state == states.WALL_CLING_CROAKING:
         state = states.WALL_CLINGING
         animated_sprite_2d.play("wall_cling")
@@ -274,6 +284,28 @@ func handle_interacts_with_up_down():
             Events.try_exit_game.emit()
 
 
+func handle_buttons_held():
+    if v_direction < 0 and state == states.IDLE:
+        button_down_held_time += .005
+    else:
+        button_down_held_time = 0
+        big_hop_prep_1_reached = false
+        big_hop_prep_2_reached = false
+
+    if button_down_held_time >= 1 && not big_hop_prep_1_reached:
+        big_hop_prep_1_reached = true
+        big_hop_prep(1)
+    elif button_down_held_time > 1.99 && not big_hop_prep_2_reached:
+        big_hop_prep_2_reached = true
+        big_hop_prep(2)
+
+
+func big_hop_prep(level: int):
+    Events.player_big_hop_prep.emit(level)
+    flash_sprite_component.flash()
+    scale_sprite_component.tween_scale()
+
+
 func handle_states_animations():
 
     if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging():
@@ -292,6 +324,11 @@ func handle_states_animations():
 
     if _is_idle() and state != states.IDLE and has_control():
         state = states.IDLE
+        animated_sprite_2d.play("idle")
+
+    if state == states.IDLE and button_down_held_time > 0.1:
+        animated_sprite_2d.play("prep_big_hop")
+    elif state == states.IDLE and button_down_held_time <= 0:
         animated_sprite_2d.play("idle")
 
     if _is_dashing():

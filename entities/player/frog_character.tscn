@@ -1,8 +1,10 @@
-[gd_scene load_steps=61 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=64 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
+[ext_resource type="Script" path="res://components/flash_sprite_component.gd" id="4_eh284"]
+[ext_resource type="Script" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbbra"]
 size = Vector2(3, 2)
@@ -146,6 +148,10 @@ region = Rect2(96, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_san0d"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0war"]
+atlas = ExtResource("1_2oguq")
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xcl2o"]
 atlas = ExtResource("1_2oguq")
@@ -391,6 +397,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w0war")
+}],
+"loop": true,
+"name": &"prep_big_hop",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xcl2o")
 }, {
 "duration": 1.0,
@@ -478,7 +492,7 @@ shape = SubResource("RectangleShape2D_kbbra")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"idle"
+animation = &"prep_big_hop"
 autoplay = "idle"
 
 [node name="MoveHopTimer" type="Timer" parent="."]
@@ -508,3 +522,13 @@ wait_time = 0.5
 one_shot = true
 
 [node name="HopLandEffect" parent="." instance=ExtResource("3_kt63j")]
+
+[node name="FlashSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_eh284")
+sprite = NodePath("../AnimatedSprite2D")
+flash_duration = 0.35
+
+[node name="ScaleSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_sfhxq")
+sprite = NodePath("../AnimatedSprite2D")
+scale_amount = Vector2(1.25, 1.25)

@@ -17,6 +17,7 @@ signal player_hop_landed
 signal player_croaked
 signal player_should_despawn
 signal player_should_respawn
+signal player_big_hop_prep(level: int)
 
 signal go_to_level(level_key: String)
 signal try_go_to_next_level
