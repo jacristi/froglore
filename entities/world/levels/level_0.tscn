@@ -77,16 +77,14 @@ position = Vector2(220, 26)
 [node name="TouchableGrass10" parent="." index="28" instance=ExtResource("4_w5xms")]
 position = Vector2(18, 26)
 
-[node name="DialogueSign" parent="." index="30"]
-position = Vector2(68, 53)
-dialogue_text = "You can croak at statues.
-If they are listening they will respond"
-
 [node name="DialogueSign2" parent="." index="31" instance=ExtResource("7_v58wr")]
 position = Vector2(172, 53)
-dialogue_text = "You can go UP or DOWN level portals"
+dialogue_text = "You can go UP or DOWN level portals."
 
 [node name="DialogueSign3" parent="." index="32" instance=ExtResource("7_v58wr")]
 position = Vector2(204, 62)
-dialogue_text = "Be careful of dark bugs! 
-Collecting one will reset the level"
+dialogue_text = "Dark bugs will reset a level."
+
+[node name="DialogueSign" parent="." index="33"]
+position = Vector2(68, 53)
+dialogue_text = "Try croaking at different statues."

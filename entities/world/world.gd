@@ -19,6 +19,7 @@ var can_respawn_dark_bugs := false
 @onready var pause_canvas: CanvasLayer = $PauseCanvas
 var is_paused := false
 
+
 func _ready() -> void:
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
@@ -41,6 +42,7 @@ func _ready() -> void:
 
     update_bug_state()
     update_statues_states()
+
 
 func handle_on_start_level_state():
     if level_state == LevelManager.level_states.NOT_COMPLETED:
@@ -99,6 +101,7 @@ func handle_level_completed(_level_key: String, _on_start: bool, respawn_wait_ti
         await get_tree().create_timer(respawn_wait_time).timeout
         respawn_dark_bugs()
 
+
 func handle_leveL_purified(_level_key: String, _on_start: bool) -> void:
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
@@ -147,7 +150,6 @@ func handle_frog_statue_activated():
         Events.level_purified.emit(curr_level, false)
 
 
-
 func handle_level_reset(_level_key: String, _on_start:bool):
     level_state = LevelManager.level_states.COMPLETED
 
@@ -166,11 +168,13 @@ func cutscene_started():
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
 
+
 func cutscene_ended():
     LevelManager.in_semi_pause_state = false
     level_exit.process_mode = Node.PROCESS_MODE_INHERIT
     level_exit.show()
     end_credits.hide()
+
 
 func start_end_credits():
     end_credits.show()
