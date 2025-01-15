@@ -20,6 +20,9 @@ extends CharacterBody2D
 @onready var flash_sprite_component: FlashSpriteComponent = $FlashSpriteComponent
 @onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
 
+@onready var dash_unlocked:= true
+@onready var wall_cling_unlocked:= true
+@onready var big_hop_unlocked:= true
 
 var current_interactable: Area2D
 
@@ -285,7 +288,7 @@ func handle_interacts_with_up_down():
 
 
 func handle_buttons_held():
-    if v_direction < 0 and state == states.IDLE:
+    if v_direction < 0 and can_prep_big_jump():
         button_down_held_time += .005
     else:
         button_down_held_time = 0
@@ -362,7 +365,7 @@ func handle_wall_cling():
     state = states.WALL_CLINGING
 
 
-func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01
+func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01 and dash_unlocked
 func can_croak() -> bool: return state == states.IDLE or _is_wall_clinging()
 func has_control() -> bool: return !_is_hazard_respawning() and state != states.CROAKING and state != states.DASHING
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and has_control() and (is_on_floor() or _is_wall_clinging())
@@ -375,7 +378,8 @@ func _is_dashing() -> bool: return state == states.DASHING # and check condition
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
 
-func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_clinged_used == false
+func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_clinged_used == false and wall_cling_unlocked
+func can_prep_big_jump() -> bool: return state == states.IDLE and big_hop_unlocked
 
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \
