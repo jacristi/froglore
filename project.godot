@@ -22,6 +22,10 @@ LevelTransition="*res://entities/world/level_transition.tscn"
 LevelManager="*res://entities/world/level_manager.tscn"
 AudioManager="*res://entities/world/AudioManager.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=240

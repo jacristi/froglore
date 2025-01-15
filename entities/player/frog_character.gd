@@ -213,7 +213,7 @@ func enter_dialogue(area: Area2D):
     current_dialogue = area
 
 
-func exit_dialogue(area: Area2D):
+func exit_dialogue(_area: Area2D):
     current_dialogue = null
 
 
@@ -307,11 +307,14 @@ func handle_buttons_held():
         button_down_held_time = 0
         big_hop_prep_1_reached = false
         big_hop_prep_2_reached = false
+        flash_sprite_component.stop_flash_continuous_intervals()
 
     if button_down_held_time >= 1 && not big_hop_prep_1_reached:
+        flash_sprite_component.start_flash_continuous_intervals(1)
         big_hop_prep_1_reached = true
         big_hop_prep(1)
     elif button_down_held_time > 1.99 && not big_hop_prep_2_reached:
+        flash_sprite_component.start_flash_continuous_intervals(.75)
         big_hop_prep_2_reached = true
         big_hop_prep(2)
 
@@ -357,6 +360,7 @@ func handle_states_animations():
 
         if current_dialogue != null:
             Events.should_show_dialogue.emit()
+
 
     if state == states.WALL_CLINGING and has_control():
         animated_sprite_2d.play("wall_cling")

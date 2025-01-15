@@ -144,9 +144,7 @@ func play_grass_rustle():
 
 func play_big_hop_prep(level: int):
     if level == 1:
-        print('play hop prep 1')
         audio_big_hop_prep_1.play()
 
     if level == 2:
-        print('play hop prep 2')
         audio_big_hop_prep_2.play()

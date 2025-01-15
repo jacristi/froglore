@@ -14,13 +14,13 @@ func _ready() -> void:
     if not show_sprite:
         sprite_2d.hide()
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
     if show_once and has_shown: return
     has_shown = true
     if dialogue_text == '': return
     player_in_range = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
     Events.hide_dialogue.emit()
     player_in_range = false
 
