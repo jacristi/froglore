@@ -11,11 +11,11 @@ func _ready() -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
     if is_collected: return
-    is_collected = true
     collect()
 
 
 func collect():
+    if is_collected: return
     is_collected = true
     Events.dark_bug_collected.emit()
     animated_sprite_2d.play("collect")

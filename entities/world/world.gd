@@ -21,6 +21,7 @@ var is_paused := false
 
 
 func _ready() -> void:
+    pause_canvas.visible = true
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
     Events.level_completed.connect(handle_level_completed)

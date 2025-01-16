@@ -39,11 +39,10 @@ func set_state_active():
 func set_state_inactive():
     if state == states.INACTIVE or state == states.DEACTIVATING: return
 
+    set_collision_layer_value(1, false)
     if state != states.INACTIVE:
         animated_sprite_2d.play("deactivating")
         await animated_sprite_2d.animation_finished
-
-    set_collision_layer_value(1, false)
 
     state = states.INACTIVE
     animated_sprite_2d.play("inactive")

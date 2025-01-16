@@ -344,12 +344,14 @@ animations = [{
 size = Vector2(13, 6)
 
 [node name="ButterflyStatue" type="Area2D" groups=["ButterflyStatues"]]
+z_index = -1
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_aqdar")
 butterfly_color = "white"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_i70xq")
 animation = &"inactive"
 autoplay = "inactive"
