@@ -112,10 +112,10 @@ stream = ExtResource("21_8l4cy")
 [node name="AudioGrass3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_r4c7e")
 
-[node name="AudioBigHopPrep1" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioSuperHopPrep1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_indlt")
 
-[node name="AudioBigHopPrep2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioSuperHopPrep2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_llwfi")
 
 [node name="AudioButterflyActivate" type="AudioStreamPlayer2D" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=64 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=78 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
+[ext_resource type="Texture2D" uid="uid://b56hmkk6xghsa" path="res://assets/spritesheets/spr-frog-idle-sleep.png" id="3_k8pd7"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
 [ext_resource type="Script" path="res://components/flash_sprite_component.gd" id="4_eh284"]
 [ext_resource type="Script" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
@@ -148,6 +149,58 @@ region = Rect2(96, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_san0d"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rj5u"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7x2d"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyk5y"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxj2k"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om8dk"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wegrb"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57cgp"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbsg6"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_362pj"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebi5c"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ioa"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynmoh"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caqcy"]
+atlas = ExtResource("3_k8pd7")
+region = Rect2(192, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0war"]
 atlas = ExtResource("1_2oguq")
@@ -397,10 +450,54 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2rj5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7x2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyk5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxj2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om8dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wegrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57cgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbsg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_362pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebi5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3ioa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynmoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_caqcy")
+}],
+"loop": true,
+"name": &"idle_sleep",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_w0war")
 }],
 "loop": true,
-"name": &"prep_big_hop",
+"name": &"prep_super_hop",
 "speed": 8.0
 }, {
 "frames": [{
@@ -492,8 +589,9 @@ shape = SubResource("RectangleShape2D_kbbra")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"prep_big_hop"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.118477
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true

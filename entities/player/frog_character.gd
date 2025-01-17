@@ -23,7 +23,7 @@ extends CharacterBody2D
 
 @onready var dash_unlocked:= true
 @onready var wall_cling_unlocked:= true
-@onready var big_hop_unlocked:= true
+@onready var super_hop_unlocked:= true
 
 var current_interactable: Area2D
 var current_dialogue: Area2D
@@ -59,8 +59,10 @@ var wall_cling_used_max:= 1
 
 var curr_velocity: Vector2
 var button_down_held_time: float = 0
-var big_hop_prep_1_reached := false
-var big_hop_prep_2_reached := false
+var idle_timer: float = 0
+
+var super_hop_prep_1_reached := false
+var super_hop_prep_2_reached := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
@@ -307,22 +309,22 @@ func handle_buttons_held():
         button_down_held_time += .005
     else:
         button_down_held_time = 0
-        big_hop_prep_1_reached = false
-        big_hop_prep_2_reached = false
+        super_hop_prep_1_reached = false
+        super_hop_prep_2_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= 1 && not big_hop_prep_1_reached:
+    if button_down_held_time >= 1 && not super_hop_prep_1_reached:
         flash_sprite_component.start_flash_continuous_intervals(1)
-        big_hop_prep_1_reached = true
-        big_hop_prep(1)
-    elif button_down_held_time > 1.99 && not big_hop_prep_2_reached:
+        super_hop_prep_1_reached = true
+        super_hop_prep(1)
+    elif button_down_held_time > 1.99 && not super_hop_prep_2_reached:
         flash_sprite_component.start_flash_continuous_intervals(.75)
-        big_hop_prep_2_reached = true
-        big_hop_prep(2)
+        super_hop_prep_2_reached = true
+        super_hop_prep(2)
 
 
-func big_hop_prep(level: int):
-    Events.player_big_hop_prep.emit(level)
+func super_hop_prep(level: int):
+    Events.player_super_hop_prep.emit(level)
     flash_sprite_component.flash()
     scale_sprite_component.tween_scale()
 
@@ -348,7 +350,9 @@ func handle_states_animations():
         animated_sprite_2d.play("idle")
 
     if state == states.IDLE and button_down_held_time > 0.1:
-        animated_sprite_2d.play("prep_big_hop")
+        animated_sprite_2d.play("prep_super_hop")
+    elif state == states.IDLE and button_down_held_time <= 0 and idle_timer > 3.0:
+        animated_sprite_2d.play("idle_sleep")
     elif state == states.IDLE and button_down_held_time <= 0:
         animated_sprite_2d.play("idle")
 
@@ -359,9 +363,13 @@ func handle_states_animations():
     if state == states.IDLE:
         dash_used = false
         wall_cling_used_count = 0
+        idle_timer += .01
 
         if current_dialogue != null:
             Events.should_show_dialogue.emit()
+    else:
+        idle_timer = 0
+
 
 
     if state == states.WALL_CLINGING and has_control():
@@ -401,7 +409,7 @@ func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state 
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
 
 func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
-func can_prep_big_jump() -> bool: return state == states.IDLE and big_hop_unlocked
+func can_prep_big_jump() -> bool: return state == states.IDLE and super_hop_unlocked
 
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \

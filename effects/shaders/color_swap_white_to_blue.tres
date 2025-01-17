@@ -12,4 +12,4 @@ shader_parameter/replace_color_1 = Color(0.0627451, 0.0627451, 0.156863, 1)
 shader_parameter/replace_color_2 = Color(0.2, 0.286275, 0.427451, 1)
 shader_parameter/replace_color_3 = Color(0.392157, 0.647059, 0.839216, 1)
 shader_parameter/replace_color_4 = Color(0.509804, 0.819608, 0.886275, 1)
-shader_parameter/tolerance = 0.01
+shader_parameter/tolerance = 0.001
