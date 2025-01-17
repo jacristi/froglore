@@ -42,7 +42,7 @@ void fragment() {
     vec4 reflection = texture(SCREEN_TEXTURE, reflected_uv);
 
     vec4 waves = texture(SCREEN_TEXTURE, reflected_uv + noise * y_zoom * (wave_strength / 100.0));
-    
+
     // Only apply wave ripples and selected color to transparent pixels
     if (tex_color.a != 0.0)
         COLOR = waves + vec4(tex_color.r, tex_color.g, tex_color.b, tex_color.a) ;

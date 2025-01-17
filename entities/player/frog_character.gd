@@ -24,7 +24,7 @@ extends CharacterBody2D
 @onready var dash_unlocked:= true
 @onready var wall_cling_unlocked:= true
 @onready var super_hop_unlocked:= true
-
+var current_color : String = "frog"
 var current_interactable: Area2D
 var current_dialogue: Area2D
 
@@ -93,6 +93,7 @@ func _physics_process(delta: float) -> void:
     handle_hopping(delta)
     handle_h_movement()
     handle_wall_cling()
+    handle_swtich_pressed()
 
     if not velocity.is_zero_approx():
         move_and_slide()
@@ -109,6 +110,7 @@ func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
+    dash_cooldown_timer.wait_time = 0
     wall_cling_used_count = 0
 
     if has_big_fall_velocity:
@@ -248,6 +250,32 @@ func croak() -> void:
     if state == states.WALL_CLING_CROAKING:
         state = states.WALL_CLINGING
         animated_sprite_2d.play("wall_cling")
+
+
+func change_frog_color():
+    var curr_idx = 0
+    var ls = GlobalData.frog_paletes_keys
+
+    for i in ls.size():
+       if ls[i] == current_color:
+            curr_idx = i
+            break
+
+    var next_idx = curr_idx + 1
+    if next_idx >= ls.size():
+        next_idx = 0
+
+    current_color = ls[next_idx]
+    var p_array = GlobalData.frog_palettes_dict[current_color]
+    animated_sprite_2d.material.set_shader_parameter("replace_color_1", p_array[0])
+    animated_sprite_2d.material.set_shader_parameter("replace_color_2", p_array[1])
+    animated_sprite_2d.material.set_shader_parameter("replace_color_3", p_array[2])
+
+
+func handle_swtich_pressed():
+    if Input.is_action_just_pressed("switch"):
+        print('switch!')
+        change_frog_color()
 
 
 func handle_croaking():
