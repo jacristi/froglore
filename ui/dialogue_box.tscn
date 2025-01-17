@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c65ftqd1l6lwh"]
+[gd_scene load_steps=4 format=3 uid="uid://c65ftqd1l6lwh"]
 
 [ext_resource type="Script" path="res://ui/dialogue_box.gd" id="1_4e02l"]
 [ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="1_ecc07"]
+[ext_resource type="Script" path="res://components/animation_component.gd" id="3_ugxwm"]
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_4e02l")
@@ -12,7 +13,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -16.0
+offset_top = -15.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
@@ -41,3 +43,8 @@ text = "***** ABC Simple Dialogue Text XYZ *****
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="AnimationComponent" type="Node" parent="BoxTexture" node_paths=PackedStringArray("target")]
+script = ExtResource("3_ugxwm")
+target = NodePath("..")
+transition_type = 4

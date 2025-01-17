@@ -21,11 +21,12 @@ uniform float y_zoom;
 
 void vertex() {
     //move water up and down
-    //VERTEX.y += sin(TIME) * 0.033;
+    // VERTEX.y += sin(TIME) * 1.0;
 }
 
 void fragment() {
     //get ripple noise
+    vec4 tex_color = texture(TEXTURE, UV);
     vec2 uv = UV + speed * TIME;
 
     //get the noise from fast noise
@@ -41,8 +42,11 @@ void fragment() {
     vec4 reflection = texture(SCREEN_TEXTURE, reflected_uv);
 
     vec4 waves = texture(SCREEN_TEXTURE, reflected_uv + noise * y_zoom * (wave_strength / 100.0));
-    //apply wave ripples and selected color
     
-    COLOR = waves + CAST_COLOR ;
+    // Only apply wave ripples and selected color to transparent pixels
+    if (tex_color.a != 0.0)
+        COLOR = waves + vec4(tex_color.r, tex_color.g, tex_color.b, tex_color.a) ;
+    else
+        COLOR = waves + CAST_COLOR ;
 
 }
