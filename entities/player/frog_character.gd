@@ -351,7 +351,7 @@ func handle_states_animations():
 
     if state == states.IDLE and button_down_held_time > 0.1:
         animated_sprite_2d.play("prep_super_hop")
-    elif state == states.IDLE and button_down_held_time <= 0 and idle_timer > 3.0:
+    elif state == states.IDLE and button_down_held_time <= 0 and idle_timer > 8.0:
         animated_sprite_2d.play("idle_sleep")
     elif state == states.IDLE and button_down_held_time <= 0:
         animated_sprite_2d.play("idle")

@@ -42,6 +42,7 @@ void fragment() {
 
     vec4 waves = texture(SCREEN_TEXTURE, reflected_uv + noise * y_zoom * (wave_strength / 100.0));
     //apply wave ripples and selected color
-    COLOR =  waves + CAST_COLOR ;
+    
+    COLOR = waves + CAST_COLOR ;
 
 }
