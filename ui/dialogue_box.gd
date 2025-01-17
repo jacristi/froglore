@@ -9,6 +9,7 @@ extends CanvasLayer
 var is_showing:= false
 
 func _ready() -> void:
+    box_texture.hide()
     animation_component.close()
     Events.show_dialogue.connect(on_show_dialogue)
     Events.hide_dialogue.connect(on_hide_dialogue)
@@ -19,6 +20,7 @@ func on_show_dialogue(text_to_show: String, timer: float=2.0) -> void:
     if is_showing: return
     is_showing = true
     text_label.text = text_to_show
+    box_texture.show()
     animation_component.open()
 
     if timer > 0:
