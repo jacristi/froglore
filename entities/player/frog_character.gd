@@ -110,7 +110,6 @@ func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
-    dash_cooldown_timer.wait_time = 0
     wall_cling_used_count = 0
 
     if has_big_fall_velocity:
@@ -129,6 +128,10 @@ func handle_hopping(delta):
     if not has_control(): return
 
     if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
+
+        # Reset dash cooldown for big hops (feels bad otherwise)
+        dash_cooldown_timer.stop()
+
         if button_down_held_time > 1:
             hop(delta, 1.5 * clamp(button_down_held_time, 1, 2) * .8)
         else:
@@ -270,11 +273,11 @@ func change_frog_color():
     animated_sprite_2d.material.set_shader_parameter("replace_color_1", p_array[0])
     animated_sprite_2d.material.set_shader_parameter("replace_color_2", p_array[1])
     animated_sprite_2d.material.set_shader_parameter("replace_color_3", p_array[2])
+    Events.player_change_color.emit(current_color)
 
 
 func handle_swtich_pressed():
     if Input.is_action_just_pressed("switch"):
-        print('switch!')
         change_frog_color()
 
 

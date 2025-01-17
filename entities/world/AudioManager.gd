@@ -30,6 +30,7 @@ extends Node
 
 @onready var audio_butterfly_activate: AudioStreamPlayer2D = $AudioButterflyActivate
 @onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
+@onready var audio_change_player_color: VariablePitchAudioPlayer = $AudioChangePlayerColor
 
 
 var game_started_has_played:= false
@@ -58,6 +59,7 @@ func _ready() -> void:
     Events.player_super_hop_prep.connect(play_super_hop_prep)
     Events.butterfly_statue_activated.connect(play_butterfly_activate)
     Events.butterfly_statue_deactivated.connect(play_butterfly_deactivate)
+    Events.player_change_color.connect(play_change_player_color)
 
     await get_tree().create_timer(0.5).timeout
     play_game_start()
@@ -160,3 +162,6 @@ func play_butterfly_activate(_color: String):
 
 func play_butterfly_deactivate(_color: String):
     audio_butterfly_deactivate.play()
+
+func play_change_player_color(_color: String):
+    audio_change_player_color.play_with_increasing_pitch()

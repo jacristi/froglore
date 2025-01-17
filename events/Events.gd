@@ -18,6 +18,7 @@ signal player_croaked
 signal player_should_despawn
 signal player_should_respawn
 signal player_super_hop_prep(level: int)
+signal player_change_color(color: String)
 
 signal go_to_level(level_key: String)
 signal try_go_to_next_level
