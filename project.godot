@@ -40,6 +40,7 @@ window/stretch/mode="canvas_items"
 theme/custom="res://resources/default_theme.tres"
 theme/custom_font="res://resources/fonts/capital_hill.ttf"
 theme/default_font_subpixel_positioning=0
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
