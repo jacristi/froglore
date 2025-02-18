@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn5s1cqkxgw47"]
+[gd_scene load_steps=17 format=3 uid="uid://bn5s1cqkxgw47"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_rjwai"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_j2v6k"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="11_1gpaj"]
 [ext_resource type="PackedScene" uid="uid://76md64h5tlsu" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_blue.tscn" id="12_gl1by"]
 [ext_resource type="PackedScene" uid="uid://calhkvkfrq48v" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_blue.tscn" id="13_up2mx"]
+[ext_resource type="PackedScene" uid="uid://b3fwyshaeenli" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_yellow.tscn" id="14_i00av"]
+[ext_resource type="PackedScene" uid="uid://be02ngp2du6k6" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_yellow.tscn" id="15_k2sgh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefl4"]
 size = Vector2(20, 62)
@@ -56,19 +58,19 @@ position = Vector2(136, 94)
 position = Vector2(39, 78)
 
 [node name="DarkBug2" parent="." index="14" instance=ExtResource("4_p6ufu")]
-position = Vector2(109, 57)
+position = Vector2(119, 56)
 
 [node name="DarkBug3" parent="." index="15" instance=ExtResource("4_p6ufu")]
-position = Vector2(119, 66)
+position = Vector2(119, 63)
 
 [node name="DarkBug4" parent="." index="16" instance=ExtResource("4_p6ufu")]
-position = Vector2(174, 63)
+position = Vector2(177, 67)
 
 [node name="DarkBug5" parent="." index="17" instance=ExtResource("4_p6ufu")]
-position = Vector2(174, 85)
+position = Vector2(168, 78)
 
 [node name="DarkBug7" parent="." index="18" instance=ExtResource("4_p6ufu")]
-position = Vector2(109, 72)
+position = Vector2(119, 49)
 
 [node name="FrogStatue" parent="." index="19" instance=ExtResource("5_4p8ec")]
 position = Vector2(20, 73)
@@ -115,7 +117,7 @@ position = Vector2(144, 98)
 position = Vector2(16, 74)
 
 [node name="TouchableGrass7" parent="." index="32" instance=ExtResource("8_0knea")]
-position = Vector2(214, 42)
+position = Vector2(208, 42)
 
 [node name="TouchableGrass5" parent="." index="33" instance=ExtResource("8_0knea")]
 position = Vector2(216, 90)
@@ -126,39 +128,54 @@ position = Vector2(69, 90)
 [node name="TouchableGrass3" parent="." index="35" instance=ExtResource("10_2xo51")]
 position = Vector2(106, 90)
 
-[node name="TouchableGrass6" parent="." index="36" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass8" parent="." index="36" instance=ExtResource("10_2xo51")]
+position = Vector2(216, 42)
+
+[node name="TouchableGrass6" parent="." index="37" instance=ExtResource("11_1gpaj")]
 position = Vector2(164, 90)
 
-[node name="BackgroundTree2" parent="." index="37" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree2" parent="." index="38" instance=ExtResource("7_l4qpi")]
 position = Vector2(56, 57)
 region_rect = Rect2(64, 64, 64, 64)
 
-[node name="DialogueSign" parent="." index="40"]
+[node name="DialogueSign" parent="." index="41"]
 position = Vector2(135, 62)
 dialogue_text = "Collect light bugs to complete levels"
 
-[node name="ButterflyBlockBlue" parent="." index="42" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue" parent="." index="43" instance=ExtResource("12_gl1by")]
 position = Vector2(-64, 61)
 starts_active = true
 
-[node name="ButterflyBlockBlue2" parent="." index="43" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue2" parent="." index="44" instance=ExtResource("12_gl1by")]
 position = Vector2(-56, 61)
 starts_active = true
 
-[node name="ButterflyBlockBlue3" parent="." index="44" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue3" parent="." index="45" instance=ExtResource("12_gl1by")]
 position = Vector2(-64, 69)
 starts_active = true
 
-[node name="ButterflyBlockBlue4" parent="." index="45" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue4" parent="." index="46" instance=ExtResource("12_gl1by")]
 position = Vector2(-56, 69)
 starts_active = true
 
-[node name="ButterflyStatue" parent="." index="46" instance=ExtResource("13_up2mx")]
+[node name="ButterflyStatue" parent="." index="47" instance=ExtResource("13_up2mx")]
 z_index = 0
 position = Vector2(300, 41)
 
-[node name="ButterflyBlockBlue5" parent="." index="47" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue5" parent="." index="48" instance=ExtResource("12_gl1by")]
 position = Vector2(280, 61)
 
-[node name="ButterflyBlockBlue6" parent="." index="48" instance=ExtResource("12_gl1by")]
+[node name="ButterflyBlockBlue6" parent="." index="49" instance=ExtResource("12_gl1by")]
 position = Vector2(288, 61)
+
+[node name="ButterflyBlockYellow" parent="." index="50" instance=ExtResource("14_i00av")]
+position = Vector2(200, 61)
+
+[node name="ButterflyBlockYellow2" parent="." index="51" instance=ExtResource("14_i00av")]
+position = Vector2(168, 69)
+
+[node name="ButterflyStatueYellow" parent="." index="52" instance=ExtResource("15_k2sgh")]
+position = Vector2(92, 82)
+
+[node name="FrogStatue3" parent="." index="53" instance=ExtResource("5_4p8ec")]
+position = Vector2(214, 41)

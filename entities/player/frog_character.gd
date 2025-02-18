@@ -61,8 +61,7 @@ var curr_velocity: Vector2
 var button_down_held_time: float = 0
 var idle_timer: float = 0
 
-var super_hop_prep_1_reached := false
-var super_hop_prep_2_reached := false
+var super_hop_prep_reached := false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
@@ -132,8 +131,8 @@ func handle_hopping(delta):
         # Reset dash cooldown for big hops (feels bad otherwise)
         dash_cooldown_timer.stop()
 
-        if button_down_held_time > 1:
-            hop(delta, 1.5 * clamp(button_down_held_time, 1, 2) * .8)
+        if super_hop_prep_reached:
+            hop(delta, 1.5 * 2 * .8)
         else:
             hop(delta, 1.5)
         return
@@ -338,24 +337,19 @@ func handle_interacts_with_up_down():
 func handle_buttons_held():
     if v_direction < 0 and can_prep_big_jump():
         button_down_held_time += .005
-    else:
+    elif state != states.IDLE or v_direction >= 0 and !super_hop_prep_reached:
         button_down_held_time = 0
-        super_hop_prep_1_reached = false
-        super_hop_prep_2_reached = false
+        super_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= 1 && not super_hop_prep_1_reached:
+    if button_down_held_time >= 1 && not super_hop_prep_reached:
         flash_sprite_component.start_flash_continuous_intervals(1)
-        super_hop_prep_1_reached = true
-        super_hop_prep(1)
-    elif button_down_held_time > 1.99 && not super_hop_prep_2_reached:
-        flash_sprite_component.start_flash_continuous_intervals(.75)
-        super_hop_prep_2_reached = true
-        super_hop_prep(2)
+        super_hop_prep_reached = true
+        super_hop_prep()
 
 
-func super_hop_prep(level: int):
-    Events.player_super_hop_prep.emit(level)
+func super_hop_prep():
+    Events.player_super_hop_prep.emit()
     flash_sprite_component.flash()
     scale_sprite_component.tween_scale()
 
