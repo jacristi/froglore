@@ -47,3 +47,4 @@ func collect_as_purified(_level_key: String, _on_start: bool):
     animated_sprite_2d.play("purified")
     await animated_sprite_2d.animation_finished
     set_self_inactive()
+    Events.level_purified_done.emit()

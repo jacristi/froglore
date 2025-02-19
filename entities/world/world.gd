@@ -29,6 +29,7 @@ func _ready() -> void:
     Events.level_reset.connect(handle_level_reset)
     Events.light_bug_collected.connect(handle_light_bug_collected)
     Events.dark_bug_collected.connect(handle_dark_bug_collected)
+    Events.frog_statue_activating.connect(handle_frog_statue_activating)
     Events.frog_statue_activated.connect(handle_frog_statue_activated)
     Events.try_go_to_next_level.connect(go_to_next_level)
     Events.try_go_to_prev_level.connect(go_to_prev_level)
@@ -139,6 +140,19 @@ func handle_light_bug_collected():
 
 func handle_dark_bug_collected():
     Events.level_reset.emit(curr_level, false)
+
+
+func handle_frog_statue_activating():
+    # Check if this is the next to last statue
+    # If so, st
+    var count_activated = 0
+    var statues = get_tree().get_nodes_in_group("FrogStatues")
+    for statue in statues:
+        if statue.state == statue.states.ACTIVE:
+         count_activated += 1
+
+    if count_activated == len(statues) - 1 or count_activated == len(statues):
+        Events.level_purified_start.emit()
 
 
 func handle_frog_statue_activated():

@@ -4,6 +4,8 @@ signal level_reset(level_key: String, on_start: bool)
 signal level_completed(level_key: String, on_start: bool)
 signal level_purified(level_key: String, on_start: bool)
 signal level_new(level_key: String, on_start: bool)
+signal level_purified_start
+signal level_purified_done
 
 signal light_bug_collected
 signal dark_bug_collected

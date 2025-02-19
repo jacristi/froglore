@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cr045vld8i4im"]
+[gd_scene load_steps=50 format=3 uid="uid://cr045vld8i4im"]
 
 [ext_resource type="Texture2D" uid="uid://hpat3cjjx2sh" path="res://assets/spritesheets/spr-butterfly-statues-blocks.png" id="1_31hk4"]
 [ext_resource type="Script" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue.gd" id="1_aqdar"]
@@ -154,6 +154,34 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbsrd"]
 atlas = ExtResource("1_31hk4")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5582"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4flnf"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yn3f"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68kba"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ct3s"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(144, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd1dt"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(160, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixcdx"]
+atlas = ExtResource("1_31hk4")
+region = Rect2(176, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i70xq"]
 animations = [{
@@ -318,22 +346,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_rbsrd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_q5582")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_4flnf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_6yn3f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_68kba")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_0ct3s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbsrd")
+"texture": SubResource("AtlasTexture_qd1dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixcdx")
 }],
 "loop": true,
 "name": &"inactive",
@@ -355,6 +386,7 @@ z_index = -1
 sprite_frames = SubResource("SpriteFrames_i70xq")
 animation = &"inactive"
 autoplay = "inactive"
+frame_progress = 0.361928
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 5)
