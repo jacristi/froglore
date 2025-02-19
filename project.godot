@@ -17,11 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*res://events/events.tscn"
+Events="*res://global/events/events.tscn"
 LevelTransition="*res://entities/world/level_transition.tscn"
 LevelManager="*res://entities/world/level_manager.tscn"
-AudioManager="*res://entities/world/AudioManager.tscn"
-GlobalData="*res://entities/world/GlobalData.tscn"
+AudioManager="*res://global/AudioManager.tscn"
+GlobalData="*res://global/GlobalData.tscn"
 
 [debug]
 
@@ -31,8 +31,8 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=240
 window/size/viewport_height=135
-window/size/window_width_override=2400
-window/size/window_height_override=1350
+window/size/window_width_override=1200
+window/size/window_height_override=675
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

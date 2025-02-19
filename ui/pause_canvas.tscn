@@ -15,7 +15,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -32.0
+offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_i6y7g")
@@ -27,7 +27,6 @@ patch_margin_bottom = 7
 [node name="AnimationComponent" type="Node" parent="PauseTexture" node_paths=PackedStringArray("target")]
 script = ExtResource("3_5ck68")
 target = NodePath("..")
-transition_type = 4
 
 [node name="PauseTextLabel" type="Label" parent="PauseTexture"]
 visible = false

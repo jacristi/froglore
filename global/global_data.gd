@@ -1,0 +1,57 @@
+extends Node
+
+
+@export var palette_white : Array[Color]
+@export var palette_red : Array[Color]
+@export var palette_yellow : Array[Color]
+@export var palette_blue : Array[Color]
+@export var palette_green : Array[Color]
+@export var palette_frog : Array[Color]
+@export var palette_purple : Array[Color]
+
+
+var frog_palettes_dict : Dictionary
+var frog_paletes_keys : Array
+
+var base_resolution: Vector2
+
+func _ready() -> void:
+    frog_palettes_dict["red"] =     palette_red
+    frog_palettes_dict["yellow"] =  palette_yellow
+    frog_palettes_dict["frog"] =    palette_frog
+    frog_palettes_dict["blue"] =    palette_blue
+    frog_palettes_dict["purple"] =  palette_purple
+    frog_palettes_dict["white"] =   palette_white
+    frog_paletes_keys = frog_palettes_dict.keys()
+    base_resolution = get_viewport().size
+
+
+func _input(event: InputEvent) -> void:
+    if event is not InputEventWithModifiers or event is not InputEventKey:
+        return
+
+    if event.shift_pressed and event.pressed and not event.is_echo():
+        match event.keycode:
+            KEY_1, KEY_KP_1:
+                _apply_scale(1)
+            KEY_2, KEY_KP_2:
+                _apply_scale(1.5)
+            KEY_3, KEY_KP_3:
+                _apply_scale(2)
+            KEY_4, KEY_KP_4:
+                _apply_scale(3)
+
+
+func _apply_scale(factor: float) -> void:
+    var window_position = DisplayServer.window_get_position()
+    var window_size = DisplayServer.window_get_size()
+
+    var new_window_size = Vector2i(base_resolution * factor)
+
+    var size_delta: Vector2i = new_window_size - window_size
+    var new_window_position = window_position - (size_delta / 2)
+
+    DisplayServer.window_set_size(new_window_size)
+    DisplayServer.window_set_position(new_window_position)
+
+    print("resized to %dx%d (scale = %f)" % [new_window_size.x, new_window_size.y, factor])
