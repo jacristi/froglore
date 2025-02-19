@@ -16,7 +16,7 @@ func _ready() -> void:
     Events.go_to_level.connect(on_hide_dialogue)
 
 
-func on_show_dialogue(text_to_show: String, timer: float=2.0) -> void:
+func on_show_dialogue(text_to_show: String, _timer: float=2.0) -> void:
     is_showing = true
     box_texture.hide()
     text_label.text = text_to_show
@@ -25,3 +25,4 @@ func on_show_dialogue(text_to_show: String, timer: float=2.0) -> void:
 
 func on_hide_dialogue(_arg:String="N/A") -> void:
     text_label.text = ''
+    box_texture.hide()

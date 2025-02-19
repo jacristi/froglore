@@ -19,6 +19,7 @@ func _on_body_entered(_body: Node2D) -> void:
     has_shown = true
     if dialogue_text == '': return
     player_in_range = true
+    #Events.show_dialogue.emit(dialogue_text)
 
 func _on_body_exited(_body: Node2D) -> void:
     Events.hide_dialogue.emit()
