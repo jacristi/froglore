@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="6_cwiyb"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="7_cg27m"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="8_tcoxn"]
-[ext_resource type="PackedScene" uid="uid://cjinq5jwwgkxt" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_red.tscn" id="9_wqwt1"]
 [ext_resource type="PackedScene" uid="uid://dh2yka227y4ty" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_purple.tscn" id="10_a1j5t"]
 [ext_resource type="PackedScene" uid="uid://qig4x6i0dh0x" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_purple.tscn" id="11_yt0ki"]
-[ext_resource type="PackedScene" uid="uid://bemi27gkjs5lp" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_red.tscn" id="12_vy2hl"]
 [ext_resource type="PackedScene" uid="uid://cv1pxtccbfm8b" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_green.tscn" id="13_f7cyx"]
+[ext_resource type="PackedScene" uid="uid://b3fwyshaeenli" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_yellow.tscn" id="13_yjqu1"]
+[ext_resource type="PackedScene" uid="uid://be02ngp2du6k6" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_yellow.tscn" id="14_8wpf4"]
 [ext_resource type="PackedScene" uid="uid://cfiiuhbbcvcga" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_green.tscn" id="14_otgve"]
 
 [node name="Level5" instance=ExtResource("1_4rve7")]
@@ -168,62 +168,62 @@ position = Vector2(116, 18)
 position = Vector2(103, 45)
 dialogue_text = "Try croaking at different statues"
 
-[node name="ButterflyBlockRed" parent="." index="59" instance=ExtResource("9_wqwt1")]
-position = Vector2(136, 53)
-starts_active = true
-
-[node name="ButterflyBlockRed2" parent="." index="60" instance=ExtResource("9_wqwt1")]
-position = Vector2(112, 5)
-starts_active = true
-
-[node name="ButterflyBlockRed3" parent="." index="61" instance=ExtResource("9_wqwt1")]
-position = Vector2(112, 13)
-starts_active = true
-
-[node name="ButterflyBlockPurple" parent="." index="62" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple" parent="." index="59" instance=ExtResource("10_a1j5t")]
 position = Vector2(136, 61)
 
-[node name="ButterflyBlockPurple2" parent="." index="63" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple2" parent="." index="60" instance=ExtResource("10_a1j5t")]
 position = Vector2(144, 61)
 
-[node name="ButterflyBlockPurple3" parent="." index="64" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple3" parent="." index="61" instance=ExtResource("10_a1j5t")]
 position = Vector2(152, 61)
 
-[node name="ButterflyBlockPurple4" parent="." index="65" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple4" parent="." index="62" instance=ExtResource("10_a1j5t")]
 position = Vector2(105, 29)
 
-[node name="ButterflyBlockPurple5" parent="." index="66" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple5" parent="." index="63" instance=ExtResource("10_a1j5t")]
 position = Vector2(97, 29)
 
-[node name="ButterflyBlockPurple6" parent="." index="67" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple6" parent="." index="64" instance=ExtResource("10_a1j5t")]
 position = Vector2(24, 45)
 starts_active = true
 
-[node name="ButterflyBlockPurple7" parent="." index="68" instance=ExtResource("10_a1j5t")]
+[node name="ButterflyBlockPurple7" parent="." index="65" instance=ExtResource("10_a1j5t")]
 position = Vector2(16, 45)
 starts_active = true
 
-[node name="ButterflyStatuePurple" parent="." index="69" instance=ExtResource("11_yt0ki")]
+[node name="ButterflyStatuePurple" parent="." index="66" instance=ExtResource("11_yt0ki")]
 position = Vector2(79, 33)
 
-[node name="ButterflyStatueRed" parent="." index="70" instance=ExtResource("12_vy2hl")]
-position = Vector2(169, 73)
-
-[node name="ButterflyBlockGreen" parent="." index="71" instance=ExtResource("13_f7cyx")]
+[node name="ButterflyBlockGreen" parent="." index="67" instance=ExtResource("13_f7cyx")]
 position = Vector2(91, 85)
 starts_active = true
 
-[node name="ButterflyBlockGreen2" parent="." index="72" instance=ExtResource("13_f7cyx")]
+[node name="ButterflyBlockGreen2" parent="." index="68" instance=ExtResource("13_f7cyx")]
 position = Vector2(91, 77)
 starts_active = true
 
-[node name="ButterflyBlockGreen3" parent="." index="73" instance=ExtResource("13_f7cyx")]
+[node name="ButterflyBlockGreen3" parent="." index="69" instance=ExtResource("13_f7cyx")]
 position = Vector2(91, 69)
 starts_active = true
 
-[node name="ButterflyStatueGreen" parent="." index="74" instance=ExtResource("14_otgve")]
+[node name="ButterflyStatueGreen" parent="." index="70" instance=ExtResource("14_otgve")]
 position = Vector2(56, 89)
 
-[node name="ButterflyBlockGreen4" parent="." index="75" instance=ExtResource("13_f7cyx")]
+[node name="ButterflyBlockGreen4" parent="." index="71" instance=ExtResource("13_f7cyx")]
 position = Vector2(91, 93)
 starts_active = true
+
+[node name="ButterflyBlockYellow" parent="." index="72" instance=ExtResource("13_yjqu1")]
+position = Vector2(112, 5)
+starts_active = true
+
+[node name="ButterflyBlockYellow2" parent="." index="73" instance=ExtResource("13_yjqu1")]
+position = Vector2(112, 13)
+starts_active = true
+
+[node name="ButterflyBlockYellow3" parent="." index="74" instance=ExtResource("13_yjqu1")]
+position = Vector2(136, 53)
+starts_active = true
+
+[node name="ButterflyStatueYellow" parent="." index="75" instance=ExtResource("14_8wpf4")]
+position = Vector2(169, 73)
