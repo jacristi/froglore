@@ -16,7 +16,7 @@ func _on_body_entered(_body: Node2D) -> void:
 
 func collect():
     if is_collected: return
-    set_self_inactive()
+    is_collected = true
     Events.dark_bug_collected.emit()
     animated_sprite_2d.play("collect")
     await animated_sprite_2d.animation_finished
@@ -24,11 +24,12 @@ func collect():
 
 func collect_along_others():
     animated_sprite_2d.play("collect")
-    set_self_inactive()
+    is_collected = true
     await animated_sprite_2d.animation_finished
 
 
 func set_self_inactive():
+    hide()
     is_collected = true
 
 
@@ -41,7 +42,7 @@ func set_self_active():
 
 
 func collect_as_purified(_level_key: String, _on_start: bool):
-    set_self_inactive()
+    is_collected = true
     animated_sprite_2d.play("purified")
     await animated_sprite_2d.animation_finished
     Events.level_purified_done.emit()
