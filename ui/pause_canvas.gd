@@ -2,8 +2,8 @@ extends CanvasLayer
 
 var is_paused := false
 @onready var pause_texture: NinePatchRect = $PauseTexture
-@onready var resume_button: Button = %ResumeButton
 @onready var animation_component: AnimationComponent = $PauseTexture/AnimationComponent
+@onready var resume_button: Button = %ResumeButton
 
 
 func _ready() -> void:
@@ -16,14 +16,16 @@ func show_hide_pause_menu():
     if is_paused:
         animation_component.close()
         get_tree().paused = false
+
         await get_tree().create_timer(.15).timeout
         pause_texture.hide()
     else:
+        resume_button.grab_focus()
         pause_texture.show()
         animation_component.open()
         await get_tree().create_timer(.15).timeout
         get_tree().paused = true
-        resume_button.grab_focus()
+
 
     is_paused = !is_paused
 

@@ -5,7 +5,7 @@ var btn_text: String
 
 
 func _ready() -> void:
-    btn_text = self.text 
+    btn_text = self.text
     get_viewport().gui_focus_changed.connect(focus_text)
 
 
