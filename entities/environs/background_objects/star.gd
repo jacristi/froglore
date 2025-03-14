@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-
+@export var start_delat: float = -1.0
 var start_delay_timer:= Timer.new()
 var anim = "star_1"
 var animation_names = [
