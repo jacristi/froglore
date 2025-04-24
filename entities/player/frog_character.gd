@@ -61,8 +61,9 @@ var curr_velocity: Vector2
 var button_down_held_time: float = 0
 var idle_timer: float = 0
 
-var super_hop_prep_1_reached := false
-var super_hop_prep_2_reached := false
+var super_hop_prep_reached := false
+
+var _is_paused:= false
 
 func _ready() -> void:
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
@@ -76,7 +77,8 @@ func _ready() -> void:
     dash_cooldown_timer.wait_time = dash_cooldown_duration
     Events.player_should_despawn.connect(despawn_player)
     Events.player_should_respawn.connect(respawn_player)
-
+    Events.level_purified_start.connect(pause_unpause_player_actions.bind(true))
+    Events.level_purified_done.connect(pause_unpause_player_actions.bind(false))
 
 
 func _physics_process(delta: float) -> void:
@@ -99,6 +101,10 @@ func _physics_process(delta: float) -> void:
         move_and_slide()
 
     handle_states_animations()
+
+
+func pause_unpause_player_actions(should_pause: bool) -> void:
+    _is_paused = should_pause
 
 
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
@@ -132,8 +138,8 @@ func handle_hopping(delta):
         # Reset dash cooldown for big hops (feels bad otherwise)
         dash_cooldown_timer.stop()
 
-        if button_down_held_time > 1:
-            hop(delta, 1.5 * clamp(button_down_held_time, 1, 2) * .8)
+        if super_hop_prep_reached:
+            hop(delta, 1.5 * 2 * .8)
         else:
             hop(delta, 1.5)
         return
@@ -338,24 +344,19 @@ func handle_interacts_with_up_down():
 func handle_buttons_held():
     if v_direction < 0 and can_prep_big_jump():
         button_down_held_time += .005
-    else:
+    elif state != states.IDLE or v_direction >= 0 and !super_hop_prep_reached:
         button_down_held_time = 0
-        super_hop_prep_1_reached = false
-        super_hop_prep_2_reached = false
+        super_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= 1 && not super_hop_prep_1_reached:
+    if button_down_held_time >= 1 && not super_hop_prep_reached:
         flash_sprite_component.start_flash_continuous_intervals(1)
-        super_hop_prep_1_reached = true
-        super_hop_prep(1)
-    elif button_down_held_time > 1.99 && not super_hop_prep_2_reached:
-        flash_sprite_component.start_flash_continuous_intervals(.75)
-        super_hop_prep_2_reached = true
-        super_hop_prep(2)
+        super_hop_prep_reached = true
+        super_hop_prep()
 
 
-func super_hop_prep(level: int):
-    Events.player_super_hop_prep.emit(level)
+func super_hop_prep():
+    Events.player_super_hop_prep.emit()
     flash_sprite_component.flash()
     scale_sprite_component.tween_scale()
 
@@ -428,7 +429,7 @@ func handle_wall_cling():
 
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01 and dash_unlocked
 func can_croak() -> bool: return state == states.IDLE or _is_wall_clinging()
-func has_control() -> bool: return !_is_hazard_respawning() and state != states.CROAKING and state != states.DASHING
+func has_control() -> bool: return !_is_hazard_respawning() and state != states.CROAKING and state != states.DASHING and !_is_paused
 func can_hop() -> bool: return move_hop_timer.time_left <= 0 and has_control() and (is_on_floor() or _is_wall_clinging())
 func _is_croaking() -> bool: return state == states.CROAKING or state == states.WALL_CLING_CROAKING
 func _is_hopping() -> bool: return velocity.y < 0 and state != states.DASHING

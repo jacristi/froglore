@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=24 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="13_oxus6"]
 [ext_resource type="PackedScene" uid="uid://b1ofnxnvttha7" path="res://ui/pause_canvas.tscn" id="14_eju75"]
 [ext_resource type="PackedScene" uid="uid://dc2fxotghqxf" path="res://ui/details_canvas.tscn" id="15_im5f3"]
+[ext_resource type="PackedScene" uid="uid://bw3gdnvvp8oci" path="res://entities/environs/background_objects/star.tscn" id="17_qg26c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
 light_mode = 2
@@ -29,11 +30,11 @@ noise = SubResource("FastNoiseLite_hh4t4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_nq1wp")
-shader_parameter/CAST_COLOR = Color(4.73787e-08, 0.0426247, 0.0621301, 1)
+shader_parameter/CAST_COLOR = Color(1.44392e-07, 0.0675919, 0.0920858, 1)
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 1.0
+shader_parameter/y_zoom = 3.36359
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
@@ -55,7 +56,7 @@ position = Vector2(28, -7)
 [node name="background" type="Sprite2D" parent="."]
 z_index = -15
 texture_repeat = 2
-position = Vector2(-38, 281)
+position = Vector2(-16, 209)
 texture = ExtResource("4_ov4qh")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
@@ -137,5 +138,350 @@ position = Vector2(-8, -4)
 
 [node name="PauseCanvas" parent="." instance=ExtResource("14_eju75")]
 visible = false
+
+[node name="Star" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(68, 39)
+
+[node name="Star2" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(65, 83)
+
+[node name="Star3" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(90, 10)
+
+[node name="Star4" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(120, 36)
+
+[node name="Star5" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(93, 51)
+
+[node name="Star6" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(167, 44)
+
+[node name="Star7" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(172, 84)
+
+[node name="Star8" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(176, 9)
+
+[node name="Star9" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(219, 41)
+
+[node name="Star10" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(205, 67)
+
+[node name="Star11" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(6, 14)
+
+[node name="Star12" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(26, 67)
+
+[node name="Star13" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(37, 13)
+
+[node name="Star14" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(55, 33)
+
+[node name="Star16" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(48, 89)
+
+[node name="Star17" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(100, 86)
+
+[node name="Star18" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(139, 38)
+
+[node name="Star19" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(142, 11)
+
+[node name="Star21" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(112, 14)
+
+[node name="Star22" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(92, 28)
+
+[node name="Star23" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(42, 52)
+
+[node name="Star24" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(22, 84)
+
+[node name="Star25" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(68, 62)
+
+[node name="Star26" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(129, 86)
+
+[node name="Star27" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(162, 66)
+
+[node name="Star28" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(137, 59)
+
+[node name="Star29" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(106, 66)
+
+[node name="Star30" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(63, 18)
+
+[node name="Star31" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(159, 25)
+
+[node name="Star32" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(190, 39)
+
+[node name="Star33" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(185, 62)
+
+[node name="Star34" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(205, 86)
+
+[node name="Star35" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(223, 78)
+
+[node name="Star36" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(216, 59)
+
+[node name="Star37" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(230, 21)
+
+[node name="Star38" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(221, 1)
+
+[node name="Star39" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(6, 62)
+
+[node name="Star20" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(202, 22)
+
+[node name="Star15" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(25, 31)
+
+[node name="Star40" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(246, 19)
+
+[node name="Star41" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(266, 72)
+
+[node name="Star42" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(277, 18)
+
+[node name="Star43" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(295, 38)
+
+[node name="Star44" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(288, 94)
+
+[node name="Star45" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(340, 91)
+
+[node name="Star46" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(379, 43)
+
+[node name="Star47" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(382, 16)
+
+[node name="Star48" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(352, 19)
+
+[node name="Star49" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(332, 33)
+
+[node name="Star50" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(282, 57)
+
+[node name="Star51" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(262, 89)
+
+[node name="Star52" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(308, 67)
+
+[node name="Star53" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(369, 91)
+
+[node name="Star54" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(402, 71)
+
+[node name="Star55" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(377, 64)
+
+[node name="Star56" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(346, 71)
+
+[node name="Star57" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(303, 23)
+
+[node name="Star58" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(399, 30)
+
+[node name="Star59" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(430, 44)
+
+[node name="Star60" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(425, 67)
+
+[node name="Star61" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(445, 91)
+
+[node name="Star62" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(463, 83)
+
+[node name="Star63" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(456, 64)
+
+[node name="Star64" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(470, 26)
+
+[node name="Star65" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(461, 6)
+
+[node name="Star66" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(246, 67)
+
+[node name="Star67" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(442, 27)
+
+[node name="Star68" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(265, 36)
+
+[node name="Star69" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(139, 89)
+
+[node name="Star70" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(185, 67)
+
+[node name="Star71" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(246, 91)
+
+[node name="Star72" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(279, 71)
+
+[node name="Star73" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(254, 64)
+
+[node name="Star74" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(223, 71)
+
+[node name="Star75" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(180, 23)
+
+[node name="Star76" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(276, 30)
+
+[node name="Star77" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-272, 42)
+
+[node name="Star78" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(302, 67)
+
+[node name="Star79" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-257, 89)
+
+[node name="Star80" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-239, 81)
+
+[node name="Star81" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-246, 62)
+
+[node name="Star82" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-232, 24)
+
+[node name="Star83" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-241, 4)
+
+[node name="Star84" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(123, 67)
+
+[node name="Star85" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-260, 25)
+
+[node name="Star86" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(142, 36)
+
+[node name="Star87" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-216, 22)
+
+[node name="Star88" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-196, 75)
+
+[node name="Star89" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-185, 21)
+
+[node name="Star90" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-167, 41)
+
+[node name="Star91" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-174, 97)
+
+[node name="Star92" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-122, 94)
+
+[node name="Star93" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-83, 46)
+
+[node name="Star94" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-80, 19)
+
+[node name="Star95" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-110, 22)
+
+[node name="Star96" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-130, 36)
+
+[node name="Star97" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-180, 60)
+
+[node name="Star98" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-200, 92)
+
+[node name="Star99" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-154, 70)
+
+[node name="Star100" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-93, 94)
+
+[node name="Star101" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-60, 74)
+
+[node name="Star102" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-85, 67)
+
+[node name="Star103" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-116, 74)
+
+[node name="Star104" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-159, 26)
+
+[node name="Star105" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-63, 33)
+
+[node name="Star106" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-32, 47)
+
+[node name="Star107" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-37, 70)
+
+[node name="Star108" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-17, 94)
+
+[node name="Star109" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(1, 86)
+
+[node name="Star110" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-6, 67)
+
+[node name="Star111" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(8, 29)
+
+[node name="Star112" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-1, 9)
+
+[node name="Star113" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-216, 70)
+
+[node name="Star114" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-20, 30)
+
+[node name="Star115" parent="." instance=ExtResource("17_qg26c")]
+position = Vector2(-197, 39)
 
 [connection signal="item_rect_changed" from="WaterSimple" to="WaterSimple" method="_on_item_rect_changed"]

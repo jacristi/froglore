@@ -1,20 +1,32 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://b201gqbnd6dqy"]
 
-[ext_resource type="StyleBox" uid="uid://3t2j5v1ommah" path="res://resources/btn_disabled.tres" id="1_401kt"]
-[ext_resource type="StyleBox" uid="uid://bhrmrciyb0dem" path="res://resources/btn_green_hover.tres" id="1_bq624"]
-[ext_resource type="StyleBox" uid="uid://dekq7p33fijn1" path="res://resources/btn_green_normal.tres" id="2_u8psi"]
-[ext_resource type="StyleBox" uid="uid://d3idstxkefkli" path="res://resources/btn_green_pressed.tres" id="5_w5mn1"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxvgb"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm8to"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjwde"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pfei"]
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(24, 0, 24, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8do8"]
+texture_margin_left = 8.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(72, 0, 24, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y02em"]
 
 [resource]
 Button/colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.999999, 0.987427, 0.543422, 1)
 Button/font_sizes/font_size = 8
-Button/styles/disabled = ExtResource("1_401kt")
-Button/styles/focus = SubResource("StyleBoxEmpty_wm8to")
-Button/styles/hover = ExtResource("1_bq624")
-Button/styles/normal = ExtResource("2_u8psi")
-Button/styles/pressed = ExtResource("5_w5mn1")
+Button/styles/disabled = SubResource("StyleBoxTexture_pxvgb")
+Button/styles/focus = SubResource("StyleBoxEmpty_sjwde")
+Button/styles/hover = SubResource("StyleBoxTexture_5pfei")
+Button/styles/normal = SubResource("StyleBoxTexture_g8do8")
+Button/styles/pressed = SubResource("StyleBoxEmpty_y02em")
 Label/colors/font_color = Color(0.321569, 0.47451, 0.027451, 1)

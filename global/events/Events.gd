@@ -4,6 +4,8 @@ signal level_reset(level_key: String, on_start: bool)
 signal level_completed(level_key: String, on_start: bool)
 signal level_purified(level_key: String, on_start: bool)
 signal level_new(level_key: String, on_start: bool)
+signal level_purified_start
+signal level_purified_done
 
 signal light_bug_collected
 signal dark_bug_collected
@@ -17,7 +19,7 @@ signal player_hop_landed
 signal player_croaked
 signal player_should_despawn
 signal player_should_respawn
-signal player_super_hop_prep(level: int)
+signal player_super_hop_prep()
 signal player_change_color(color: String)
 
 signal go_to_level(level_key: String)

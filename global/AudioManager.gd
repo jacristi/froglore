@@ -25,8 +25,7 @@ extends Node
 @onready var audio_grass_1: AudioStreamPlayer2D = $AudioGrass1
 @onready var audio_grass_2: AudioStreamPlayer2D = $AudioGrass2
 @onready var audio_grass_3: AudioStreamPlayer2D = $AudioGrass3
-@onready var audio_super_hop_prep_1: AudioStreamPlayer2D = $AudioSuperHopPrep1
-@onready var audio_super_hop_prep_2: AudioStreamPlayer2D = $AudioSuperHopPrep2
+@onready var audio_super_hop_prep: AudioStreamPlayer2D = $AudioSuperHopPrep2
 
 @onready var audio_butterfly_activate: AudioStreamPlayer2D = $AudioButterflyActivate
 @onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
@@ -150,12 +149,8 @@ func play_grass_rustle():
     await audio_grass.finished
     environ_audio_playing = false
 
-func play_super_hop_prep(level: int):
-    if level == 1:
-        audio_super_hop_prep_1.play()
-
-    if level == 2:
-        audio_super_hop_prep_2.play()
+func play_super_hop_prep():
+    audio_super_hop_prep.play()
 
 func play_butterfly_activate(_color: String):
     audio_butterfly_activate.play()

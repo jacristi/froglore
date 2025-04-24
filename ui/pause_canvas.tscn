@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1ofnxnvttha7"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ofnxnvttha7"]
 
 [ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="1_i6y7g"]
 [ext_resource type="Script" path="res://ui/pause_canvas.gd" id="1_r2cha"]
 [ext_resource type="Script" path="res://components/animation_component.gd" id="3_5ck68"]
+[ext_resource type="Script" path="res://ui/button.gd" id="4_68n3l"]
 
 [node name="PauseCanvas" type="CanvasLayer"]
 process_mode = 3
@@ -10,68 +11,78 @@ script = ExtResource("1_r2cha")
 
 [node name="PauseTexture" type="NinePatchRect" parent="."]
 clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -27.0
-offset_right = 20.5
-offset_bottom = 27.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("1_i6y7g")
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
+[node name="AnimationComponent" type="Node" parent="PauseTexture" node_paths=PackedStringArray("target")]
+script = ExtResource("3_5ck68")
+target = NodePath("..")
+scale_dur = 0.05
+
 [node name="PauseTextLabel" type="Label" parent="PauseTexture"]
+visible = false
+layout_mode = 2
+offset_top = 2.0
+offset_right = 240.0
+offset_bottom = 12.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
+theme_override_font_sizes/font_size = 12
+text = "Paused
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseTexture"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
-theme_override_font_sizes/font_size = 8
-text = "Paused
-"
-horizontal_alignment = 1
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
 
-[node name="ResumeButton" type="Button" parent="PauseTexture"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseTexture/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseTexture/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResumeButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 1.0
-offset_top = 17.0
-offset_right = 41.0
-offset_bottom = 34.0
+size_flags_horizontal = 7
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
-theme_override_font_sizes/font_size = 5
 text = "Resume"
+icon_alignment = 1
+script = ExtResource("4_68n3l")
 
-[node name="ExitButton" type="Button" parent="PauseTexture"]
+[node name="ExitButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-offset_left = 1.0
-offset_top = 32.0
-offset_right = 41.0
-offset_bottom = 49.0
+size_flags_horizontal = 7
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
-theme_override_font_sizes/font_size = 5
-text = "EXIT
-"
+text = "Exit"
+icon_alignment = 1
+script = ExtResource("4_68n3l")
 
-[node name="AnimationComponent" type="Node" parent="PauseTexture" node_paths=PackedStringArray("target")]
-script = ExtResource("3_5ck68")
-target = NodePath("..")
-transition_type = 4
-
-[connection signal="pressed" from="PauseTexture/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseTexture/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

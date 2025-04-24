@@ -20,18 +20,17 @@ func collect():
     Events.dark_bug_collected.emit()
     animated_sprite_2d.play("collect")
     await animated_sprite_2d.animation_finished
-    set_self_inactive()
 
 
 func collect_along_others():
     animated_sprite_2d.play("collect")
+    is_collected = true
     await animated_sprite_2d.animation_finished
-    set_self_inactive()
 
 
 func set_self_inactive():
-    is_collected = true
     hide()
+    is_collected = true
 
 
 func set_self_active():
@@ -46,4 +45,4 @@ func collect_as_purified(_level_key: String, _on_start: bool):
     is_collected = true
     animated_sprite_2d.play("purified")
     await animated_sprite_2d.animation_finished
-    set_self_inactive()
+    Events.level_purified_done.emit()

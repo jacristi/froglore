@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmyywyxmkv31w"]
 
-[ext_resource type="Script" path="res://entities/world/global_data.gd" id="1_ggiqp"]
+[ext_resource type="Script" path="res://global/global_data.gd" id="1_ggiqp"]
 
 [node name="GlobalData" type="Node"]
+process_mode = 3
 script = ExtResource("1_ggiqp")
 palette_white = Array[Color]([Color(1, 1, 1, 1), Color(0.913725, 0.929412, 0.929412, 1), Color(0.615686, 0.717647, 0.72549, 1), Color(0.129412, 0.117647, 0.156863, 1)])
 palette_red = Array[Color]([Color(0.807843, 0.407843, 0.12549, 1), Color(0.67451, 0.160784, 0.0627451, 1), Color(0.4, 0.0470588, 0.0470588, 1), Color(0.254902, 0, 0.121569, 1)])

@@ -15,7 +15,7 @@ uniform float tolerance : hint_range(0, 1) = .02;
 void fragment()
 {
     vec4 tex_color = texture(TEXTURE, UV);
-    
+
     float dist1 = distance(tex_color.rgb, target_color_1.rgb);
     if (dist1 < tolerance)
     {
@@ -36,7 +36,6 @@ void fragment()
     {
         tex_color.rgb = replace_color_4.rgb;
     }
-    
+
     COLOR = tex_color;
 }
-

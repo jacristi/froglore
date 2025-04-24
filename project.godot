@@ -17,11 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*res://events/events.tscn"
+Events="*res://global/events/events.tscn"
 LevelTransition="*res://entities/world/level_transition.tscn"
 LevelManager="*res://entities/world/level_manager.tscn"
-AudioManager="*res://entities/world/AudioManager.tscn"
-GlobalData="*res://entities/world/GlobalData.tscn"
+AudioManager="*res://global/AudioManager.tscn"
+GlobalData="*res://global/GlobalData.tscn"
 
 [debug]
 
@@ -34,12 +34,14 @@ window/size/viewport_height=135
 window/size/window_width_override=1200
 window/size/window_height_override=675
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [gui]
 
 theme/custom="res://resources/default_theme.tres"
 theme/custom_font="res://resources/fonts/capital_hill.ttf"
 theme/default_font_subpixel_positioning=0
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
