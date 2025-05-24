@@ -412,7 +412,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8hbu"]
-size = Vector2(6, 4)
+size = Vector2(6, 6)
 
 [node name="DarkBug" type="Area2D" groups=["DarkBugs"]]
 collision_layer = 0
