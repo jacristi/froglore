@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=34 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="4_ov4qh"]
 [ext_resource type="Shader" path="res://resources/shaders/water_ref.gdshader" id="5_nq1wp"]
 [ext_resource type="Texture2D" uid="uid://b2vxaroe50jaq" path="res://assets/spritesheets/ts-dirt.png" id="5_uam4e"]
-[ext_resource type="PackedScene" uid="uid://btv1layms0i7b" path="res://entities/world/tile_map.tscn" id="6_4c14t"]
 [ext_resource type="Texture2D" uid="uid://baf2dfm5syhxr" path="res://assets/spritesheets/spr-water-test.png" id="6_pgie6"]
 [ext_resource type="Texture2D" uid="uid://d3v2ybwgdejew" path="res://assets/spritesheets/ts-stone-overgrown.png" id="6_s8vo3"]
 [ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
@@ -1652,11 +1651,6 @@ tile_set = SubResource("TileSet_f37rh")
 [node name="EnvironTileLayer" type="TileMapLayer" parent="."]
 position = Vector2(28, -7)
 tile_set = SubResource("TileSet_i7nur")
-
-[node name="GroundTileMap" parent="." instance=ExtResource("6_4c14t")]
-visible = false
-z_index = -1
-position = Vector2(28, -7)
 
 [node name="Environs" type="Node2D" parent="."]
 

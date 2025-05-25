@@ -106,7 +106,7 @@ position = Vector2(208, 93)
 [node name="SpikesSmall6" parent="Hazards" index="5" instance=ExtResource("5_xt6q0")]
 position = Vector2(216, 93)
 
-[node name="CameraObjects" parent="." index="10"]
+[node name="CameraObjects" parent="." index="9"]
 visible = false
 
 [node name="Control" type="Control" parent="." index="14"]
