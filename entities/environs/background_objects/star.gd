@@ -22,6 +22,8 @@ func _ready() -> void:
     start_delay_timer.timeout.connect(animated_sprite_2d.play.bind(anim))
     Events.light_bug_collected.connect(start_animation)
     start_animation_with_delay()
+    #Events.dark_bug_collected.connect(hide)
+    #Events.player_should_respawn.connect(show)
 
 
 func start_animation():

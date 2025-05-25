@@ -221,9 +221,3 @@ position = Vector2(120, 93)
 
 [node name="SpikesSmall5" parent="Hazards" index="24" instance=ExtResource("5_aqnfc")]
 position = Vector2(160, 93)
-
-[node name="Bounds" parent="." index="9"]
-visible = false
-
-[node name="CameraObjects" parent="." index="10"]
-visible = false
