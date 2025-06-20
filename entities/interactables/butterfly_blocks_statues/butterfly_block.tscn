@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://bu0hnnoc44or1"]
 
 [ext_resource type="Texture2D" uid="uid://hpat3cjjx2sh" path="res://assets/spritesheets/spr-butterfly-statues-blocks.png" id="1_72evf"]
-[ext_resource type="Script" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block.gd" id="1_f8etx"]
+[ext_resource type="Script" uid="uid://ck1snh87jia4t" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block.gd" id="1_f8etx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_keg5g"]
 size = Vector2(8, 8)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bglbacsbocalp"]
 
-[ext_resource type="Script" path="res://ui/dialogue_sign.gd" id="1_6jaen"]
+[ext_resource type="Script" uid="uid://nbywr0lpk6j5" path="res://ui/dialogue_sign.gd" id="1_6jaen"]
 [ext_resource type="Texture2D" uid="uid://ncendtab2y8t" path="res://assets/spritesheets/spr-sign.png" id="2_8erog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3tw4"]

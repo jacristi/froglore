@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3d7jwjser3yq"]
 
-[ext_resource type="Script" path="res://entities/camera/camera_move_trigger.gd" id="1_xe2xq"]
+[ext_resource type="Script" uid="uid://bthtw5mronkn" path="res://entities/camera/camera_move_trigger.gd" id="1_xe2xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3li5"]
 size = Vector2(14, 71)

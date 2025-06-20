@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://c2hv75bvf8pcc"]
 
 [ext_resource type="Texture2D" uid="uid://fmqg2k53y2l2" path="res://assets/spritesheets/spr-world-statue.png" id="1_ii8af"]
-[ext_resource type="Script" path="res://entities/interactables/world_statue.gd" id="1_xn80e"]
+[ext_resource type="Script" uid="uid://cqsg3gy457s60" path="res://entities/interactables/world_statue.gd" id="1_xn80e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg3nn"]
 atlas = ExtResource("1_ii8af")

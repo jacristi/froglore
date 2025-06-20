@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=3 uid="uid://bmmx4og05hydg"]
 
-[ext_resource type="Script" path="res://entities/collectables/dark_bug.gd" id="1_q0lch"]
+[ext_resource type="Script" uid="uid://brk665k1me3h5" path="res://entities/collectables/dark_bug.gd" id="1_q0lch"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_3nqlo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0ifx"]

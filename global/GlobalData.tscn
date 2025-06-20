@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmyywyxmkv31w"]
 
-[ext_resource type="Script" path="res://global/global_data.gd" id="1_ggiqp"]
+[ext_resource type="Script" uid="uid://crdf1fwq3bxiv" path="res://global/global_data.gd" id="1_ggiqp"]
 
 [node name="GlobalData" type="Node"]
 process_mode = 3

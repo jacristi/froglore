@@ -1,12 +1,12 @@
 [gd_scene load_steps=80 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
-[ext_resource type="Script" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
-[ext_resource type="Shader" path="res://effects/shaders/ColorSwap.gdshader" id="2_r58ss"]
+[ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
+[ext_resource type="Shader" uid="uid://377qhjqcvtvn" path="res://effects/shaders/ColorSwap.gdshader" id="2_r58ss"]
 [ext_resource type="Texture2D" uid="uid://b56hmkk6xghsa" path="res://assets/spritesheets/spr-frog-idle-sleep.png" id="3_k8pd7"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
-[ext_resource type="Script" path="res://components/flash_sprite_component.gd" id="4_eh284"]
-[ext_resource type="Script" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
+[ext_resource type="Script" uid="uid://b6pxnp3rnp85e" path="res://components/flash_sprite_component.gd" id="4_eh284"]
+[ext_resource type="Script" uid="uid://csnip6xj31s46" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbbra"]
 size = Vector2(3, 2)

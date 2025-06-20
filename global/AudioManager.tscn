@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bxq28plxba3el"]
 
-[ext_resource type="Script" path="res://global/AudioManager.gd" id="1_bmmmj"]
+[ext_resource type="Script" uid="uid://bmmxu4pr06env" path="res://global/AudioManager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
 [ext_resource type="AudioStream" uid="uid://dnqsu416def4n" path="res://assets/audio/level_complete.wav" id="4_xla2n"]
 [ext_resource type="AudioStream" uid="uid://dq3cwk0f6dwqc" path="res://assets/audio/level_reset.wav" id="5_7o0t7"]
@@ -30,7 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://r5ks4cjcfjy" path="res://assets/audio/butterfly_activate.wav" id="28_pmb4w"]
 [ext_resource type="AudioStream" uid="uid://bjrxqaay5e5kj" path="res://assets/audio/butterfly_deactivate.wav" id="29_onbis"]
 [ext_resource type="AudioStream" uid="uid://bkd57hcapj8ln" path="res://assets/audio/color-change.wav" id="30_nb0bq"]
-[ext_resource type="Script" path="res://components/variable_pitch_audio_player.gd" id="31_houc0"]
+[ext_resource type="Script" uid="uid://bv1vmuwat65y3" path="res://components/variable_pitch_audio_player.gd" id="31_houc0"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3

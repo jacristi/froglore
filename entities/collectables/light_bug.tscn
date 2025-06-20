@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://nvjmvg5q00tq"]
 
-[ext_resource type="Script" path="res://entities/collectables/light_bug.gd" id="1_scjtg"]
+[ext_resource type="Script" uid="uid://b0172p4tojq2c" path="res://entities/collectables/light_bug.gd" id="1_scjtg"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_2yodk"]
 [ext_resource type="PackedScene" uid="uid://dfplncsgfx1ek" path="res://effects/collect_light_bug_effect.tscn" id="3_ssafp"]
 

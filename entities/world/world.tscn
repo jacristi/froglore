@@ -1,15 +1,15 @@
 [gd_scene load_steps=34 format=3 uid="uid://bkt2ohyxi3n1h"]
 
-[ext_resource type="Script" path="res://entities/world/world.gd" id="1_y1phm"]
+[ext_resource type="Script" uid="uid://d3m1l4wslkqa3" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
 [ext_resource type="Texture2D" uid="uid://080k7x3oei7m" path="res://assets/spritesheets/spr-environ-tiles.png" id="3_hcbdo"]
 [ext_resource type="Texture2D" uid="uid://cy7vwgj5dl85b" path="res://assets/spritesheets/ts-grassy-dirt.png" id="4_ad735"]
 [ext_resource type="Texture2D" uid="uid://dkucvqnnrypuf" path="res://assets/spritesheets/spr-space-bg.png" id="4_ov4qh"]
-[ext_resource type="Shader" path="res://resources/shaders/water_ref.gdshader" id="5_nq1wp"]
+[ext_resource type="Shader" uid="uid://cmdvff0216qhu" path="res://resources/shaders/water_ref.gdshader" id="5_nq1wp"]
 [ext_resource type="Texture2D" uid="uid://b2vxaroe50jaq" path="res://assets/spritesheets/ts-dirt.png" id="5_uam4e"]
 [ext_resource type="Texture2D" uid="uid://baf2dfm5syhxr" path="res://assets/spritesheets/spr-water-test.png" id="6_pgie6"]
 [ext_resource type="Texture2D" uid="uid://d3v2ybwgdejew" path="res://assets/spritesheets/ts-stone-overgrown.png" id="6_s8vo3"]
-[ext_resource type="Script" path="res://entities/world/water.gd" id="7_ayoaj"]
+[ext_resource type="Script" uid="uid://qft8yqr3tfaj" path="res://entities/world/water.gd" id="7_ayoaj"]
 [ext_resource type="PackedScene" uid="uid://l56w4y52ls8x" path="res://ui/end_credits.tscn" id="8_iuul8"]
 [ext_resource type="PackedScene" uid="uid://djt7soxcfhakp" path="res://entities/interactables/level_exit.tscn" id="8_tjbdh"]
 [ext_resource type="PackedScene" uid="uid://djsrnisg8j1yc" path="res://entities/camera/camera_main.tscn" id="9_jx6nn"]
@@ -1624,11 +1624,11 @@ noise = SubResource("FastNoiseLite_hh4t4")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpxcl"]
 shader = ExtResource("5_nq1wp")
 shader_parameter/CAST_COLOR = Color(1.44392e-07, 0.0675919, 0.0920858, 1)
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 2.51984
-shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
+shader_parameter/y_zoom = 7.23662
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(733, 20)

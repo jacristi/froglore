@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://w1r5btua3lov"]
 
-[ext_resource type="Script" path="res://global/events/Events.gd" id="1_678dw"]
+[ext_resource type="Script" uid="uid://dh1tw1gsq0kt8" path="res://global/events/Events.gd" id="1_678dw"]
 
 [node name="Events" type="Node"]
 process_mode = 3

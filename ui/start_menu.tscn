@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwv46wwxmw4jr"]
 
-[ext_resource type="Script" path="res://ui/start_menu.gd" id="1_hflfg"]
+[ext_resource type="Script" uid="uid://rn44mwvg3vrx" path="res://ui/start_menu.gd" id="1_hflfg"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="2_1md6x"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_fvfle"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_gqg7j"]
