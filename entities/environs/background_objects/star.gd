@@ -16,10 +16,25 @@ var animation_names = [
 
 func _ready() -> void:
     anim = animation_names.pick_random()
-    animated_sprite_2d.play(anim)
-    animated_sprite_2d.pause()
     add_child(start_delay_timer)
     start_delay_timer.one_shot = true
     start_delay_timer.wait_time = randf_range(0, 6)
     start_delay_timer.timeout.connect(animated_sprite_2d.play.bind(anim))
+    Events.light_bug_collected.connect(start_animation)
+    start_animation_with_delay()
+    #Events.dark_bug_collected.connect(hide)
+    #Events.player_should_respawn.connect(show)
+
+
+func start_animation():
+    animated_sprite_2d.stop()
+    animated_sprite_2d.play(anim)
+    await get_tree().create_timer(.75).timeout
+    start_animation_with_delay()
+
+
+func start_animation_with_delay():
+    animated_sprite_2d.stop()
+    animated_sprite_2d.play(anim)
+    animated_sprite_2d.pause()
     start_delay_timer.start()

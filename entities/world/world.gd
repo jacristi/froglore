@@ -8,8 +8,8 @@ extends Node2D
 @export_multiline var dialogue_completed: String = "N/A"
 @export_multiline var dialogue_purified: String = "N/A"
 
-@onready var level_exit: Area2D = $LevelExit
-@onready var dialogue_sign: Area2D = $DialogueSign
+@onready var level_exit: Area2D = $Interactables/LevelExit
+@onready var dialogue_sign: Area2D = $Environs/DialogueSign
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
 

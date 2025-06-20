@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da8tv1vemxgl3"]
 
-[ext_resource type="Script" path="res://entities/camera/scene_transition_area.gd" id="1_ioukt"]
+[ext_resource type="Script" uid="uid://cbe4tslsnkot7" path="res://entities/camera/scene_transition_area.gd" id="1_ioukt"]
 
 [node name="SceneTransitionArea" type="Area2D"]
 collision_layer = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=51 format=3 uid="uid://btrfu5gdv336r"]
 
 [ext_resource type="Texture2D" uid="uid://dyeoppdof3n0o" path="res://assets/spritesheets/spr-frog-statue-12x48.png" id="1_eafvf"]
-[ext_resource type="Script" path="res://entities/interactables/frog_statue.gd" id="1_jf8qr"]
+[ext_resource type="Script" uid="uid://bdtsgqef4cjtb" path="res://entities/interactables/frog_statue.gd" id="1_jf8qr"]
 [ext_resource type="Texture2D" uid="uid://c5j6xqc1xqtkt" path="res://assets/spritesheets/spr-frog-statue-deactivate.png" id="3_7vuqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k440d"]

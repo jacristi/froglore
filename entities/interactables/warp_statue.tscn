@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://f1anqxv1uv26"]
 
 [ext_resource type="Texture2D" uid="uid://chd5phb2agc42" path="res://assets/spritesheets/spr-warp-statues.png" id="1_8d0dk"]
-[ext_resource type="Script" path="res://entities/interactables/warp_statue.gd" id="1_nolcm"]
+[ext_resource type="Script" uid="uid://trojmkvxqqlt" path="res://entities/interactables/warp_statue.gd" id="1_nolcm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwjb4"]
 atlas = ExtResource("1_8d0dk")

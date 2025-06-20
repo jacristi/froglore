@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdn7b6j5j1ydn"]
 
-[ext_resource type="Script" path="res://entities/environs/interactable_environs/interactable_environ.gd" id="1_7hx3p"]
+[ext_resource type="Script" uid="uid://clvq5hvbl5jlt" path="res://entities/environs/interactable_environs/interactable_environ.gd" id="1_7hx3p"]
 
 [node name="InteractableEnviron" type="Area2D" groups=["InteractableEnviron"]]
 z_index = 2

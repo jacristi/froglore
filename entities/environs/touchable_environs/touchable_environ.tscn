@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b1feig1dx48to"]
 
-[ext_resource type="Script" path="res://entities/environs/touchable_environs/touchable_environ.gd" id="1_c2tqd"]
+[ext_resource type="Script" uid="uid://c5gxly8mpdj0k" path="res://entities/environs/touchable_environs/touchable_environ.gd" id="1_c2tqd"]
 
 [node name="TouchableEnviron" type="Area2D"]
 collision_layer = 0
