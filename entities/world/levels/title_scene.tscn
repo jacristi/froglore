@@ -28,6 +28,11 @@ tile_map_data = PackedByteArray("AAD9/xYAAQABAAAAAAD9/xUAAQAEAAEAAAD9/xQAAQAEAAE
 [node name="EnvironTileLayer" parent="." index="2"]
 tile_map_data = PackedByteArray("AAD+/wsAAAAGAAMAAAAEAAwAAAAGAAMAAAAFAAwAAAAGAAMAAAAHAAwAAAAGAAMAAAAIAAwAAAAGAAMAAAAKAAsAAAAGAAMAAAALAAsAAAAGAAMAAAAOAAwAAAAGAAMAAAANAAwAAAAGAAMAAAAQAAwAAAAGAAMAAAARAAwAAAAGAAMAAAASAAsAAAADAAMAAAAYAAoAAAADAAMAAAAJAAsAAAADAAMAAAACAAsAAAADAAMAAAD//wUAAAADAAMAAAAVAAQAAAAFAAMAAAATAAQAAAADAAMAAAAAAAUAAAAFAAMAAAAWAAQAAAAGAAMAAAA=")
 
+[node name="DialogueSign" parent="Environs" index="0"]
+position = Vector2(80, 93)
+dialogue_text = "Press 'UP' to play"
+show_sprite = false
+
 [node name="TouchableGrass1" parent="Environs" index="3" instance=ExtResource("7_l5171")]
 position = Vector2(105, 90)
 scale = Vector2(1.0004, 1)
