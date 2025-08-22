@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=4 uid="uid://cqul61c7w5j23"]
+[gd_scene load_steps=11 format=4 uid="uid://cqul61c7w5j23"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_cp077"]
 [ext_resource type="PackedScene" uid="uid://c2hv75bvf8pcc" path="res://entities/interactables/world_statue.tscn" id="3_hf6fm"]
 [ext_resource type="PackedScene" uid="uid://f1anqxv1uv26" path="res://entities/interactables/warp_statue.tscn" id="4_l2rno"]
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="4_w5xms"]
+[ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="5_d71lq"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="5_pq1af"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="6_2bf5w"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="7_b6nie"]
 [ext_resource type="PackedScene" uid="uid://b3d7jwjser3yq" path="res://entities/camera/camera_move_trigger.tscn" id="8_86bvj"]
+[ext_resource type="PackedScene" uid="uid://doaxo1pfqtqp7" path="res://entities/environs/big_frog_1.tscn" id="9_rvxq4"]
 
 [node name="Level0" instance=ExtResource("1_cp077")]
 curr_level = "level_0"
@@ -46,6 +48,12 @@ position = Vector2(220, 26)
 
 [node name="TouchableGrass10" parent="Environs" index="7" instance=ExtResource("4_w5xms")]
 position = Vector2(18, 26)
+
+[node name="DialogueSign2" parent="Environs" index="11" instance=ExtResource("5_d71lq")]
+position = Vector2(404, 93)
+dialogue_text = "Ah, an explorer"
+show_sprite = false
+show_once = true
 
 [node name="WarpStatue1" parent="Interactables" index="0" instance=ExtResource("4_l2rno")]
 position = Vector2(20, 97)
@@ -99,6 +107,9 @@ scroll_right_val = 236
 
 [node name="CameraMoveTrigger4" parent="CameraObjects" index="5"]
 position = Vector2(252, -6)
+
+[node name="BigFrog1" parent="CameraObjects" index="6" instance=ExtResource("9_rvxq4")]
+position = Vector2(404, 97)
 
 [node name="EndCredits" parent="." index="10"]
 offset_top = 4.0
