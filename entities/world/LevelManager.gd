@@ -2,7 +2,7 @@ extends Node
 
 var current_level = ''
 
-var should_save_load:= true
+var should_save_load:= false
 
 const SAVE_PATH = "user://froglore_save.cfg"
 const DEBUG_SAVE_PATH = "res://_data/froglore_save.cfg"
