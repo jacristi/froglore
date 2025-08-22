@@ -36,6 +36,10 @@ window/size/window_height_override=675
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/James/Videos/Captures/godot-froglore-capture.avi"
+
 [gui]
 
 theme/custom="res://resources/default_theme.tres"
