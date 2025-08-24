@@ -349,7 +349,7 @@ func handle_buttons_held():
         super_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= 1 && not super_hop_prep_reached:
+    if button_down_held_time >= .4 && not super_hop_prep_reached:
         flash_sprite_component.start_flash_continuous_intervals(1)
         super_hop_prep_reached = true
         super_hop_prep()
