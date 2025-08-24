@@ -170,6 +170,9 @@ func handle_face_direction():
         face_direction = -1 if velocity.x < 0 else 1
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
+    if Input.is_action_just_pressed("up") and _can_turn_face():
+        print('turn face')
+        animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
 
 func handle_move_directions():
     h_direction = Input.get_axis("move_left", "move_right")
@@ -439,7 +442,7 @@ func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_contro
 func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
-
+func _can_turn_face() -> bool: return state == states.IDLE and (current_interactable == null or !current_interactable.is_in_group("LevelExit"))
 func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
 func can_prep_big_jump() -> bool: return state == states.IDLE and super_hop_unlocked
 
