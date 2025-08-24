@@ -171,7 +171,6 @@ func handle_face_direction():
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
     if Input.is_action_just_pressed("up") and _can_turn_face():
-        print('turn face')
         animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
 
 func handle_move_directions():
