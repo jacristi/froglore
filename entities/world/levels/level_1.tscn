@@ -48,7 +48,7 @@ position = Vector2(144, 98)
 position = Vector2(16, 74)
 
 [node name="TouchableGrass7" parent="Environs" index="6" instance=ExtResource("8_0knea")]
-position = Vector2(208, 42)
+position = Vector2(218, 42)
 
 [node name="TouchableGrass5" parent="Environs" index="7" instance=ExtResource("8_0knea")]
 position = Vector2(216, 90)
@@ -60,7 +60,7 @@ position = Vector2(69, 90)
 position = Vector2(106, 90)
 
 [node name="TouchableGrass8" parent="Environs" index="10" instance=ExtResource("10_2xo51")]
-position = Vector2(216, 42)
+position = Vector2(176, 89)
 
 [node name="TouchableGrass6" parent="Environs" index="11" instance=ExtResource("11_1gpaj")]
 position = Vector2(164, 90)
