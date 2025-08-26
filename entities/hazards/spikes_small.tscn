@@ -1,21 +1,120 @@
-[gd_scene load_steps=6 format=3 uid="uid://i1c2dkftopmh"]
+[gd_scene load_steps=15 format=3 uid="uid://i1c2dkftopmh"]
 
-[ext_resource type="Texture2D" uid="uid://ca0lifu2wcgtp" path="res://assets/spritesheets/ts-hazard-spikes.png" id="1_5mada"]
+[ext_resource type="Script" uid="uid://bxq05628t0f5k" path="res://entities/hazards/spikes_small.gd" id="1_8xpn8"]
+[ext_resource type="Texture2D" uid="uid://dwknclqolcei7" path="res://assets/spritesheets/spr-spikes.png" id="1_ghact"]
 [ext_resource type="PackedScene" uid="uid://dly3jxemtyvxq" path="res://entities/hazards/hazard_area.tscn" id="2_it3em"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rawgp"]
-atlas = ExtResource("1_5mada")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xpn8"]
+atlas = ExtResource("1_ghact")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn6av"]
+atlas = ExtResource("1_ghact")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vink0"]
+atlas = ExtResource("1_ghact")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70erb"]
+atlas = ExtResource("1_ghact")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uocvh"]
+atlas = ExtResource("1_ghact")
 region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7urd"]
+atlas = ExtResource("1_ghact")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc0x3"]
+atlas = ExtResource("1_ghact")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pve07"]
+atlas = ExtResource("1_ghact")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g4jn"]
+atlas = ExtResource("1_ghact")
+region = Rect2(64, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5j8ir"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rawgp")
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn6av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vink0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70erb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uocvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7urd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc0x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pve07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g4jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpn8")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufexl"]
@@ -23,10 +122,13 @@ size = Vector2(6, 4)
 
 [node name="SpikesSmall" type="Node2D"]
 position = Vector2(0, -4)
+script = ExtResource("1_8xpn8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_5j8ir")
+autoplay = "default"
+frame_progress = 0.928856
 
 [node name="HazardArea" parent="." instance=ExtResource("2_it3em")]
 
