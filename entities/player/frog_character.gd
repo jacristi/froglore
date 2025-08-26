@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var move_speed := 55.0
 @export var hop_height := 120.0
 @export var hop_cooldown := .35
-@export var dash_velocity_x = 200.0
+@export var dash_velocity_x = 192.0
 @export var dash_velocity_y = 10.0
 @export var dash_duration = 0.1
 @export var dash_cooldown_duration := 1.0
@@ -79,7 +79,8 @@ func _ready() -> void:
     Events.player_should_respawn.connect(respawn_player)
     Events.level_purified_start.connect(pause_unpause_player_actions.bind(true))
     Events.level_purified_done.connect(pause_unpause_player_actions.bind(false))
-
+    Events.frog_statue_activated.connect(func():
+        if current_interactable != null: enter_interactable(current_interactable))
 
 func _physics_process(delta: float) -> void:
     prep_jump = false
@@ -171,6 +172,7 @@ func handle_face_direction():
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
     if Input.is_action_just_pressed("up") and _can_turn_face():
+        face_direction = -face_direction
         animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
 
 func handle_move_directions():
@@ -220,10 +222,24 @@ func respawn_player():
 
 func enter_interactable(area: Area2D):
     current_interactable = area
+    if area.is_in_group("FrogStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("WarpStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("WorldStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("InteractableEnviron"):
+        pass
+    if area.is_in_group("ButterflyStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("LevelExit"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+
 
 
 func exit_interactable(_area: Area2D):
     current_interactable = null
+    Events.hide_dialogue.emit()
 
 
 func enter_dialogue(area: Area2D):

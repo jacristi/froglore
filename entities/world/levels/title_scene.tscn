@@ -29,7 +29,7 @@ tile_map_data = PackedByteArray("AAD9/xYAAQABAAAAAAD9/xUAAQAEAAEAAAD9/xQAAQAEAAE
 tile_map_data = PackedByteArray("AAD+/wsAAAAGAAMAAAAEAAwAAAAGAAMAAAAFAAwAAAAGAAMAAAAHAAwAAAAGAAMAAAAIAAwAAAAGAAMAAAAKAAsAAAAGAAMAAAALAAsAAAAGAAMAAAAOAAwAAAAGAAMAAAANAAwAAAAGAAMAAAAQAAwAAAAGAAMAAAARAAwAAAAGAAMAAAASAAsAAAADAAMAAAAYAAoAAAADAAMAAAAJAAsAAAADAAMAAAACAAsAAAADAAMAAAD//wUAAAADAAMAAAAVAAQAAAAFAAMAAAATAAQAAAADAAMAAAAAAAUAAAAFAAMAAAAWAAQAAAAGAAMAAAA=")
 
 [node name="DialogueSign" parent="Environs" index="0"]
-position = Vector2(80, 93)
+position = Vector2(-29, 60)
 dialogue_text = "Press 'UP' to play"
 show_sprite = false
 
@@ -74,6 +74,7 @@ position = Vector2(117, 78)
 
 [node name="LevelExit" parent="Interactables" index="0"]
 position = Vector2(80, 93)
+dialogue_text = "Press 'UP' to play"
 
 [node name="InteractableFlower1" parent="Interactables" index="1" instance=ExtResource("13_gwsvl")]
 position = Vector2(181, 89)

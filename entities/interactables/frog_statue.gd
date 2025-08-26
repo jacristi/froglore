@@ -7,6 +7,8 @@ var state = states.INACTIVE
 
 @export var override_active_state:= false
 
+@export var dialogue_text:= "..."
+
 func _ready() -> void:
     Events.dark_bug_collected.connect(set_state_inactive)
     handle_initial_states()
@@ -15,10 +17,13 @@ func _ready() -> void:
 func handle_initial_states() -> void:
     if state == states.INACTIVE:
         animated_sprite_2d.play("inactive")
+
     if state == states.READY:
         animated_sprite_2d.play("ready")
+
     if state == states.ACTIVE or override_active_state:
         animated_sprite_2d.play("active")
+
 
 
 func set_state_inactive():
@@ -28,11 +33,13 @@ func set_state_inactive():
 
     state = states.INACTIVE
     animated_sprite_2d.play("inactive")
+    dialogue_text = "..."
 
 
 func set_state_ready():
     state = states.READY
     animated_sprite_2d.play("ready")
+    dialogue_text = "I am listening"
 
 
 func set_state_active():
@@ -43,6 +50,7 @@ func set_state_active():
     await animated_sprite_2d.animation_finished
     state = states.ACTIVE
     animated_sprite_2d.play("active")
+    dialogue_text = "Thank you"
     Events.frog_statue_activated.emit()
 
 
