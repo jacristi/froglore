@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var dash_duration = 0.1
 @export var dash_cooldown_duration := 1.0
 @export var wall_cling_cooldown := 0.3
+@export var big_hop_buffer_time := 0.075
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,6 +18,8 @@ extends CharacterBody2D
 @onready var starting_position := global_position
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
+@onready var big_hop_buffer_timer: Timer = $BigHopBufferTimer
+
 @onready var hop_land_effect: CPUParticles2D = $HopLandEffect
 @onready var flash_sprite_component: FlashSpriteComponent = $FlashSpriteComponent
 @onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
@@ -34,6 +37,8 @@ var face_direction := 1
 var dash_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_big_fall_velocity:= false
+var can_big_hop:= false
+var has_buffered_big_hop:= false
 
 enum states {
     IDLE,
@@ -75,6 +80,8 @@ func _ready() -> void:
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
+    big_hop_buffer_timer.wait_time = big_hop_buffer_time
+    big_hop_buffer_timer.timeout.connect(func(): can_big_hop = false)
     Events.player_should_despawn.connect(despawn_player)
     Events.player_should_respawn.connect(respawn_player)
     Events.level_purified_start.connect(pause_unpause_player_actions.bind(true))
@@ -111,12 +118,16 @@ func pause_unpause_player_actions(should_pause: bool) -> void:
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
     Events.player_hopped.emit()
+    if has_buffered_big_hop: return
+    can_big_hop = true
+    big_hop_buffer_timer.start()
 
 
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
+    has_buffered_big_hop = false
     wall_cling_used_count = 0
 
     if has_big_fall_velocity:
@@ -134,23 +145,27 @@ func hop_landed() -> void:
 func handle_hopping(delta):
     if not has_control(): return
 
-    if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
+    if Input.is_action_pressed("jump"):
+        if (can_hop() and is_on_floor()) or (can_big_hop and !has_buffered_big_hop):
 
-        # Reset dash cooldown for big hops (feels bad otherwise)
-        dash_cooldown_timer.stop()
+            # Reset dash cooldown for big hops (feels bad otherwise)
+            dash_cooldown_timer.stop()
+            can_big_hop = false
+            has_buffered_big_hop = true
+            big_hop_buffer_timer.stop()
 
-        if super_hop_prep_reached:
-            hop(delta, 1.5 * 2 * .8)
-        else:
+            if super_hop_prep_reached:
+                hop(delta, 1.5 * 2 * .8)
+            else:
+                hop(delta, 1.5)
+            return
+
+        elif can_hop() and _is_wall_clinging():
             hop(delta, 1.5)
-        return
-
-    if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
-        hop(delta, 1.5)
-        wall_cling_used_count += 1
-        wall_cling_timer.wait_time = wall_cling_cooldown
-        wall_cling_timer.start()
-        return
+            wall_cling_used_count += 1
+            wall_cling_timer.wait_time = wall_cling_cooldown
+            wall_cling_timer.start()
+            return
 
     if h_direction and can_hop() and is_on_floor():
         hop(delta)
@@ -460,7 +475,6 @@ func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state
 func _can_turn_face() -> bool: return state == states.IDLE and (current_interactable == null or !current_interactable.is_in_group("LevelExit"))
 func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
 func can_prep_big_jump() -> bool: return state == states.IDLE and super_hop_unlocked
-
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \
 or current_interactable.is_in_group("WarpStatues") \

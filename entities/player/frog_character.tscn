@@ -642,6 +642,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="BigHopBufferTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="HopLandEffect" parent="." instance=ExtResource("3_kt63j")]
 
 [node name="FlashSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
