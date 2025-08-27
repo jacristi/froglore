@@ -9,6 +9,7 @@ extends Node
 @export var palette_frog : Array[Color]
 @export var palette_purple : Array[Color]
 
+var input_type:= "keyboard"
 
 var frog_palettes_dict : Dictionary
 var frog_paletes_keys : Array

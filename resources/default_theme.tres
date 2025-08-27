@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b201gqbnd6dqy"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b201gqbnd6dqy"]
+
+[ext_resource type="FontFile" uid="uid://dldk01fcxuhi0" path="res://resources/fonts/m3x6.ttf" id="1_mwhd1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxvgb"]
 
@@ -23,10 +25,14 @@ region_rect = Rect2(72, 0, 24, 16)
 [resource]
 Button/colors/font_color = Color(0.509804, 0.819608, 0.886275, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 8
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_mwhd1")
 Button/styles/disabled = SubResource("StyleBoxTexture_pxvgb")
 Button/styles/focus = SubResource("StyleBoxEmpty_sjwde")
 Button/styles/hover = SubResource("StyleBoxTexture_5pfei")
 Button/styles/normal = SubResource("StyleBoxTexture_g8do8")
 Button/styles/pressed = SubResource("StyleBoxEmpty_y02em")
 Label/colors/font_color = Color(0.321569, 0.47451, 0.027451, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_mwhd1")

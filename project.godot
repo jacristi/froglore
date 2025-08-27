@@ -42,6 +42,7 @@ movie_writer/movie_file="C:/Users/James/Videos/Captures/godot-froglore-capture.a
 
 [gui]
 
+fonts/dynamic_fonts/use_oversampling=false
 theme/custom="res://resources/default_theme.tres"
 theme/custom_font="res://resources/fonts/capital_hill.ttf"
 theme/default_font_subpixel_positioning=0

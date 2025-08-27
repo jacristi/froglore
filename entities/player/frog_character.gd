@@ -207,6 +207,13 @@ func handle_move_directions():
     v_direction = Input.get_axis("down", "up")
 
 
+func _input(event: InputEvent) -> void:
+    # Track most recent input types
+    if event is InputEventJoypadButton: GlobalData.input_type = 'controller'
+    if event is InputEventKey: GlobalData.input_type = 'keyboard'
+    # print(event.as_text())
+
+
 func apply_gravity(delta):
     if is_on_floor(): return
     if _is_dashing(): return
