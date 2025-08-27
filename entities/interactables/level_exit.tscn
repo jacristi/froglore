@@ -123,6 +123,7 @@ size = Vector2(8, 14)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_hqesp")
+dialogue_text = "Press 'UP' for next level"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)
