@@ -110,6 +110,16 @@ func _physics_process(delta: float) -> void:
 
     handle_states_animations()
 
+    get_wall_direction()
+
+
+func get_wall_direction() -> int:
+    if is_on_wall() and get_slide_collision_count() > 0:
+        for i in range (0,get_slide_collision_count()):
+            var norm = get_slide_collision(i).get_normal()
+            if norm.x != 0: return norm.x
+    return 0
+
 
 func pause_unpause_player_actions(should_pause: bool) -> void:
     _is_paused = should_pause
@@ -145,6 +155,7 @@ func hop_landed() -> void:
 func handle_hopping(delta):
     if not has_control(): return
 
+    # is pressed so the input can be held down
     if Input.is_action_pressed("jump"):
         if (can_hop() and is_on_floor()) or (can_big_hop and !has_buffered_big_hop):
 
@@ -160,7 +171,8 @@ func handle_hopping(delta):
                 hop(delta, 1.5)
             return
 
-        elif can_hop() and _is_wall_clinging():
+        # use just pressed so it requires a fresh jump input
+        elif Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging():
             hop(delta, 1.5)
             wall_cling_used_count += 1
             wall_cling_timer.wait_time = wall_cling_cooldown
@@ -473,7 +485,13 @@ func _is_dashing() -> bool: return state == states.DASHING # and check condition
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
 func _can_turn_face() -> bool: return state == states.IDLE and (current_interactable == null or !current_interactable.is_in_group("LevelExit"))
-func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
+func _can_cling_to_wall() ->  bool: return (
+    is_on_wall()
+    and wall_cling_timer.time_left <= 0.0
+    and wall_cling_unlocked
+    and wall_cling_used_count < wall_cling_used_max
+    and get_wall_direction() == -face_direction
+    )
 func can_prep_big_jump() -> bool: return state == states.IDLE and super_hop_unlocked
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \
