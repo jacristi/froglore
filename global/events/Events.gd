@@ -16,7 +16,7 @@ signal player_hit_hazard
 signal player_has_respawned
 signal player_hopped
 signal player_hop_landed
-signal player_croaked
+signal player_croaked(color)
 signal player_should_despawn
 signal player_should_respawn
 signal player_super_hop_prep()

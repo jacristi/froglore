@@ -291,7 +291,7 @@ func croak() -> void:
     else:
         state = states.CROAKING
         animated_sprite_2d.play("croak")
-    Events.player_croaked.emit()
+    Events.player_croaked.emit(current_color)
 
     await animated_sprite_2d.animation_finished
 
