@@ -42,7 +42,7 @@ visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 48
-text = "Froglore"
+text = "        Froglore        "
 horizontal_alignment = 1
 
 [node name="Credits" type="Label" parent="MarginContainer/VBoxContainer"]

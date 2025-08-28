@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=33 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" uid="uid://bmmxu4pr06env" path="res://global/AudioManager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://b0xjgtecvg7ml" path="res://assets/audio/grass_rustle_1.wav" id="20_6foan"]
 [ext_resource type="AudioStream" uid="uid://b1hwgj8il65ka" path="res://assets/audio/grass_rustle_2.wav" id="21_8l4cy"]
 [ext_resource type="AudioStream" uid="uid://rs1x2eh58nnl" path="res://assets/audio/grass_rustle_3.wav" id="22_r4c7e"]
+[ext_resource type="AudioStream" uid="uid://bsgbyo1id2s2f" path="res://assets/audio/game_complete.wav" id="23_vf5i3"]
 [ext_resource type="AudioStream" uid="uid://bhme1hv2jhhta" path="res://assets/audio/big_hop_prep_1.wav" id="26_indlt"]
 [ext_resource type="AudioStream" uid="uid://xj3gau3jd1rv" path="res://assets/audio/big_hop_prep_2.wav" id="27_llwfi"]
 [ext_resource type="AudioStream" uid="uid://r5ks4cjcfjy" path="res://assets/audio/butterfly_activate.wav" id="28_pmb4w"]
@@ -103,6 +104,9 @@ stream = ExtResource("19_0bmiy")
 
 [node name="AudioGameStarted" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_qmuw1")
+
+[node name="AudioGameComplete" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_vf5i3")
 
 [node name="AudioGrass1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_6foan")

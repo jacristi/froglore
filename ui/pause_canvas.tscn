@@ -92,6 +92,7 @@ script = ExtResource("4_68n3l")
 
 [node name="ExitButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
@@ -100,7 +101,7 @@ focus_neighbor_bottom = NodePath("../ResumeButton")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/line_spacing = 0
-text = "Exit"
+text = "Quit"
 icon_alignment = 1
 script = ExtResource("4_68n3l")
 

@@ -53,12 +53,9 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_controls_button_pressed() -> void:
-    print('pressed')
     if controls_texture.visible:
         controls_animation_component.close()
         controls_texture.hide()
-        print('hide?')
     else:
-        print('show')
         controls_texture.show()
         controls_animation_component.open()
