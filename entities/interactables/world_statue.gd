@@ -8,7 +8,7 @@ var all_purified:= false
 @onready var ready_label: Label = $ReadyLabel
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+@export var dialogue_text:= "..."
 
 func _ready() -> void:
     get_warp_statue_states()
@@ -39,18 +39,25 @@ func set_state():
     if all_purified:
         state = states.active
         animated_sprite_2d.play("ready")
+        dialogue_text = "I am listening little one"
         if not LevelManager.has_finished_all_purified:
             ready_label.show()
+        else:
+            dialogue_text = "Well done little one"
 
     elif all_completed:
         animated_sprite_2d.play("inactive")
         state = states.inactive
+        dialogue_text = "I am listening little one"
         if not LevelManager.has_finished_all_completed:
             ready_label.show()
+        else:
+            dialogue_text = "There is more to do"
 
     else:
         animated_sprite_2d.play("inactive")
         state = states.inactive
+        dialogue_text = "..."
 
 
 func try_activate():
@@ -61,11 +68,15 @@ func try_activate():
         Events.ready_world_statue.emit()
         ready_label.hide()
         LevelManager.has_finished_all_completed = true
+        dialogue_text = "There is more to do"
+        Events.hide_dialogue.emit()
 
     if state == states.active and not LevelManager.has_finished_all_purified:
         state = states.activating
         Events.activating_world_statue.emit()
         animated_sprite_2d.play("activating")
+        dialogue_text = "Well done little one"
+        Events.hide_dialogue.emit()
         await animated_sprite_2d.animation_finished
         print("THE FINAL CROAK!")
         state = states.active

@@ -223,7 +223,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn5k3"]
-size = Vector2(22, 8)
+size = Vector2(22, 16)
 
 [node name="WorldStatue" type="Area2D" groups=["WorldStatues"]]
 z_index = -1
@@ -240,16 +240,14 @@ frame = 12
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_cn5k3")
 
 [node name="ReadyLabel" type="Label" parent="."]
-visible = false
 offset_left = -19.0
-offset_top = -27.0
+offset_top = -32.0
 offset_right = 21.0
-offset_bottom = -7.0
+offset_bottom = -12.0
 theme_override_colors/font_color = Color(0.952941, 0.745098, 0.176471, 1)
-theme_override_font_sizes/font_size = 8
 text = "!"
 horizontal_alignment = 1

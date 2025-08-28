@@ -11,10 +11,13 @@ var state = states.INACTIVE
 
 var last_activated_time: float = 0
 
+@export var dialogue_text:= "The %s ones will respond"
+
 func _ready() -> void:
     if starts_active:
         state = states.ACTIVE
     handle_initial_states()
+    dialogue_text = dialogue_text % butterfly_color
 
 
 func handle_initial_states() -> void:

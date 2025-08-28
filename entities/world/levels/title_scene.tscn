@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cxec108m3jn0l"]
+[gd_scene load_steps=16 format=4 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://yigc46dwqc5j" path="res://entities/environs/interactable_environs/interactable_flower_1.tscn" id="13_gwsvl"]
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="14_pnpma"]
 [ext_resource type="PackedScene" uid="uid://d0d8p50828t5h" path="res://entities/environs/interactable_environs/interactable_flower_2.tscn" id="14_sscfq"]
+[ext_resource type="FontFile" uid="uid://dldk01fcxuhi0" path="res://resources/fonts/m3x6.ttf" id="15_0frtg"]
 [ext_resource type="PackedScene" uid="uid://b0ulg5b4wnxjq" path="res://entities/environs/interactable_environs/interactable_statue.tscn" id="15_b417t"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
 
@@ -29,7 +30,7 @@ tile_map_data = PackedByteArray("AAD9/xYAAQABAAAAAAD9/xUAAQAEAAEAAAD9/xQAAQAEAAE
 tile_map_data = PackedByteArray("AAD+/wsAAAAGAAMAAAAEAAwAAAAGAAMAAAAFAAwAAAAGAAMAAAAHAAwAAAAGAAMAAAAIAAwAAAAGAAMAAAAKAAsAAAAGAAMAAAALAAsAAAAGAAMAAAAOAAwAAAAGAAMAAAANAAwAAAAGAAMAAAAQAAwAAAAGAAMAAAARAAwAAAAGAAMAAAASAAsAAAADAAMAAAAYAAoAAAADAAMAAAAJAAsAAAADAAMAAAACAAsAAAADAAMAAAD//wUAAAADAAMAAAAVAAQAAAAFAAMAAAATAAQAAAADAAMAAAAAAAUAAAAFAAMAAAAWAAQAAAAGAAMAAAA=")
 
 [node name="DialogueSign" parent="Environs" index="0"]
-position = Vector2(80, 93)
+position = Vector2(-29, 60)
 dialogue_text = "Press 'UP' to play"
 show_sprite = false
 
@@ -74,6 +75,7 @@ position = Vector2(117, 78)
 
 [node name="LevelExit" parent="Interactables" index="0"]
 position = Vector2(80, 93)
+dialogue_text = "Press 'UP' to play"
 
 [node name="InteractableFlower1" parent="Interactables" index="1" instance=ExtResource("13_gwsvl")]
 position = Vector2(181, 89)
@@ -114,7 +116,45 @@ position = Vector2(216, 93)
 [node name="CameraObjects" parent="." index="9"]
 visible = false
 
-[node name="Control" type="Control" parent="." index="14"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="11"]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" index="0"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_4eu25")
+theme_override_fonts/font = ExtResource("15_0frtg")
+theme_override_font_sizes/font_size = 48
+text = "FROGLORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Label" parent="CanvasLayer" index="1"]
+offset_left = 60.0
+offset_top = 63.0
+offset_right = 100.0
+offset_bottom = 86.0
+theme = ExtResource("3_4eu25")
+text = "Play"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="Label" parent="CanvasLayer" index="2"]
+offset_left = 132.0
+offset_top = 63.0
+offset_right = 172.0
+offset_bottom = 86.0
+theme = ExtResource("3_4eu25")
+text = "Exit"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="." index="15"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,45 +165,4 @@ offset_right = 117.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Title" type="Label" parent="Control" index="0"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -10.0
-offset_right = 47.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_4eu25")
-theme_override_font_sizes/font_size = 16
-text = "FROGLORE
-"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Play" type="Label" parent="Control" index="1"]
-layout_mode = 0
-offset_left = -57.0
-offset_top = 45.0
-offset_right = -17.0
-offset_bottom = 68.0
-theme_override_font_sizes/font_size = 8
-text = "Play"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Exit" type="Label" parent="Control" index="2"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 45.0
-offset_right = 55.0
-offset_bottom = 68.0
-theme_override_font_sizes/font_size = 8
-text = "Exit"
-horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true

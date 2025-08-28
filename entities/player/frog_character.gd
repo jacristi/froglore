@@ -3,11 +3,12 @@ extends CharacterBody2D
 @export var move_speed := 55.0
 @export var hop_height := 120.0
 @export var hop_cooldown := .35
-@export var dash_velocity_x = 200.0
+@export var dash_velocity_x = 192.0
 @export var dash_velocity_y = 10.0
 @export var dash_duration = 0.1
 @export var dash_cooldown_duration := 1.0
 @export var wall_cling_cooldown := 0.3
+@export var big_hop_buffer_time := 0.075
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,6 +18,8 @@ extends CharacterBody2D
 @onready var starting_position := global_position
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
+@onready var big_hop_buffer_timer: Timer = $BigHopBufferTimer
+
 @onready var hop_land_effect: CPUParticles2D = $HopLandEffect
 @onready var flash_sprite_component: FlashSpriteComponent = $FlashSpriteComponent
 @onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
@@ -34,6 +37,8 @@ var face_direction := 1
 var dash_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_big_fall_velocity:= false
+var can_big_hop:= false
+var has_buffered_big_hop:= false
 
 enum states {
     IDLE,
@@ -75,11 +80,14 @@ func _ready() -> void:
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
+    big_hop_buffer_timer.wait_time = big_hop_buffer_time
+    big_hop_buffer_timer.timeout.connect(func(): can_big_hop = false)
     Events.player_should_despawn.connect(despawn_player)
     Events.player_should_respawn.connect(respawn_player)
     Events.level_purified_start.connect(pause_unpause_player_actions.bind(true))
     Events.level_purified_done.connect(pause_unpause_player_actions.bind(false))
-
+    Events.frog_statue_activated.connect(func():
+        if current_interactable != null: enter_interactable(current_interactable))
 
 func _physics_process(delta: float) -> void:
     prep_jump = false
@@ -102,6 +110,16 @@ func _physics_process(delta: float) -> void:
 
     handle_states_animations()
 
+    get_wall_direction()
+
+
+func get_wall_direction() -> int:
+    if is_on_wall() and get_slide_collision_count() > 0:
+        for i in range (0,get_slide_collision_count()):
+            var norm = get_slide_collision(i).get_normal()
+            if norm.x != 0: return norm.x
+    return 0
+
 
 func pause_unpause_player_actions(should_pause: bool) -> void:
     _is_paused = should_pause
@@ -110,12 +128,16 @@ func pause_unpause_player_actions(should_pause: bool) -> void:
 func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
     Events.player_hopped.emit()
+    if has_buffered_big_hop: return
+    can_big_hop = true
+    big_hop_buffer_timer.start()
 
 
 func hop_landed() -> void:
     move_hop_timer.wait_time = hop_cooldown
     move_hop_timer.start()
     dash_used = false
+    has_buffered_big_hop = false
     wall_cling_used_count = 0
 
     if has_big_fall_velocity:
@@ -133,23 +155,29 @@ func hop_landed() -> void:
 func handle_hopping(delta):
     if not has_control(): return
 
-    if (Input.is_action_pressed("jump") and can_hop() and is_on_floor()):
+    # is pressed so the input can be held down
+    if Input.is_action_pressed("jump"):
+        if (can_hop() and is_on_floor()) or (can_big_hop and !has_buffered_big_hop):
 
-        # Reset dash cooldown for big hops (feels bad otherwise)
-        dash_cooldown_timer.stop()
+            # Reset dash cooldown for big hops (feels bad otherwise)
+            dash_cooldown_timer.stop()
+            can_big_hop = false
+            has_buffered_big_hop = true
+            big_hop_buffer_timer.stop()
 
-        if super_hop_prep_reached:
-            hop(delta, 1.5 * 2 * .8)
-        else:
+            if super_hop_prep_reached:
+                hop(delta, 1.5 * 2 * .8)
+            else:
+                hop(delta, 1.5)
+            return
+
+        # use just pressed so it requires a fresh jump input
+        elif Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging():
             hop(delta, 1.5)
-        return
-
-    if (Input.is_action_just_pressed("jump") and can_hop() and _is_wall_clinging()):
-        hop(delta, 1.5)
-        wall_cling_used_count += 1
-        wall_cling_timer.wait_time = wall_cling_cooldown
-        wall_cling_timer.start()
-        return
+            wall_cling_used_count += 1
+            wall_cling_timer.wait_time = wall_cling_cooldown
+            wall_cling_timer.start()
+            return
 
     if h_direction and can_hop() and is_on_floor():
         hop(delta)
@@ -170,10 +198,20 @@ func handle_face_direction():
         face_direction = -1 if velocity.x < 0 else 1
         animated_sprite_2d.flip_h = (velocity.x < 0)
 
+    if Input.is_action_just_pressed("up") and _can_turn_face():
+        face_direction = -face_direction
+        animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
 
 func handle_move_directions():
     h_direction = Input.get_axis("move_left", "move_right")
     v_direction = Input.get_axis("down", "up")
+
+
+func _input(event: InputEvent) -> void:
+    # Track most recent input types
+    if event is InputEventJoypadButton: GlobalData.input_type = 'controller'
+    if event is InputEventKey: GlobalData.input_type = 'keyboard'
+    # print(event.as_text())
 
 
 func apply_gravity(delta):
@@ -218,10 +256,24 @@ func respawn_player():
 
 func enter_interactable(area: Area2D):
     current_interactable = area
+    if area.is_in_group("FrogStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("WarpStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("WorldStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("InteractableEnviron"):
+        pass
+    if area.is_in_group("ButterflyStatues"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("LevelExit"):
+        Events.show_dialogue.emit(area.dialogue_text, 0)
+
 
 
 func exit_interactable(_area: Area2D):
     current_interactable = null
+    Events.hide_dialogue.emit()
 
 
 func enter_dialogue(area: Area2D):
@@ -349,7 +401,7 @@ func handle_buttons_held():
         super_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= 1 && not super_hop_prep_reached:
+    if button_down_held_time >= .4 && not super_hop_prep_reached:
         flash_sprite_component.start_flash_continuous_intervals(1)
         super_hop_prep_reached = true
         super_hop_prep()
@@ -439,10 +491,15 @@ func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_contro
 func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
-
-func _can_cling_to_wall() ->  bool: return is_on_wall() and wall_cling_timer.time_left <= 0.0 and wall_cling_unlocked and wall_cling_used_count < wall_cling_used_max
+func _can_turn_face() -> bool: return state == states.IDLE and (current_interactable == null or !current_interactable.is_in_group("LevelExit"))
+func _can_cling_to_wall() ->  bool: return (
+    is_on_wall()
+    and wall_cling_timer.time_left <= 0.0
+    and wall_cling_unlocked
+    and wall_cling_used_count < wall_cling_used_max
+    and get_wall_direction() == -face_direction
+    )
 func can_prep_big_jump() -> bool: return state == states.IDLE and super_hop_unlocked
-
 func can_try_activate_interactable() -> bool: return current_interactable != null and ( \
 current_interactable.is_in_group("FrogStatues") \
 or current_interactable.is_in_group("WarpStatues") \

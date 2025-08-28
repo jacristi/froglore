@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchq4uv66pa31"
-path="res://.godot/imported/spr_froglore_title.png-d4832125cc7402bc0c5857c95215bedd.ctex"
+uid="uid://bjdrw48gcm2ek"
+path="res://.godot/imported/spr-ui-window.png-ba58d901d2c03c3f801654137ad43ee0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/spr_froglore_title.png"
-dest_files=["res://.godot/imported/spr_froglore_title.png-d4832125cc7402bc0c5857c95215bedd.ctex"]
+source_file="res://assets/spritesheets/spr-ui-window.png"
+dest_files=["res://.godot/imported/spr-ui-window.png-ba58d901d2c03c3f801654137ad43ee0.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
 extends Control
 
-@onready var title: Label = $Title
-@onready var credits: Label = $Credits
-@onready var thank_you: Label = $ThankYou
-@onready var still_more: Label = $StillMore
+@onready var title: Label = $MarginContainer/VBoxContainer/Title
+@onready var credits: Label = $MarginContainer/VBoxContainer/Credits
+@onready var thank_you: Label = $MarginContainer/VBoxContainer/ThankYou
+@onready var still_more: Label = $MarginContainer/VBoxContainer/StillMore
 
 
 func show_credits():

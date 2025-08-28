@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1ofnxnvttha7"]
 
-[ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="1_i6y7g"]
 [ext_resource type="Script" uid="uid://ytbr5acuv1ov" path="res://ui/pause_canvas.gd" id="1_r2cha"]
+[ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="2_mmvxe"]
 [ext_resource type="Script" uid="uid://v1aoh5moj5s4" path="res://components/animation_component.gd" id="3_5ck68"]
 [ext_resource type="Script" uid="uid://dn7hi3q4ok05f" path="res://ui/button.gd" id="4_68n3l"]
 
@@ -18,11 +18,11 @@ anchor_bottom = 1.0
 offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_i6y7g")
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 7
+texture = ExtResource("2_mmvxe")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="AnimationComponent" type="Node" parent="PauseTexture" node_paths=PackedStringArray("target")]
 script = ExtResource("3_5ck68")
@@ -51,8 +51,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseTexture/MarginContainer"]
 layout_mode = 2
@@ -69,20 +69,93 @@ size_flags_horizontal = 7
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
 text = "Resume"
 icon_alignment = 1
 script = ExtResource("4_68n3l")
 
-[node name="ExitButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ControlsButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
-text = "Exit"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
+text = "Controls"
 icon_alignment = 1
 script = ExtResource("4_68n3l")
 
+[node name="ExitButton" type="Button" parent="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
+text = "Quit"
+icon_alignment = 1
+script = ExtResource("4_68n3l")
+
+[node name="ControlsTexture" type="NinePatchRect" parent="."]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 105.0
+grow_horizontal = 2
+texture = ExtResource("2_mmvxe")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="ControlsAnimationComponent" type="Node" parent="ControlsTexture" node_paths=PackedStringArray("target")]
+script = ExtResource("3_5ck68")
+target = NodePath("..")
+scale_dur = 0.05
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlsTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlsTexture/MarginContainer"]
+layout_mode = 2
+
+[node name="Controls Label" type="Label" parent="ControlsTexture/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.709804, 0.945098, 0.952941, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -1
+theme_override_constants/outline_size = 4
+text = "- Move with A/D, arrow keys, or D-Pad
+- 'UP' enters portals, clings to walls,
+    or changes direction
+- Space or A (controller) for bigger hops
+- Shift or L/R (controller) to dash
+- F or X (controller) to croak
+- Hold 'Down' to prepare a super hop
+- Change color with Tab/Select"
+
 [connection signal="pressed" from="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="PauseTexture/MarginContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

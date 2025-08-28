@@ -2,7 +2,8 @@ extends CanvasLayer
 
 
 @onready var box_texture: NinePatchRect = $BoxTexture
-@onready var text_label: Label = $BoxTexture/TextLabel
+@onready var text_label: Label = $BoxTexture/MarginContainer/TextLabel
+
 #@onready var animation_component: AnimationComponent = $BoxTexture/AnimationComponent
 
 

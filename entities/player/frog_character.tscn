@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=79 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -251,10 +251,6 @@ region = Rect2(96, 64, 16, 16)
 atlas = ExtResource("1_2oguq")
 region = Rect2(112, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q1px"]
-atlas = ExtResource("1_2oguq")
-region = Rect2(128, 64, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_plx7h"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(32, 80, 16, 16)
@@ -364,7 +360,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"despawn",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -537,13 +533,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oeoux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8q1px")
 }],
 "loop": false,
 "name": &"respawn",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -594,6 +587,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_tl5hv")
+hop_cooldown = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2)
@@ -603,10 +597,8 @@ shape = SubResource("RectangleShape2D_kbbra")
 material = SubResource("ShaderMaterial_47ru2")
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"croak"
+animation = &"despawn"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.767927
 
 [node name="MoveHopTimer" type="Timer" parent="."]
 one_shot = true
@@ -639,6 +631,10 @@ shape = SubResource("RectangleShape2D_57hb4")
 one_shot = true
 
 [node name="WallClingTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="BigHopBufferTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
