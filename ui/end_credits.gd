@@ -20,7 +20,7 @@ func show_credits():
     await get_tree().create_timer(1.0).timeout
     still_more.show()
 
-    await get_tree().create_timer(8.0).timeout
+    await get_tree().create_timer(6.0).timeout
     title.hide()
     credits.hide()
     thank_you.hide()
