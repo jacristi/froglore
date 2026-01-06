@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=35 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" uid="uid://d3m1l4wslkqa3" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="13_oxus6"]
 [ext_resource type="PackedScene" uid="uid://b1ofnxnvttha7" path="res://ui/pause_canvas.tscn" id="14_eju75"]
 [ext_resource type="PackedScene" uid="uid://dc2fxotghqxf" path="res://ui/details_canvas.tscn" id="15_im5f3"]
+[ext_resource type="PackedScene" uid="uid://66ighi1lgqjt" path="res://entities/indicators/screen_transition_indicator.tscn" id="16_ni4ea"]
 [ext_resource type="PackedScene" uid="uid://bw3gdnvvp8oci" path="res://entities/environs/background_objects/star.tscn" id="17_qg26c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
@@ -1628,10 +1629,10 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 3.45227
+shader_parameter/y_zoom = 1.94872
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
-size = Vector2(733, 20)
+size = Vector2(1246, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evjnc"]
 size = Vector2(20, 239)
@@ -1662,7 +1663,7 @@ position = Vector2(-8, -4)
 [node name="background" type="Sprite2D" parent="Environs"]
 z_index = -15
 texture_repeat = 2
-position = Vector2(-16, 209)
+position = Vector2(149, -46)
 texture = ExtResource("4_ov4qh")
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 648)
@@ -1714,10 +1715,9 @@ shape = SubResource("RectangleShape2D_evjnc")
 [node name="CameraObjects" type="Node2D" parent="."]
 
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
-position = Vector2(126, 67)
+position = Vector2(126, 68)
 offset = Vector2(4, 0)
 limit_left = -4
-limit_top = 0
 limit_right = 236
 
 [node name="CameraMoveTrigger" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
@@ -1739,6 +1739,47 @@ scroll_right_val = 236
 position = Vector2(251, 53)
 scroll_left_val = 236
 scroll_right_val = 476
+
+[node name="CameraMoveTrigger7" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
+position = Vector2(464, 59)
+scroll_left_val = 236
+scroll_right_val = 476
+
+[node name="CameraMoveTrigger8" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
+position = Vector2(486, 59)
+scroll_left_val = 480
+scroll_right_val = 714
+
+[node name="CameraMoveTrigger5" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
+position = Vector2(461, 15)
+rotation = 1.5708
+scroll_left_val = 236
+scroll_right_val = 476
+
+[node name="CameraMoveTrigger6" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
+position = Vector2(461, -5)
+rotation = 1.5708
+scroll_left_val = 236
+scroll_right_val = 476
+y_offset = -135
+
+[node name="ScreenTransitionIndicator" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(240, 81)
+
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(460, 0)
+rotation = 1.5708
+
+[node name="CameraMoveTrigger9" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
+position = Vector2(136, 54)
+scroll_left_val = -4
+scroll_right_val = 236
+
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(480, 81)
 
 [node name="EndCredits" parent="." instance=ExtResource("8_iuul8")]
 visible = false

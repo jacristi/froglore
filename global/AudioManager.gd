@@ -37,6 +37,7 @@ var game_started_has_played:= false
 var level_new_has_played:= false
 var level_unpurified_has_played:= false
 var environ_audio_playing:= false
+var base_croak_pitch: float
 
 func _ready() -> void:
     Events.light_bug_spawn.connect(play_light_bug_spawn)
@@ -62,6 +63,7 @@ func _ready() -> void:
     Events.player_change_color.connect(play_change_player_color)
     Events.activating_world_statue.connect(play_game_complete)
     Events.ready_world_statue.connect(play_game_complete)
+    base_croak_pitch = audio_croak.pitch_scale
 
     await get_tree().create_timer(0.5).timeout
     play_game_start()
@@ -128,7 +130,15 @@ func play_hop_landed():
     var hop_land: AudioStreamPlayer2D = [audio_hop_landed_1, audio_hop_landed_2].pick_random()
     hop_land.play()
 
-func play_croak():
+func play_croak(color):
+    match color:
+        "frog":     audio_croak.pitch_scale = base_croak_pitch
+        "blue":     audio_croak.pitch_scale = base_croak_pitch + .1
+        "purple":   audio_croak.pitch_scale = base_croak_pitch + .2
+        "white":    audio_croak.pitch_scale = base_croak_pitch + .3
+        "red":      audio_croak.pitch_scale = base_croak_pitch + .4
+        "yellow":   audio_croak.pitch_scale = base_croak_pitch + .5
+
     audio_croak.play()
 
 func play_play_button_clicked():

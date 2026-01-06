@@ -51,3 +51,6 @@ position = Vector2(161, 57)
 
 [node name="DarkBug5" parent="Hazards" index="4" instance=ExtResource("3_0bkoq")]
 position = Vector2(211, 88)
+
+[node name="CameraMain" parent="CameraObjects" index="0"]
+position = Vector2(145, 46)

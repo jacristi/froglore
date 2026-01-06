@@ -16,7 +16,7 @@ signal player_hit_hazard
 signal player_has_respawned
 signal player_hopped
 signal player_hop_landed
-signal player_croaked
+signal player_croaked(color)
 signal player_should_despawn
 signal player_should_respawn
 signal player_super_hop_prep()
@@ -44,7 +44,7 @@ signal butterfly_statue_deactivated(color: String)
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
 
-signal camera_change_scroll_vals(scroll_left: int, scroll_right: int)
+signal camera_change_scroll_vals(scroll_left: int, scroll_right: int, y_offset: int)
 
 signal should_show_dialogue
 signal show_dialogue(text_to_show: String, timer: float)
