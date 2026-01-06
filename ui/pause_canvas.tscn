@@ -106,6 +106,7 @@ icon_alignment = 1
 script = ExtResource("4_68n3l")
 
 [node name="ControlsTexture" type="NinePatchRect" parent="."]
+visible = false
 clip_contents = true
 anchors_preset = 10
 anchor_right = 1.0
