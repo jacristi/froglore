@@ -1629,7 +1629,7 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 1.94872
+shader_parameter/y_zoom = 2.8531175
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(1246, 20)
@@ -1648,11 +1648,9 @@ move_speed = 60.0
 
 [node name="GroundTileLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
-position = Vector2(28, -7)
 tile_set = SubResource("TileSet_f37rh")
 
 [node name="EnvironTileLayer" type="TileMapLayer" parent="."]
-position = Vector2(28, -7)
 tile_set = SubResource("TileSet_i7nur")
 
 [node name="Environs" type="Node2D" parent="."]
@@ -1672,7 +1670,7 @@ region_rect = Rect2(0, 0, 1152, 648)
 z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(114, 120)
+position = Vector2(42, 120)
 scale = Vector2(12.0625, 1)
 texture = ExtResource("6_pgie6")
 script = ExtResource("7_ayoaj")
@@ -1690,6 +1688,7 @@ position = Vector2(19, -4)
 [node name="Hazards" type="Node2D" parent="."]
 
 [node name="Bounds" type="Node2D" parent="."]
+position = Vector2(24, 45)
 
 [node name="BottomBounds" parent="Bounds" instance=ExtResource("10_3m536")]
 position = Vector2(85, 146)
@@ -1716,27 +1715,28 @@ shape = SubResource("RectangleShape2D_evjnc")
 
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
 position = Vector2(126, 68)
-offset = Vector2(4, 0)
-limit_left = -4
-limit_right = 236
+limit_left = 0
+limit_top = 0
+limit_right = 240
+limit_bottom = 135
 
 [node name="CameraMoveTrigger" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-10, 55)
+position = Vector2(-10, 112)
 scroll_left_val = -244
 scroll_right_val = -4
 
 [node name="CameraMoveTrigger2" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(10, 54)
+position = Vector2(10, 111)
 scroll_left_val = -4
 scroll_right_val = 236
 
 [node name="CameraMoveTrigger3" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(230, 53)
+position = Vector2(309, 111)
 scroll_left_val = -4
 scroll_right_val = 236
 
 [node name="CameraMoveTrigger4" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(251, 53)
+position = Vector2(330, 111)
 scroll_left_val = 236
 scroll_right_val = 476
 
@@ -1773,9 +1773,9 @@ position = Vector2(460, 0)
 rotation = 1.5708
 
 [node name="CameraMoveTrigger9" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(136, 54)
+position = Vector2(158, 113)
 scroll_left_val = -4
-scroll_right_val = 236
+scroll_right_val = 316
 
 [node name="ScreenTransitionIndicator3" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
 modulate = Color(1, 1, 1, 0.470588)

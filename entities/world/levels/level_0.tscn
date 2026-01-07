@@ -99,7 +99,7 @@ position = Vector2(440, 93)
 [node name="CameraMoveTrigger3" parent="CameraObjects" index="3"]
 position = Vector2(231, -6)
 
-[node name="CameraMoveTrigger5" parent="CameraObjects" index="4" instance=ExtResource("8_86bvj")]
+[node name="CameraMoveTrigger10" parent="CameraObjects" index="4" instance=ExtResource("8_86bvj")]
 position = Vector2(68, 57)
 scroll_left_val = -4
 scroll_right_val = 236
