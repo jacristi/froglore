@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy7vwgj5dl85b"
-path="res://.godot/imported/ts-grassy-dirt.png-f027d24b2089be1cfcf1552c3fa2ba41.ctex"
+uid="uid://b0510q1ciy1y1"
+path="res://.godot/imported/spr-screen-transition-ind-1-way.png-061316fa413958d3cf7366b6134ecf4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/ts-grassy-dirt.png"
-dest_files=["res://.godot/imported/ts-grassy-dirt.png-f027d24b2089be1cfcf1552c3fa2ba41.ctex"]
+source_file="res://assets/spritesheets/spr-screen-transition-ind-1-way.png"
+dest_files=["res://.godot/imported/spr-screen-transition-ind-1-way.png-061316fa413958d3cf7366b6134ecf4e.ctex"]
 
 [params]
 

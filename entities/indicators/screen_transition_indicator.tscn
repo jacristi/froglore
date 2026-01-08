@@ -96,6 +96,7 @@ animations = [{
 z_index = -3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.78431374)
 sprite_frames = SubResource("SpriteFrames_7nvr0")
 autoplay = "default"
 frame_progress = 0.781395

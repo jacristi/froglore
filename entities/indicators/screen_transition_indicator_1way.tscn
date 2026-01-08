@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://bkxnqp7c8uhus"]
+
+[ext_resource type="Texture2D" uid="uid://b0510q1ciy1y1" path="res://assets/spritesheets/spr-screen-transition-ind-1-way.png" id="1_mqddl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl4pr"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwpxl"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00wkq"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdlm2"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26w17"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3f5l"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2dx3"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poy8j"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joeqi"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex6f7"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4ikg"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iair3"]
+atlas = ExtResource("1_mqddl")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nvr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl4pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwpxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00wkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdlm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26w17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3f5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2dx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poy8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joeqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex6f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4ikg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iair3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iair3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iair3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="ScreenTransitionIndicator1Way" type="Node2D"]
+z_index = -3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.78431374)
+sprite_frames = SubResource("SpriteFrames_7nvr0")
+autoplay = "default"
+frame = 4
