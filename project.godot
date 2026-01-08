@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Frog Game"
 run/main_scene="res://entities/world/levels/title_scene.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -43,10 +43,10 @@ movie_writer/movie_file="C:/Users/James/Videos/Captures/godot-froglore-capture.a
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
-theme/default_font_subpixel_positioning=0
-theme/default_font_multichannel_signed_distance_field=true
 theme/custom="res://resources/default_theme.tres"
 theme/custom_font="res://resources/fonts/capital_hill.ttf"
+theme/default_font_subpixel_positioning=0
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

@@ -93,6 +93,7 @@ animations = [{
 }]
 
 [node name="ScreenTransitionIndicator" type="Node2D"]
+z_index = -3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7nvr0")
