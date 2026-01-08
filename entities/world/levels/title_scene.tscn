@@ -121,7 +121,7 @@ rotation = 3.14159
 position = Vector2(-28, 60)
 rotation = 3.14159
 
-[node name="CameraObjects" parent="." index="9"]
+[node name="CameraObjects" parent="." index="10"]
 visible = false
 
 [node name="ScreenTransitionIndicator3" parent="CameraObjects" index="14"]

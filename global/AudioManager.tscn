@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=34 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" uid="uid://bmmxu4pr06env" path="res://global/AudioManager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://r5ks4cjcfjy" path="res://assets/audio/butterfly_activate.wav" id="28_pmb4w"]
 [ext_resource type="AudioStream" uid="uid://bjrxqaay5e5kj" path="res://assets/audio/butterfly_deactivate.wav" id="29_onbis"]
 [ext_resource type="AudioStream" uid="uid://bkd57hcapj8ln" path="res://assets/audio/color-change.wav" id="30_nb0bq"]
+[ext_resource type="AudioStream" uid="uid://c0uvapdbyp2re" path="res://assets/audio/secret_reveal.wav" id="31_14cty"]
 [ext_resource type="Script" uid="uid://bv1vmuwat65y3" path="res://components/variable_pitch_audio_player.gd" id="31_houc0"]
 
 [node name="AudioManager" type="Node"]
@@ -129,6 +130,9 @@ stream = ExtResource("28_pmb4w")
 
 [node name="AudioButterflyDeactivate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_onbis")
+
+[node name="AudioSecretFound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_14cty")
 
 [node name="AudioChangePlayerColor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_nb0bq")

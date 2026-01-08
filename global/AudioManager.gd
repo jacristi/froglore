@@ -31,6 +31,7 @@ extends Node
 @onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
 @onready var audio_change_player_color: VariablePitchAudioPlayer = $AudioChangePlayerColor
 @onready var audio_game_complete: AudioStreamPlayer2D = $AudioGameComplete
+@onready var audio_secret_found: AudioStreamPlayer2D = $AudioSecretFound
 
 
 var game_started_has_played:= false
@@ -63,6 +64,7 @@ func _ready() -> void:
     Events.player_change_color.connect(play_change_player_color)
     Events.activating_world_statue.connect(play_game_complete)
     Events.ready_world_statue.connect(play_game_complete)
+    Events.secret_found.connect(play_secret_found)
     base_croak_pitch = audio_croak.pitch_scale
 
     await get_tree().create_timer(0.5).timeout
@@ -176,3 +178,6 @@ func play_change_player_color(_color: String):
 
 func play_game_complete():
     audio_game_complete.play()
+
+func play_secret_found():
+    audio_secret_found.play()

@@ -55,6 +55,8 @@ signal pause_pressed
 signal cutscene_start
 signal cutscene_end
 
+signal secret_found
+
 signal grass_rustled
 
 func _process(_delta: float) -> void:
