@@ -6,6 +6,8 @@ extends CanvasLayer
 
 #@onready var animation_component: AnimationComponent = $BoxTexture/AnimationComponent
 
+@export var y_pos_top:= 0.0
+@export var y_pos_bottom:= 105.0
 
 var is_showing:= false
 
@@ -15,6 +17,10 @@ func _ready() -> void:
     Events.show_dialogue.connect(on_show_dialogue)
     Events.hide_dialogue.connect(on_hide_dialogue)
     Events.go_to_level.connect(on_hide_dialogue)
+    Events.camera_change_scroll_vals.connect(func(_scroll_left_val, _scroll_right_val, y_offset):
+        if y_offset < 0: box_texture.position.y = y_pos_top
+        else: box_texture.position.y = y_pos_bottom
+        )
 
 
 func on_show_dialogue(text_to_show: String, _timer: float=2.0) -> void:
