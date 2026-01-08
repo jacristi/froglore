@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bffc07m2shdda"]
+
+[ext_resource type="Texture2D" uid="uid://oow2sb0tlvhu" path="res://assets/spritesheets/spr-1_way-platform.png" id="1_3a0ii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a0ii"]
+size = Vector2(16, 3)
+
+[node name="OneWayPlatform" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3a0ii")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("1_3a0ii")
