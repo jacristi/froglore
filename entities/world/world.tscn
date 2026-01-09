@@ -3101,7 +3101,7 @@ shape = SubResource("RectangleShape2D_evjnc")
 [node name="CameraObjects" type="Node2D" parent="."]
 
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
-position = Vector2(126, 68)
+position = Vector2(126, 67)
 limit_left = 0
 limit_right = 240
 
