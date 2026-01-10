@@ -547,7 +547,16 @@ func _is_idle() -> bool: return velocity.x == 0 and is_on_floor() and has_contro
 func _is_dashing() -> bool: return state == states.DASHING # and check conditions that break dash (is_on_floor, is on wall)e.g.
 func _is_wall_clinging() -> bool: return state == states.WALL_CLINGING or state == states.WALL_CLING_CROAKING
 func _is_hazard_respawning() -> bool: return state == states.HIT_HAZARD or state == states.RESPAWNING
-func _can_turn_face() -> bool: return state == states.IDLE and (current_interactable == null or !current_interactable.is_in_group("LevelExit"))
+func _can_turn_face() -> bool: return (
+    state == states.IDLE and current_interactable == null
+    and (
+        current_interactable == null
+        or (
+            !current_interactable.is_in_group("LevelExit")
+            or !current_interactable.is_in_group("PortalStone")
+        )
+        )
+    )
 func _can_cling_to_wall() ->  bool: return (
     is_on_wall()
     and wall_cling_timer.time_left <= 0.0
