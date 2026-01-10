@@ -219,5 +219,17 @@ position = Vector2(124, 92)
 [node name="SpikesSmall5" parent="Hazards" index="24" instance=ExtResource("5_aqnfc")]
 position = Vector2(164, 92)
 
-[node name="CameraMain" parent="CameraObjects" index="0"]
-position = Vector2(126, 67)
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="12"]
+position = Vector2(314, 154)
+
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="13"]
+position = Vector2(330, 158)
+
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="14"]
+position = Vector2(352, 155)
+
+[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="15"]
+position = Vector2(368, 157)
+
+[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="16"]
+position = Vector2(383, 157)

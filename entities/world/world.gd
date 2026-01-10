@@ -10,12 +10,12 @@ extends Node2D
 
 @onready var level_exit: Area2D = $Interactables/LevelExit
 @onready var dialogue_sign: Area2D = $Environs/DialogueSign
+@onready var end_credits: Control = %EndCredits
 
 var level_state = LevelManager.level_states.NOT_COMPLETED
 
 var can_respawn_dark_bugs := false
 
-@onready var end_credits: Control = $EndCredits
 @onready var pause_canvas: CanvasLayer = $PauseCanvas
 var is_paused := false
 

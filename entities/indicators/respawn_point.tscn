@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm220k1o3vygh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5uw6"]
+
+[node name="RespawnPoint" type="Area2D" groups=["RespawnPoint"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n5uw6")

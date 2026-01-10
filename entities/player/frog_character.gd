@@ -40,6 +40,8 @@ var has_big_fall_velocity:= false
 var can_big_hop:= false
 var has_buffered_big_hop:= false
 
+var respawn_position: Vector2
+
 enum states {
     IDLE,
     HOP_START,
@@ -71,6 +73,7 @@ var super_hop_prep_reached := false
 var _is_paused:= false
 
 func _ready() -> void:
+    respawn_position = starting_position
     hazard_detector.area_entered.connect(hit_hazard_and_respawn)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
@@ -244,7 +247,7 @@ func despawn_player():
 
 func respawn_player():
     state = states.RESPAWNING
-    global_position = starting_position
+    global_position = respawn_position
     animated_sprite_2d.play("respawn")
     Events.player_has_respawned.emit()
     await animated_sprite_2d.animation_finished
@@ -268,6 +271,8 @@ func enter_interactable(area: Area2D):
         Events.show_dialogue.emit(area.dialogue_text, 0)
     if area.is_in_group("LevelExit"):
         Events.show_dialogue.emit(area.dialogue_text, 0)
+    if area.is_in_group("RespawnPoint"):
+        respawn_position = area.position
 
 
 

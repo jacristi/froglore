@@ -142,3 +142,6 @@ position = Vector2(100, 92)
 
 [node name="SpikesSmall9" parent="Hazards" index="15" instance=ExtResource("3_380p4")]
 position = Vector2(108, 92)
+
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="12"]
+position = Vector2(15, 230)

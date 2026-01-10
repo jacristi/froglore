@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=43 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" uid="uid://d3m1l4wslkqa3" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://66ighi1lgqjt" path="res://entities/indicators/screen_transition_indicator.tscn" id="16_ni4ea"]
 [ext_resource type="PackedScene" uid="uid://bkxnqp7c8uhus" path="res://entities/indicators/screen_transition_indicator_1way.tscn" id="17_kvxen"]
 [ext_resource type="PackedScene" uid="uid://bw3gdnvvp8oci" path="res://entities/environs/background_objects/star.tscn" id="17_qg26c"]
+[ext_resource type="PackedScene" uid="uid://dm220k1o3vygh" path="res://entities/indicators/respawn_point.tscn" id="24_titvk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
 light_mode = 2
@@ -3003,7 +3004,7 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 6.727503
+shader_parameter/y_zoom = 2.1435893
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(1246, 20)
@@ -3098,6 +3099,20 @@ position = Vector2(489, 56)
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_evjnc")
 
+[node name="Points" type="Node2D" parent="."]
+
+[node name="RespawnPoint1" parent="Points" instance=ExtResource("24_titvk")]
+position = Vector2(65, 151)
+
+[node name="RespawnPoint2" parent="Points" instance=ExtResource("24_titvk")]
+position = Vector2(96, 151)
+
+[node name="RespawnPoint3" parent="Points" instance=ExtResource("24_titvk")]
+position = Vector2(128, 151)
+
+[node name="RespawnPoint4" parent="Points" instance=ExtResource("24_titvk")]
+position = Vector2(161, 151)
+
 [node name="CameraObjects" type="Node2D" parent="."]
 
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
@@ -3177,12 +3192,13 @@ position = Vector2(-19, 229)
 [node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" instance=ExtResource("17_kvxen")]
 position = Vector2(-4, 229)
 
-[node name="EndCredits" parent="." instance=ExtResource("8_iuul8")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndCredits" parent="CanvasLayer" instance=ExtResource("8_iuul8")]
+unique_name_in_owner = true
 visible = false
-offset_left = 115.0
-offset_top = 9.0
-offset_right = 115.0
-offset_bottom = 9.0
+offset_top = 0.0
+offset_bottom = 0.0
 
 [node name="DetailsCanvas" parent="." instance=ExtResource("15_im5f3")]
 

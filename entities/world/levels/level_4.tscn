@@ -169,3 +169,18 @@ position = Vector2(52, 92)
 
 [node name="CameraMoveTriggerSpawn" parent="CameraObjects" index="1"]
 position = Vector2(116, 68)
+
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="12"]
+position = Vector2(294, 156)
+
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="13"]
+position = Vector2(313, 158)
+
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="14"]
+position = Vector2(341, 160)
+
+[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="15"]
+position = Vector2(370, 158)
+
+[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="16"]
+position = Vector2(385, 158)
