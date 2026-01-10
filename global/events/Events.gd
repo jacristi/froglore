@@ -41,6 +41,8 @@ signal activated_world_statue
 signal butterfly_statue_activated(color: String)
 signal butterfly_statue_deactivated(color: String)
 
+signal portal_stone_unlocked(stone_number: int, stone_pos: Vector2)
+
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdt5n4b6bvcq5"]
+
+[ext_resource type="Script" uid="uid://birhbms2f64yc" path="res://entities/interactables/portal_stone.gd" id="1_ukvip"]
+[ext_resource type="Texture2D" uid="uid://fsxb7skpu0uv" path="res://assets/spritesheets/spr-stone.png" id="1_umrdo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukvip"]
+atlas = ExtResource("1_umrdo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xqs3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukvip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cuym"]
+size = Vector2(11, 10)
+
+[node name="PortalStone" type="Area2D" groups=["PortalStone"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ukvip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_xqs3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_1cuym")

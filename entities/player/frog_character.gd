@@ -27,6 +27,9 @@ extends CharacterBody2D
 @onready var dash_unlocked:= true
 @onready var wall_cling_unlocked:= true
 @onready var super_hop_unlocked:= true
+
+var portal_stones_unlocked = {}
+
 var current_color : String = "frog"
 var current_interactable: Area2D
 var current_dialogue: Area2D
@@ -91,6 +94,8 @@ func _ready() -> void:
     Events.level_purified_done.connect(pause_unpause_player_actions.bind(false))
     Events.frog_statue_activated.connect(func():
         if current_interactable != null: enter_interactable(current_interactable))
+    Events.portal_stone_unlocked.connect(func(stone_num:int, stone_pos:Vector2):
+        portal_stones_unlocked[stone_num] = stone_pos)
 
 func _physics_process(delta: float) -> void:
     prep_jump = false
@@ -232,14 +237,31 @@ func hit_special_hazard(respawn_wait_time:float=0):
 
 
 func hit_hazard_and_respawn(_area: Area2D):
+    Events.player_hit_hazard.emit()
+    state = states.HIT_HAZARD
     despawn_player()
     await animated_sprite_2d.animation_finished
     respawn_player()
 
 
-func despawn_player():
-    Events.player_hit_hazard.emit()
+func teleport_player(teleport_to_pos: Vector2):
+    print('teleport?')
     state = states.HIT_HAZARD
+    despawn_player()
+    await animated_sprite_2d.animation_finished
+    position = teleport_to_pos
+    await get_tree().create_timer(.01).timeout
+    state = states.RESPAWNING
+    animated_sprite_2d.play("respawn")
+    Events.player_has_respawned.emit()
+    await animated_sprite_2d.animation_finished
+
+    if state == states.RESPAWNING:
+        state = states.IDLE
+        animated_sprite_2d.play("idle")
+
+
+func despawn_player():
     animated_sprite_2d.play("despawn")
     velocity.x = 0
     velocity.y = 0
@@ -273,7 +295,10 @@ func enter_interactable(area: Area2D):
         Events.show_dialogue.emit(area.dialogue_text, 0)
     if area.is_in_group("RespawnPoint"):
         respawn_position = area.position
-
+    if area.is_in_group("PortalStone"):
+        area = area as PortalStone
+        area.is_unlocked = true
+        portal_stones_unlocked[area.stone_number] = area.position
 
 
 func exit_interactable(_area: Area2D):
@@ -382,6 +407,24 @@ func on_level_reset(_level_key: String, _on_start: bool):
     pass
 
 
+func get_next_portal_stone(current_number: int):
+    var numbers = portal_stones_unlocked.keys()
+    numbers.sort()
+    var next_number = current_number
+    print(numbers)
+    # Try to assign next number to the no right after current
+    for i in numbers:
+        print(i)
+        if i <= current_number:
+            continue
+        if i > current_number:
+            next_number = i
+            break
+    # If a new number was not assigned, assign to the first in the list (wrap-around)
+    if next_number == current_number:
+        next_number = numbers[0]
+    return next_number
+
 func handle_interacts_with_up_down():
     if state != states.IDLE: return
 
@@ -396,6 +439,14 @@ func handle_interacts_with_up_down():
     if (Input.is_action_just_pressed("up")):
         if (current_interactable != null and current_interactable.is_in_group("GameExit")):
             Events.try_exit_game.emit()
+
+    if (Input.is_action_just_pressed("up")):
+        if (current_interactable != null and current_interactable.is_in_group("PortalStone")) and len(portal_stones_unlocked) > 1:
+            var curr = (current_interactable as PortalStone).stone_number
+            var next = get_next_portal_stone(curr)
+            var teleport_pos = portal_stones_unlocked[next]
+            print("FROM %d TO %d" % [curr, next])
+            teleport_player(teleport_pos)
 
 
 func handle_buttons_held():
