@@ -97,6 +97,8 @@ func _ready() -> void:
     Events.portal_stone_unlocked.connect(func(stone_num:int, stone_pos:Vector2):
         portal_stones_unlocked[stone_num] = stone_pos)
 
+    current_color = GameData.current_player_color
+
 func _physics_process(delta: float) -> void:
     prep_jump = false
     handle_face_direction()
@@ -247,6 +249,7 @@ func hit_hazard_and_respawn(_area: Area2D):
 func teleport_player(teleport_to_pos: Vector2):
     print('teleport?')
     state = states.HIT_HAZARD
+    Events.player_teleport.emit()
     despawn_player()
     await animated_sprite_2d.animation_finished
     position = teleport_to_pos
@@ -295,6 +298,7 @@ func enter_interactable(area: Area2D):
         Events.show_dialogue.emit(area.dialogue_text, 0)
     if area.is_in_group("RespawnPoint"):
         respawn_position = area.position
+        print('respawn point...')
     if area.is_in_group("PortalStone"):
         area = area as PortalStone
         area.is_unlocked = true
@@ -362,6 +366,7 @@ func change_frog_color():
     animated_sprite_2d.material.set_shader_parameter("replace_color_2", p_array[1])
     animated_sprite_2d.material.set_shader_parameter("replace_color_3", p_array[2])
     Events.player_change_color.emit(current_color)
+    GameData.current_player_color = current_color
 
 
 func handle_swtich_pressed():

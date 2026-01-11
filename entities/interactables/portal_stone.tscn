@@ -30,6 +30,6 @@ script = ExtResource("1_ukvip")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_xqs3g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["PortalStone", "RespawnPoint"]]
 position = Vector2(0.5, -5)
 shape = SubResource("RectangleShape2D_1cuym")

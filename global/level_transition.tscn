@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c26auqdja8ij6"]
 
-[ext_resource type="Script" uid="uid://o0pamrjm4s3e" path="res://entities/world/level_transition.gd" id="1_w28ss"]
+[ext_resource type="Script" uid="uid://o0pamrjm4s3e" path="res://global/level_transition.gd" id="1_w28ss"]
 
 [sub_resource type="Animation" id="Animation_58nhj"]
 length = 0.001

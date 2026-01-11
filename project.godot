@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://global/events/events.tscn"
-LevelTransition="*res://entities/world/level_transition.tscn"
-LevelManager="*res://entities/world/level_manager.tscn"
+LevelTransition="*res://global/level_transition.tscn"
+LevelManager="*res://global/level_manager.tscn"
 AudioManager="*res://global/AudioManager.tscn"
 GlobalData="*res://global/GlobalData.tscn"
+GameData="*res://global/GameData.tscn"
 
 [debug]
 
