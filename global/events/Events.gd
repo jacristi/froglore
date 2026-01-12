@@ -62,6 +62,8 @@ signal secret_found
 
 signal grass_rustled
 
+signal should_save_game
+
 func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("pause"):
         pause_pressed.emit()

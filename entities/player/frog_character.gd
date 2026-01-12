@@ -77,7 +77,7 @@ var _is_paused:= false
 
 func _ready() -> void:
     respawn_position = starting_position
-    hazard_detector.area_entered.connect(hit_hazard_and_respawn)
+    hazard_detector.area_entered.connect(hit_hazard_despawn_and_respawn)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     dialogue_detector.area_entered.connect(enter_dialogue)
@@ -85,6 +85,7 @@ func _ready() -> void:
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
+    Events.dark_bug_collected.connect(handle_dark_bug_collected)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
     big_hop_buffer_timer.wait_time = big_hop_buffer_time
     big_hop_buffer_timer.timeout.connect(func(): can_big_hop = false)
@@ -232,13 +233,8 @@ func apply_gravity(delta):
 
     velocity.y += gravity * delta
 
-func hit_special_hazard(respawn_wait_time:float=0):
-    despawn_player()
-    await get_tree().create_timer(respawn_wait_time).timeout
-    respawn_player()
 
-
-func hit_hazard_and_respawn(_area: Area2D):
+func hit_hazard_despawn_and_respawn(_area: Area2D):
     Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
     despawn_player()
@@ -246,8 +242,16 @@ func hit_hazard_and_respawn(_area: Area2D):
     respawn_player()
 
 
+func hit_hazard_despawn():
+    Events.player_hit_hazard.emit()
+    state = states.HIT_HAZARD
+    animated_sprite_2d.play("despawn")
+    velocity.x = 0
+    velocity.y = 0
+
+
 func teleport_player(teleport_to_pos: Vector2):
-    print('teleport?')
+    """ """
     state = states.HIT_HAZARD
     Events.player_teleport.emit()
     despawn_player()
@@ -264,7 +268,13 @@ func teleport_player(teleport_to_pos: Vector2):
         animated_sprite_2d.play("idle")
 
 
+func handle_dark_bug_collected():
+    state = states.HIT_HAZARD
+    Events.player_hit_hazard.emit()
+
+
 func despawn_player():
+    state = states.HIT_HAZARD
     animated_sprite_2d.play("despawn")
     velocity.x = 0
     velocity.y = 0
