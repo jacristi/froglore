@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvl1chhp1fepc"]
 
-[ext_resource type="Script" uid="uid://x6d0yvrho82" path="res://global/LevelManager.gd" id="1_85043"]
+[ext_resource type="Script" uid="uid://x6d0yvrho82" path="res://global/level_manager.gd" id="1_drodv"]
 
 [node name="LevelManager" type="Node"]
 process_mode = 3
-script = ExtResource("1_85043")
+script = ExtResource("1_drodv")
 levels_dict = {
 "level_0": "res://entities/world/levels/level_0.tscn",
 "level_1": "res://entities/world/levels/level_1.tscn",
