@@ -121,13 +121,13 @@ rotation = 3.14159
 position = Vector2(-28, 60)
 rotation = 3.14159
 
-[node name="CameraObjects" parent="." index="10"]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." index="11"]
+
+[node name="CameraObjects" parent="." index="12"]
 visible = false
 
-[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="14"]
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="16"]
 position = Vector2(480, 200)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="11"]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" index="0"]
 anchors_preset = 14

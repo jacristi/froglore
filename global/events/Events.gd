@@ -7,6 +7,11 @@ signal level_new(level_key: String, on_start: bool)
 signal level_purified_start
 signal level_purified_done
 
+signal collectable_collected(
+    collectable_type: String,
+    collectable_name: String,
+    quiet: bool
+    )
 signal light_bug_collected
 signal dark_bug_collected
 signal light_bug_spawn
@@ -63,6 +68,7 @@ signal secret_found
 signal grass_rustled
 
 signal should_save_game
+signal level_loaded(level_name: String)
 
 func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("pause"):

@@ -9,8 +9,8 @@ var state = states.INACTIVE
 
 @export var dialogue_text:= "..."
 
+
 func _ready() -> void:
-    Events.dark_bug_collected.connect(set_state_inactive)
     handle_initial_states()
 
 

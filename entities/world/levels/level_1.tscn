@@ -1,15 +1,14 @@
-[gd_scene load_steps=31 format=4 uid="uid://bn5s1cqkxgw47"]
+[gd_scene load_steps=30 format=4 uid="uid://bn5s1cqkxgw47"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_rjwai"]
-[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_j2v6k"]
 [ext_resource type="Texture2D" uid="uid://080k7x3oei7m" path="res://assets/spritesheets/spr-environ-tiles.png" id="2_uj01x"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_amwk7"]
 [ext_resource type="Texture2D" uid="uid://cy7vwgj5dl85b" path="res://assets/spritesheets/ts-grassy-dirt.png" id="3_aqa6t"]
-[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="4_p6ufu"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="4_p6ufu"]
 [ext_resource type="Texture2D" uid="uid://b2vxaroe50jaq" path="res://assets/spritesheets/ts-dirt.png" id="4_raivk"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="5_4p8ec"]
 [ext_resource type="Texture2D" uid="uid://d3v2ybwgdejew" path="res://assets/spritesheets/ts-stone-overgrown.png" id="5_ff3ye"]
-[ext_resource type="Script" uid="uid://brp4fbqxav4da" path="res://entities/world/secrets_tile_layer.gd" id="6_1ftxy"]
+[ext_resource type="Script" path="res://entities/world/secrets_tile_layer.gd" id="6_1ftxy"]
 [ext_resource type="PackedScene" uid="uid://da8tv1vemxgl3" path="res://entities/camera/scene_transition_area.tscn" id="6_oiu7s"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="7_l4qpi"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="8_0knea"]
@@ -17,11 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="10_2xo51"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="11_1gpaj"]
 [ext_resource type="PackedScene" uid="uid://76md64h5tlsu" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_blue.tscn" id="12_gl1by"]
+[ext_resource type="PackedScene" uid="uid://cae57y00piuyw" path="res://entities/collectables/light_bug_new.tscn" id="13_aqa6t"]
 [ext_resource type="PackedScene" uid="uid://bffc07m2shdda" path="res://entities/platforms/one_way_platform.tscn" id="13_sie2x"]
 [ext_resource type="PackedScene" uid="uid://calhkvkfrq48v" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_blue.tscn" id="13_up2mx"]
 [ext_resource type="PackedScene" uid="uid://b3fwyshaeenli" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_yellow.tscn" id="14_i00av"]
 [ext_resource type="PackedScene" uid="uid://be02ngp2du6k6" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_yellow.tscn" id="15_k2sgh"]
-[ext_resource type="PackedScene" uid="uid://b3d7jwjser3yq" path="res://entities/camera/camera_move_trigger.tscn" id="16_ssi3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sie2x"]
 size = Vector2(16, 8)
@@ -1516,20 +1515,20 @@ rotation = 3.14159
 position = Vector2(12, 87)
 scale = Vector2(1, -1)
 
-[node name="LightBug" parent="Collectables" index="0" instance=ExtResource("2_j2v6k")]
-position = Vector2(56, 78)
+[node name="LightBug1" parent="Collectables" index="0" instance=ExtResource("13_aqa6t")]
+position = Vector2(149, 62)
+collectable_name = "light_bug_1"
 
-[node name="LightBug2" parent="Collectables" index="1" instance=ExtResource("2_j2v6k")]
-position = Vector2(152, 86)
+[node name="LightBug2" parent="Collectables" index="1" instance=ExtResource("13_aqa6t")]
+position = Vector2(59, 78)
+collectable_name = "light_bug_2"
 
-[node name="LightBug4" parent="Collectables" index="2" instance=ExtResource("2_j2v6k")]
-position = Vector2(120, 86)
-
-[node name="LightBug3" parent="Collectables" index="3" instance=ExtResource("2_j2v6k")]
-position = Vector2(204, 77)
+[node name="LightBug3" parent="Collectables" index="2" instance=ExtResource("13_aqa6t")]
+position = Vector2(216, 71)
+collectable_name = "light_bug_3"
 
 [node name="LevelExit" parent="Interactables" index="0"]
-position = Vector2(136, 93)
+position = Vector2(676, -11)
 
 [node name="FrogStatue" parent="Interactables" index="1" instance=ExtResource("5_4p8ec")]
 position = Vector2(17, 73)
@@ -1586,22 +1585,22 @@ position = Vector2(520, 7)
 position = Vector2(264, 18)
 
 [node name="DarkBug" parent="Hazards" index="0" instance=ExtResource("4_p6ufu")]
-position = Vector2(28, 76)
+position = Vector2(-228, 76)
 
 [node name="DarkBug2" parent="Hazards" index="1" instance=ExtResource("4_p6ufu")]
-position = Vector2(116, 52)
+position = Vector2(-252, 76)
 
 [node name="DarkBug3" parent="Hazards" index="2" instance=ExtResource("4_p6ufu")]
-position = Vector2(116, 60)
+position = Vector2(316, 12)
 
 [node name="DarkBug4" parent="Hazards" index="3" instance=ExtResource("4_p6ufu")]
-position = Vector2(188, 68)
+position = Vector2(316, -12)
 
 [node name="DarkBug5" parent="Hazards" index="4" instance=ExtResource("4_p6ufu")]
-position = Vector2(172, 76)
+position = Vector2(532, 84)
 
 [node name="DarkBug6" parent="Hazards" index="5" instance=ExtResource("4_p6ufu")]
-position = Vector2(164, 76)
+position = Vector2(508, -12)
 
 [node name="DarkBug8" parent="Hazards" index="6" instance=ExtResource("4_p6ufu")]
 position = Vector2(36, 76)
@@ -1642,55 +1641,24 @@ position = Vector2(359, -7)
 [node name="PortalStone4" parent="Points" index="9"]
 position = Vector2(519, 25)
 
-[node name="CameraMoveTriggerSpawn" parent="CameraObjects" index="1"]
-position = Vector2(136, 63)
+[node name="CameraMoveTrigger_-1_1" parent="CameraObjects" index="10"]
+position = Vector2(-120, -68)
 
-[node name="CameraMoveTriggerL5" parent="CameraObjects" index="4" instance=ExtResource("16_ssi3d")]
-position = Vector2(-128, 72)
-scroll_left_val = -240
-
-[node name="CameraMoveTriggerL6" parent="CameraObjects" index="7" instance=ExtResource("16_ssi3d")]
-position = Vector2(-459, 65)
-scroll_left_val = -480
-scroll_right_val = -240
-
-[node name="CameraMoveTriggerR5" parent="CameraObjects" index="10" instance=ExtResource("16_ssi3d")]
-position = Vector2(404, 71)
-scroll_left_val = 240
-scroll_right_val = 480
-
-[node name="CameraMoveTriggerR6" parent="CameraObjects" index="13" instance=ExtResource("16_ssi3d")]
-position = Vector2(520, 73)
-scroll_left_val = 480
-scroll_right_val = 720
-
-[node name="CameraMoveTriggerRUP1" parent="CameraObjects" index="14"]
-position = Vector2(378, 8)
-
-[node name="CameraMoveTriggerRUP2" parent="CameraObjects" index="15"]
-position = Vector2(378, -8)
-
-[node name="CameraMoveTriggerRUP3" parent="CameraObjects" index="16"]
-position = Vector2(556, 8)
-
-[node name="CameraMoveTriggerRUP4" parent="CameraObjects" index="17"]
-position = Vector2(556, -7)
-
-[node name="ScreenTransitionIndicator" parent="CameraObjects" index="18"]
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="15"]
 position = Vector2(240, 80)
 
-[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="19"]
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="16"]
 position = Vector2(442, 237)
 
-[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="20"]
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="17"]
 z_index = -1
 position = Vector2(480, 80)
 
-[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="21"]
+[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="18"]
 position = Vector2(328, 1)
 rotation = 4.712389
 
-[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="22"]
+[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="19"]
 position = Vector2(416, 0)
 rotation = 1.5707964
 

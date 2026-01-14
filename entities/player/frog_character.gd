@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var hazard_detector: Area2D = $HazardDetector
 @onready var interact_detector: Area2D = $InteractDetector
 @onready var dialogue_detector: Area2D = $DialogueDetector
+@onready var collectable_detector: Area2D = $CollectableDetector
 @onready var starting_position := global_position
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
@@ -82,6 +83,7 @@ func _ready() -> void:
     interact_detector.area_exited.connect(exit_interactable)
     dialogue_detector.area_entered.connect(enter_dialogue)
     dialogue_detector.area_exited.connect(exit_dialogue)
+    collectable_detector.area_entered.connect(enter_collectable)
     Events.level_completed.connect(on_level_complete)
     Events.level_purified.connect(on_level_purified)
     Events.level_reset.connect(on_level_reset)
@@ -213,6 +215,7 @@ func handle_face_direction():
         face_direction = -face_direction
         animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
 
+
 func handle_move_directions():
     h_direction = Input.get_axis("move_left", "move_right")
     v_direction = Input.get_axis("down", "up")
@@ -222,7 +225,6 @@ func _input(event: InputEvent) -> void:
     # Track most recent input types
     if event is InputEventJoypadButton: GlobalData.input_type = 'controller'
     if event is InputEventKey: GlobalData.input_type = 'keyboard'
-    # print(event.as_text())
 
 
 func apply_gravity(delta):
@@ -308,12 +310,6 @@ func enter_interactable(area: Area2D):
         Events.show_dialogue.emit(area.dialogue_text, 0)
     if area.is_in_group("RespawnPoint"):
         respawn_position = area.position
-        print('respawn point...')
-    if area.is_in_group("PortalStone"):
-        area = area as PortalStone
-        area.is_unlocked = true
-        portal_stones_unlocked[area.stone_number] = area.position
-
 
 func exit_interactable(_area: Area2D):
     current_interactable = null
@@ -326,6 +322,11 @@ func enter_dialogue(area: Area2D):
 
 func exit_dialogue(_area: Area2D):
     current_dialogue = null
+
+
+func enter_collectable(coll: Collectable) -> void:
+    """ """
+    coll.collect()
 
 
 func croak() -> void:
@@ -342,11 +343,6 @@ func croak() -> void:
     if can_try_activate_interactable():
         current_interactable.try_activate()
 
-    if current_interactable and current_interactable.is_in_group("LevelExit"):
-        if LevelManager.get_level_state(LevelManager.current_level) == LevelManager.level_states.PURIFIED \
-            and LevelManager.current_level != "level_0" \
-            and LevelManager.current_level != "title_scene":
-            Events.go_to_level.emit("level_0")
 
     if state == states.CROAKING:
         state = states.IDLE
@@ -426,10 +422,9 @@ func get_next_portal_stone(current_number: int):
     var numbers = portal_stones_unlocked.keys()
     numbers.sort()
     var next_number = current_number
-    print(numbers)
+
     # Try to assign next number to the no right after current
     for i in numbers:
-        print(i)
         if i <= current_number:
             continue
         if i > current_number:
@@ -460,7 +455,7 @@ func handle_interacts_with_up_down():
             var curr = (current_interactable as PortalStone).stone_number
             var next = get_next_portal_stone(curr)
             var teleport_pos = portal_stones_unlocked[next]
-            print("FROM %d TO %d" % [curr, next])
+
             teleport_player(teleport_pos)
 
 

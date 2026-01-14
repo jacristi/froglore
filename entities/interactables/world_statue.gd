@@ -22,9 +22,9 @@ func get_warp_statue_states():
     var total = get_tree().get_nodes_in_group("WarpStatues").size()
 
     for statue in get_tree().get_nodes_in_group("WarpStatues"):
-        if statue.level_state == LevelManager.level_states.COMPLETED:
+        if statue.level_state == LevelManager.level_states.FINISHED:
             count_completed += 1
-        if statue.level_state == LevelManager.level_states.PURIFIED:
+        if statue.level_state == LevelManager.level_states.COMPLETED:
             count_completed += 1
             count_purified += 1
 

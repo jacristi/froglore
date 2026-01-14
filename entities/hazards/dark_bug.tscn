@@ -1,6 +1,5 @@
-[gd_scene load_steps=60 format=3 uid="uid://bmmx4og05hydg"]
+[gd_scene load_steps=59 format=3 uid="uid://bmmx4og05hydg"]
 
-[ext_resource type="Script" uid="uid://brk665k1me3h5" path="res://entities/collectables/dark_bug.gd" id="1_q0lch"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_3nqlo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0ifx"]
@@ -415,9 +414,8 @@ animations = [{
 size = Vector2(6, 6)
 
 [node name="DarkBug" type="Area2D" groups=["DarkBugs"]]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("1_q0lch")
+collision_layer = 4
+collision_mask = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)

@@ -13,20 +13,20 @@ func _ready() -> void:
 
 
 func handle_initial_states():
-    if level_state == LevelManager.level_states.NOT_COMPLETED:
+    if level_state < LevelManager.level_states.FINISHED:
         animated_sprite_2d.play("inactive")
         dialogue_text = "..."
-    if level_state == LevelManager.level_states.COMPLETED:
+    if level_state == LevelManager.level_states.FINISHED:
         randomize()
         await get_tree().create_timer(randf_range(0, 1.5)).timeout
         animated_sprite_2d.play("active")
         dialogue_text = "Speak and you shall go"
-    if level_state == LevelManager.level_states.PURIFIED:
+    if level_state == LevelManager.level_states.COMPLETED:
         animated_sprite_2d.play("purified")
         dialogue_text = "Speak and you shall go"
 
 
 func try_activate():
     if LevelManager.in_semi_pause_state: return
-    if level_state == LevelManager.level_states.NOT_COMPLETED: return
+    if level_state < LevelManager.level_states.FINISHED: return
     Events.go_to_level.emit(level_key)

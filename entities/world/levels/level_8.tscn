@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://bnc8fwsarcqbr"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_lijvt"]
-[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="2_d0met"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_d0met"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="3_a113y"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_psb6d"]
 

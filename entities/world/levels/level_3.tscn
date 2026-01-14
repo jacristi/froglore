@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_3wnbo"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_rxlc4"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_0535l"]
-[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="4_plavw"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="4_plavw"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="5_3d2r2"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="6_lq7g8"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="7_c5sok"]

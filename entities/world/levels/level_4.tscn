@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_r82ow"]
 [ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="2_a4x6c"]
-[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/collectables/dark_bug.tscn" id="3_024yw"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="3_024yw"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_70tmp"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="5_p6hlb"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="6_1gvlr"]

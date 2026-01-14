@@ -4,11 +4,6 @@ var is_collected := false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-func _ready() -> void:
-    Events.dark_bug_collected.connect(collect_along_others)
-    Events.level_purified.connect(collect_as_purified)
-
-
 func _on_body_entered(_body: Node2D) -> void:
     if is_collected: return
     collect()

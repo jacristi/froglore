@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=80 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -582,6 +582,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57hb4"]
 size = Vector2(4, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t4r4"]
+size = Vector2(6, 4)
+
 [node name="FrogCharacter" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 2
@@ -626,6 +629,14 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueDetector"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_57hb4")
+
+[node name="CollectableDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableDetector"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_2t4r4")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 one_shot = true

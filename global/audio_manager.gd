@@ -44,6 +44,7 @@ var base_croak_pitch: float
 func _ready() -> void:
     Events.light_bug_spawn.connect(play_light_bug_spawn)
     Events.light_bug_collected.connect(play_light_bug_collect)
+    Events.collectable_collected.connect(play_collectable_collected)
     Events.go_to_next_level.connect(play_goto_next)
     Events.go_to_prev_level.connect(play_goto_prev)
     Events.level_completed.connect(play_level_complete)
@@ -71,6 +72,12 @@ func _ready() -> void:
 
     await get_tree().create_timer(0.5).timeout
     play_game_start()
+
+
+func play_collectable_collected(c_type, _c_name, quiet) -> void:
+    if quiet: return
+    match c_type:
+        "light_bug": play_light_bug_collect()
 
 
 func play_light_bug_collect():

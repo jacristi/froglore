@@ -1,6 +1,10 @@
 extends Node
 
-var current_level = ''
+var current_level = '':
+    set(value):
+        current_level = value
+        Events.level_loaded.emit(current_level)
+
 
 var should_save_load:= false
 
@@ -10,7 +14,13 @@ var save_path = SAVE_PATH
 
 @export var levels_dict: Dictionary
 
-enum level_states {NOT_COMPLETED, COMPLETED, PURIFIED}
+enum level_states {
+    LOCKED,     # Not available to view/play
+    UNLOCKED,   # available to view/play
+    STARTED,    # started but not gotten to end
+    FINISHED,   # finished level but some items not collected
+    COMPLETED,  # all items collected/completed
+    }
 var level_states_dict: Dictionary
 
 @export var purified_overrides: Array[String]
@@ -22,22 +32,19 @@ var has_finished_all_purified:= false
 
 var last_level:= "level_1"
 
+var level_loaded_sent:= false
+
 func _ready() -> void:
-    Events.level_completed.connect(update_leveL_completed)
-    Events.level_reset.connect(update_level_reset)
-    Events.level_purified.connect(update_level_purified)
+
     Events.go_to_level.connect(go_to_level)
     Events.try_exit_game.connect(exit_game)
 
     ### Set Level Default States
     for level in levels_dict:
-        level_states_dict[level] = level_states.NOT_COMPLETED
+        level_states_dict[level] = level_states.LOCKED
 
     load_level_states()
     load_bool_vars()
-
-    for level in purified_overrides:
-        level_states_dict[level] = level_states.PURIFIED
 
 
 func get_level_by_key(level_key: String):
@@ -62,8 +69,6 @@ func go_to_level(level_key: String) -> void:
 func update_level_state(level_key: String, new_state: level_states):
     var cur_state = level_states_dict[level_key]
 
-    # Do not update if purified
-    if cur_state == level_states.PURIFIED: return
     if cur_state == new_state: return
 
     level_states_dict[level_key] = new_state
@@ -72,14 +77,6 @@ func update_level_state(level_key: String, new_state: level_states):
 func get_level_state(level_key: String) -> level_states:
     return level_states_dict[level_key]
 
-func update_leveL_completed(level_key:String, _on_start: bool):
-     update_level_state(level_key, level_states.COMPLETED)
-
-func update_level_reset(level_key: String, _on_start: bool):
-    update_level_state(level_key, level_states.NOT_COMPLETED)
-
-func update_level_purified(level_key: String, _on_start: bool):
-    update_level_state(level_key, level_states.PURIFIED)
 
 func exit_game():
     save_data()
@@ -88,6 +85,7 @@ func exit_game():
 
 
 func load_level_states():
+    ### GET FROM NEW SAVE DATA
     if not should_save_load: return
 
     var config = ConfigFile.new()
@@ -110,6 +108,7 @@ func load_level_states():
 
 
 func save_data():
+    ### USE NEW SAVE DATA FUNCTIONALITY
     if not should_save_load: return
 
     var config = ConfigFile.new()

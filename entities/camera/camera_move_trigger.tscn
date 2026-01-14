@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bthtw5mronkn" path="res://entities/camera/camera_move_trigger.gd" id="1_xe2xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3li5"]
-size = Vector2(12, 135)
+size = Vector2(228, 128)
 
 [node name="CameraMoveTrigger" type="Area2D"]
 collision_layer = 0
