@@ -109,14 +109,11 @@ position = Vector2(231, 28)
 [node name="CameraMoveTriggerR2" parent="CameraObjects" index="8"]
 position = Vector2(248, 29)
 
-[node name="ScreenTransitionIndicator" parent="CameraObjects" index="13"]
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="15"]
 position = Vector2(289, 160)
 
-[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="14"]
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="16"]
 position = Vector2(310, 161)
 
-[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="15"]
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="17"]
 position = Vector2(331, 159)
-
-[node name="EndCredits" parent="CanvasLayer" index="0"]
-visible = false

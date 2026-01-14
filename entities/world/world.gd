@@ -24,6 +24,10 @@ func _ready() -> void:
     pause_canvas.visible = true
     level_exit.hide()
     level_exit.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+
+
     Events.level_completed.connect(handle_level_completed)
     Events.level_purified.connect(handle_leveL_purified)
     Events.level_reset.connect(handle_level_reset)
@@ -35,6 +39,7 @@ func _ready() -> void:
     Events.try_go_to_prev_level.connect(go_to_prev_level)
     Events.ready_world_statue.connect(start_end_credits)
     Events.activated_world_statue.connect(start_end_credits)
+
     Events.cutscene_start.connect(cutscene_started)
     Events.cutscene_end.connect(cutscene_ended)
 

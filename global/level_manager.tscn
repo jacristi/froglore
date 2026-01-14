@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://chauslpujwdhm"]
+
+[ext_resource type="Script" path="res://global/LevelManager.gd" id="1_85043"]
+
+[node name="LevelManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_85043")
+levels_dict = {
+"level_0": "res://entities/world/levels/level_0.tscn",
+"level_1": "res://entities/world/levels/level_1.tscn",
+"level_2": "res://entities/world/levels/level_2.tscn",
+"level_3": "res://entities/world/levels/level_3.tscn",
+"level_4": "res://entities/world/levels/level_4.tscn",
+"level_5": "res://entities/world/levels/level_5.tscn",
+"level_6": "res://entities/world/levels/level_6.tscn",
+"level_7": "res://entities/world/levels/level_7.tscn",
+"level_8": "res://entities/world/levels/level_8.tscn",
+"title_scene": "res://entities/world/levels/title_scene.tscn"
+}
+purified_overrides = Array[String](["level_0", "title_scene"])
