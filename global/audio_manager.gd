@@ -188,7 +188,7 @@ func play_change_player_color(_color: String):
 func play_game_complete():
     audio_game_complete.play()
 
-func play_secret_found():
+func play_secret_found(_secret_name: String):
     audio_secret_found.play()
 
 func play_audio_teleport():

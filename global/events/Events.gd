@@ -63,7 +63,7 @@ signal pause_pressed
 signal cutscene_start
 signal cutscene_end
 
-signal secret_found
+signal secret_found(secret_name: String)
 
 signal grass_rustled
 

@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
 [ext_resource type="PackedScene" uid="uid://p4ptkm4dvrk3" path="res://entities/interactables/game_exit.tscn" id="5_263as"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="5_xt6q0"]
-[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug.tscn" id="6_opel5"]
+[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug_old.tscn" id="6_opel5"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="7_l5171"]
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="8_50ycs"]
 [ext_resource type="PackedScene" uid="uid://cfksmphs7k5m6" path="res://entities/environs/touchable_environs/touchable_grass_3.tscn" id="9_nj7d1"]

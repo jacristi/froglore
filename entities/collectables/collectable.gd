@@ -16,7 +16,6 @@ func _ready() -> void:
     match collectable_type:
         "light_bug": collectable_key = "light_bugs_collected"
         "portal_stone": collectable_key = "portal_stones_unlocked"
-        "secret": collectable_key = "secrets_uncovered"
 
     assert(collectable_name != "")
     Events.level_loaded.connect(check_save_data)
@@ -24,22 +23,15 @@ func _ready() -> void:
 
 func check_save_data(lvl: String) -> void:
     """ """
-    print('checking save data')
-    #var lvl = LevelManager.current_level
-    if !GameData.level_details.has(lvl):
-        print('level not in save data: %s' % lvl)
-        return
+    if !GameData.level_details.has(lvl): return
     if !GameData.level_details[lvl].has(collectable_key):
         print("data not has key: %s" % collectable_key)
         return
 
     var c_name = collectable_name
-    #match collectable_type:
-        #"portal_stone":c_name = int(collectable_name)
 
     if GameData.level_details[lvl][collectable_key].has(c_name):
         collect_quietly()
-        #set_as_inactive()
     else:
         print('data not has item: %s' % collectable_name)
 
