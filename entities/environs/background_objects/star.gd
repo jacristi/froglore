@@ -15,15 +15,24 @@ var animation_names = [
     ]
 
 func _ready() -> void:
+    """ """
+    Events.light_bug_collected.connect(start_animation)
+    Events.camera_change_scroll_vals.connect(camera_scroll_changed)
+    set_up()
+
+
+func camera_scroll_changed(_l, _r, _y):
+    set_up()
+
+
+func set_up() -> void:
     anim = animation_names.pick_random()
+    start_delay_timer = Timer.new()
     add_child(start_delay_timer)
     start_delay_timer.one_shot = true
     start_delay_timer.wait_time = randf_range(0, 6)
     start_delay_timer.timeout.connect(animated_sprite_2d.play.bind(anim))
-    Events.light_bug_collected.connect(start_animation)
     start_animation_with_delay()
-    #Events.dark_bug_collected.connect(hide)
-    #Events.player_should_respawn.connect(show)
 
 
 func start_animation():
