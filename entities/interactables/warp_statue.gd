@@ -29,4 +29,4 @@ func handle_initial_states():
 func try_activate():
     if LevelManager.in_semi_pause_state: return
     if level_state < LevelManager.level_states.FINISHED: return
-    Events.go_to_level.emit(level_key)
+    Events.go_to_level.emit(level_key, LevelManager.current_level)

@@ -30,6 +30,6 @@ func on_show_dialogue(text_to_show: String, _timer: float=2.0) -> void:
     box_texture.show()
 
 
-func on_hide_dialogue(_arg:String="N/A") -> void:
+func on_hide_dialogue(_arg1:String="N/A", _arg2: String="N/A") -> void:
     text_label.text = ''
     box_texture.hide()

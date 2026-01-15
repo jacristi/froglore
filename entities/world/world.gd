@@ -66,7 +66,7 @@ func go_to_next_level() -> void:
         Events.cannot_go_to_level.emit()
         return
     Events.go_to_next_level.emit()
-    Events.go_to_level.emit(next_level)
+    Events.go_to_level.emit(next_level, curr_level)
 
 
 func go_to_prev_level() -> void:
@@ -76,7 +76,7 @@ func go_to_prev_level() -> void:
         return
 
     Events.go_to_prev_level.emit()
-    Events.go_to_level.emit(prev_level)
+    Events.go_to_level.emit(prev_level, curr_level)
 
 
 func handle_light_bug_collected():

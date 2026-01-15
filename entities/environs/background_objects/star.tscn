@@ -525,5 +525,5 @@ script = ExtResource("1_xygky")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pamd")
-animation = &"none"
+animation = &"star_4"
 autoplay = "star_1"

@@ -3,6 +3,9 @@ extends Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var start_delat: float = -1.0
+
+var start_pos: Vector2
+
 var start_delay_timer:= Timer.new()
 var anim = "star_1"
 var animation_names = [
@@ -16,12 +19,22 @@ var animation_names = [
 
 func _ready() -> void:
     """ """
+    start_pos = position
     Events.light_bug_collected.connect(start_animation)
     Events.camera_change_scroll_vals.connect(camera_scroll_changed)
     set_up()
 
 
-func camera_scroll_changed(_l, _r, _y):
+func camera_scroll_changed(x_left, _x_right, y_offset):
+    """
+        Move stars with player viewport without being on canvas layer
+        This makes it so its like being on a canvas layer
+        but can preoperly hide behind ground and show in water relfection
+    """
+
+    position.x = start_pos.x + x_left
+    position.y = start_pos.y + y_offset
+
     set_up()
 
 

@@ -51,17 +51,17 @@ func get_level_by_key(level_key: String):
     return levels_dict[level_key]
 
 
-func go_to_level(level_key: String) -> void:
-    if current_level == "title_scene" and should_save_load:
-        level_key = last_level
+func go_to_level(to_level_key: String, from_level_key: String) -> void:
+    """ """
+    # TODO if saved, find last loc and go there
 
-    last_level = level_key
+    last_level = from_level_key
     save_data()
 
     get_tree().paused = true
     await get_tree().create_timer(1.0).timeout
     await LevelTransition.fade_to_black()
-    get_tree().change_scene_to_file(get_level_by_key(level_key))
+    get_tree().change_scene_to_file(get_level_by_key(to_level_key))
     await LevelTransition.fade_from_black()
     get_tree().paused = false
 

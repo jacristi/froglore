@@ -56,17 +56,18 @@ _data = {
 &"fade_to_black": SubResource("Animation_riemm")
 }
 
-[node name="LevelTransition" type="Node"]
+[node name="LevelTransition" type="CanvasLayer"]
 process_mode = 3
+layer = 20
 script = ExtResource("1_w28ss")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kuqg5")
+&"": SubResource("AnimationLibrary_kuqg5")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 8
+z_index = 14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
