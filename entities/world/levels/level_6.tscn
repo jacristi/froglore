@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_aypfj"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_eqte6"]
-[ext_resource type="PackedScene" uid="uid://nvjmvg5q00tq" path="res://entities/collectables/light_bug_old.tscn" id="3_aiksl"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_sovn5"]
+[ext_resource type="PackedScene" uid="uid://cae57y00piuyw" path="res://entities/collectables/light_bug.tscn" id="5_il7g6"]
 [ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="5_otopu"]
 [ext_resource type="PackedScene" uid="uid://d04rpka60lhkw" path="res://entities/environs/touchable_environs/touchable_grass_2.tscn" id="6_vou1w"]
 [ext_resource type="PackedScene" uid="uid://cp8ctc7ke41i2" path="res://entities/environs/touchable_environs/touchable_grass_1.tscn" id="7_0fptp"]
@@ -63,20 +63,25 @@ position = Vector2(87, 17)
 [node name="TouchableGrass10" parent="Environs" index="12" instance=ExtResource("6_vou1w")]
 position = Vector2(162, 33)
 
-[node name="LightBug" parent="Collectables" index="0" instance=ExtResource("3_aiksl")]
-position = Vector2(36, 61)
-
-[node name="LightBug2" parent="Collectables" index="1" instance=ExtResource("3_aiksl")]
-position = Vector2(188, 21)
-
-[node name="LightBug3" parent="Collectables" index="2" instance=ExtResource("3_aiksl")]
-position = Vector2(196, 77)
-
-[node name="LightBug4" parent="Collectables" index="3" instance=ExtResource("3_aiksl")]
-position = Vector2(92, 45)
-
-[node name="LightBug5" parent="Collectables" index="4" instance=ExtResource("3_aiksl")]
+[node name="LightBug1" parent="Collectables" index="0" instance=ExtResource("5_il7g6")]
 position = Vector2(132, 29)
+collectable_name = "light_bug_1"
+
+[node name="LightBug2" parent="Collectables" index="1" instance=ExtResource("5_il7g6")]
+position = Vector2(52, 85)
+collectable_name = "light_bug_2"
+
+[node name="LightBug3" parent="Collectables" index="2" instance=ExtResource("5_il7g6")]
+position = Vector2(196, 69)
+collectable_name = "light_bug_3"
+
+[node name="LightBug4" parent="Collectables" index="3" instance=ExtResource("5_il7g6")]
+position = Vector2(188, 21)
+collectable_name = "light_bug_4"
+
+[node name="LightBug5" parent="Collectables" index="4" instance=ExtResource("5_il7g6")]
+position = Vector2(60, 21)
+collectable_name = "light_bug_5"
 
 [node name="LevelExit" parent="Interactables" index="0"]
 position = Vector2(132, 92)
@@ -222,17 +227,17 @@ position = Vector2(68, 92)
 [node name="SpikesSmall2" parent="Hazards" index="17" instance=ExtResource("5_otopu")]
 position = Vector2(76, 92)
 
-[node name="ScreenTransitionIndicator" parent="CameraObjects" index="12"]
+[node name="ScreenTransitionIndicator" parent="CameraObjects" index="15"]
 position = Vector2(304, 157)
 
-[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="13"]
+[node name="ScreenTransitionIndicator2" parent="CameraObjects" index="16"]
 position = Vector2(325, 158)
 
-[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="14"]
+[node name="ScreenTransitionIndicator3" parent="CameraObjects" index="17"]
 position = Vector2(344, 158)
 
-[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="15"]
+[node name="ScreenTransitionIndicator1Way" parent="CameraObjects" index="18"]
 position = Vector2(360, 156)
 
-[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="16"]
+[node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="19"]
 position = Vector2(375, 156)

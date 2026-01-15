@@ -24,16 +24,12 @@ func _ready() -> void:
 func check_save_data(lvl: String) -> void:
     """ """
     if !GameData.level_details.has(lvl): return
-    if !GameData.level_details[lvl].has(collectable_key):
-        print("data not has key: %s" % collectable_key)
-        return
+    if !GameData.level_details[lvl].has(collectable_key): return
 
     var c_name = collectable_name
 
     if GameData.level_details[lvl][collectable_key].has(c_name):
         collect_quietly()
-    else:
-        print('data not has item: %s' % collectable_name)
 
 
 func play_anim(anim_name: String):

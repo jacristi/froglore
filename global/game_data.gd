@@ -89,7 +89,7 @@ func load_game_data() -> void:
 
     var full_path = game_data_file_path + "/" + game_data_file_name
     var file = FileAccess.open(full_path, FileAccess.READ)
-    print(game_data_file_path)
+
     if !FileAccess.file_exists(full_path):
         level_details = {}
         return

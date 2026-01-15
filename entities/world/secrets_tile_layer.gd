@@ -29,11 +29,7 @@ func check_save_data(lvl: String) -> void:
     var s_key = "secrets_found"
 
     if !GameData.level_details.has(lvl): return
-    if !GameData.level_details[lvl].has(s_key):
-        print("data not has key: %s" % s_key)
-        return
+    if !GameData.level_details[lvl].has(s_key): return
 
     if GameData.level_details[lvl][s_key].has(secret_name):
         is_revealed = true
-    else:
-        print('data not has item: %s' % secret_name)
