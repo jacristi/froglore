@@ -43,7 +43,9 @@ func get_level_by_key(level_key: String):
 
 func go_to_level(to_level_key: String, from_level_key: String) -> void:
     """ """
-    # TODO if saved, find last loc and go there
+    # Check first if leaving title and game data is set to save/load
+    if GameData.should_save_load and current_level == "title_scene" and GameData.game_details.has(GameData.key_last_level):
+        to_level_key = GameData.game_details[GameData.key_last_level]
 
     last_level = from_level_key
 

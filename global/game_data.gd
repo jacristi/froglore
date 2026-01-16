@@ -103,6 +103,7 @@ func load_game_data() -> void:
     json_object.parse(json)
 
     level_details = json_object.data[key_level_details]
+    game_details  = json_object.data[key_game_details]
     print('loaded level details from file')
 
     file.close()
@@ -142,7 +143,10 @@ func save_game_data() -> void:
         print("Unable to save data to file")
         return
 
-    game_details[key_last_level] = LevelManager.current_level
+    # Save new last level played as long as its a level scene
+    if LevelManager.current_level != "title_scene":
+        game_details[key_last_level] = LevelManager.current_level
+
     var data = {
         key_level_details: level_details,
         key_game_details:  game_details,
