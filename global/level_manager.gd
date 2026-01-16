@@ -6,12 +6,6 @@ var current_level = '':
         Events.level_loaded.emit(current_level)
 
 
-var should_save_load:= false
-
-const SAVE_PATH = "user://froglore_save.cfg"
-const DEBUG_SAVE_PATH = "res://_data/froglore_save.cfg"
-var save_path = SAVE_PATH
-
 @export var levels_dict: Dictionary
 
 enum level_states {
@@ -21,9 +15,8 @@ enum level_states {
     FINISHED,   # finished level but some items not collected
     COMPLETED,  # all items collected/completed
     }
-var level_states_dict: Dictionary
 
-@export var purified_overrides: Array[String]
+var level_states_dict: Dictionary
 
 var in_semi_pause_state:= false
 
@@ -32,10 +25,9 @@ var has_finished_all_purified:= false
 
 var last_level:= "level_1"
 
-var level_loaded_sent:= false
 
 func _ready() -> void:
-
+    """ """
     Events.go_to_level.connect(go_to_level)
     Events.try_exit_game.connect(exit_game)
 
@@ -43,11 +35,9 @@ func _ready() -> void:
     for level in levels_dict:
         level_states_dict[level] = level_states.LOCKED
 
-    load_level_states()
-    load_bool_vars()
-
 
 func get_level_by_key(level_key: String):
+    """ """
     return levels_dict[level_key]
 
 
@@ -56,10 +46,9 @@ func go_to_level(to_level_key: String, from_level_key: String) -> void:
     # TODO if saved, find last loc and go there
 
     last_level = from_level_key
-    save_data()
 
     get_tree().paused = true
-    await get_tree().create_timer(1.0).timeout
+    await get_tree().create_timer(.5).timeout
     await LevelTransition.fade_to_black()
     get_tree().change_scene_to_file(get_level_by_key(to_level_key))
     await LevelTransition.fade_from_black()
@@ -67,6 +56,7 @@ func go_to_level(to_level_key: String, from_level_key: String) -> void:
 
 
 func update_level_state(level_key: String, new_state: level_states):
+    """ """
     var cur_state = level_states_dict[level_key]
 
     if cur_state == new_state: return
@@ -75,57 +65,12 @@ func update_level_state(level_key: String, new_state: level_states):
 
 
 func get_level_state(level_key: String) -> level_states:
+    """ """
     return level_states_dict[level_key]
 
 
+
 func exit_game():
-    save_data()
+    """ """
     await get_tree().create_timer(.5).timeout
     get_tree().quit()
-
-
-func load_level_states():
-    ### GET FROM NEW SAVE DATA
-    if not should_save_load: return
-
-    var config = ConfigFile.new()
-    var error = config.load(DEBUG_SAVE_PATH)
-    if error != OK: return
-
-    for level in level_states_dict:
-        if (level == 'level_0' || level == "title_scene"):
-            continue
-
-        if not config.has_section_key("level_states", level):
-            continue
-
-        var state = config.get_value("level_states", level)
-
-        if state == null:
-            continue
-
-        level_states_dict[level] = state as level_states
-
-
-func save_data():
-    ### USE NEW SAVE DATA FUNCTIONALITY
-    if not should_save_load: return
-
-    var config = ConfigFile.new()
-    for level in level_states_dict:
-        if (level == 'level_0' || level == "title_scene"):
-            continue
-        config.set_value("level_states", level, level_states_dict[level])
-
-    config.set_value("bool_vars", "last_level", last_level)
-    config.save(DEBUG_SAVE_PATH)
-
-
-func load_bool_vars():
-    if not should_save_load: return
-
-    var config = ConfigFile.new()
-    var error = config.load(DEBUG_SAVE_PATH)
-    if error != OK: return
-    if config.has_section_key("bool_vars", "last_level"):
-        last_level = config.get_value("bool_vars", "last_level")

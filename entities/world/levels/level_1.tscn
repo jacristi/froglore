@@ -1404,7 +1404,7 @@ size = Vector2(16, 8)
 size = Vector2(20, 62)
 
 [node name="Level1" instance=ExtResource("1_rjwai")]
-curr_level = "level_1"
+this_level = "level_1"
 prev_level = "level_0"
 next_level = "level_2"
 dialogue_new = "Collect light bugs to complete levels"
@@ -1429,7 +1429,7 @@ position = Vector2(0, 92)
 [node name="CollisionShape2D" parent="SecretsTileLayer/RevealArea" index="0"]
 shape = SubResource("RectangleShape2D_sie2x")
 
-[node name="SecretsTileLayer2" type="TileMapLayer" parent="." index="4" node_paths=PackedStringArray("reveal_area")]
+[node name="SecretsTileLayer2" type="TileMapLayer" parent="." index="4" node_paths=PackedStringArray("reveal_area") groups=["SecretLayer"]]
 z_index = 2
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAjAAUAAwABAAAAAAAjAAQAAwAAAAIAAAAjAAMAAwAAAAEAAAAjAAIAAwAAAAEAAAAjAAEAAwAFAAAAAAAiAAUAAwABAAAAAAAiAAQAAwAEAAEAAAAiAAMAAwAEAAEAAAAiAAIAAwAEAAEAAAAiAAEAAwABAAIAAAAhAAUAAwABAAAAAAAhAAQAAwAEAAEAAAAhAAMAAwAEAAEAAAAhAAIAAwAEAAEAAAAhAAEAAwABAAIAAAAgAAUAAwADAAIAAAAgAAQAAwACAAEAAAAgAAMAAwACAAEAAAAgAAIAAwACAAEAAAAgAAEAAwADAAAAAAAlAAUAAwACAAYAAAAkAAUAAwADAAQAAAAkAAQAAwAFAAAAAAA=")

@@ -1394,7 +1394,7 @@ sources/2 = SubResource("TileSetAtlasSource_titvk")
 sources/3 = SubResource("TileSetAtlasSource_cmb7r")
 
 [node name="Level2" instance=ExtResource("1_dfw5o")]
-curr_level = "level_2"
+this_level = "level_2"
 prev_level = "level_1"
 next_level = "level_3"
 dialogue_new = "Hold 'Jump' for bigger hops"

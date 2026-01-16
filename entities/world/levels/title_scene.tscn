@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
 
 [node name="TitleScene" instance=ExtResource("1_nut4y")]
-curr_level = "title_scene"
+this_level = "title_scene"
 next_level = "level_1"
 
 [node name="FrogCharacter" parent="." index="0"]

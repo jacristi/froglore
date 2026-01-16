@@ -1,3 +1,4 @@
+class_name SecretsLayer
 extends TileMapLayer
 
 @export var secret_name:= ""
@@ -26,10 +27,11 @@ func _on_reveal_body_entered(_body: Node2D) -> void:
 
 func check_save_data(lvl: String) -> void:
     """ """
-    var s_key = "secrets_found"
+    var s_key = "secret"
 
     if !GameData.level_details.has(lvl): return
     if !GameData.level_details[lvl].has(s_key): return
 
     if GameData.level_details[lvl][s_key].has(secret_name):
-        is_revealed = true
+        if GameData.level_details[lvl][s_key][secret_name]:
+            is_revealed = true

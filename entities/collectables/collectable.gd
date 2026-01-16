@@ -14,8 +14,8 @@ var is_collected:= false
 
 func _ready() -> void:
     match collectable_type:
-        "light_bug": collectable_key = "light_bugs_collected"
-        "portal_stone": collectable_key = "portal_stones_unlocked"
+        "light_bug":    collectable_key = GameData.key_light_bug
+        "portal_stone": collectable_key = GameData.key_portal_stone
 
     assert(collectable_name != "")
     Events.level_loaded.connect(check_save_data)
@@ -29,7 +29,8 @@ func check_save_data(lvl: String) -> void:
     var c_name = collectable_name
 
     if GameData.level_details[lvl][collectable_key].has(c_name):
-        collect_quietly()
+        if GameData.level_details[lvl][collectable_key][c_name]:
+            collect_quietly()
 
 
 func play_anim(anim_name: String):
@@ -50,6 +51,7 @@ func collect() -> void:
 
     if inactive_on_collect:
         set_as_inactive()
+
 
 func collect_quietly() -> void:
     """ """

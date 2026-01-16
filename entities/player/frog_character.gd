@@ -84,10 +84,6 @@ func _ready() -> void:
     dialogue_detector.area_entered.connect(enter_dialogue)
     dialogue_detector.area_exited.connect(exit_dialogue)
     collectable_detector.area_entered.connect(enter_collectable)
-    Events.level_completed.connect(on_level_complete)
-    Events.level_purified.connect(on_level_purified)
-    Events.level_reset.connect(on_level_reset)
-    Events.dark_bug_collected.connect(handle_dark_bug_collected)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
     big_hop_buffer_timer.wait_time = big_hop_buffer_time
     big_hop_buffer_timer.timeout.connect(func(): can_big_hop = false)
@@ -101,6 +97,7 @@ func _ready() -> void:
         portal_stones_unlocked[stone_num] = stone_pos)
 
     current_color = GameData.current_player_color
+
 
 func _physics_process(delta: float) -> void:
     prep_jump = false
@@ -168,7 +165,7 @@ func hop_landed() -> void:
 func handle_hopping(delta):
     if not has_control(): return
 
-    # is pressed so the input can be held down
+    # use is pressed so the input can be held down
     if Input.is_action_pressed("jump"):
         if (can_hop() and is_on_floor()) or (can_big_hop and !has_buffered_big_hop):
 
@@ -268,11 +265,6 @@ func teleport_player(teleport_to_pos: Vector2):
     if state == states.RESPAWNING:
         state = states.IDLE
         animated_sprite_2d.play("idle")
-
-
-func handle_dark_bug_collected():
-    state = states.HIT_HAZARD
-    Events.player_hit_hazard.emit()
 
 
 func despawn_player():
@@ -404,18 +396,6 @@ func dash():
 func handle_dashing():
     if (Input.is_action_just_pressed("dash") and can_dash()):
         dash()
-
-
-func on_level_complete(_level_key: String, _on_start: bool):
-    pass
-
-
-func on_level_purified(_level_key: String, _on_start: bool):
-    pass
-
-
-func on_level_reset(_level_key: String, _on_start: bool):
-    pass
 
 
 func get_next_portal_stone(current_number: int):

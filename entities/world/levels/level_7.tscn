@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_wmqfn"]
 
 [node name="Level7" instance=ExtResource("1_ew37s")]
-curr_level = "level_7"
+this_level = "level_7"
 prev_level = "level_6"
 next_level = "level_8"
 

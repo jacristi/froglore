@@ -59,6 +59,6 @@ sprite_frames = SubResource("SpriteFrames_xqs3g")
 animation = &"spawn"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["PortalStone", "RespawnPoint"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_1cuym")

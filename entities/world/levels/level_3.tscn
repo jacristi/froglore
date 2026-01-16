@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cfiiuhbbcvcga" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_green.tscn" id="12_olcd5"]
 
 [node name="World" instance=ExtResource("1_3wnbo")]
-curr_level = "level_3"
+this_level = "level_3"
 prev_level = "level_2"
 next_level = "level_4"
 
