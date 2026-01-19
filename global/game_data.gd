@@ -7,32 +7,37 @@ var game_data_file_path     = "res://_data/"
 var game_data_file_name     = "game_data.json"
 var game_settings_file_name = "game_settings.json"
 
+# Game Data keys
+var key_game_details    = "game_details"
+var key_level_details   = "level_details"
 var key_state           = "state"
 var key_light_bug       = "light_bug"
 var key_portal_stone    = "portal_stone"
 var key_secret          = "secret"
 var key_statue          = "statue"
 var key_last_level      = "last_level_played"
-var key_level_details   = "level_details"
-var key_game_details    = "game_details"
+
+# Game Settings Keys
 var key_game_settings   = "game_settings"
+var key_audio_master    = "audio_master_level"
+var key_audio_music     = "audio_music_level"
+var key_audio_sfx       = "audio_music_level"
 
 var level_details = {}
 var game_details = {}
 var game_settings = {
-    "audio_master_level": 7,
-    "audio_music_level": 7,
-    "audio_sfx_level": 7,
+    key_audio_master:   7,
+    key_audio_music:    7,
+    key_audio_sfx:      7,
 }
 
 
 func _ready():
     """ """
     load_data()
-    #save_game_data()
+    Events.should_save_game_data.connect(save_game_data)
+    Events.should_save_game_settings.connect(save_game_settings)
     Events.collectable_collected.connect(handle_collectable_collected)
-    #Events.portal_stone_unlocked.connect(handle_portal_stone_unlocked)
-    Events.should_save_game.connect(save_data)
     Events.secret_found.connect(handle_secret_found)
 
 
@@ -53,12 +58,11 @@ func handle_secret_found(secret_name: String) -> void:
     """ """
     var lvl = LevelManager.current_level
     check_curr_level_in_details()
-    var s_key = "secret"
 
-    if !level_details[lvl].has(s_key):
-        level_details[lvl][s_key] = {secret_name: true}
+    if !level_details[lvl].has(key_secret):
+        level_details[lvl][key_secret] = {secret_name: true}
     else:
-        level_details[lvl][s_key][secret_name] = true
+        level_details[lvl][key_secret][secret_name] = true
 
     save_data()
 

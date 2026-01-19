@@ -43,7 +43,7 @@ func handle_on_start_level_state():
     check_update_collectable_details(GameData.key_light_bug, "LightBug")
     check_update_collectable_details(GameData.key_portal_stone, "PortalStone")
     check_update_secrets_details()
-    Events.should_save_game.emit()
+    Events.should_save_game_data.emit()
 
 
 func check_update_collectable_details(data_key: String, grp_name: String):

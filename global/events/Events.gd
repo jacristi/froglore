@@ -67,7 +67,8 @@ signal secret_found(secret_name: String)
 
 signal grass_rustled
 
-signal should_save_game
+signal should_save_game_data
+signal should_save_game_settings
 signal level_loaded(level_name: String)
 
 func _process(_delta: float) -> void:
