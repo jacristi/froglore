@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dl0utrtpg8ba0"]
+
+[ext_resource type="PackedScene" uid="uid://knbipd3o46bp" path="res://entities/hazards/hazard.tscn" id="1_45ume"]
+[ext_resource type="Texture2D" uid="uid://q3eic1aqnnc3" path="res://assets/spritesheets/spr-dark-block.png" id="2_h17sv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2db4"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn61r"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5erq4"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubvx1"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ked0p"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76q32"]
+atlas = ExtResource("2_h17sv")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g33t6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2db4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn61r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5erq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubvx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ked0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76q32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrbg1"]
+size = Vector2(6, 6)
+
+[node name="DarkBlock" instance=ExtResource("1_45ume")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_g33t6")
+autoplay = "default"
+frame_progress = 0.9849318
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_vrbg1")

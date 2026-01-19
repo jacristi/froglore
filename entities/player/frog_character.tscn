@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=89 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b56hmkk6xghsa" path="res://assets/spritesheets/spr-frog-idle-sleep.png" id="3_k8pd7"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
 [ext_resource type="Script" uid="uid://b6pxnp3rnp85e" path="res://components/flash_sprite_component.gd" id="4_eh284"]
+[ext_resource type="Texture2D" uid="uid://coemsrdy32gen" path="res://assets/spritesheets/spr-frog-hit-hazard.png" id="4_sw1oy"]
 [ext_resource type="Script" uid="uid://csnip6xj31s46" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbbra"]
@@ -94,6 +95,38 @@ region = Rect2(112, 48, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfsv5"]
 atlas = ExtResource("1_2oguq")
 region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_164nw"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hc13"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scyyc"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqmqj"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ase"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3n6l"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q06ny"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eobfa"]
+atlas = ExtResource("4_sw1oy")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bijpy"]
 atlas = ExtResource("1_2oguq")
@@ -360,6 +393,38 @@ animations = [{
 }],
 "loop": false,
 "name": &"despawn",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_164nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hc13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scyyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqmqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46ase")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3n6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q06ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eobfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfsv5")
+}],
+"loop": false,
+"name": &"hit_hazard",
 "speed": 10.0
 }, {
 "frames": [{

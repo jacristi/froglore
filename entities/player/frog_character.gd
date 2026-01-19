@@ -236,7 +236,7 @@ func apply_gravity(delta):
 func hit_hazard_despawn_and_respawn(_area: Area2D):
     Events.player_hit_hazard.emit()
     state = states.HIT_HAZARD
-    despawn_player()
+    despawn_player(true)
     await animated_sprite_2d.animation_finished
     respawn_player()
 
@@ -253,7 +253,7 @@ func teleport_player(teleport_to_pos: Vector2):
     """ """
     state = states.HIT_HAZARD
     Events.player_teleport.emit()
-    despawn_player()
+    despawn_player(false)
     await animated_sprite_2d.animation_finished
     position = teleport_to_pos
     await get_tree().create_timer(.01).timeout
@@ -267,9 +267,12 @@ func teleport_player(teleport_to_pos: Vector2):
         animated_sprite_2d.play("idle")
 
 
-func despawn_player():
+func despawn_player(hit_hazard:bool=true):
     state = states.HIT_HAZARD
-    animated_sprite_2d.play("despawn")
+    if hit_hazard:
+        animated_sprite_2d.play("hit_hazard")
+    else:
+        animated_sprite_2d.play("despawn")
     velocity.x = 0
     velocity.y = 0
 

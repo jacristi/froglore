@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvrf53q5ry060"]
+
+[ext_resource type="PackedScene" uid="uid://knbipd3o46bp" path="res://entities/hazards/hazard.tscn" id="1_jw8pd"]
+[ext_resource type="Script" uid="uid://dc5enth7vyewg" path="res://entities/collectables/collectable.gd" id="2_5ta6f"]
+[ext_resource type="SpriteFrames" uid="uid://d186oucw5ni3r" path="res://entities/collectables/anim_dark_bug.tres" id="3_q0klr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0klr"]
+size = Vector2(6, 6)
+
+[node name="DarkBug" instance=ExtResource("1_jw8pd")]
+collision_layer = 68
+script = ExtResource("2_5ta6f")
+collectable_name = "dark_bug"
+collectable_type = "dark_bug"
+inactive_on_collect = false
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -20)
+sprite_frames = ExtResource("3_q0klr")
+animation = &"spawn"
+autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_q0klr")

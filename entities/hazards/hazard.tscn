@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://knbipd3o46bp"]
+
+[ext_resource type="Script" uid="uid://1xe0gdeg6ruw" path="res://entities/hazards/hazard.gd" id="1_e4p82"]
+
+[node name="Hazard" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_e4p82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

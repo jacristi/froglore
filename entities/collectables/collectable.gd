@@ -51,6 +51,8 @@ func collect() -> void:
 
     if inactive_on_collect:
         set_as_inactive()
+    else:
+        set_as_active()
 
 
 func collect_quietly() -> void:
@@ -64,6 +66,8 @@ func collect_quietly() -> void:
 
     if inactive_on_collect:
         set_as_inactive()
+    else:
+        set_as_active()
 
 
 func set_as_active() -> void:
