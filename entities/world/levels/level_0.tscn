@@ -103,6 +103,18 @@ position = Vector2(444, 92)
 position = Vector2(68, 57)
 scroll_right_val = 240
 
+[node name="CameraMoveTrigger_0_0" parent="CameraObjects" index="5"]
+position = Vector2(120, 51)
+
+[node name="CameraMoveTrigger_1_0" parent="CameraObjects" index="6"]
+position = Vector2(360, 51)
+
+[node name="CameraMoveTrigger_0_1" parent="CameraObjects" index="12"]
+is_active = false
+
+[node name="CameraMoveTrigger_1_1" parent="CameraObjects" index="13"]
+is_active = false
+
 [node name="ScreenTransitionIndicator" parent="CameraObjects" index="16"]
 position = Vector2(289, 160)
 
