@@ -3005,7 +3005,7 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 34.974216
+shader_parameter/y_zoom = 4.1772494
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(1246, 20)
@@ -3060,7 +3060,7 @@ region_rect = Rect2(0, 0, 1152, 648)
 z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(120, 120)
+position = Vector2(120, 164)
 scale = Vector2(20, 1)
 texture = ExtResource("6_pgie6")
 script = ExtResource("7_ayoaj")
@@ -3141,82 +3141,83 @@ collectable_name = "3"
 [node name="CameraObjects" type="Node2D" parent="."]
 
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
-position = Vector2(126, 67)
+position = Vector2(180, 90)
 limit_left = 0
-limit_right = 240
+limit_right = 320
+limit_bottom = 180
 
 [node name="CameraMoveTrigger_-3_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-600, 68)
-scroll_left_val = -480
-scroll_right_val = -720
+position = Vector2(-800, 90)
+scroll_left_val = -640
+scroll_right_val = -960
 
 [node name="CameraMoveTrigger_-2_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-360, 68)
-scroll_left_val = -480
-scroll_right_val = -240
+position = Vector2(-480, 90)
+scroll_left_val = -640
+scroll_right_val = -320
 
 [node name="CameraMoveTrigger_-1_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-120, 68)
-scroll_left_val = -240
+position = Vector2(-160, 90)
+scroll_left_val = -320
 
 [node name="CameraMoveTrigger_0_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(120, 68)
-scroll_right_val = 240
+position = Vector2(160, 90)
+scroll_right_val = 320
 
 [node name="CameraMoveTrigger_1_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(360, 68)
+position = Vector2(480, 90)
 scroll_left_val = 240
 scroll_right_val = 480
 
 [node name="CameraMoveTrigger_2_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(600, 68)
-scroll_left_val = 480
-scroll_right_val = 720
+position = Vector2(800, 90)
+scroll_left_val = 640
+scroll_right_val = 960
 
 [node name="CameraMoveTrigger_3_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(840, 68)
-scroll_left_val = 720
-scroll_right_val = 960
+position = Vector2(1120, 90)
+scroll_left_val = 960
+scroll_right_val = 1280
 
 [node name="CameraMoveTrigger_-3_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-600, -68)
-scroll_left_val = -480
-scroll_right_val = -720
-y_offset = -135
+position = Vector2(-800, -90)
+scroll_left_val = -640
+scroll_right_val = -960
+y_offset = -180
 
 [node name="CameraMoveTrigger_-2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-360, -68)
-scroll_left_val = -480
-scroll_right_val = -240
-y_offset = -135
+position = Vector2(-480, -90)
+scroll_left_val = -640
+scroll_right_val = -320
+y_offset = -180
 
 [node name="CameraMoveTrigger_-1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-120, -68)
-scroll_left_val = -240
-y_offset = -135
+position = Vector2(-160, -90)
+scroll_left_val = -320
+y_offset = -180
 
 [node name="CameraMoveTrigger_0_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(120, -68)
-scroll_right_val = 240
-y_offset = -135
+position = Vector2(160, -90)
+scroll_right_val = 320
+y_offset = -180
 
 [node name="CameraMoveTrigger_1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(360, -68)
-scroll_left_val = 240
-scroll_right_val = 480
-y_offset = -135
+position = Vector2(480, -90)
+scroll_left_val = 320
+scroll_right_val = 640
+y_offset = -180
 
 [node name="CameraMoveTrigger_2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(600, -68)
-scroll_left_val = 480
-scroll_right_val = 720
-y_offset = -135
+position = Vector2(800, -90)
+scroll_left_val = 640
+scroll_right_val = 960
+y_offset = -180
 
 [node name="CameraMoveTrigger_3_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(840, -68)
-scroll_left_val = 720
-scroll_right_val = 960
-y_offset = -135
+position = Vector2(1120, -90)
+scroll_left_val = 960
+scroll_right_val = 1280
+y_offset = -180
 
 [node name="ScreenTransitionIndicator" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
 z_index = 0
