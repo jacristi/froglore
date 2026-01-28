@@ -17,10 +17,13 @@ func _ready() -> void:
     Events.show_dialogue.connect(on_show_dialogue)
     Events.hide_dialogue.connect(on_hide_dialogue)
     Events.go_to_level.connect(on_hide_dialogue)
-    Events.camera_change_scroll_vals.connect(func(_scroll_left_val, _scroll_right_val, y_offset):
-        if y_offset < 0: box_texture.position.y = y_pos_top
-        else: box_texture.position.y = y_pos_bottom
-        )
+    Events.camera_change_scroll_vals.connect(handle_camera_move)
+
+
+func handle_camera_move(_scroll_left_val, _scroll_right_val, y_offset, _show_water, _show_stars):
+    """ """
+    if y_offset < 0: box_texture.position.y = y_pos_top
+    else: box_texture.position.y = y_pos_bottom
 
 
 func on_show_dialogue(text_to_show: String, _timer: float=2.0) -> void:

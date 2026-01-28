@@ -24,7 +24,13 @@ func _process(delta: float) -> void:
     position.y =_base_y_pos + offset_y
 
 
-func change_scroll_limit(left_val:int, right_val:int, y_offset:int):
+func change_scroll_limit(
+        left_val:int,
+        right_val:int,
+        y_offset:int,
+        _show_water:bool,
+        _show_stars:bool):
+    """ """
     limit_left = left_val
     limit_right = right_val
     offset_y = y_offset

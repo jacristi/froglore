@@ -38,6 +38,8 @@ func _ready() -> void:
 
 func get_level_by_key(level_key: String):
     """ """
+    if not levels_dict.has(level_key):
+        return levels_dict["level_1"]
     return levels_dict[level_key]
 
 

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://csnip6xj31s46" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbbra"]
-size = Vector2(3, 2)
+size = Vector2(4, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47ru2"]
 shader = ExtResource("2_r58ss")
@@ -664,7 +664,7 @@ script = ExtResource("1_tl5hv")
 hop_cooldown = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -2)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_kbbra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

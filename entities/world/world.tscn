@@ -3005,13 +3005,13 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 4.1772494
+shader_parameter/y_zoom = 0.47447816
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
-size = Vector2(1246, 20)
+size = Vector2(2560, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evjnc"]
-size = Vector2(20, 239)
+size = Vector2(20, 540)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_y1phm")
@@ -3060,8 +3060,8 @@ region_rect = Rect2(0, 0, 1152, 648)
 z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(120, 164)
-scale = Vector2(20, 1)
+position = Vector2(160, 164)
+scale = Vector2(5, 1)
 texture = ExtResource("6_pgie6")
 script = ExtResource("7_ayoaj")
 
@@ -3080,21 +3080,19 @@ position = Vector2(19, -4)
 position = Vector2(24, 45)
 
 [node name="BottomBounds" parent="Bounds" instance=ExtResource("10_3m536")]
-position = Vector2(85, 146)
+position = Vector2(0, 146)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomBounds"]
-position = Vector2(28.5, 0)
 shape = SubResource("RectangleShape2D_8hb6v")
 
 [node name="LeftBounds" parent="Bounds" instance=ExtResource("10_3m536")]
-position = Vector2(-522, -55)
+position = Vector2(-996, -55)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftBounds"]
-position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_evjnc")
 
 [node name="RightBounds" parent="Bounds" instance=ExtResource("10_3m536")]
-position = Vector2(489, 56)
+position = Vector2(1272, -41)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightBounds"]
 position = Vector2(0, 1.5)
@@ -3166,8 +3164,8 @@ scroll_right_val = 320
 
 [node name="CameraMoveTrigger_1_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(480, 90)
-scroll_left_val = 240
-scroll_right_val = 480
+scroll_left_val = 320
+scroll_right_val = 640
 
 [node name="CameraMoveTrigger_2_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(800, 90)
@@ -3184,40 +3182,47 @@ position = Vector2(-800, -90)
 scroll_left_val = -640
 scroll_right_val = -960
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_-2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(-480, -90)
 scroll_left_val = -640
 scroll_right_val = -320
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_-1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(-160, -90)
 scroll_left_val = -320
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_0_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(160, -90)
 scroll_right_val = 320
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(480, -90)
 scroll_left_val = 320
 scroll_right_val = 640
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(800, -90)
 scroll_left_val = 640
 scroll_right_val = 960
 y_offset = -180
+show_water = false
 
 [node name="CameraMoveTrigger_3_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
 position = Vector2(1120, -90)
 scroll_left_val = 960
 scroll_right_val = 1280
 y_offset = -180
+show_water = false
 
 [node name="ScreenTransitionIndicator" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
 z_index = 0
@@ -3256,153 +3261,153 @@ visible = false
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="Star1" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(68, 39)
+position = Vector2(302, 14)
 
 [node name="Star2" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(65, 83)
+position = Vector2(264, 26)
 
 [node name="Star3" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(90, 10)
 
 [node name="Star4" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(120, 36)
+position = Vector2(296, 52)
 
 [node name="Star5" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(93, 51)
+position = Vector2(295, 100)
 
 [node name="Star6" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(167, 44)
+position = Vector2(257, 59)
 
 [node name="Star7" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(172, 84)
+position = Vector2(263, 128)
 
 [node name="Star8" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(176, 9)
+position = Vector2(298, 141)
 
 [node name="Star9" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(219, 41)
+position = Vector2(271, 90)
 
 [node name="Star10" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(205, 67)
+position = Vector2(200, 143)
 
 [node name="Star11" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(6, 14)
+position = Vector2(8, 14)
 
 [node name="Star12" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(26, 67)
+position = Vector2(49, 137)
 
 [node name="Star13" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(37, 13)
 
 [node name="Star14" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(55, 33)
+position = Vector2(310, 77)
 
 [node name="Star15" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(25, 31)
+position = Vector2(27, 35)
 
 [node name="Star16" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(48, 89)
+position = Vector2(52, 86)
 
 [node name="Star17" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(100, 86)
+position = Vector2(92, 86)
 
 [node name="Star18" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(139, 38)
+position = Vector2(127, 38)
 
 [node name="Star19" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(142, 11)
+position = Vector2(146, 5)
 
 [node name="Star20" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(202, 22)
+position = Vector2(193, 19)
 
 [node name="Star21" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(112, 14)
+position = Vector2(118, 21)
 
 [node name="Star22" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(92, 28)
+position = Vector2(84, 37)
 
 [node name="Star23" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(42, 52)
+position = Vector2(285, 33)
 
 [node name="Star24" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(22, 84)
+position = Vector2(27, 77)
 
 [node name="Star25" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(68, 62)
+position = Vector2(73, 64)
 
 [node name="Star26" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(129, 86)
 
 [node name="Star27" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(162, 66)
+position = Vector2(156, 51)
 
 [node name="Star28" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(137, 59)
+position = Vector2(132, 62)
 
 [node name="Star29" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(106, 66)
+position = Vector2(102, 56)
 
 [node name="Star30" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(63, 18)
+position = Vector2(60, 26)
 
 [node name="Star31" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(159, 25)
+position = Vector2(160, 23)
 
 [node name="Star32" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(190, 39)
+position = Vector2(200, 38)
 
 [node name="Star33" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(185, 62)
+position = Vector2(183, 59)
 
 [node name="Star34" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(205, 86)
+position = Vector2(213, 96)
 
 [node name="Star35" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(223, 78)
+position = Vector2(198, 77)
 
 [node name="Star36" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(216, 59)
+position = Vector2(222, 55)
 
 [node name="Star37" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(230, 21)
 
 [node name="Star38" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(221, 1)
+position = Vector2(221, 2)
 
 [node name="Star39" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(6, 62)
 
 [node name="Star40" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(12, 115)
+position = Vector2(10, 106)
 
 [node name="Star41" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(25, 126)
+position = Vector2(22, 128)
 
 [node name="Star42" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(40, 108)
+position = Vector2(43, 56)
 
 [node name="Star43" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(63, 121)
+position = Vector2(44, 111)
 
 [node name="Star44" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(86, 109)
+position = Vector2(78, 106)
 
 [node name="Star45" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(92, 127)
+position = Vector2(87, 129)
 
 [node name="Star46" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(118, 116)
+position = Vector2(113, 109)
 
 [node name="Star47" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(148, 124)
+position = Vector2(139, 126)
 
 [node name="Star48" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(163, 111)
+position = Vector2(163, 112)
 
 [node name="Star49" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(223, 123)
 
 [node name="Star50" parent="Stars" instance=ExtResource("17_qg26c")]
-position = Vector2(196, 115)
+position = Vector2(185, 121)
 
 [connection signal="item_rect_changed" from="Environs/WaterSimple" to="Environs/WaterSimple" method="_on_item_rect_changed"]

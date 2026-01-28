@@ -25,13 +25,20 @@ func _ready() -> void:
     set_up()
 
 
-func camera_scroll_changed(x_left, _x_right, y_offset):
+func camera_scroll_changed(
+        x_left,
+        _x_right,
+        y_offset,
+        _show_water: bool,
+        show_stars: bool):
     """
         Move stars with player viewport without being on canvas layer
         This makes it so its like being on a canvas layer
         but can preoperly hide behind ground and show in water relfection
+        and is configurable on/off per screen
     """
-
+    if show_stars: show()
+    else: hide()
     position.x = start_pos.x + x_left
     position.y = start_pos.y + y_offset
 
