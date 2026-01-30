@@ -10,10 +10,3 @@ extends Area2D
 
 func _on_body_entered(_body: Node2D) -> void:
     if !is_active: return
-    Events.camera_change_scroll_vals.emit(
-        scroll_left_val,
-        scroll_right_val,
-        y_offset,
-        show_water,
-        show_stars
-        )

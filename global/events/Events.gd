@@ -52,13 +52,11 @@ signal portal_stone_unlocked(stone_number: int, stone_pos: Vector2)
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
 
-signal camera_change_scroll_vals(
-    scroll_left: int,
-    scroll_right: int,
-    y_offset: int,
+signal room_entered(
+    room_pos: Vector2,
     show_water:bool,
     show_stars:bool
-    )
+)
 
 signal should_show_dialogue
 signal show_dialogue(text_to_show: String, timer: float)

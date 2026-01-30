@@ -4,10 +4,6 @@ extends Node2D
 @export var prev_level: String = "N/A"
 @export var next_level: String = "N/A"
 
-@export_multiline var dialogue_new: String = "N/A"
-@export_multiline var dialogue_completed: String = "N/A"
-@export_multiline var dialogue_purified: String = "N/A"
-
 @onready var dialogue_sign: Area2D = $Environs/DialogueSign
 @onready var end_credits: Control = %EndCredits
 

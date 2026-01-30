@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://djt7soxcfhakp" path="res://entities/interactables/level_exit.tscn" id="8_tjbdh"]
 [ext_resource type="PackedScene" uid="uid://djsrnisg8j1yc" path="res://entities/camera/camera_main.tscn" id="9_jx6nn"]
 [ext_resource type="PackedScene" uid="uid://dly3jxemtyvxq" path="res://entities/hazards/hazard_area.tscn" id="10_3m536"]
-[ext_resource type="PackedScene" uid="uid://b3d7jwjser3yq" path="res://entities/camera/camera_move_trigger.tscn" id="11_4f8v6"]
 [ext_resource type="PackedScene" uid="uid://c65ftqd1l6lwh" path="res://ui/dialogue_box.tscn" id="12_vydkd"]
 [ext_resource type="PackedScene" uid="uid://bglbacsbocalp" path="res://ui/dialogue_sign.tscn" id="13_oxus6"]
 [ext_resource type="PackedScene" uid="uid://b1ofnxnvttha7" path="res://ui/pause_canvas.tscn" id="14_eju75"]
@@ -24,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://66ighi1lgqjt" path="res://entities/indicators/screen_transition_indicator.tscn" id="16_ni4ea"]
 [ext_resource type="PackedScene" uid="uid://bkxnqp7c8uhus" path="res://entities/indicators/screen_transition_indicator_1way.tscn" id="17_kvxen"]
 [ext_resource type="PackedScene" uid="uid://bw3gdnvvp8oci" path="res://entities/environs/background_objects/star.tscn" id="17_qg26c"]
+[ext_resource type="PackedScene" uid="uid://blx1fe6ss0vrt" path="res://entities/world/rooms/room.tscn" id="21_ll612"]
 [ext_resource type="PackedScene" uid="uid://dm220k1o3vygh" path="res://entities/indicators/respawn_point.tscn" id="24_titvk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f0182"]
@@ -3005,7 +3005,7 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 0.47447816
+shader_parameter/y_zoom = 1.822028
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(2560, 20)
@@ -3060,8 +3060,8 @@ region_rect = Rect2(0, 0, 1152, 648)
 z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hpxcl")
-position = Vector2(160, 164)
-scale = Vector2(5, 1)
+position = Vector2(128, 132)
+scale = Vector2(4, 1)
 texture = ExtResource("6_pgie6")
 script = ExtResource("7_ayoaj")
 
@@ -3141,88 +3141,9 @@ collectable_name = "3"
 [node name="CameraMain" parent="CameraObjects" instance=ExtResource("9_jx6nn")]
 position = Vector2(180, 90)
 limit_left = 0
-limit_right = 320
-limit_bottom = 180
-
-[node name="CameraMoveTrigger_-3_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-800, 90)
-scroll_left_val = -640
-scroll_right_val = -960
-
-[node name="CameraMoveTrigger_-2_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-480, 90)
-scroll_left_val = -640
-scroll_right_val = -320
-
-[node name="CameraMoveTrigger_-1_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-160, 90)
-scroll_left_val = -320
-
-[node name="CameraMoveTrigger_0_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(160, 90)
-scroll_right_val = 320
-
-[node name="CameraMoveTrigger_1_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(480, 90)
-scroll_left_val = 320
-scroll_right_val = 640
-
-[node name="CameraMoveTrigger_2_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(800, 90)
-scroll_left_val = 640
-scroll_right_val = 960
-
-[node name="CameraMoveTrigger_3_0" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(1120, 90)
-scroll_left_val = 960
-scroll_right_val = 1280
-
-[node name="CameraMoveTrigger_-3_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-800, -90)
-scroll_left_val = -640
-scroll_right_val = -960
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_-2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-480, -90)
-scroll_left_val = -640
-scroll_right_val = -320
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_-1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(-160, -90)
-scroll_left_val = -320
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_0_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(160, -90)
-scroll_right_val = 320
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_1_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(480, -90)
-scroll_left_val = 320
-scroll_right_val = 640
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_2_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(800, -90)
-scroll_left_val = 640
-scroll_right_val = 960
-y_offset = -180
-show_water = false
-
-[node name="CameraMoveTrigger_3_1" parent="CameraObjects" instance=ExtResource("11_4f8v6")]
-position = Vector2(1120, -90)
-scroll_left_val = 960
-scroll_right_val = 1280
-y_offset = -180
-show_water = false
+limit_top = 0
+limit_right = 256
+limit_bottom = 144
 
 [node name="ScreenTransitionIndicator" parent="CameraObjects" instance=ExtResource("16_ni4ea")]
 z_index = 0
@@ -3242,6 +3163,68 @@ position = Vector2(-19, 229)
 
 [node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" instance=ExtResource("17_kvxen")]
 position = Vector2(-4, 229)
+
+[node name="Room(-3,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-640, 72)
+room_pos = Vector2(-3, 0)
+
+[node name="Room(-2,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-384, 72)
+room_pos = Vector2(-2, 0)
+
+[node name="Room(-1,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-128, 72)
+room_pos = Vector2(-1, 0)
+
+[node name="Room(0,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(128, 72)
+
+[node name="Room(1,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(384, 72)
+room_pos = Vector2(1, 0)
+
+[node name="Room(2,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(640, 72)
+room_pos = Vector2(2, 0)
+
+[node name="Room(3,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(896, 72)
+room_pos = Vector2(3, 0)
+
+[node name="Room(-3,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-640, -72)
+room_pos = Vector2(-3, -1)
+show_water = false
+
+[node name="Room(-2,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-384, -72)
+room_pos = Vector2(-2, -1)
+show_water = false
+
+[node name="Room(-1,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(-128, -72)
+room_pos = Vector2(-1, -1)
+show_water = false
+
+[node name="Room(0,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(128, -72)
+room_pos = Vector2(0, -1)
+show_water = false
+
+[node name="Room(1,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(384, -72)
+room_pos = Vector2(1, -1)
+show_water = false
+
+[node name="Room(2,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(640, -72)
+room_pos = Vector2(2, -1)
+show_water = false
+
+[node name="Room(3,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
+position = Vector2(896, -72)
+room_pos = Vector2(3, -1)
+show_water = false
 
 [node name="CreditsCanvas" type="CanvasLayer" parent="."]
 

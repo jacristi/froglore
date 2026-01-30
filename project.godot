@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*res://global/events/events.tscn"
+Events="*res://global/events/Events.tscn"
 LevelTransition="*res://global/LevelTransition.tscn"
 LevelManager="*res://global/LeveManager.tscn"
 AudioManager="*res://global/AudioManager.tscn"
@@ -27,13 +27,14 @@ GameData="*res://global/GameData.tscn"
 [debug]
 
 gdscript/warnings/unused_signal=0
+shapes/collision/draw_2d_outlines=false
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
-window/size/window_width_override=1600
-window/size/window_height_override=900
+window/size/viewport_width=256
+window/size/viewport_height=144
+window/size/window_width_override=2560
+window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 window/layer_6="secrets"

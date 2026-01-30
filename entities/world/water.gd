@@ -3,16 +3,16 @@ extends Sprite2D
 
 var start_pos:Vector2
 
+
 func _ready() -> void:
     start_pos = position
-    _zoom_changed()
-    Events.camera_change_scroll_vals.connect(camera_scroll_changed)
+    if not Engine.is_editor_hint():
+        _zoom_changed()
+        Events.room_entered.connect(room_changed)
 
 
-func camera_scroll_changed(
-        x_left: int,
-        _x_right: int,
-        y_offset: int,
+func room_changed(
+        room_pos: Vector2,
         show_water: bool,
         _show_stars:bool):
     """
@@ -22,6 +22,8 @@ func camera_scroll_changed(
     """
     if show_water: show()
     else: hide()
+    var x_left = room_pos.x * GlobalData.room_size.x
+    var y_offset = room_pos.y * GlobalData.room_size.y
     position.x = start_pos.x + x_left
     position.y = start_pos.y + y_offset
 

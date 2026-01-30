@@ -16,6 +16,9 @@ var frog_paletes_keys : Array
 
 var base_resolution: Vector2
 
+@export var room_size:= Vector2(256, 144)
+@export var room_collision_margin:= Vector2(8, 8)
+
 func _ready() -> void:
     frog_palettes_dict["red"] =     palette_red
     frog_palettes_dict["yellow"] =  palette_yellow

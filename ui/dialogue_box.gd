@@ -8,22 +8,23 @@ extends CanvasLayer
 
 @export var y_pos_top:= 0.0
 @export var y_pos_bottom:= 105.0
-
+var start_y_pos
 var is_showing:= false
 
 func _ready() -> void:
     #animation_component.open()
     box_texture.show()
+    start_y_pos = box_texture.position.y
     Events.show_dialogue.connect(on_show_dialogue)
     Events.hide_dialogue.connect(on_hide_dialogue)
     Events.go_to_level.connect(on_hide_dialogue)
-    Events.camera_change_scroll_vals.connect(handle_camera_move)
+    Events.room_entered.connect(handle_camera_move)
 
 
-func handle_camera_move(_scroll_left_val, _scroll_right_val, y_offset, _show_water, _show_stars):
+func handle_camera_move(room_pos:Vector2, _show_water:bool, _show_stars:bool):
     """ """
-    if y_offset < 0: box_texture.position.y = y_pos_top
-    else: box_texture.position.y = y_pos_bottom
+    if room_pos.y < 0: box_texture.position.y = y_pos_top
+    else: box_texture.position.y = start_y_pos
 
 
 func on_show_dialogue(text_to_show: String, _timer: float=2.0) -> void:

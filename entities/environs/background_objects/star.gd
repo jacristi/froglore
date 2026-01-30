@@ -21,16 +21,14 @@ func _ready() -> void:
     """ """
     start_pos = position
     Events.light_bug_collected.connect(start_animation)
-    Events.camera_change_scroll_vals.connect(camera_scroll_changed)
+    Events.room_entered.connect(room_changed)
     set_up()
 
 
-func camera_scroll_changed(
-        x_left,
-        _x_right,
-        y_offset,
+func room_changed(
+        room_pos: Vector2,
         _show_water: bool,
-        show_stars: bool):
+        show_stars:bool):
     """
         Move stars with player viewport without being on canvas layer
         This makes it so its like being on a canvas layer
@@ -39,6 +37,8 @@ func camera_scroll_changed(
     """
     if show_stars: show()
     else: hide()
+    var x_left = room_pos.x * GlobalData.room_size.x
+    var y_offset = room_pos.y * GlobalData.room_size.y
     position.x = start_pos.x + x_left
     position.y = start_pos.y + y_offset
 
