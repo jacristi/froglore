@@ -79,6 +79,7 @@ var _is_paused:= false
 func _ready() -> void:
     respawn_position = starting_position
     hazard_detector.area_entered.connect(hit_hazard_despawn_and_respawn)
+    hazard_detector.body_entered.connect(hit_hazard_despawn_and_respawn_body)
     interact_detector.area_entered.connect(enter_interactable)
     interact_detector.area_exited.connect(exit_interactable)
     dialogue_detector.area_entered.connect(enter_dialogue)
@@ -231,6 +232,11 @@ func apply_gravity(delta):
     if _is_hazard_respawning(): return
 
     velocity.y += gravity * delta
+
+
+func hit_hazard_despawn_and_respawn_body(_body) -> void:
+    print("BODY HAZARD ENTERED")
+    hit_hazard_despawn_and_respawn(null)
 
 
 func hit_hazard_despawn_and_respawn(_area: Area2D):
