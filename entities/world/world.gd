@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var dialogue_sign: Area2D = $Environs/DialogueSign
 @onready var end_credits: Control = %EndCredits
+@onready var background_tile_layer: TileMapLayer = $BackgroundTileLayer
 
 var level_state = LevelManager.level_states.STARTED
 
@@ -28,6 +29,14 @@ func _ready() -> void:
     LevelManager.current_level = this_level
     level_state = LevelManager.get_level_state(this_level)
     handle_on_start_level_state()
+
+
+func _process(_delta: float) -> void:
+    if Input.is_action_just_pressed("misc"):
+        if background_tile_layer.visible:
+            background_tile_layer.hide()
+        else:
+            background_tile_layer.show()
 
 
 func handle_on_start_level_state():
