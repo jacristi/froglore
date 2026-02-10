@@ -191,7 +191,8 @@ func handle_hopping(delta):
             return
 
     if h_direction and can_hop() and is_on_floor():
-        hop(delta)
+        var amt = 1.5 if super_hop_prep_reached else 1.0
+        hop(delta, amt)
         return
 
 
@@ -456,10 +457,11 @@ func handle_buttons_held():
         super_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= .4 && not super_hop_prep_reached:
-        flash_sprite_component.start_flash_continuous_intervals(1)
+    if button_down_held_time >= .36 && not super_hop_prep_reached:
         super_hop_prep_reached = true
+        await get_tree().create_timer(.025).timeout
         super_hop_prep()
+        flash_sprite_component.start_flash_continuous_intervals(1)
 
 
 func super_hop_prep():
