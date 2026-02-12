@@ -33,10 +33,10 @@ func adjust_for_new_room(
     var x = room_pos.x
     var y = room_pos.y
 
-    limit_left   = int(x*GlobalData.room_size.x)
-    limit_right  = int((x*GlobalData.room_size.x) + GlobalData.room_size.x)
-    limit_top    = int(y*GlobalData.room_size.y)
-    limit_bottom = int((y*GlobalData.room_size.y) + GlobalData.room_size.y)
+    limit_left   = int(x*GlobalData.base_room_size.x)
+    limit_right  = int((x*GlobalData.base_room_size.x) + GlobalData.base_room_size.x)
+    limit_top    = int(y*GlobalData.base_room_size.y)
+    limit_bottom = int((y*GlobalData.base_room_size.y) + GlobalData.base_room_size.y)
 
 
 #func change_scroll_limit(

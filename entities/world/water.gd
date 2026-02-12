@@ -22,8 +22,8 @@ func room_changed(
     """
     if show_water: show()
     else: hide()
-    var x_left = room_pos.x * GlobalData.room_size.x
-    var y_offset = room_pos.y * GlobalData.room_size.y
+    var x_left = room_pos.x * GlobalData.base_room_size.x
+    var y_offset = room_pos.y * GlobalData.base_room_size.y
     position.x = start_pos.x + x_left
     position.y = start_pos.y + y_offset
 
