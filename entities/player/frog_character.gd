@@ -236,7 +236,6 @@ func apply_gravity(delta):
 
 
 func hit_hazard_despawn_and_respawn_body(_body) -> void:
-    print("BODY HAZARD ENTERED")
     hit_hazard_despawn_and_respawn(null)
 
 
@@ -312,6 +311,9 @@ func enter_interactable(area: Area2D):
         Events.show_dialogue.emit(area.dialogue_text, 0)
     if area.is_in_group("RespawnPoint"):
         respawn_position = area.position
+    if area.is_in_group("PortalStone"):
+        respawn_position = area.position
+
 
 func exit_interactable(_area: Area2D):
     current_interactable = null
