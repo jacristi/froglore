@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bebf7ymxqcqbu"]
+[gd_scene load_steps=4 format=3 uid="uid://3857ovnj8en8"]
 
-[ext_resource type="Script" uid="uid://ch6kdcy70aqlh" path="res://ui/menus/menu_item.gd" id="1_yhg58"]
-[ext_resource type="Texture2D" uid="uid://ctikh34upkhoy" path="res://assets/spritesheets/ui/spr-ui-selected-indicator.png" id="2_nygdk"]
-[ext_resource type="Script" uid="uid://doh816kwx6q11" path="res://components/flicker_image_component.gd" id="3_c5c0t"]
+[ext_resource type="Script" uid="uid://ch6kdcy70aqlh" path="res://ui/menus/menu_item.gd" id="1_hbbqc"]
+[ext_resource type="Texture2D" uid="uid://ctikh34upkhoy" path="res://assets/spritesheets/ui/spr-ui-selected-indicator.png" id="2_stuyl"]
+[ext_resource type="Script" uid="uid://doh816kwx6q11" path="res://components/flicker_image_component.gd" id="3_3g70i"]
 
 [node name="MenuItemLabel" type="MarginContainer"]
 anchors_preset = 8
@@ -16,7 +16,7 @@ offset_right = 11.5
 offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yhg58")
+script = ExtResource("1_hbbqc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -32,12 +32,12 @@ layout_mode = 2
 [node name="LeftSelectedTextureRect" type="TextureRect" parent="HBoxContainer/LeftSelectedIndicator/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_nygdk")
+texture = ExtResource("2_stuyl")
 stretch_mode = 2
 
 [node name="LeftFlickerComponent" type="Node" parent="HBoxContainer/LeftSelectedIndicator/CenterContainer/LeftSelectedTextureRect" node_paths=PackedStringArray("sprite")]
 unique_name_in_owner = true
-script = ExtResource("3_c5c0t")
+script = ExtResource("3_3g70i")
 sprite = NodePath("..")
 hold_time = 0.75
 fade_time = 0.5
@@ -64,12 +64,12 @@ layout_mode = 2
 [node name="RightSelectedTextureRect" type="TextureRect" parent="HBoxContainer/RightSelectedIndicator/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_nygdk")
+texture = ExtResource("2_stuyl")
 stretch_mode = 2
 
 [node name="RightFlickerComponent" type="Node" parent="HBoxContainer/RightSelectedIndicator/CenterContainer/RightSelectedTextureRect" node_paths=PackedStringArray("sprite")]
 unique_name_in_owner = true
-script = ExtResource("3_c5c0t")
+script = ExtResource("3_3g70i")
 sprite = NodePath("..")
 hold_time = 0.75
 fade_time = 0.5

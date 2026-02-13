@@ -34,6 +34,10 @@ extends Node
 @onready var audio_secret_found: AudioStreamPlayer2D = $AudioSecretFound
 @onready var audio_teleport: AudioStreamPlayer2D = $AudioTeleport
 
+@onready var audio_ui_select: AudioStreamPlayer2D = $AudioUISelect
+@onready var audio_ui_nav_down: AudioStreamPlayer2D = $AudioUINavDown
+@onready var audio_ui_nav_up: AudioStreamPlayer2D = $AudioUINavUp
+@onready var audio_ui_error: AudioStreamPlayer2D = $AudioUIError
 
 var game_started_has_played:= false
 var level_new_has_played:= false
@@ -68,10 +72,14 @@ func _ready() -> void:
     Events.ready_world_statue.connect(play_game_complete)
     Events.secret_found.connect(play_secret_found)
     Events.player_teleport.connect(play_audio_teleport)
+    Events.ui_select.connect(play_audio_ui_select)
+    Events.ui_nav_up.connect(play_audio_ui_nav_up)
+    Events.ui_nav_down.connect(play_audio_ui_nav_down)
+    Events.ui_error.connect(play_audio_ui_error)
     base_croak_pitch = audio_croak.pitch_scale
 
-    await get_tree().create_timer(0.5).timeout
-    play_game_start()
+    #await get_tree().create_timer(0.5).timeout
+    #play_game_start()
 
 
 func play_collectable_collected(c_type, _c_name, quiet) -> void:
@@ -193,3 +201,20 @@ func play_secret_found(_secret_name: String):
 
 func play_audio_teleport():
     audio_teleport.play()
+
+
+func play_audio_ui_select():
+    if audio_ui_error.playing:
+        audio_ui_error.stop()
+    audio_ui_select.play()
+
+func play_audio_ui_nav_up():
+    audio_ui_nav_up.play()
+
+func play_audio_ui_nav_down():
+    audio_ui_nav_down.play()
+
+func play_audio_ui_error():
+    if audio_ui_select.playing:
+        audio_ui_select.stop()
+    audio_ui_error.play()

@@ -52,6 +52,11 @@ signal portal_stone_unlocked(stone_number: int, stone_pos: Vector2)
 signal ui_play_button_clicked
 signal ui_exit_button_clicked
 
+signal ui_select
+signal ui_nav_up
+signal ui_nav_down
+signal ui_error
+
 signal room_entered(
     room_pos: Vector2,
     show_water:bool,

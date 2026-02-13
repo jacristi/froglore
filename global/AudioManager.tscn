@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene load_steps=39 format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" uid="uid://bmmxu4pr06env" path="res://global/audio_manager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
@@ -34,6 +34,10 @@
 [ext_resource type="AudioStream" uid="uid://c0uvapdbyp2re" path="res://assets/audio/secret_reveal.wav" id="31_14cty"]
 [ext_resource type="Script" uid="uid://bv1vmuwat65y3" path="res://components/variable_pitch_audio_player.gd" id="31_houc0"]
 [ext_resource type="AudioStream" uid="uid://bo5b53327s411" path="res://assets/audio/teleport.wav" id="32_khmbp"]
+[ext_resource type="AudioStream" uid="uid://cko6qt8ghuejc" path="res://assets/audio/ui_success.wav" id="33_43fn1"]
+[ext_resource type="AudioStream" uid="uid://djphkuprhbtwi" path="res://assets/audio/ui_nav_down.wav" id="34_vqqju"]
+[ext_resource type="AudioStream" uid="uid://bvbhnmoiocwvx" path="res://assets/audio/ui_nav_up.wav" id="35_s4fc5"]
+[ext_resource type="AudioStream" uid="uid://dt3g5eiol6kgc" path="res://assets/audio/ui_error.wav" id="36_vqqju"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -137,6 +141,18 @@ stream = ExtResource("31_14cty")
 
 [node name="AudioTeleport" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("32_khmbp")
+
+[node name="AudioUISelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_43fn1")
+
+[node name="AudioUINavDown" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_vqqju")
+
+[node name="AudioUINavUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_s4fc5")
+
+[node name="AudioUIError" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_vqqju")
 
 [node name="AudioChangePlayerColor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_nb0bq")
