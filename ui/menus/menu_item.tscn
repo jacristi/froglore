@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bebf7ymxqcqbu"]
+
+[ext_resource type="Script" uid="uid://ch6kdcy70aqlh" path="res://ui/menus/menu_item.gd" id="1_yuei7"]
+[ext_resource type="Texture2D" uid="uid://ctikh34upkhoy" path="res://assets/spritesheets/ui/spr-ui-selected-indicator.png" id="2_m7y51"]
+
+[node name="MenuItem" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -6.5
+offset_right = 11.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuei7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LeftSelectedIndicator" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/LeftSelectedIndicator"]
+layout_mode = 2
+
+[node name="LeftSelectedTextureRect" type="TextureRect" parent="HBoxContainer/LeftSelectedIndicator/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_m7y51")
+stretch_mode = 2
+
+[node name="MenuItemContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="MenuItemLabel" type="Label" parent="HBoxContainer/MenuItemContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Menu Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightSelectedIndicator" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/RightSelectedIndicator"]
+layout_mode = 2
+
+[node name="RightSelectedTextureRect" type="TextureRect" parent="HBoxContainer/RightSelectedIndicator/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_m7y51")
+stretch_mode = 2

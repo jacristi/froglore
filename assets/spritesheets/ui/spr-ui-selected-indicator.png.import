@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh4l8fpd20uh"
-path="res://.godot/imported/spr-ui-dialogue-bubble.png-d0ca93d6d7bbf9d2c0854dacae790c18.ctex"
+uid="uid://ctikh34upkhoy"
+path="res://.godot/imported/spr-ui-selected-indicator.png-982f5c1a9aa5d74050fde6409646ae14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/spr-ui-dialogue-bubble.png"
-dest_files=["res://.godot/imported/spr-ui-dialogue-bubble.png-d0ca93d6d7bbf9d2c0854dacae790c18.ctex"]
+source_file="res://assets/spritesheets/ui/spr-ui-selected-indicator.png"
+dest_files=["res://.godot/imported/spr-ui-selected-indicator.png-982f5c1a9aa5d74050fde6409646ae14.ctex"]
 
 [params]
 

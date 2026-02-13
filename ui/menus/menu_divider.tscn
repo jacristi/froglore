@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjjtq8t3h15s6"]
+
+[ext_resource type="Texture2D" uid="uid://cwnxaxgtg1cc1" path="res://assets/spritesheets/ui/spr-ui-divider.png" id="1_u52us"]
+
+[node name="MenuDivider" type="NinePatchRect"]
+custom_minimum_size = Vector2(24, 5)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -232.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u52us")
+patch_margin_left = 12
+patch_margin_right = 12
+axis_stretch_vertical = 1

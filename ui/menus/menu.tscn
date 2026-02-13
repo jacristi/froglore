@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://281hvnj8umkh"]
+
+[ext_resource type="Script" uid="uid://b6b0q571bannw" path="res://ui/menus/menu.gd" id="1_q68ay"]
+[ext_resource type="PackedScene" uid="uid://bjjtq8t3h15s6" path="res://ui/menus/menu_divider.tscn" id="2_070i4"]
+
+[node name="Menu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q68ay")
+header_text = "SETTINGS"
+menu_items_dict = Dictionary[String, String]({
+"ITEM ONE": "item_one",
+"ITEM TWO": "iteM-two",
+"item THRE": "item_three"
+})
+
+[node name="MenuItemList" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Header" type="Label" parent="MenuItemList"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "HEADER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuItemList"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="MenuDivider" parent="MenuItemList/MarginContainer" instance=ExtResource("2_070i4")]
+layout_mode = 2

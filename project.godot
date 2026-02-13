@@ -33,8 +33,8 @@ shapes/collision/draw_2d_outlines=false
 
 window/size/viewport_width=256
 window/size/viewport_height=144
-window/size/window_width_override=1600
-window/size/window_height_override=900
+window/size/window_width_override=2560
+window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 window/layer_6="secrets"
