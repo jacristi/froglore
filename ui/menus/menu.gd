@@ -6,7 +6,6 @@ var is_active = true:
         if is_active == value: return
         is_active = value
 
-
 var _menu_items: Dictionary[int, MenuItem]
 @onready var menu_item_list: VBoxContainer = $MenuItemList
 @onready var header: Label = $MenuItemList/Header
@@ -38,11 +37,12 @@ func _ready() -> void:
     max_idx = count-1
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if not is_active: return
     if Input.is_action_just_pressed("up"):
         selected_idx = clamp(selected_idx-1, 0, max_idx)
     if Input.is_action_just_pressed("down"):
         selected_idx = clamp(selected_idx+1, 0, max_idx)
-
-    pass
+    if Input.is_action_just_pressed("jump"):
+        var txt = _menu_items[selected_idx].label_text
+        print(menu_items_dict[txt])

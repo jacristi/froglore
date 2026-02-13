@@ -14,7 +14,6 @@ var not_selected_texture = load("res://assets/spritesheets/ui/spr-ui-notselected
 
 var is_selected:= true:
     set(value):
-        print('go')
         if is_selected == value: return
         is_selected = value
         if is_selected:
