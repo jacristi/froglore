@@ -21,7 +21,7 @@ var key_last_level      = "last_level_played"
 var key_game_settings   = "game_settings"
 var key_audio_master    = "audio_master_level"
 var key_audio_music     = "audio_music_level"
-var key_audio_sfx       = "audio_music_level"
+var key_audio_sfx       = "audio_sfx_level"
 var key_video_ss_x      = "video_screen_size_x"
 var key_video_ss_y      = "video_screen_size_y"
 
@@ -122,7 +122,7 @@ func load_game_settings() -> void:
     """ """
     var full_path = game_data_file_path + "/" + game_settings_file_name
     var file = FileAccess.open(full_path, FileAccess.READ)
-    print(full_path)
+
     if !FileAccess.file_exists(full_path):
         return
 
@@ -132,13 +132,14 @@ func load_game_settings() -> void:
     json_object.parse(json)
 
     game_settings = json_object.data[key_game_settings]
-    print(game_settings)
-    if not game_settings.has(key_video_ss_x):
-        game_settings[key_video_ss_x] = game_settings_default[key_video_ss_x]
-    if not game_settings.has(key_video_ss_y):
-        game_settings[key_video_ss_y] = game_settings_default[key_video_ss_y]
+    print(game_settings_default)
+    for k in game_settings_default.keys():
+        if not game_settings.has(k):
+            game_settings[k] = game_settings_default[k]
+
     DisplayServer.window_set_size(Vector2(game_settings[key_video_ss_x], game_settings[key_video_ss_y]))
-    DisplayServer.window_set_position(Vector2(game_settings[key_video_ss_x]/8, game_settings[key_video_ss_y]/8))
+    get_window().move_to_center()
+
     print('loaded game settings from file')
     file.close()
 
