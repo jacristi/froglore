@@ -21,12 +21,13 @@ func _ready() -> void:
     """ """
     start_pos = position
     Events.light_bug_collected.connect(start_animation)
-    Events.room_entered.connect(room_changed)
+    #Events.room_entered.connect(room_changed)
     set_up()
 
 
 func room_changed(
         room_pos: Vector2,
+        _room_size: Vector2,
         _show_water: bool,
         show_stars:bool):
     """

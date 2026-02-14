@@ -1,11 +1,31 @@
 @tool
+class_name Room
 extends Area2D
 
+
+enum room_sizes {
+    TINY,
+    SMALL,
+    MEDIUM,
+    LARGE,
+}
+
+var _room_size_dict = {
+    room_sizes.TINY:    Vector2(64, 36),
+    room_sizes.SMALL:   Vector2(160, 90),
+    room_sizes.MEDIUM:  Vector2(256, 144),
+    room_sizes.LARGE:   Vector2(384, 216),
+}
+
+@export var room_size: room_sizes = room_sizes.MEDIUM:
+    set(value):
+        if room_size == value: return
+        room_size = value
+        set_room_shape_from_room_size()
 
 @export var room_pos: Vector2:
     set(value):
         room_pos = value
-        set_position_from_room_pos()
 
 @export var is_active:= true
 @export var show_water:= true
@@ -17,27 +37,31 @@ extends Area2D
 func _on_body_entered(_body: Node2D) -> void:
     if !is_active: return
     Events.room_entered.emit(
-        room_pos,
+        position,
+        _room_size_dict[room_size],
         show_water,
         show_stars
         )
 
-func set_position_from_room_pos():
-    """ """
-    if keep_override_pos: return
-    var x_pos = (room_pos.x * GlobalData.base_room_size.x) + (GlobalData.base_room_size.x/2)
-    var y_pos = (room_pos.y * GlobalData.base_room_size.y) + (GlobalData.base_room_size.y/2)
-    position = Vector2(x_pos, y_pos)
+#func set_position_from_room_pos():
+    #""" """
+    #if keep_override_pos: return
+    #var x_pos = (room_pos.x * GlobalData.base_room_size.x) + (GlobalData.base_room_size.x/2)
+    #var y_pos = (room_pos.y * GlobalData.base_room_size.y) + (GlobalData.base_room_size.y/2)
+    #position = Vector2(x_pos, y_pos)
 
 
-func set_collision_shape_size():
+func get_collision_shape():
+    for ch in get_children():
+        if ch is CollisionShape2D:
+            collision_shape_2d = ch
+
+func set_room_shape_from_room_size():
     """ """
+    if collision_shape_2d == null: get_collision_shape()
+    if collision_shape_2d == null: return
     collision_shape_2d.shape.size = Vector2(
-        GlobalData.base_room_size.x - GlobalData.room_collision_margin.x,
-        GlobalData.base_room_size.y - GlobalData.room_collision_margin.y)
-
-
-func _ready() -> void:
-    """ """
-    set_collision_shape_size()
-    set_position_from_room_pos()
+        _room_size_dict[room_size].x - GlobalData.room_collision_margin.x,
+        _room_size_dict[room_size].y - GlobalData.room_collision_margin.y,
+        )
+    print(collision_shape_2d.shape.size)

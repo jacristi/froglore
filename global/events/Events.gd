@@ -60,6 +60,7 @@ signal ui_error
 
 signal room_entered(
     room_pos: Vector2,
+    room_size: Vector2,
     show_water:bool,
     show_stars:bool
 )

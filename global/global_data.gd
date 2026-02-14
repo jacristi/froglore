@@ -48,7 +48,6 @@ func _input(event: InputEvent) -> void:
                 _apply_scale(Vector2(384, 216))
 
 
-
 func _apply_scale(factor: Vector2) -> void:
     """ """
     get_viewport().set_content_scale_size(factor)

@@ -21,7 +21,11 @@ func _ready() -> void:
     Events.room_entered.connect(handle_camera_move)
 
 
-func handle_camera_move(room_pos:Vector2, _show_water:bool, _show_stars:bool):
+func handle_camera_move(
+        room_pos:Vector2,
+        _room_size: Vector2,
+        _show_water:bool,
+        _show_stars:bool):
     """ """
     if room_pos.y < 0: box_texture.position.y = y_pos_top
     else: box_texture.position.y = start_y_pos

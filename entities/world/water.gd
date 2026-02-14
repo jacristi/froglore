@@ -8,11 +8,12 @@ func _ready() -> void:
     start_pos = position
     if not Engine.is_editor_hint():
         _zoom_changed()
-        Events.room_entered.connect(room_changed)
+        #Events.room_entered.connect(room_changed)
 
 
 func room_changed(
         room_pos: Vector2,
+        _room_size: Vector2,
         show_water: bool,
         _show_stars:bool):
     """

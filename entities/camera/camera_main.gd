@@ -26,17 +26,27 @@ func _process(delta: float) -> void:
 
 func adjust_for_new_room(
     room_pos: Vector2,
+    room_size: Vector2,
     _show_water:bool,
     _show_stars:bool
     ) -> void:
     """ """
-    var x = room_pos.x
-    var y = room_pos.y
 
-    limit_left   = int(x*GlobalData.base_room_size.x)
-    limit_right  = int((x*GlobalData.base_room_size.x) + GlobalData.base_room_size.x)
-    limit_top    = int(y*GlobalData.base_room_size.y)
-    limit_bottom = int((y*GlobalData.base_room_size.y) + GlobalData.base_room_size.y)
+    # calc limits based on room pos + room size
+    var x = room_pos.x - (room_size.x/2.0)
+    var y = room_pos.y - (room_size.y/2.0)
+
+    limit_left   = int(x)
+    limit_right  = int(x + room_size.x)
+    limit_top    = int(y)
+    limit_bottom = int(y + room_size.y)
+    get_viewport().set_content_scale_size(room_size)
+    print("room_pos:     " + str(room_pos))
+    print("room_size:    " + str(room_size))
+    print("limit_left:   " + str(limit_left))
+    print("limit_right:  " + str(limit_right))
+    print("limit_top:    " + str(limit_top))
+    print("limit_bottom: " + str(limit_bottom))
 
 
 #func change_scroll_limit(

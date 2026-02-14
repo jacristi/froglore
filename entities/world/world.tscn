@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bkt2ohyxi3n1h"]
+[gd_scene load_steps=73 format=3 uid="uid://bkt2ohyxi3n1h"]
 
 [ext_resource type="Script" uid="uid://d3m1l4wslkqa3" path="res://entities/world/world.gd" id="1_y1phm"]
 [ext_resource type="PackedScene" uid="uid://dpsc6fhin8qq4" path="res://entities/player/frog_character.tscn" id="2_x37gw"]
@@ -6624,13 +6624,52 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 1.0
+shader_parameter/y_zoom = 0.75131476
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(2560, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evjnc"]
 size = Vector2(20, 540)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luagn"]
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66jyt"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i84l8"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vijbl"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7geq"]
+size = Vector2(56, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_binq1"]
+size = Vector2(152, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1xmj"]
+size = Vector2(152, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruyw7"]
+size = Vector2(152, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfb0s"]
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_315nm"]
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy0vn"]
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4i1f"]
+size = Vector2(376, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ienm2"]
+size = Vector2(376, 208)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_y1phm")
@@ -6788,67 +6827,6 @@ position = Vector2(-19, 229)
 
 [node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" instance=ExtResource("17_kvxen")]
 position = Vector2(-4, 229)
-
-[node name="Room(-3,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-640, 72)
-room_pos = Vector2(-3, 0)
-
-[node name="Room(-2,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-384, 72)
-room_pos = Vector2(-2, 0)
-
-[node name="Room(-1,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-128, 72)
-room_pos = Vector2(-1, 0)
-
-[node name="Room(0,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-
-[node name="Room(1,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(384, 72)
-room_pos = Vector2(1, 0)
-
-[node name="Room(2,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(640, 72)
-room_pos = Vector2(2, 0)
-
-[node name="Room(3,0)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(896, 72)
-room_pos = Vector2(3, 0)
-
-[node name="Room(-3,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-640, -72)
-room_pos = Vector2(-3, -1)
-show_water = false
-
-[node name="Room(-2,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-384, -72)
-room_pos = Vector2(-2, -1)
-show_water = false
-
-[node name="Room(-1,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(-128, -72)
-room_pos = Vector2(-1, -1)
-show_water = false
-
-[node name="Room(0,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(128, -72)
-room_pos = Vector2(0, -1)
-show_water = false
-
-[node name="Room(1,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(384, -72)
-room_pos = Vector2(1, -1)
-show_water = false
-
-[node name="Room(2,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(640, -72)
-room_pos = Vector2(2, -1)
-show_water = false
-
-[node name="Room(3,-1)" parent="CameraObjects" instance=ExtResource("21_ll612")]
-position = Vector2(896, -72)
-room_pos = Vector2(3, -1)
-show_water = false
 
 [node name="CreditsCanvas" type="CanvasLayer" parent="."]
 
@@ -7016,5 +6994,93 @@ position = Vector2(223, 123)
 
 [node name="Star50" parent="Stars" instance=ExtResource("17_qg26c")]
 position = Vector2(185, 121)
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="RoomStart" parent="Rooms" instance=ExtResource("21_ll612")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomStart"]
+shape = SubResource("RectangleShape2D_luagn")
+
+[node name="RoomTiny1" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(304, 256)
+room_size = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTiny1"]
+shape = SubResource("RectangleShape2D_66jyt")
+
+[node name="RoomTiny2" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(304, 256)
+room_size = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTiny2"]
+shape = SubResource("RectangleShape2D_i84l8")
+
+[node name="RoomTiny3" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(304, 256)
+room_size = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTiny3"]
+shape = SubResource("RectangleShape2D_vijbl")
+
+[node name="RoomTiny4" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(304, 256)
+room_size = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomTiny4"]
+shape = SubResource("RectangleShape2D_g7geq")
+
+[node name="RoomSmall1" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(197, 282)
+room_size = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomSmall1"]
+shape = SubResource("RectangleShape2D_binq1")
+
+[node name="RoomSmall2" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(197, 282)
+room_size = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomSmall2"]
+shape = SubResource("RectangleShape2D_a1xmj")
+
+[node name="RoomSmall3" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(197, 282)
+room_size = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomSmall3"]
+shape = SubResource("RectangleShape2D_ruyw7")
+
+[node name="RoomMedium1" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(-7, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomMedium1"]
+shape = SubResource("RectangleShape2D_xfb0s")
+
+[node name="RoomMedium2" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(-7, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomMedium2"]
+shape = SubResource("RectangleShape2D_315nm")
+
+[node name="RoomMedium3" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(-7, 308)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomMedium3"]
+shape = SubResource("RectangleShape2D_fy0vn")
+
+[node name="RoomLarge1" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(-328, 343)
+room_size = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomLarge1"]
+shape = SubResource("RectangleShape2D_o4i1f")
+
+[node name="RoomLarge2" parent="Rooms" instance=ExtResource("21_ll612")]
+position = Vector2(-328, 343)
+room_size = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/RoomLarge2"]
+shape = SubResource("RectangleShape2D_ienm2")
 
 [connection signal="item_rect_changed" from="Environs/WaterSimple" to="Environs/WaterSimple" method="_on_item_rect_changed"]
