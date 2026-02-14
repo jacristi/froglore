@@ -51,17 +51,4 @@ func _input(event: InputEvent) -> void:
 
 func _apply_scale(factor: Vector2) -> void:
     """ """
-    #var window_position = DisplayServer.window_get_position()
-    #var window_size = DisplayServer.window_get_size()
-#
-    #var new_window_size = Vector2i(base_resolution * factor)
-#
-    #var size_delta: Vector2i = new_window_size - window_size
-    #var new_window_position = window_position - (size_delta / 2)
-
     get_viewport().set_content_scale_size(factor)
-
-    #DisplayServer.window_set_size(new_window_size)
-    #DisplayServer.window_set_position(new_window_position)
-
-    #print("resized to %dx%d (scale = %f)" % [new_window_size.x, new_window_size.y, factor])

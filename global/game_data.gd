@@ -22,6 +22,8 @@ var key_game_settings   = "game_settings"
 var key_audio_master    = "audio_master_level"
 var key_audio_music     = "audio_music_level"
 var key_audio_sfx       = "audio_music_level"
+var key_video_ss_x      = "video_screen_size_x"
+var key_video_ss_y      = "video_screen_size_y"
 
 var level_details = {}
 var game_details = {}
@@ -29,6 +31,8 @@ var game_settings = {
     key_audio_master:   7,
     key_audio_music:    7,
     key_audio_sfx:      7,
+    key_video_ss_x:     2560,
+    key_video_ss_x:     1440,
 }
 
 
@@ -117,7 +121,7 @@ func load_game_settings() -> void:
     """ """
     var full_path = game_data_file_path + "/" + game_settings_file_name
     var file = FileAccess.open(full_path, FileAccess.READ)
-
+    print(full_path)
     if !FileAccess.file_exists(full_path):
         return
 
@@ -127,6 +131,9 @@ func load_game_settings() -> void:
     json_object.parse(json)
 
     game_settings = json_object.data[key_game_settings]
+    print(game_settings)
+    DisplayServer.window_set_size(Vector2(game_settings[key_video_ss_x], game_settings[key_video_ss_y]))
+    DisplayServer.window_set_position(Vector2(game_settings[key_video_ss_x]/8, game_settings[key_video_ss_y]/8))
     print('loaded game settings from file')
     file.close()
 
