@@ -27,12 +27,13 @@ var key_video_ss_y      = "video_screen_size_y"
 
 var level_details = {}
 var game_details = {}
-var game_settings = {
+var game_settings = {}
+var game_settings_default = {
     key_audio_master:   7,
     key_audio_music:    7,
     key_audio_sfx:      7,
     key_video_ss_x:     2560,
-    key_video_ss_x:     1440,
+    key_video_ss_y:     1440,
 }
 
 
@@ -132,6 +133,10 @@ func load_game_settings() -> void:
 
     game_settings = json_object.data[key_game_settings]
     print(game_settings)
+    if not game_settings.has(key_video_ss_x):
+        game_settings[key_video_ss_x] = game_settings_default[key_video_ss_x]
+    if not game_settings.has(key_video_ss_y):
+        game_settings[key_video_ss_y] = game_settings_default[key_video_ss_y]
     DisplayServer.window_set_size(Vector2(game_settings[key_video_ss_x], game_settings[key_video_ss_y]))
     DisplayServer.window_set_position(Vector2(game_settings[key_video_ss_x]/8, game_settings[key_video_ss_y]/8))
     print('loaded game settings from file')
