@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*res://global/events/Events.tscn"
 LevelTransition="*res://global/LevelTransition.tscn"
-LevelManager="*res://global/LeveManager.tscn"
+LevelManager="*res://global/LevelManager.tscn"
 AudioManager="*res://global/AudioManager.tscn"
 GlobalData="*res://global/GlobalData.tscn"
 GameData="*res://global/GameData.tscn"

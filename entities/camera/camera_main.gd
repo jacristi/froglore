@@ -41,12 +41,12 @@ func adjust_for_new_room(
     limit_top    = int(y)
     limit_bottom = int(y + room_size.y)
     get_viewport().set_content_scale_size(room_size)
-    print("room_pos:     " + str(room_pos))
-    print("room_size:    " + str(room_size))
-    print("limit_left:   " + str(limit_left))
-    print("limit_right:  " + str(limit_right))
-    print("limit_top:    " + str(limit_top))
-    print("limit_bottom: " + str(limit_bottom))
+    #print("room_pos:     " + str(room_pos))
+    #print("room_size:    " + str(room_size))
+    #print("limit_left:   " + str(limit_left))
+    #print("limit_right:  " + str(limit_right))
+    #print("limit_top:    " + str(limit_top))
+    #print("limit_bottom: " + str(limit_bottom))
 
 
 #func change_scroll_limit(

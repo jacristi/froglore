@@ -1,3 +1,4 @@
+class_name PlayerCharacter
 extends CharacterBody2D
 
 @export var move_speed := 55.0
@@ -77,7 +78,6 @@ var super_hop_prep_reached := false
 var _is_paused:= false
 
 func _ready() -> void:
-    respawn_position = starting_position
     hazard_detector.area_entered.connect(hit_hazard_despawn_and_respawn)
     hazard_detector.body_entered.connect(hit_hazard_despawn_and_respawn_body)
     interact_detector.area_entered.connect(enter_interactable)
