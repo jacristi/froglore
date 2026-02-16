@@ -5,17 +5,19 @@
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_rcpb6"]
 
 [node name="DialogueBox" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_4e02l")
-y_pos_bottom = 149.0
 
 [node name="BoxTexture" type="NinePatchRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.313726)
 clip_contents = true
+custom_minimum_size = Vector2(0, 24)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -24.0
+offset_top = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
@@ -24,8 +26,6 @@ patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="BoxTexture"]
 layout_mode = 1
@@ -47,6 +47,5 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -3
 theme_override_constants/outline_size = 4
-text = "This is a dialogue box..."
 horizontal_alignment = 1
 vertical_alignment = 1
