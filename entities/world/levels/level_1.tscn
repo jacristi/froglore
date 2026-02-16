@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bn5s1cqkxgw47"]
+[gd_scene load_steps=33 format=4 uid="uid://bn5s1cqkxgw47"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_rjwai"]
 [ext_resource type="Texture2D" uid="uid://080k7x3oei7m" path="res://assets/spritesheets/spr-environ-tiles.png" id="2_uj01x"]
@@ -1406,6 +1406,14 @@ size = Vector2(20, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51hs6"]
 size = Vector2(248, 136)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj01x"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqa6t"]
+resource_local_to_scene = true
+size = Vector2(376, 208)
+
 [node name="Level1" instance=ExtResource("1_rjwai")]
 this_level = "level_1"
 prev_level = "level_0"
@@ -1455,6 +1463,7 @@ dialogue_text = "Collect light bugs to complete levels"
 show_sprite = false
 
 [node name="background" parent="Environs" index="1"]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(215, 32)
 
 [node name="BackgroundTree" parent="Environs" index="3" instance=ExtResource("7_l4qpi")]
@@ -1668,23 +1677,11 @@ position = Vector2(32, 113)
 [node name="RespawnPoint4" parent="Points" index="3"]
 position = Vector2(266, 81)
 
-[node name="PortalStone-1" parent="Points" index="4"]
-position = Vector2(-667, 113)
-
-[node name="PortalStone0" parent="Points" index="5"]
-position = Vector2(-175, -15)
-
-[node name="PortalStone1" parent="Points" index="6"]
+[node name="PortalStone1" parent="Points" index="4"]
 position = Vector2(121, 97)
 
-[node name="PortalStone2" parent="Points" index="7"]
+[node name="PortalStone2" parent="Points" index="5"]
 position = Vector2(439, 73)
-
-[node name="PortalStone3" parent="Points" index="8"]
-position = Vector2(283, -15)
-
-[node name="PortalStone4" parent="Points" index="9"]
-position = Vector2(901, -7)
 
 [node name="CameraObjects" parent="." index="14"]
 visible = false
@@ -1724,3 +1721,9 @@ position = Vector2(-128, 72)
 
 [node name="RoomMedium2" parent="Rooms" index="9"]
 position = Vector2(384, 72)
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_uj01x")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_aqa6t")

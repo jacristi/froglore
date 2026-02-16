@@ -6624,7 +6624,7 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_f6x80")
 shader_parameter/speed = Vector2(0.05, 0.05)
 shader_parameter/wave_strength = 0.0
 shader_parameter/scale_y = 2.0
-shader_parameter/y_zoom = 2.9022923
+shader_parameter/y_zoom = 2.1435893
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb6v"]
 size = Vector2(2560, 20)
@@ -6633,6 +6633,7 @@ size = Vector2(2560, 20)
 size = Vector2(20, 540)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_luagn"]
+resource_local_to_scene = true
 size = Vector2(376, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66jyt"]
@@ -6663,12 +6664,14 @@ size = Vector2(248, 136)
 size = Vector2(248, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy0vn"]
+resource_local_to_scene = true
 size = Vector2(248, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4i1f"]
 size = Vector2(376, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ienm2"]
+resource_local_to_scene = true
 size = Vector2(376, 208)
 
 [node name="World" type="Node2D"]
@@ -6776,29 +6779,13 @@ position = Vector2(-613, -51)
 [node name="RespawnPoint4" parent="Points" instance=ExtResource("24_titvk")]
 position = Vector2(-580, -51)
 
-[node name="PortalStone-1" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-685, -101)
-collectable_name = "-2"
-
-[node name="PortalStone0" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-657, -102)
-collectable_name = "-1"
-
 [node name="PortalStone1" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-616, -101)
-collectable_name = "0"
-
-[node name="PortalStone2" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-582, -100)
+position = Vector2(-657, -102)
 collectable_name = "1"
 
-[node name="PortalStone3" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-546, -99)
+[node name="PortalStone2" parent="Points" instance=ExtResource("16_cmb7r")]
+position = Vector2(-616, -101)
 collectable_name = "2"
-
-[node name="PortalStone4" parent="Points" instance=ExtResource("16_cmb7r")]
-position = Vector2(-507, -100)
-collectable_name = "3"
 
 [node name="CameraObjects" type="Node2D" parent="."]
 

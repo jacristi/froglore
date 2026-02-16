@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cqul61c7w5j23"]
+[gd_scene load_steps=13 format=4 uid="uid://cqul61c7w5j23"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_cp077"]
 [ext_resource type="PackedScene" uid="uid://c2hv75bvf8pcc" path="res://entities/interactables/world_statue.tscn" id="3_hf6fm"]
@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://doaxo1pfqtqp7" path="res://entities/environs/big_frog_1.tscn" id="9_rvxq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvxq4"]
+size = Vector2(376, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d71lq"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74rbc"]
+resource_local_to_scene = true
 size = Vector2(376, 208)
 
 [node name="Level0" instance=ExtResource("1_cp077")]
@@ -123,3 +131,9 @@ shape = SubResource("RectangleShape2D_rvxq4")
 
 [node name="RoomMedium1" parent="Rooms" index="8"]
 position = Vector2(448, 72)
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_d71lq")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_74rbc")
