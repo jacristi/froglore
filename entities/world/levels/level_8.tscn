@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=4 uid="uid://bnc8fwsarcqbr"]
+[gd_scene load_steps=7 format=4 uid="uid://bnc8fwsarcqbr"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_lijvt"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_d0met"]
 [ext_resource type="PackedScene" uid="uid://btrfu5gdv336r" path="res://entities/interactables/frog_statue.tscn" id="4_psb6d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qod4y"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndd8e"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_supku"]
+resource_local_to_scene = true
+size = Vector2(376, 208)
 
 [node name="Level8" instance=ExtResource("1_lijvt")]
 this_level = "level_8"
@@ -30,8 +42,14 @@ position = Vector2(180, 84)
 [node name="DarkBug2" parent="Hazards" index="1" instance=ExtResource("2_d0met")]
 position = Vector2(87, 83)
 
-[node name="DetailsCanvas" parent="." index="13"]
+[node name="DetailsCanvas" parent="." index="15"]
 visible = false
 
-[node name="DialogueCanvas" parent="." index="14"]
-visible = false
+[node name="CollisionShape2D" parent="Rooms/RoomStart" index="0"]
+shape = SubResource("RectangleShape2D_qod4y")
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_ndd8e")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_supku")

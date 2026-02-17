@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cmvmj85osee26"]
+[gd_scene load_steps=18 format=4 uid="uid://cmvmj85osee26"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_4rve7"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="3_faesj"]
@@ -14,6 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://b3fwyshaeenli" path="res://entities/interactables/butterfly_blocks_statues/butterfly_block_yellow.tscn" id="13_yjqu1"]
 [ext_resource type="PackedScene" uid="uid://be02ngp2du6k6" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_yellow.tscn" id="14_8wpf4"]
 [ext_resource type="PackedScene" uid="uid://cfiiuhbbcvcga" path="res://entities/interactables/butterfly_blocks_statues/butterfly_statue_green.tscn" id="14_otgve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2p6i"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqao8"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvy8x"]
+resource_local_to_scene = true
+size = Vector2(376, 208)
 
 [node name="Level5" instance=ExtResource("1_4rve7")]
 this_level = "level_5"
@@ -233,3 +245,12 @@ position = Vector2(368, 157)
 
 [node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="5"]
 position = Vector2(383, 157)
+
+[node name="CollisionShape2D" parent="Rooms/RoomStart" index="0"]
+shape = SubResource("RectangleShape2D_d2p6i")
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_tqao8")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_tvy8x")

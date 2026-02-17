@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b6as2jkna16oc"]
+[gd_scene load_steps=16 format=4 uid="uid://b6as2jkna16oc"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_ew37s"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="3_0bkoq"]
@@ -26,6 +26,18 @@ size = Vector2(56, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43edq"]
 size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sthu"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7obc6"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j136x"]
+resource_local_to_scene = true
+size = Vector2(376, 208)
 
 [node name="Level7" instance=ExtResource("1_ew37s")]
 this_level = "level_7"
@@ -65,16 +77,10 @@ position = Vector2(161, 57)
 [node name="DarkBug5" parent="Hazards" index="4" instance=ExtResource("3_0bkoq")]
 position = Vector2(211, 88)
 
-[node name="PortalStone-1" parent="Points" index="4"]
-position = Vector2(-750, 105)
-
-[node name="PortalStone0" parent="Points" index="5"]
-position = Vector2(-335, 105)
-
-[node name="PortalStone1" parent="Points" index="6"]
+[node name="PortalStone1" parent="Points" index="4"]
 position = Vector2(133, 105)
 
-[node name="PortalStone2" parent="Points" index="7"]
+[node name="PortalStone2" parent="Points" index="5"]
 position = Vector2(299, 81)
 
 [node name="CameraMain" parent="CameraObjects" index="0"]
@@ -156,3 +162,12 @@ position = Vector2(448, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room8" index="0"]
 shape = SubResource("RectangleShape2D_43edq")
+
+[node name="CollisionShape2D" parent="Rooms/RoomStart" index="0"]
+shape = SubResource("RectangleShape2D_4sthu")
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_7obc6")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_j136x")
