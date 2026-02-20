@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1ofnxnvttha7"]
 
 [ext_resource type="Script" uid="uid://ytbr5acuv1ov" path="res://ui/pause_canvas.gd" id="1_r2cha"]
-[ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/spr-dialogue-box.png" id="2_mmvxe"]
+[ext_resource type="Texture2D" uid="uid://1vkks7tr25gd" path="res://assets/spritesheets/ui/spr-dialogue-box.png" id="2_mmvxe"]
 [ext_resource type="Script" uid="uid://v1aoh5moj5s4" path="res://components/animation_component.gd" id="3_5ck68"]
 [ext_resource type="Script" uid="uid://dn7hi3q4ok05f" path="res://ui/button.gd" id="4_68n3l"]
 

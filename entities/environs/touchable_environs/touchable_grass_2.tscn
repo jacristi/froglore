@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d04rpka60lhkw"]
 
 [ext_resource type="PackedScene" uid="uid://b1feig1dx48to" path="res://entities/environs/touchable_environs/touchable_environ.tscn" id="1_y2ith"]
-[ext_resource type="Texture2D" uid="uid://dllre78owste1" path="res://assets/spritesheets/spr-environs-interactable.png" id="2_8ym8b"]
+[ext_resource type="Texture2D" uid="uid://dllre78owste1" path="res://assets/spritesheets/environs/spr-environs-interactable.png" id="2_8ym8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwle1"]
 atlas = ExtResource("2_8ym8b")

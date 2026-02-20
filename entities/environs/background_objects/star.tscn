@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://bw3gdnvvp8oci"]
 
-[ext_resource type="Texture2D" uid="uid://bp4b6msvq7nw6" path="res://assets/spritesheets/spr-stars.png" id="1_uosay"]
+[ext_resource type="Texture2D" uid="uid://bp4b6msvq7nw6" path="res://assets/spritesheets/environs/spr-stars.png" id="1_uosay"]
 [ext_resource type="Script" uid="uid://r27rnudijkis" path="res://entities/environs/background_objects/star.gd" id="1_xygky"]
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="2_cq4s1"]
 

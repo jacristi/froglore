@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dc2fxotghqxf"]
 
-[ext_resource type="Texture2D" uid="uid://dp27fhmphea7p" path="res://assets/spritesheets/spr_outline-lblue.png" id="1_qrd30"]
+[ext_resource type="Texture2D" uid="uid://dp27fhmphea7p" path="res://assets/spritesheets/ui/spr_outline-lblue.png" id="1_qrd30"]
 
 [node name="DetailsCanvas" type="CanvasLayer"]
 

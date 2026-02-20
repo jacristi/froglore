@@ -43,12 +43,8 @@ func _on_body_entered(_body: Node2D) -> void:
         show_stars
         )
 
-#func set_position_from_room_pos():
-    #""" """
-    #if keep_override_pos: return
-    #var x_pos = (room_pos.x * GlobalData.base_room_size.x) + (GlobalData.base_room_size.x/2)
-    #var y_pos = (room_pos.y * GlobalData.base_room_size.y) + (GlobalData.base_room_size.y/2)
-    #position = Vector2(x_pos, y_pos)
+func _ready() -> void:
+    set_room_shape_from_room_size()
 
 
 func get_collision_shape():
@@ -64,4 +60,3 @@ func set_room_shape_from_room_size():
         _room_size_dict[room_size].x - GlobalData.room_collision_margin.x,
         _room_size_dict[room_size].y - GlobalData.room_collision_margin.y,
         )
-    print(collision_shape_2d.shape.size)
