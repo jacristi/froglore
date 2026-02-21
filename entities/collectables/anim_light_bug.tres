@@ -1,14 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=37 format=3 uid="uid://b7qbvrikgsovp"]
+[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://b7qbvrikgsovp"]
 
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="1_2hikx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4ljx"]
-atlas = ExtResource("1_2hikx")
-region = Rect2(0, 48, 12, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgv37"]
-atlas = ExtResource("1_2hikx")
-region = Rect2(12, 48, 12, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soeu3"]
 atlas = ExtResource("1_2hikx")
@@ -145,12 +137,6 @@ region = Rect2(132, 144, 12, 48)
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4ljx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rgv37")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_soeu3")
 }, {
