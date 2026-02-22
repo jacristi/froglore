@@ -1470,68 +1470,72 @@ show_sprite = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(215, 32)
 
-[node name="BackgroundTree" parent="Environs" index="3" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree" parent="Environs" index="2" instance=ExtResource("7_l4qpi")]
 position = Vector2(208, 65)
 metadata/_edit_group_ = true
 
-[node name="TouchableGrass1" parent="Environs" index="4" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass1" parent="Environs" index="3" instance=ExtResource("8_0knea")]
 position = Vector2(168, 105)
 
-[node name="TouchableGrass4" parent="Environs" index="5" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass4" parent="Environs" index="4" instance=ExtResource("8_0knea")]
 position = Vector2(13, 57)
 
-[node name="TouchableGrass7" parent="Environs" index="6" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass7" parent="Environs" index="5" instance=ExtResource("8_0knea")]
 position = Vector2(242, 49)
 
-[node name="TouchableGrass5" parent="Environs" index="7" instance=ExtResource("8_0knea")]
+[node name="TouchableGrass5" parent="Environs" index="6" instance=ExtResource("8_0knea")]
 position = Vector2(237, 97)
 
-[node name="TouchableFlowers" parent="Environs" index="8" instance=ExtResource("9_d47ed")]
+[node name="TouchableFlowers" parent="Environs" index="7" instance=ExtResource("9_d47ed")]
 position = Vector2(91, 97)
 
-[node name="TouchableGrass3" parent="Environs" index="9" instance=ExtResource("10_2xo51")]
+[node name="TouchableGrass3" parent="Environs" index="8" instance=ExtResource("10_2xo51")]
 position = Vector2(130, 97)
 
-[node name="TouchableGrass8" parent="Environs" index="10" instance=ExtResource("10_2xo51")]
+[node name="TouchableGrass8" parent="Environs" index="9" instance=ExtResource("10_2xo51")]
 position = Vector2(200, 97)
 
-[node name="TouchableGrass6" parent="Environs" index="11" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass6" parent="Environs" index="10" instance=ExtResource("11_1gpaj")]
 position = Vector2(219, 97)
 
-[node name="BackgroundTree2" parent="Environs" index="12" instance=ExtResource("7_l4qpi")]
+[node name="BackgroundTree2" parent="Environs" index="11" instance=ExtResource("7_l4qpi")]
 position = Vector2(80, 64)
 region_rect = Rect2(64, 64, 64, 64)
 
-[node name="TouchableGrass9" parent="Environs" index="13" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass9" parent="Environs" index="12" instance=ExtResource("11_1gpaj")]
 position = Vector2(58, 105)
 
-[node name="TouchableGrass10" parent="Environs" index="14" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass10" parent="Environs" index="13" instance=ExtResource("11_1gpaj")]
 position = Vector2(16, 113)
 
-[node name="TouchableGrass11" parent="Environs" index="15" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass11" parent="Environs" index="14" instance=ExtResource("11_1gpaj")]
 position = Vector2(4, 113)
 
-[node name="TouchableGrass12" parent="Environs" index="16" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass12" parent="Environs" index="15" instance=ExtResource("11_1gpaj")]
 position = Vector2(0, 113)
 
-[node name="TouchableGrass13" parent="Environs" index="17" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass13" parent="Environs" index="16" instance=ExtResource("11_1gpaj")]
 position = Vector2(-5, 113)
 
-[node name="TouchableGrass14" parent="Environs" index="18" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass14" parent="Environs" index="17" instance=ExtResource("11_1gpaj")]
 position = Vector2(18, 103)
 rotation = 3.14159
 
-[node name="TouchableGrass15" parent="Environs" index="19" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass15" parent="Environs" index="18" instance=ExtResource("11_1gpaj")]
 position = Vector2(-4, 103)
 scale = Vector2(1, -1)
 
-[node name="TouchableGrass16" parent="Environs" index="20" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass16" parent="Environs" index="19" instance=ExtResource("11_1gpaj")]
 position = Vector2(2, 103)
 rotation = 3.14159
 
-[node name="TouchableGrass17" parent="Environs" index="21" instance=ExtResource("11_1gpaj")]
+[node name="TouchableGrass17" parent="Environs" index="20" instance=ExtResource("11_1gpaj")]
 position = Vector2(11, 103)
 scale = Vector2(1, -1)
+
+[node name="WaterSimple" parent="Water" index="0"]
+position = Vector2(115, 132)
+scale = Vector2(29.25, 1)
 
 [node name="LightBug1" parent="Collectables" index="0" instance=ExtResource("13_aqa6t")]
 position = Vector2(156, 93)
@@ -1687,7 +1691,16 @@ position = Vector2(121, 97)
 [node name="PortalStone2" parent="Points" index="5"]
 position = Vector2(439, 73)
 
-[node name="CameraObjects" parent="." index="14"]
+[node name="SceneTransitionArea" parent="." index="15" instance=ExtResource("6_oiu7s")]
+position = Vector2(840, -232)
+from_level_key = "level_1"
+go_to_level_key = "level_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransitionArea" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_tefl4")
+
+[node name="CameraObjects" parent="." index="16"]
 visible = false
 
 [node name="ScreenTransitionIndicator" parent="CameraObjects" index="1"]
@@ -1707,15 +1720,6 @@ rotation = 4.712389
 [node name="ScreenTransitionIndicator1Way2" parent="CameraObjects" index="5"]
 position = Vector2(374, 169)
 rotation = 1.5707964
-
-[node name="SceneTransitionArea" parent="." index="15" instance=ExtResource("6_oiu7s")]
-position = Vector2(840, -232)
-from_level_key = "level_1"
-go_to_level_key = "level_2"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTransitionArea" index="0"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_tefl4")
 
 [node name="CollisionShape2D" parent="Rooms/RoomStart" index="0"]
 shape = SubResource("RectangleShape2D_51hs6")

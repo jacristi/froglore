@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr3m8731myw1"]
+
+[ext_resource type="PackedScene" uid="uid://cae57y00piuyw" path="res://entities/collectables/light_bug.tscn" id="1_55jpw"]
+[ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_1l8v0"]
+[ext_resource type="PackedScene" uid="uid://i1c2dkftopmh" path="res://entities/hazards/spikes_small.tscn" id="3_hroof"]
+
+[node name="Room2Objects" type="Node2D"]
+
+[node name="LightBug" parent="." instance=ExtResource("1_55jpw")]
+position = Vector2(-214, 100)
+collectable_name = "lb1"
+
+[node name="LightBug2" parent="." instance=ExtResource("1_55jpw")]
+position = Vector2(-183, 100)
+collectable_name = "lb2"
+
+[node name="DarkBug" parent="." instance=ExtResource("2_1l8v0")]
+position = Vector2(-121, 89)
+
+[node name="DarkBug2" parent="." instance=ExtResource("2_1l8v0")]
+position = Vector2(-102, 92)
+
+[node name="DarkBug3" parent="." instance=ExtResource("2_1l8v0")]
+position = Vector2(-197, 98)
+
+[node name="SpikesSmall" parent="." instance=ExtResource("3_hroof")]
+position = Vector2(-157, 108)

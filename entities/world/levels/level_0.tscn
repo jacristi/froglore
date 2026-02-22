@@ -34,27 +34,35 @@ tile_map_data = PackedByteArray("AAD//w0AAwAAAAEAAAD//w4AAwAAAAEAAAD//w8AAwAAAAE
 metadata/_edit_group_ = true
 
 [node name="TouchableGrass2" parent="Environs" index="0" instance=ExtResource("4_w5xms")]
+z_index = 0
 position = Vector2(114, 105)
 
 [node name="TouchableGrass4" parent="Environs" index="1" instance=ExtResource("5_pq1af")]
+z_index = 0
 position = Vector2(87, 105)
 
 [node name="TouchableGrass5" parent="Environs" index="2" instance=ExtResource("6_2bf5w")]
+z_index = 0
 position = Vector2(191, 105)
 
 [node name="TouchableGrass6" parent="Environs" index="3" instance=ExtResource("5_pq1af")]
+z_index = 0
 position = Vector2(222, 105)
 
 [node name="TouchableGrass7" parent="Environs" index="4" instance=ExtResource("4_w5xms")]
+z_index = 0
 position = Vector2(248, 105)
 
 [node name="TouchableGrass8" parent="Environs" index="5" instance=ExtResource("6_2bf5w")]
+z_index = 0
 position = Vector2(47, 105)
 
 [node name="TouchableGrass9" parent="Environs" index="6" instance=ExtResource("4_w5xms")]
+z_index = 0
 position = Vector2(309, 105)
 
 [node name="TouchableGrass10" parent="Environs" index="7" instance=ExtResource("4_w5xms")]
+z_index = 0
 position = Vector2(-10, 89)
 
 [node name="DialogueSign" parent="Environs" index="8"]
@@ -63,12 +71,12 @@ position = Vector2(-111, 46)
 [node name="background" parent="Environs" index="9"]
 position = Vector2(173, -6)
 
-[node name="DialogueSign2" parent="Environs" index="11" instance=ExtResource("5_d71lq")]
+[node name="DialogueSign2" parent="Environs" index="10" instance=ExtResource("5_d71lq")]
 position = Vector2(416, 100)
 dialogue_text = "Ah, an explorer"
 show_sprite = false
 
-[node name="BigFrog1" parent="Environs" index="12" instance=ExtResource("9_rvxq4")]
+[node name="BigFrog1" parent="Environs" index="11" instance=ExtResource("9_rvxq4")]
 position = Vector2(416, 104)
 
 [node name="WarpStatue1" parent="Interactables" index="0" instance=ExtResource("4_l2rno")]

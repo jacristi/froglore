@@ -31,11 +31,18 @@ var _room_size_dict = {
 @export var show_water:= true
 @export var show_stars:= true
 @export var keep_override_pos:= false
+@export var room_objects: PackedScene
+var _loaded_objects: Node2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
     if !is_active: return
+    if room_objects != null and _loaded_objects == null:
+        print('loading room objects')
+        _loaded_objects = room_objects.instantiate()
+        get_tree().current_scene.add_child.call_deferred(_loaded_objects)
+
     Events.room_entered.emit(
         position,
         _room_size_dict[room_size],
@@ -60,3 +67,9 @@ func set_room_shape_from_room_size():
         _room_size_dict[room_size].x - GlobalData.room_collision_margin.x,
         _room_size_dict[room_size].y - GlobalData.room_collision_margin.y,
         )
+
+
+func _on_body_exited(_body: Node2D) -> void:
+    if _loaded_objects != null:
+        print('unloading room objects')
+        _loaded_objects.queue_free()

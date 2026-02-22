@@ -43,26 +43,26 @@ tile_map_data = PackedByteArray("AAADAAgAAAANAAIAAAAUAAQAAAAGAAMAAAAUAAoAAAAGAAM
 position = Vector2(124, 68)
 dialogue_text = "Dash to cover large gaps"
 
-[node name="TouchableGrass2" parent="Environs" index="3" instance=ExtResource("7_idlvn")]
+[node name="TouchableGrass2" parent="Environs" index="2" instance=ExtResource("7_idlvn")]
 position = Vector2(182, 97)
 
-[node name="TouchableGrass1" parent="Environs" index="4" instance=ExtResource("8_8glmi")]
+[node name="TouchableGrass1" parent="Environs" index="3" instance=ExtResource("8_8glmi")]
 position = Vector2(148, 105)
 
-[node name="TouchableGrass3" parent="Environs" index="5" instance=ExtResource("9_xwdk6")]
+[node name="TouchableGrass3" parent="Environs" index="4" instance=ExtResource("9_xwdk6")]
 position = Vector2(46, 89)
 
-[node name="TouchableGrass4" parent="Environs" index="6" instance=ExtResource("7_idlvn")]
+[node name="TouchableGrass4" parent="Environs" index="5" instance=ExtResource("7_idlvn")]
 position = Vector2(177, 41)
 
-[node name="TouchableFlower1" parent="Environs" index="7" instance=ExtResource("10_470ud")]
+[node name="TouchableFlower1" parent="Environs" index="6" instance=ExtResource("10_470ud")]
 position = Vector2(236, 97)
 
-[node name="BackgroundTree" parent="Environs" index="8" instance=ExtResource("6_1gvlr")]
+[node name="BackgroundTree" parent="Environs" index="7" instance=ExtResource("6_1gvlr")]
 position = Vector2(81, 80)
 region_rect = Rect2(64, 0, 64, 64)
 
-[node name="BackgroundTree2" parent="Environs" index="9" instance=ExtResource("6_1gvlr")]
+[node name="BackgroundTree2" parent="Environs" index="8" instance=ExtResource("6_1gvlr")]
 position = Vector2(190, 65)
 region_rect = Rect2(128, 0, 64, 64)
 
