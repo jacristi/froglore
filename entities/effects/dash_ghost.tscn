@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://27idf4h20kcf"]
+
+[ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_0uejd"]
+[ext_resource type="Script" uid="uid://b1eyu1xfo7i63" path="res://entities/effects/dash_ghost.gd" id="1_ok7k5"]
+
+[node name="DashGhost" type="Sprite2D"]
+texture = ExtResource("1_0uejd")
+region_enabled = true
+region_rect = Rect2(16, 80, 16, 16)
+script = ExtResource("1_ok7k5")

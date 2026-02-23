@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var dash_cooldown_duration := 1.0
 @export var wall_cling_cooldown := 0.3
 @export var big_hop_buffer_time := 0.075
+@export var dash_ghost_scene: PackedScene
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -30,6 +31,7 @@ extends CharacterBody2D
 @export var dash_unlocked:=         false
 @export var wall_cling_unlocked:=   false
 @export var super_hop_unlocked:=    false
+@export var starfall_unlocked:=     false
 
 var portal_stones_unlocked = {}
 
@@ -73,6 +75,7 @@ var wall_cling_used_max:= 1
 var curr_velocity: Vector2
 var button_down_held_time: float = 0
 var idle_timer: float = 0
+var dash_timer: float = 0
 
 var super_hop_prep_reached := false
 
@@ -438,6 +441,16 @@ func handle_dashing():
     if (Input.is_action_just_pressed("dash") and can_dash()):
         dash()
 
+    if state != states.DASHING: return
+
+    # Spawn dash ghost every x seconds
+    if fmod(dash_timer, 0.02) == 0.0 and dash_ghost_scene != null:
+        var gh: DashGhost = dash_ghost_scene.instantiate()
+        var pos = Vector2(position.x, position.y-6.0)
+        get_tree().current_scene.add_child(gh)
+        gh.set_props(pos, scale)
+        gh.flip_h = (velocity.x < 0)
+
 
 func get_next_portal_stone(current_number: int):
     var numbers = portal_stones_unlocked.keys()
@@ -540,8 +553,12 @@ func handle_states_animations():
         if current_dialogue != null:
             Events.should_show_dialogue.emit()
     else:
-        idle_timer = 0
+        idle_timer = 0.0
 
+    if state == states.DASHING:
+        dash_timer += .01
+    else:
+        dash_timer = 0.0
 
 
     if state == states.WALL_CLINGING and has_control():
@@ -564,6 +581,7 @@ func handle_wall_cling():
     if not _can_cling_to_wall(): return
     if not has_control(): return
 
+    if state == states.DASHING: Events.player_dash_ended.emit()
     state = states.WALL_CLINGING
 
 

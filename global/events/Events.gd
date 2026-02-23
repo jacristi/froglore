@@ -28,6 +28,7 @@ signal player_should_respawn
 signal player_super_hop_prep()
 signal player_change_color(color: String)
 signal player_teleport
+signal player_dash_ended
 
 signal go_to_level(to_level_key: String, from_level_key: String)
 signal try_go_to_next_level
