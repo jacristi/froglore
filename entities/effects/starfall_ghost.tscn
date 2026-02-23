@@ -1,10 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://biogh6upfmp2b"]
+[gd_scene load_steps=10 format=3 uid="uid://cmlxoq86661n3"]
 
-[ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_30o7f"]
-[ext_resource type="Script" uid="uid://b1eyu1xfo7i63" path="res://entities/effects/dash_ghost.gd" id="2_fe7cs"]
+[ext_resource type="Texture2D" uid="uid://dji2u7thfuc53" path="res://assets/spritesheets/spr-frog-effects.png" id="1_30o7f"]
+[ext_resource type="Script" path="res://components/one_time_animated_component.gd" id="2_fe7cs"]
 
-[node name="DashGhost" type="Sprite2D"]
-texture = ExtResource("1_30o7f")
-region_enabled = true
-region_rect = Rect2(16, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhhqj"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo5v6"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ano4"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tajn2"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng7ba"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejdyh"]
+atlas = ExtResource("1_30o7f")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r8nn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhhqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo5v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ano4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tajn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng7ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejdyh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="StarfallGhost" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7r8nn")
+autoplay = "default"
 script = ExtResource("2_fe7cs")
+destroy_parent = false

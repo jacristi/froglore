@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://2undaclm4gp7"]
+
+[ext_resource type="Texture2D" uid="uid://dji2u7thfuc53" path="res://assets/spritesheets/spr-frog-effects.png" id="1_e2x8o"]
+[ext_resource type="Script" path="res://components/one_time_animated_component.gd" id="2_u1ill"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hvy0"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg2bu"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqapu"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa6j3"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m14vh"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1luod"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qhpj"]
+atlas = ExtResource("1_e2x8o")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhaog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg2bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqapu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa6j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m14vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1luod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qhpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="StarfallImpact" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dhaog")
+autoplay = "default"
+script = ExtResource("2_u1ill")
+destroy_parent = false

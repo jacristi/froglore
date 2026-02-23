@@ -14,6 +14,8 @@ extends CharacterBody2D
 @export var wall_cling_cooldown := 0.3
 @export var big_hop_buffer_time := 0.075
 @export var dash_ghost_scene: PackedScene
+@export var starfall_ghost_scene: PackedScene
+@export var starfall_impact_scene: PackedScene
 @export var star_hop_effect_scene: PackedScene
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
@@ -94,6 +96,7 @@ var curr_velocity: Vector2
 var button_down_held_time: float = 0
 var idle_timer: float = 0
 var dash_timer: float = 0
+var starfall_timer: float = 0
 
 var star_hop_effect = null
 var star_dashing:= false:
@@ -195,7 +198,7 @@ func _physics_process(delta: float) -> void:
     if not velocity.is_zero_approx():
         move_and_slide()
 
-    handle_states_animations()
+    handle_states_animations(delta)
 
     get_wall_direction()
 
@@ -248,7 +251,7 @@ func handle_hopping(delta):
 
             # Reset dash cooldown for big hops (feels bad otherwise)
             dash_cooldown_timer.stop()
-            starfall_cooldown_timer.stop()
+            #starfall_cooldown_timer.stop()
             _can_big_hop = false
             has_buffered_big_hop = true
             big_hop_buffer_timer.stop()
@@ -277,6 +280,7 @@ func handle_hopping(delta):
 
 func handle_h_movement():
     if not has_control(): return
+    if state == states.STARFALLING: return
 
     if h_direction and (can_hop() or !is_on_floor()) and state != states.DASHING and not _is_wall_clinging():
         velocity.x = h_direction * move_speed
@@ -481,6 +485,7 @@ func dash():
     velocity.x = d_vel * dash_direction
     velocity.y = -dash_velocity_y
     animated_sprite_2d.play("dash")
+
     await get_tree().create_timer(dash_duration).timeout
     dash_cooldown_timer.start()
     if state == states.DASHING:
@@ -488,7 +493,7 @@ func dash():
 
 
 func starfall():
-    print('star falling')
+    if not can_starfall(): return
     state = states.STARFALLING
     Events.player_starfell.emit()
     scale_sprite_component.tween_scale()
@@ -500,7 +505,7 @@ func starfall():
 
 func handle_dashing():
     if (Input.is_action_just_pressed("dash") and can_dash()):
-        if Input.is_action_pressed("down") and can_starfall():
+        if Input.is_action_pressed("down"):
             starfall()
         else:
             star_dashing = star_hop_prep_reached and star_dash_unlocked
@@ -511,15 +516,22 @@ func handle_dashing():
     # Spawn dash ghost every x seconds
     var interval = .01 if star_dashing else .02
     if fmod(dash_timer, interval) == 0.0 and dash_ghost_scene != null:
-        var gh: DashGhost = dash_ghost_scene.instantiate()
+        var gh = dash_ghost_scene.instantiate()
         var pos = Vector2(position.x, position.y-6.0)
         get_tree().current_scene.add_child(gh)
-        gh.set_props(pos, scale)
+        gh.position = pos
         gh.flip_h = (velocity.x < 0)
+
 
 func handle_starfalling():
     """ """
     if state != states.STARFALLING: return
+    var interval = .01
+    if fmod(starfall_timer, interval) == 0.0 and starfall_ghost_scene != null:
+        var gh = starfall_ghost_scene.instantiate()
+        var pos = Vector2(position.x, position.y-6.0)
+        get_tree().current_scene.add_child(gh)
+        gh.position = pos
 
 
 
@@ -597,7 +609,22 @@ func star_hop_prep():
     scale_sprite_component.tween_scale()
 
 
-func handle_states_animations():
+func time_slow(sc: float = .75, dur: float = .075):
+    Engine.time_scale = sc
+    await get_tree().create_timer(dur).timeout
+    Engine.time_scale = 1.0
+
+func starfall_impact(delta):
+    """ """
+    var s = starfall_impact_scene.instantiate()
+    get_tree().current_scene.add_child(s)
+    s.position = Vector2(position.x, position.y-8)
+    hop(delta, 1.5)
+    time_slow()
+
+
+
+func handle_states_animations(delta):
 
     if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging() and state != states.STARFALLING:
         if state != states.FALLING:
@@ -614,7 +641,9 @@ func handle_states_animations():
         animated_sprite_2d.play("hop_start")
 
     if _is_idle() and state != states.IDLE and has_control():
-        if state == states.STARFALLING: print("STARFALL IMPACT!")
+        if state == states.STARFALLING:
+            starfall_impact(delta)
+
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
@@ -649,6 +678,11 @@ func handle_states_animations():
         dash_timer += .01
     else:
         dash_timer = 0.0
+
+    if state == states.STARFALLING:
+        starfall_timer += .01
+    else:
+        starfall_timer = 0.0
 
 
     if state == states.WALL_CLINGING and has_control():

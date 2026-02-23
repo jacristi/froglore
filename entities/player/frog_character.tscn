@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=97 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bqsv83s7ddd52" path="res://entities/effects/star_hop_effect.tscn" id="3_4hc13"]
 [ext_resource type="Texture2D" uid="uid://b56hmkk6xghsa" path="res://assets/spritesheets/spr-frog-idle-sleep.png" id="3_k8pd7"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
+[ext_resource type="PackedScene" uid="uid://cmlxoq86661n3" path="res://entities/effects/starfall_ghost.tscn" id="3_scyyc"]
 [ext_resource type="Script" uid="uid://b6pxnp3rnp85e" path="res://components/flash_sprite_component.gd" id="4_eh284"]
+[ext_resource type="PackedScene" uid="uid://2undaclm4gp7" path="res://entities/effects/starfall_impact.tscn" id="4_jqmqj"]
 [ext_resource type="Texture2D" uid="uid://coemsrdy32gen" path="res://assets/spritesheets/spr-frog-hit-hazard.png" id="4_sw1oy"]
 [ext_resource type="Script" uid="uid://csnip6xj31s46" path="res://components/scale_sprite_component.gd" id="5_sfhxq"]
 
@@ -685,7 +687,10 @@ script = ExtResource("1_tl5hv")
 hop_cooldown = 0.3
 dash_velocity_y = 0.0
 starfall_velocity = 500.0
+starfall_cooldown_duration = 0.35
 dash_ghost_scene = ExtResource("2_164nw")
+starfall_ghost_scene = ExtResource("3_scyyc")
+starfall_impact_scene = ExtResource("4_jqmqj")
 star_hop_effect_scene = ExtResource("3_4hc13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
