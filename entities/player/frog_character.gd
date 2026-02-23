@@ -26,9 +26,10 @@ extends CharacterBody2D
 @onready var flash_sprite_component: FlashSpriteComponent = $FlashSpriteComponent
 @onready var scale_sprite_component: ScaleSpriteComponent = $ScaleSpriteComponent
 
-@onready var dash_unlocked:= true
-@onready var wall_cling_unlocked:= true
-@onready var super_hop_unlocked:= true
+@export var big_hop_unlocked:=      false
+@export var dash_unlocked:=         false
+@export var wall_cling_unlocked:=   false
+@export var super_hop_unlocked:=    false
 
 var portal_stones_unlocked = {}
 
@@ -42,7 +43,7 @@ var face_direction := 1
 var dash_direction := 1
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_big_fall_velocity:= false
-var can_big_hop:= false
+var _can_big_hop:= false
 var has_buffered_big_hop:= false
 
 var respawn_position: Vector2
@@ -87,7 +88,8 @@ func _ready() -> void:
     collectable_detector.area_entered.connect(enter_collectable)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
     big_hop_buffer_timer.wait_time = big_hop_buffer_time
-    big_hop_buffer_timer.timeout.connect(func(): can_big_hop = false)
+    big_hop_buffer_timer.timeout.connect(func(): _can_big_hop = false)
+    Events.collectable_collected.connect(collectable_collected)
     Events.player_should_despawn.connect(despawn_player)
     Events.player_should_respawn.connect(respawn_player)
     Events.level_purified_start.connect(pause_unpause_player_actions.bind(true))
@@ -96,8 +98,35 @@ func _ready() -> void:
         if current_interactable != null: enter_interactable(current_interactable))
     Events.portal_stone_unlocked.connect(func(stone_num:int, stone_pos:Vector2):
         portal_stones_unlocked[stone_num] = stone_pos)
-
+    check_save_data()
     current_color = GameData.current_player_color
+
+
+func collectable_collected(c_type: String, c_name: String, _c_quietly: bool) -> void:
+    """ """
+    if c_type != 'ability': return
+    unlock_ability(c_name)
+
+
+func check_save_data() -> void:
+    """ """
+    if !GameData.game_details.has(GameData.key_ability): return
+
+    var abilities = ['big_hop', 'dash', 'wall_cling', 'super_jump']
+
+    for a in abilities:
+        if GameData.game_details[GameData.key_ability].has(a):
+            if GameData.game_details[GameData.key_ability][a]:
+                unlock_ability(a)
+
+
+func unlock_ability(ability_name: String) -> void:
+    """ """
+    match ability_name:
+        'big_hop':      big_hop_unlocked = true
+        'dash':         dash_unlocked = true
+        'wall_cling':   wall_cling_unlocked = true
+        'super_jump':   super_hop_unlocked = true
 
 
 func _physics_process(delta: float) -> void:
@@ -140,7 +169,7 @@ func hop(_delta: float, hop_mod: float = 1.0) -> void:
     velocity.y = -hop_height * hop_mod
     Events.player_hopped.emit()
     if has_buffered_big_hop: return
-    can_big_hop = true
+    _can_big_hop = true
     big_hop_buffer_timer.start()
 
 
@@ -168,11 +197,11 @@ func handle_hopping(delta):
 
     # use is pressed so the input can be held down
     if Input.is_action_pressed("jump"):
-        if (can_hop() and is_on_floor()) or (can_big_hop and !has_buffered_big_hop):
+        if (big_hop_unlocked and can_hop() and is_on_floor()) or (big_hop_unlocked and _can_big_hop and !has_buffered_big_hop):
 
             # Reset dash cooldown for big hops (feels bad otherwise)
             dash_cooldown_timer.stop()
-            can_big_hop = false
+            _can_big_hop = false
             has_buffered_big_hop = true
             big_hop_buffer_timer.stop()
 

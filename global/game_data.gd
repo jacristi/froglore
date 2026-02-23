@@ -12,6 +12,7 @@ var key_game_details    = "game_details"
 var key_level_details   = "level_details"
 var key_state           = "state"
 var key_light_bug       = "light_bug"
+var key_ability         = "ability"
 var key_portal_stone    = "portal_stone"
 var key_secret          = "secret"
 var key_statue          = "statue"
@@ -26,7 +27,9 @@ var key_video_ss_x      = "video_screen_size_x"
 var key_video_ss_y      = "video_screen_size_y"
 
 var level_details = {}
-var game_details = {}
+var game_details = {
+    key_ability: {}
+}
 var game_settings = {}
 var game_settings_default = {
     key_audio_master:   7,
@@ -84,13 +87,22 @@ func handle_collectable_collected(c_type: String, c_name: String, quiet) -> void
     match c_type:
         "light_bug":    c_key = key_light_bug
         "portal_stone": c_key = key_portal_stone
+        "ability":      c_key = key_ability
 
     if c_key == "": return
 
-    if !level_details[lvl].has(c_key):
-        level_details[lvl][c_key] = {c_name: true}
-    else:
-        level_details[lvl][c_key][c_name] = true
+    if c_key in [key_light_bug, key_portal_stone]:
+        if !level_details[lvl].has(c_key):
+            level_details[lvl][c_key] = {c_name: true}
+        else:
+            level_details[lvl][c_key][c_name] = true
+
+    if c_key in [key_ability]:
+        if !game_details.has(c_key):
+            game_details[c_key] = {c_name: true}
+        else:
+            game_details[c_key][c_name] = true
+
 
     save_data()
 

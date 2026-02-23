@@ -4,4 +4,3 @@
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_kvyay")
-should_save_load = false
