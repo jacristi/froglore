@@ -1,9 +1,10 @@
-[gd_scene load_steps=93 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene load_steps=94 format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
 [ext_resource type="PackedScene" uid="uid://27idf4h20kcf" path="res://entities/effects/dash_ghost.tscn" id="2_164nw"]
 [ext_resource type="Shader" uid="uid://377qhjqcvtvn" path="res://effects/shaders/ColorSwap.gdshader" id="2_r58ss"]
+[ext_resource type="PackedScene" uid="uid://bqsv83s7ddd52" path="res://entities/effects/star_hop_effect.tscn" id="3_4hc13"]
 [ext_resource type="Texture2D" uid="uid://b56hmkk6xghsa" path="res://assets/spritesheets/spr-frog-idle-sleep.png" id="3_k8pd7"]
 [ext_resource type="PackedScene" uid="uid://3j2kbaykdssg" path="res://effects/hop_land_effect.tscn" id="3_kt63j"]
 [ext_resource type="Script" uid="uid://b6pxnp3rnp85e" path="res://components/flash_sprite_component.gd" id="4_eh284"]
@@ -672,6 +673,7 @@ script = ExtResource("1_tl5hv")
 hop_cooldown = 0.3
 dash_velocity_y = 0.0
 dash_ghost_scene = ExtResource("2_164nw")
+star_hop_effect_scene = ExtResource("3_4hc13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -681,7 +683,7 @@ shape = SubResource("RectangleShape2D_kbbra")
 material = SubResource("ShaderMaterial_47ru2")
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
-animation = &"dash"
+animation = &"prep_super_hop"
 autoplay = "idle"
 
 [node name="MoveHopTimer" type="Timer" parent="."]

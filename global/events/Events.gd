@@ -25,9 +25,11 @@ signal player_hop_landed
 signal player_croaked(color)
 signal player_should_despawn
 signal player_should_respawn
-signal player_super_hop_prep()
+signal player_super_hop_prep
+signal player_star_hop_prep
 signal player_change_color(color: String)
 signal player_teleport
+signal player_dashed
 signal player_dash_ended
 
 signal go_to_level(to_level_key: String, from_level_key: String)

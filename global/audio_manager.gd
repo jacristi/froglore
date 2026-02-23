@@ -25,7 +25,9 @@ extends Node
 @onready var audio_grass_1: AudioStreamPlayer2D = $AudioGrass1
 @onready var audio_grass_2: AudioStreamPlayer2D = $AudioGrass2
 @onready var audio_grass_3: AudioStreamPlayer2D = $AudioGrass3
-@onready var audio_super_hop_prep: AudioStreamPlayer2D = $AudioSuperHopPrep2
+@onready var audio_super_hop_prep1: AudioStreamPlayer2D = $AudioSuperHopPrep1
+@onready var audio_super_hop_prep2: AudioStreamPlayer2D = $AudioSuperHopPrep2
+@onready var audio_dash: AudioStreamPlayer2D = $AudioDash
 
 @onready var audio_butterfly_activate: AudioStreamPlayer2D = $AudioButterflyActivate
 @onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
@@ -64,7 +66,9 @@ func _ready() -> void:
     Events.ui_play_button_clicked.connect(play_play_button_clicked)
     Events.ui_exit_button_clicked.connect(play_exit_button_clicked)
     Events.grass_rustled.connect(play_grass_rustle)
-    Events.player_super_hop_prep.connect(play_super_hop_prep)
+    Events.player_super_hop_prep.connect(play_super_hop_prep1)
+    Events.player_star_hop_prep.connect(play_super_hop_prep2)
+    Events.player_dashed.connect(play_audio_dash)
     Events.butterfly_statue_activated.connect(play_butterfly_activate)
     Events.butterfly_statue_deactivated.connect(play_butterfly_deactivate)
     Events.player_change_color.connect(play_change_player_color)
@@ -181,8 +185,14 @@ func play_grass_rustle():
     await audio_grass.finished
     environ_audio_playing = false
 
-func play_super_hop_prep():
-    audio_super_hop_prep.play()
+func play_super_hop_prep1():
+    audio_super_hop_prep1.play()
+
+func play_super_hop_prep2():
+    audio_super_hop_prep2.play()
+
+func play_audio_dash():
+    audio_dash.play()
 
 func play_butterfly_activate(_color: String):
     audio_butterfly_activate.play()

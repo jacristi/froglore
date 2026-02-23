@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqsv83s7ddd52"]
+
+[ext_resource type="Texture2D" uid="uid://dmki6ydgd7a1" path="res://assets/spritesheets/spr-star_hop_effect.png" id="1_wnplr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyha1"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc4pa"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl5u6"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onbeo"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk3wl"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15s0y"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mgfl"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwhr0"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsbos"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1568"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktpoi"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvg4e"]
+atlas = ExtResource("1_wnplr")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_164nw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyha1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc4pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl5u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk3wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15s0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mgfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwhr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsbos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1568")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktpoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvg4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="StarHopEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_164nw")
+autoplay = "default"
+frame_progress = 0.2670703

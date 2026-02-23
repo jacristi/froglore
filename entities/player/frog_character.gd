@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var wall_cling_cooldown := 0.3
 @export var big_hop_buffer_time := 0.075
 @export var dash_ghost_scene: PackedScene
+@export var star_hop_effect_scene: PackedScene
 
 @onready var move_hop_timer: Timer = $MoveHopTimer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -31,6 +32,7 @@ extends CharacterBody2D
 @export var dash_unlocked:=         false
 @export var wall_cling_unlocked:=   false
 @export var super_hop_unlocked:=    false
+@export var star_hop_unlocked:=     false
 @export var starfall_unlocked:=     false
 
 var portal_stones_unlocked = {}
@@ -77,7 +79,25 @@ var button_down_held_time: float = 0
 var idle_timer: float = 0
 var dash_timer: float = 0
 
+var star_hop_effect = null
 var super_hop_prep_reached := false
+
+var star_hop_prep_reached := false:
+    set(value):
+        if star_hop_prep_reached != value:
+            star_hop_prep_reached = value
+            if value:
+                star_hop_effect = star_hop_effect_scene.instantiate()
+                get_tree().current_scene.add_child(star_hop_effect)
+                print(face_direction)
+                star_hop_effect.position = Vector2(
+                    position.x+1 if face_direction == 1 else position.x,
+                    position.y-3
+                    )
+            else:
+                if star_hop_effect != null:
+                    star_hop_effect.queue_free()
+
 
 var _is_paused:= false
 
@@ -115,7 +135,7 @@ func check_save_data() -> void:
     """ """
     if !GameData.game_details.has(GameData.key_ability): return
 
-    var abilities = ['big_hop', 'dash', 'wall_cling', 'super_jump']
+    var abilities = ['big_hop', 'dash', 'wall_cling', 'super_hop']
 
     for a in abilities:
         if GameData.game_details[GameData.key_ability].has(a):
@@ -129,7 +149,8 @@ func unlock_ability(ability_name: String) -> void:
         'big_hop':      big_hop_unlocked = true
         'dash':         dash_unlocked = true
         'wall_cling':   wall_cling_unlocked = true
-        'super_jump':   super_hop_unlocked = true
+        'super_hop':    super_hop_unlocked = true
+        'star_hop':     star_hop_unlocked = true
 
 
 func _physics_process(delta: float) -> void:
@@ -208,7 +229,10 @@ func handle_hopping(delta):
             has_buffered_big_hop = true
             big_hop_buffer_timer.stop()
 
-            if super_hop_prep_reached:
+
+            if star_hop_prep_reached:
+                hop(delta, 1.5 * 3 * .8)
+            elif super_hop_prep_reached:
                 hop(delta, 1.5 * 2 * .8)
             else:
                 hop(delta, 1.5)
@@ -223,7 +247,7 @@ func handle_hopping(delta):
             return
 
     if h_direction and can_hop() and is_on_floor():
-        var amt = 1.5 if super_hop_prep_reached else 1.0
+        var amt = 1.5 if (super_hop_prep_reached or star_hop_prep_reached) else 1.0
         hop(delta, amt)
         return
 
@@ -424,6 +448,7 @@ func handle_croaking():
 func dash():
     dash_used = true
     dash_direction = face_direction
+    Events.player_dashed.emit()
     if _is_wall_clinging():
         dash_direction = -dash_direction
         wall_cling_used_count += 1
@@ -499,18 +524,30 @@ func handle_buttons_held():
     elif state != states.IDLE or v_direction >= 0 and !super_hop_prep_reached:
         button_down_held_time = 0
         super_hop_prep_reached = false
+        star_hop_prep_reached = false
         flash_sprite_component.stop_flash_continuous_intervals()
 
-    if button_down_held_time >= .36 && not super_hop_prep_reached:
-        super_hop_prep_reached = true
-        await get_tree().create_timer(.025).timeout
+    if button_down_held_time >= .3 && not super_hop_prep_reached:
+
+        #await get_tree().create_timer(.1).timeout
         super_hop_prep()
+        super_hop_prep_reached = true
         flash_sprite_component.start_flash_continuous_intervals(1)
+
+    if button_down_held_time >= .7 && !star_hop_prep_reached and star_hop_unlocked:
+        star_hop_prep_reached = true
+        star_hop_prep()
+        flash_sprite_component.start_flash_continuous_intervals(.5)
 
 
 func super_hop_prep():
     Events.player_super_hop_prep.emit()
     flash_sprite_component.flash()
+    scale_sprite_component.tween_scale()
+
+
+func star_hop_prep():
+    Events.player_star_hop_prep.emit()
     scale_sprite_component.tween_scale()
 
 
