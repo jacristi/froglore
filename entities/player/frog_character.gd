@@ -5,9 +5,12 @@ extends CharacterBody2D
 @export var hop_height := 120.0
 @export var hop_cooldown := .35
 @export var dash_velocity_x = 192.0
+@export var star_dash_velocity_x = 550.0
 @export var dash_velocity_y = 10.0
+@export var starfall_velocity = 300.0
 @export var dash_duration = 0.1
 @export var dash_cooldown_duration := 1.0
+@export var starfall_cooldown_duration := 1.0
 @export var wall_cling_cooldown := 0.3
 @export var big_hop_buffer_time := 0.075
 @export var dash_ghost_scene: PackedScene
@@ -21,6 +24,7 @@ extends CharacterBody2D
 @onready var collectable_detector: Area2D = $CollectableDetector
 @onready var starting_position := global_position
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
+@onready var starfall_cooldown_timer: Timer = $StarfallCooldownTimer
 @onready var wall_cling_timer: Timer = $WallClingTimer
 @onready var big_hop_buffer_timer: Timer = $BigHopBufferTimer
 
@@ -34,6 +38,7 @@ extends CharacterBody2D
 @export var super_hop_unlocked:=    false
 @export var star_hop_unlocked:=     false
 @export var starfall_unlocked:=     false
+@export var star_dash_unlocked:=    false
 
 var portal_stones_unlocked = {}
 
@@ -62,15 +67,26 @@ enum states {
     CROAKING,
     DASHING,
     WALL_CLINGING,
-    WALL_CLING_CROAKING
+    WALL_CLING_CROAKING,
+    STARFALLING,
     }
-var state = states.IDLE
+var state = states.IDLE:
+    set(value):
+        if state == value: return
+        state = value
+
+        print(states.keys()[state])
 
 var is_idle := true
 var is_falling := false
 var prep_jump := false
 var is_climbing := false
-var dash_used:= false
+var dash_used:= false:
+    set(value):
+        dash_used = value
+        if !value:
+            star_dashing = false
+
 var wall_cling_used_count:= 0
 var wall_cling_used_max:= 1
 
@@ -80,8 +96,11 @@ var idle_timer: float = 0
 var dash_timer: float = 0
 
 var star_hop_effect = null
-var super_hop_prep_reached := false
+var star_dashing:= false:
+    set(value):
+        star_dashing = value
 
+var super_hop_prep_reached := false
 var star_hop_prep_reached := false:
     set(value):
         if star_hop_prep_reached != value:
@@ -110,6 +129,7 @@ func _ready() -> void:
     dialogue_detector.area_exited.connect(exit_dialogue)
     collectable_detector.area_entered.connect(enter_collectable)
     dash_cooldown_timer.wait_time = dash_cooldown_duration
+    starfall_cooldown_timer.wait_time = starfall_cooldown_duration
     big_hop_buffer_timer.wait_time = big_hop_buffer_time
     big_hop_buffer_timer.timeout.connect(func(): _can_big_hop = false)
     Events.collectable_collected.connect(collectable_collected)
@@ -135,7 +155,7 @@ func check_save_data() -> void:
     """ """
     if !GameData.game_details.has(GameData.key_ability): return
 
-    var abilities = ['big_hop', 'dash', 'wall_cling', 'super_hop']
+    var abilities = ['big_hop', 'dash', 'wall_cling', 'super_hop', 'star_hop', 'star_dash', 'starfall']
 
     for a in abilities:
         if GameData.game_details[GameData.key_ability].has(a):
@@ -151,6 +171,8 @@ func unlock_ability(ability_name: String) -> void:
         'wall_cling':   wall_cling_unlocked = true
         'super_hop':    super_hop_unlocked = true
         'star_hop':     star_hop_unlocked = true
+        'starfall':     starfall_unlocked = true
+        'star_dash':    star_dash_unlocked = true
 
 
 func _physics_process(delta: float) -> void:
@@ -164,6 +186,7 @@ func _physics_process(delta: float) -> void:
 
     handle_croaking()
     handle_dashing()
+    handle_starfalling()
     handle_hopping(delta)
     handle_h_movement()
     handle_wall_cling()
@@ -225,10 +248,10 @@ func handle_hopping(delta):
 
             # Reset dash cooldown for big hops (feels bad otherwise)
             dash_cooldown_timer.stop()
+            starfall_cooldown_timer.stop()
             _can_big_hop = false
             has_buffered_big_hop = true
             big_hop_buffer_timer.stop()
-
 
             if star_hop_prep_reached:
                 hop(delta, 1.5 * 3 * .8)
@@ -447,13 +470,15 @@ func handle_croaking():
 
 func dash():
     dash_used = true
+    scale_sprite_component.tween_scale()
     dash_direction = face_direction
     Events.player_dashed.emit()
     if _is_wall_clinging():
         dash_direction = -dash_direction
         wall_cling_used_count += 1
     state = states.DASHING
-    velocity.x = dash_velocity_x * dash_direction
+    var d_vel = star_dash_velocity_x if star_dashing else dash_velocity_x
+    velocity.x = d_vel * dash_direction
     velocity.y = -dash_velocity_y
     animated_sprite_2d.play("dash")
     await get_tree().create_timer(dash_duration).timeout
@@ -462,19 +487,40 @@ func dash():
         state = states.FALLING
 
 
+func starfall():
+    print('star falling')
+    state = states.STARFALLING
+    Events.player_starfell.emit()
+    scale_sprite_component.tween_scale()
+    velocity.x = 0
+    velocity.y = starfall_velocity
+    animated_sprite_2d.play("starfall")
+    starfall_cooldown_timer.start()
+
+
 func handle_dashing():
     if (Input.is_action_just_pressed("dash") and can_dash()):
-        dash()
+        if Input.is_action_pressed("down") and can_starfall():
+            starfall()
+        else:
+            star_dashing = star_hop_prep_reached and star_dash_unlocked
+            dash()
 
     if state != states.DASHING: return
 
     # Spawn dash ghost every x seconds
-    if fmod(dash_timer, 0.02) == 0.0 and dash_ghost_scene != null:
+    var interval = .01 if star_dashing else .02
+    if fmod(dash_timer, interval) == 0.0 and dash_ghost_scene != null:
         var gh: DashGhost = dash_ghost_scene.instantiate()
         var pos = Vector2(position.x, position.y-6.0)
         get_tree().current_scene.add_child(gh)
         gh.set_props(pos, scale)
         gh.flip_h = (velocity.x < 0)
+
+func handle_starfalling():
+    """ """
+    if state != states.STARFALLING: return
+
 
 
 func get_next_portal_stone(current_number: int):
@@ -553,7 +599,7 @@ func star_hop_prep():
 
 func handle_states_animations():
 
-    if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging():
+    if _has_fall_velocity() and state != states.HOP_LAND and has_control() and not _is_wall_clinging() and state != states.STARFALLING:
         if state != states.FALLING:
             animated_sprite_2d.play("hop_fall")
         state = states.FALLING
@@ -568,6 +614,7 @@ func handle_states_animations():
         animated_sprite_2d.play("hop_start")
 
     if _is_idle() and state != states.IDLE and has_control():
+        if state == states.STARFALLING: print("STARFALL IMPACT!")
         state = states.IDLE
         animated_sprite_2d.play("idle")
 
@@ -578,9 +625,15 @@ func handle_states_animations():
     elif state == states.IDLE and button_down_held_time <= 0:
         animated_sprite_2d.play("idle")
 
+    if state == states.STARFALLING:
+        velocity.x = 0.0
+        velocity.y = starfall_velocity
+
     if _is_dashing():
-        velocity.x = dash_velocity_x * dash_direction
-        velocity.y = move_toward(velocity.y, -dash_velocity_y, 0)
+        var x_vel = star_dash_velocity_x if star_dashing else dash_velocity_x
+
+        velocity.x = x_vel * dash_direction
+        velocity.y = move_toward(velocity.y, dash_velocity_y, 0)
 
     if state == states.IDLE:
         dash_used = false
@@ -621,7 +674,12 @@ func handle_wall_cling():
     if state == states.DASHING: Events.player_dash_ended.emit()
     state = states.WALL_CLINGING
 
-
+func can_starfall() -> bool: return (
+        has_control()
+        and starfall_cooldown_timer.time_left <= 0.1
+        and starfall_unlocked
+        and state != states.IDLE
+    )
 func can_dash() -> bool: return has_control() and dash_used == false and dash_cooldown_timer.time_left <= .01 and dash_unlocked
 func can_croak() -> bool: return state == states.IDLE or _is_wall_clinging()
 func has_control() -> bool: return !_is_hazard_respawning() and state != states.CROAKING and state != states.DASHING and !_is_paused

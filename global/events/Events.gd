@@ -27,10 +27,12 @@ signal player_should_despawn
 signal player_should_respawn
 signal player_super_hop_prep
 signal player_star_hop_prep
+signal player_starfell
 signal player_change_color(color: String)
 signal player_teleport
 signal player_dashed
 signal player_dash_ended
+signal player_starfall_ended
 
 signal go_to_level(to_level_key: String, from_level_key: String)
 signal try_go_to_next_level

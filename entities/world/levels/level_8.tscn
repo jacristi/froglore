@@ -113,15 +113,23 @@ collectable_name = "big_hop"
 position = Vector2(216, 46)
 collectable_name = "dash"
 
-[node name="Ability-SuperHop" parent="Collectables" index="2" instance=ExtResource("6_h0ayv")]
+[node name="Ability-StarDash" parent="Collectables" index="2" instance=ExtResource("6_h0ayv")]
+position = Vector2(170, 45)
+collectable_name = "star_dash"
+
+[node name="Ability-SuperHop" parent="Collectables" index="3" instance=ExtResource("6_h0ayv")]
 position = Vector2(200, 104)
 collectable_name = "super_hop"
 
-[node name="Ability-StarHop" parent="Collectables" index="3" instance=ExtResource("6_h0ayv")]
+[node name="Ability-StarHop" parent="Collectables" index="4" instance=ExtResource("6_h0ayv")]
 position = Vector2(241, 104)
 collectable_name = "star_hop"
 
-[node name="Ability-WallCling" parent="Collectables" index="4" instance=ExtResource("6_h0ayv")]
+[node name="Ability-Starfall" parent="Collectables" index="5" instance=ExtResource("6_h0ayv")]
+position = Vector2(49, 50)
+collectable_name = "starfall"
+
+[node name="Ability-WallCling" parent="Collectables" index="6" instance=ExtResource("6_h0ayv")]
 position = Vector2(24, 102)
 collectable_name = "wall_cling"
 

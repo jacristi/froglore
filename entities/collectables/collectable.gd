@@ -13,7 +13,6 @@ var is_collected:= false
 
 
 func _ready() -> void:
-    print('ready: %s' % collectable_name)
     match collectable_type:
         "light_bug":    collectable_key = GameData.key_light_bug
         "portal_stone": collectable_key = GameData.key_portal_stone

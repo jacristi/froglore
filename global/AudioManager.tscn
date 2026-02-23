@@ -134,6 +134,9 @@ stream = ExtResource("27_llwfi")
 [node name="AudioDash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_s4fc5")
 
+[node name="AudioStarfall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_43fn1")
+
 [node name="AudioButterflyActivate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("28_pmb4w")
 

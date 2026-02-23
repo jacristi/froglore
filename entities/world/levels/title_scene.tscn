@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cxec108m3jn0l"]
+[gd_scene load_steps=18 format=4 uid="uid://cxec108m3jn0l"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_nut4y"]
 [ext_resource type="Theme" uid="uid://b201gqbnd6dqy" path="res://resources/default_theme.tres" id="3_4eu25"]
@@ -14,6 +14,18 @@
 [ext_resource type="FontFile" uid="uid://dldk01fcxuhi0" path="res://resources/fonts/m3x6.ttf" id="15_0frtg"]
 [ext_resource type="PackedScene" uid="uid://b0ulg5b4wnxjq" path="res://entities/environs/interactable_environs/interactable_statue.tscn" id="15_b417t"]
 [ext_resource type="PackedScene" uid="uid://ih1rdit48sbb" path="res://entities/environs/background_objects/background_object.tscn" id="15_u0ohn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckq5r"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0frtg"]
+resource_local_to_scene = true
+size = Vector2(248, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tke5q"]
+resource_local_to_scene = true
+size = Vector2(376, 208)
 
 [node name="TitleScene" instance=ExtResource("1_nut4y")]
 this_level = "title_scene"
@@ -75,37 +87,37 @@ position = Vector2(-36, 92)
 dialogue_text = "Press 'UP' to play"
 show_sprite = false
 
-[node name="TouchableGrass1" parent="Environs" index="3" instance=ExtResource("7_l5171")]
+[node name="TouchableGrass1" parent="Environs" index="2" instance=ExtResource("7_l5171")]
 position = Vector2(117, 105)
 scale = Vector2(1.0004, 1)
 
-[node name="TouchableGrass2" parent="Environs" index="4" instance=ExtResource("8_50ycs")]
+[node name="TouchableGrass2" parent="Environs" index="3" instance=ExtResource("8_50ycs")]
 position = Vector2(151, 113)
 
-[node name="TouchableGrass3" parent="Environs" index="5" instance=ExtResource("9_nj7d1")]
+[node name="TouchableGrass3" parent="Environs" index="4" instance=ExtResource("9_nj7d1")]
 position = Vector2(76, 113)
 
-[node name="TouchableGrass4" parent="Environs" index="6" instance=ExtResource("7_l5171")]
+[node name="TouchableGrass4" parent="Environs" index="5" instance=ExtResource("7_l5171")]
 position = Vector2(177, 113)
 
-[node name="TouchableFlower1" parent="Environs" index="7" instance=ExtResource("10_b1f76")]
+[node name="TouchableFlower1" parent="Environs" index="6" instance=ExtResource("10_b1f76")]
 position = Vector2(33, 105)
 
-[node name="TouchableGrass5" parent="Environs" index="8" instance=ExtResource("7_l5171")]
+[node name="TouchableGrass5" parent="Environs" index="7" instance=ExtResource("7_l5171")]
 position = Vector2(237, 97)
 
-[node name="TouchableGrass6" parent="Environs" index="9" instance=ExtResource("8_50ycs")]
+[node name="TouchableGrass6" parent="Environs" index="8" instance=ExtResource("8_50ycs")]
 position = Vector2(199, 49)
 
-[node name="BackgroundTree" parent="Environs" index="10" instance=ExtResource("15_u0ohn")]
+[node name="BackgroundTree" parent="Environs" index="9" instance=ExtResource("15_u0ohn")]
 position = Vector2(128, 72)
 
-[node name="DialogueSignExit" parent="Environs" index="11" instance=ExtResource("14_pnpma")]
+[node name="DialogueSignExit" parent="Environs" index="10" instance=ExtResource("14_pnpma")]
 position = Vector2(163, 109)
 dialogue_text = "Press 'UP' to exit"
 show_sprite = false
 
-[node name="DialogueSignMove" parent="Environs" index="12" instance=ExtResource("14_pnpma")]
+[node name="DialogueSignMove" parent="Environs" index="11" instance=ExtResource("14_pnpma")]
 position = Vector2(129, 100)
 dialogue_text = "Move left or right "
 show_sprite = false
@@ -154,7 +166,10 @@ position = Vector2(228, 108)
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="13"]
 visible = false
 
-[node name="CameraObjects" parent="." index="15"]
+[node name="RespawnPoint1" parent="Points" index="0"]
+position = Vector2(129, 105)
+
+[node name="CameraObjects" parent="." index="16"]
 visible = false
 
 [node name="ScreenTransitionIndicator3" parent="CameraObjects" index="3"]
@@ -282,3 +297,12 @@ position = Vector2(168, 110)
 
 [node name="Star49" parent="Stars" index="48"]
 position = Vector2(221, 120)
+
+[node name="CollisionShape2D" parent="Rooms/RoomStart" index="0"]
+shape = SubResource("RectangleShape2D_ckq5r")
+
+[node name="CollisionShape2D" parent="Rooms/RoomMedium3" index="0"]
+shape = SubResource("RectangleShape2D_0frtg")
+
+[node name="CollisionShape2D" parent="Rooms/RoomLarge2" index="0"]
+shape = SubResource("RectangleShape2D_tke5q")

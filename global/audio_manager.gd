@@ -28,6 +28,7 @@ extends Node
 @onready var audio_super_hop_prep1: AudioStreamPlayer2D = $AudioSuperHopPrep1
 @onready var audio_super_hop_prep2: AudioStreamPlayer2D = $AudioSuperHopPrep2
 @onready var audio_dash: AudioStreamPlayer2D = $AudioDash
+@onready var audio_starfall: AudioStreamPlayer2D = $AudioStarfall
 
 @onready var audio_butterfly_activate: AudioStreamPlayer2D = $AudioButterflyActivate
 @onready var audio_butterfly_deactivate: AudioStreamPlayer2D = $AudioButterflyDeactivate
@@ -69,6 +70,7 @@ func _ready() -> void:
     Events.player_super_hop_prep.connect(play_super_hop_prep1)
     Events.player_star_hop_prep.connect(play_super_hop_prep2)
     Events.player_dashed.connect(play_audio_dash)
+    Events.player_starfell.connect(play_audio_starfall)
     Events.butterfly_statue_activated.connect(play_butterfly_activate)
     Events.butterfly_statue_deactivated.connect(play_butterfly_deactivate)
     Events.player_change_color.connect(play_change_player_color)
@@ -193,6 +195,9 @@ func play_super_hop_prep2():
 
 func play_audio_dash():
     audio_dash.play()
+
+func play_audio_starfall():
+    audio_starfall.play()
 
 func play_butterfly_activate(_color: String):
     audio_butterfly_activate.play()
