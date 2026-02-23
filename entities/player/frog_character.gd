@@ -72,12 +72,12 @@ enum states {
     WALL_CLING_CROAKING,
     STARFALLING,
     }
+var _last_state = states.IDLE
 var state = states.IDLE:
     set(value):
         if state == value: return
+        _last_state = state
         state = value
-
-        print(states.keys()[state])
 
 var is_idle := true
 var is_falling := false
@@ -111,7 +111,6 @@ var star_hop_prep_reached := false:
             if value:
                 star_hop_effect = star_hop_effect_scene.instantiate()
                 get_tree().current_scene.add_child(star_hop_effect)
-                print(face_direction)
                 star_hop_effect.position = Vector2(
                     position.x+1 if face_direction == 1 else position.x,
                     position.y-3
