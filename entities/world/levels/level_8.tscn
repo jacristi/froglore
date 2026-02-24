@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_lijvt"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_d0met"]
-[ext_resource type="PackedScene" uid="uid://dr3m8731myw1" path="res://entities/world/rooms/room_2_objects.tscn" id="3_qod4y"]
+[ext_resource type="PackedScene" path="res://entities/world/rooms/room_2_objects.tscn" id="3_qod4y"]
 [ext_resource type="PackedScene" uid="uid://cdt5n4b6bvcq5" path="res://entities/interactables/portal_stone.tscn" id="3_supku"]
 [ext_resource type="PackedScene" uid="uid://blx1fe6ss0vrt" path="res://entities/world/rooms/room.tscn" id="4_ndd8e"]
-[ext_resource type="PackedScene" uid="uid://2v52k2cvieic" path="res://entities/collectables/ability.tscn" id="6_h0ayv"]
+[ext_resource type="PackedScene" path="res://entities/collectables/ability.tscn" id="6_h0ayv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qod4y"]
 resource_local_to_scene = true
