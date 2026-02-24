@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dedg2l0dnam2m"]
+
+[ext_resource type="PackedScene" uid="uid://ulv76mackl60" path="res://entities/hazards/dark_flora_fauna.tscn" id="1_h0dtk"]
+[ext_resource type="Texture2D" uid="uid://ckeo65wpwk65y" path="res://assets/spritesheets/spr-dark-flora-fauna.png" id="2_l6ub1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqk2q"]
+atlas = ExtResource("2_l6ub1")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iw0o"]
+atlas = ExtResource("2_l6ub1")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j76ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqk2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iw0o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0dtk"]
+size = Vector2(5, 4)
+
+[node name="DarkBugFloater" instance=ExtResource("1_h0dtk")]
+
+[node name="RandomStartAnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_j76ef")
+frame_progress = 0.51268995
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_h0dtk")

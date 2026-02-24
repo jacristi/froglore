@@ -312,7 +312,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xy5go")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 10.0
 }, {
 "frames": [{

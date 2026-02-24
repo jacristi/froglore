@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq3mtfet51pnl"]
+
+[ext_resource type="PackedScene" uid="uid://ulv76mackl60" path="res://entities/hazards/dark_flora_fauna.tscn" id="1_gbaeg"]
+[ext_resource type="Texture2D" uid="uid://ckeo65wpwk65y" path="res://assets/spritesheets/spr-dark-flora-fauna.png" id="2_dc7h5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbong"]
+atlas = ExtResource("2_dc7h5")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6a4q"]
+atlas = ExtResource("2_dc7h5")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngt0j"]
+atlas = ExtResource("2_dc7h5")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfh3o"]
+atlas = ExtResource("2_dc7h5")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujemc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbong")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6a4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngt0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfh3o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4fd0"]
+size = Vector2(6, 4)
+
+[node name="DarkBugStationary" instance=ExtResource("1_gbaeg")]
+
+[node name="RandomStartAnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ujemc")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_n4fd0")

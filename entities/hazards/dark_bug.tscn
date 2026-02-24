@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmmx4og05hydg"]
+[gd_scene load_steps=4 format=3 uid="uid://bmmx4og05hydg"]
 
 [ext_resource type="SpriteFrames" uid="uid://d186oucw5ni3r" path="res://entities/collectables/anim_dark_bug.tres" id="1_2hy7r"]
+[ext_resource type="Script" uid="uid://dttgj02h55eao" path="res://components/random_start_animated_sprite.gd" id="2_lh8f0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8hbu"]
 size = Vector2(6, 6)
@@ -12,8 +13,10 @@ collision_mask = 0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)
 sprite_frames = ExtResource("1_2hy7r")
-animation = &"idle"
-autoplay = "idle"
+autoplay = "default"
+script = ExtResource("2_lh8f0")
+start_delay_max = 1.0
+metadata/_custom_type_script = "uid://dttgj02h55eao"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_d8hbu")

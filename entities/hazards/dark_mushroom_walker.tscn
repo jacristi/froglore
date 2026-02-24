@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkmigp7kccll2"]
+
+[ext_resource type="PackedScene" uid="uid://ulv76mackl60" path="res://entities/hazards/dark_flora_fauna.tscn" id="1_k2lao"]
+[ext_resource type="Texture2D" uid="uid://ckeo65wpwk65y" path="res://assets/spritesheets/spr-dark-flora-fauna.png" id="2_xnfhy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fnw3"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqqrn"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yijv8"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hprkr"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajhbt"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndo6u"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llrvy"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku1om"]
+atlas = ExtResource("2_xnfhy")
+region = Rect2(112, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x81fd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fnw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqqrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yijv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hprkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajhbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndo6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llrvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku1om")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyf0x"]
+size = Vector2(6, 6)
+
+[node name="DarkMushroomWalker" instance=ExtResource("1_k2lao")]
+
+[node name="RandomStartAnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_x81fd")
+frame_progress = 0.7053631
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_yyf0x")

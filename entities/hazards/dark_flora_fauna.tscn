@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ulv76mackl60"]
+
+[ext_resource type="Script" uid="uid://dttgj02h55eao" path="res://components/random_start_animated_sprite.gd" id="1_e3tge"]
+
+[node name="DarkFloraFauna" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="RandomStartAnimatedSprite" type="AnimatedSprite2D" parent="."]
+script = ExtResource("1_e3tge")
+metadata/_custom_type_script = "uid://dttgj02h55eao"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

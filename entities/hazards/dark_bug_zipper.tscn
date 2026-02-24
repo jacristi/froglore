@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwckvhycd6drr"]
+
+[ext_resource type="PackedScene" uid="uid://ulv76mackl60" path="res://entities/hazards/dark_flora_fauna.tscn" id="1_eqagj"]
+[ext_resource type="Texture2D" uid="uid://ckeo65wpwk65y" path="res://assets/spritesheets/spr-dark-flora-fauna.png" id="2_eur0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4vnx"]
+atlas = ExtResource("2_eur0u")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8ghu"]
+atlas = ExtResource("2_eur0u")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8qe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4vnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8ghu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_248lm"]
+size = Vector2(10, 2)
+
+[node name="DarkBugZipper" instance=ExtResource("1_eqagj")]
+
+[node name="RandomStartAnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_d8qe7")
+frame_progress = 0.8646115
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_248lm")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxdvpiclt6434"]
+
+[ext_resource type="PackedScene" uid="uid://ulv76mackl60" path="res://entities/hazards/dark_flora_fauna.tscn" id="1_ygxsb"]
+[ext_resource type="Texture2D" uid="uid://ckeo65wpwk65y" path="res://assets/spritesheets/spr-dark-flora-fauna.png" id="2_xq0hc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwwld"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kci4"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqdwa"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uclw"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnghu"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uriil"]
+atlas = ExtResource("2_xq0hc")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bnxe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwwld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kci4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqdwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uclw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnghu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uriil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebub2"]
+size = Vector2(3, 3)
+
+[node name="DarkBugMite" instance=ExtResource("1_ygxsb")]
+
+[node name="RandomStartAnimatedSprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_bnxe2")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, 6.5)
+shape = SubResource("RectangleShape2D_ebub2")
