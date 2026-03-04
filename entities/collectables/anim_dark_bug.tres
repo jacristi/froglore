@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://d186oucw5ni3r"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d186oucw5ni3r"]
 
 [ext_resource type="Texture2D" uid="uid://bcgtp8v43hdj2" path="res://assets/spritesheets/spr-light-dark-bugs-12x48.png" id="1_icu2s"]
 
