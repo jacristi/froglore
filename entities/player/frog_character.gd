@@ -119,10 +119,20 @@ var star_hop_prep_reached := false:
                 if star_hop_effect != null:
                     star_hop_effect.queue_free()
 
+var dash_ghost_timer:= Timer.new()
+var starfall_ghost_timer:= Timer.new()
 
 var _is_paused:= false
 
 func _ready() -> void:
+    add_child(dash_ghost_timer)
+    dash_ghost_timer.autostart = false
+    dash_ghost_timer.wait_time = .025
+    dash_ghost_timer.timeout.connect(spawn_dash_ghost)
+    add_child(starfall_ghost_timer)
+    starfall_ghost_timer.autostart = false
+    starfall_ghost_timer.wait_time = .01
+    starfall_ghost_timer.timeout.connect(spawn_starfall_ghost)
     hazard_detector.area_entered.connect(hit_hazard_despawn_and_respawn)
     hazard_detector.body_entered.connect(hit_hazard_despawn_and_respawn_body)
     interact_detector.area_entered.connect(enter_interactable)
@@ -473,6 +483,8 @@ func handle_croaking():
 
 func dash():
     dash_used = true
+    spawn_dash_ghost()
+    dash_ghost_timer.start()
     scale_sprite_component.tween_scale()
     dash_direction = face_direction
     Events.player_dashed.emit()
@@ -493,6 +505,8 @@ func dash():
 
 func starfall():
     if not can_starfall(): return
+    starfall_ghost_timer.start()
+    spawn_starfall_ghost()
     state = states.STARFALLING
     Events.player_starfell.emit()
     scale_sprite_component.tween_scale()
@@ -500,6 +514,22 @@ func starfall():
     velocity.y = starfall_velocity
     animated_sprite_2d.play("starfall")
     starfall_cooldown_timer.start()
+
+
+func spawn_dash_ghost():
+    """ """
+    var gh = dash_ghost_scene.instantiate()
+    var pos = Vector2(position.x, position.y-6.0)
+    get_tree().current_scene.add_child(gh)
+    gh.position = pos
+    gh.flip_h = (velocity.x < 0)
+
+func spawn_starfall_ghost():
+    """ """
+    var gh = starfall_ghost_scene.instantiate()
+    var pos = Vector2(position.x, position.y-6.0)
+    get_tree().current_scene.add_child(gh)
+    gh.position = pos
 
 
 func handle_dashing():
@@ -510,28 +540,20 @@ func handle_dashing():
             star_dashing = star_hop_prep_reached and star_dash_unlocked
             dash()
 
-    if state != states.DASHING: return
-
-    # Spawn dash ghost every x seconds
-    var interval = .01 if star_dashing else .02
-    if fmod(dash_timer, interval) == 0.0 and dash_ghost_scene != null:
-        var gh = dash_ghost_scene.instantiate()
-        var pos = Vector2(position.x, position.y-6.0)
-        get_tree().current_scene.add_child(gh)
-        gh.position = pos
-        gh.flip_h = (velocity.x < 0)
+    if state != states.DASHING:
+        dash_ghost_timer.stop()
+        return
 
 
 func handle_starfalling():
     """ """
-    if state != states.STARFALLING: return
-    var interval = .01
-    if fmod(starfall_timer, interval) == 0.0 and starfall_ghost_scene != null:
-        var gh = starfall_ghost_scene.instantiate()
-        var pos = Vector2(position.x, position.y-6.0)
-        get_tree().current_scene.add_child(gh)
-        gh.position = pos
+    if state != states.STARFALLING:
+        starfall_ghost_timer.stop()
+        return
 
+    #var interval = .01
+    #if fmod(starfall_timer, interval) == 0.0 and starfall_ghost_scene != null:
+        #spawn_starfall_ghost()
 
 
 func get_next_portal_stone(current_number: int):
@@ -612,6 +634,7 @@ func time_slow(sc: float = .75, dur: float = .075):
     Engine.time_scale = sc
     await get_tree().create_timer(dur).timeout
     Engine.time_scale = 1.0
+
 
 func starfall_impact(delta):
     """ """

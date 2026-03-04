@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://dpsc6fhin8qq4"]
+[gd_scene format=3 uid="uid://dpsc6fhin8qq4"]
 
 [ext_resource type="Texture2D" uid="uid://bnbb5hbaccg1o" path="res://assets/spritesheets/spr-frog.png" id="1_2oguq"]
 [ext_resource type="Script" uid="uid://dl6yb8542740g" path="res://entities/player/frog_character.gd" id="1_tl5hv"]
@@ -679,7 +679,7 @@ size = Vector2(6, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t4r4"]
 size = Vector2(4, 2)
 
-[node name="FrogCharacter" type="CharacterBody2D" groups=["Player"]]
+[node name="FrogCharacter" type="CharacterBody2D" unique_id=287079856 groups=["Player"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 5
@@ -693,74 +693,74 @@ starfall_ghost_scene = ExtResource("3_scyyc")
 starfall_impact_scene = ExtResource("4_jqmqj")
 star_hop_effect_scene = ExtResource("3_4hc13")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=119433731]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_kbbra")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1194606452]
 material = SubResource("ShaderMaterial_47ru2")
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_hwbhw")
 animation = &"starfall"
 autoplay = "idle"
 
-[node name="MoveHopTimer" type="Timer" parent="."]
+[node name="MoveHopTimer" type="Timer" parent="." unique_id=63366816]
 one_shot = true
 
-[node name="HazardDetector" type="Area2D" parent="."]
+[node name="HazardDetector" type="Area2D" parent="." unique_id=1760236817]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector" unique_id=366165094]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_sw1oy")
 
-[node name="InteractDetector" type="Area2D" parent="."]
+[node name="InteractDetector" type="Area2D" parent="." unique_id=955611872]
 collision_layer = 2
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector" unique_id=1313718022]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_164nw")
 
-[node name="DialogueDetector" type="Area2D" parent="."]
+[node name="DialogueDetector" type="Area2D" parent="." unique_id=1043707358]
 collision_layer = 2
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueDetector" unique_id=843729154]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_4hc13")
 
-[node name="CollectableDetector" type="Area2D" parent="."]
+[node name="CollectableDetector" type="Area2D" parent="." unique_id=1275959553]
 collision_layer = 0
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableDetector" unique_id=1688284151]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_2t4r4")
 
-[node name="DashCooldownTimer" type="Timer" parent="."]
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=208689983]
 one_shot = true
 
-[node name="StarfallCooldownTimer" type="Timer" parent="."]
+[node name="StarfallCooldownTimer" type="Timer" parent="." unique_id=1193592929]
 one_shot = true
 
-[node name="WallClingTimer" type="Timer" parent="."]
+[node name="WallClingTimer" type="Timer" parent="." unique_id=1701009642]
 wait_time = 0.5
 one_shot = true
 
-[node name="BigHopBufferTimer" type="Timer" parent="."]
+[node name="BigHopBufferTimer" type="Timer" parent="." unique_id=1855977963]
 wait_time = 0.5
 one_shot = true
 
-[node name="HopLandEffect" parent="." instance=ExtResource("3_kt63j")]
+[node name="HopLandEffect" parent="." unique_id=8841287 instance=ExtResource("3_kt63j")]
 
-[node name="FlashSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+[node name="FlashSpriteComponent" type="Node" parent="." unique_id=1300426113 node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_eh284")
 sprite = NodePath("../AnimatedSprite2D")
 flash_duration = 0.35
 
-[node name="ScaleSpriteComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+[node name="ScaleSpriteComponent" type="Node" parent="." unique_id=2017961340 node_paths=PackedStringArray("sprite")]
 script = ExtResource("5_sfhxq")
 sprite = NodePath("../AnimatedSprite2D")
 scale_amount = Vector2(1.25, 1.25)
