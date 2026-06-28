@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://p13ncmt0bybt"]
+[gd_scene format=4 uid="uid://p13ncmt0bybt"]
 
 [ext_resource type="PackedScene" uid="uid://bkt2ohyxi3n1h" path="res://entities/world/world.tscn" id="1_aypfj"]
 [ext_resource type="PackedScene" uid="uid://bmmx4og05hydg" path="res://entities/hazards/dark_bug.tscn" id="2_eqte6"]
@@ -27,7 +27,7 @@ size = Vector2(248, 136)
 resource_local_to_scene = true
 size = Vector2(376, 208)
 
-[node name="Level6" instance=ExtResource("1_aypfj")]
+[node name="Level6" unique_id=1534462594 instance=ExtResource("1_aypfj")]
 this_level = "level_6"
 prev_level = "level_5"
 next_level = "level_0"
@@ -45,199 +45,202 @@ tile_map_data = PackedByteArray("AAALAAMAAAAGAAMAAAANAAsAAAAOAAQAAAAVAAkAAAAKAAc
 position = Vector2(139, 76)
 dialogue_text = "Hold 'down' to prepare a super hop"
 
-[node name="TouchableGrass2" parent="Environs" index="3" instance=ExtResource("6_vou1w")]
+[node name="TouchableGrass2" parent="Environs" index="2" unique_id=98443065 instance=ExtResource("6_vou1w")]
 position = Vector2(92, 112)
 
-[node name="TouchableGrass1" parent="Environs" index="4" instance=ExtResource("7_0fptp")]
+[node name="TouchableGrass1" parent="Environs" index="3" unique_id=1173816563 instance=ExtResource("7_0fptp")]
 position = Vector2(122, 113)
 
-[node name="TouchableGrass3" parent="Environs" index="5" instance=ExtResource("7_0fptp")]
+[node name="TouchableGrass3" parent="Environs" index="4" unique_id=1355890529 instance=ExtResource("7_0fptp")]
 position = Vector2(220, 113)
 
-[node name="TouchableGrass4" parent="Environs" index="6" instance=ExtResource("8_jpryt")]
+[node name="TouchableGrass4" parent="Environs" index="5" unique_id=494233487 instance=ExtResource("8_jpryt")]
 position = Vector2(237, 73)
 
-[node name="TouchableGrass5" parent="Environs" index="7" instance=ExtResource("6_vou1w")]
+[node name="TouchableGrass5" parent="Environs" index="6" unique_id=742943957 instance=ExtResource("6_vou1w")]
 position = Vector2(175, 113)
 
-[node name="TouchableGrass6" parent="Environs" index="8" instance=ExtResource("7_0fptp")]
+[node name="TouchableGrass6" parent="Environs" index="7" unique_id=60474086 instance=ExtResource("7_0fptp")]
 position = Vector2(76, 65)
 
-[node name="TouchableGrass7" parent="Environs" index="9" instance=ExtResource("8_jpryt")]
+[node name="TouchableGrass7" parent="Environs" index="8" unique_id=214288781 instance=ExtResource("8_jpryt")]
 position = Vector2(106, 33)
 
-[node name="TouchableGrass8" parent="Environs" index="10" instance=ExtResource("7_0fptp")]
+[node name="TouchableGrass8" parent="Environs" index="9" unique_id=2094577670 instance=ExtResource("7_0fptp")]
 position = Vector2(84, 33)
 
-[node name="TouchableGrass9" parent="Environs" index="11" instance=ExtResource("6_vou1w")]
+[node name="TouchableGrass9" parent="Environs" index="10" unique_id=1986195002 instance=ExtResource("6_vou1w")]
 position = Vector2(95, 33)
 
-[node name="TouchableGrass10" parent="Environs" index="12" instance=ExtResource("6_vou1w")]
+[node name="TouchableGrass10" parent="Environs" index="11" unique_id=986341848 instance=ExtResource("6_vou1w")]
 position = Vector2(170, 49)
 
-[node name="LightBug1" parent="Collectables" index="0" instance=ExtResource("5_il7g6")]
+[node name="LightBug1" parent="Collectables" index="0" unique_id=642944806 instance=ExtResource("5_il7g6")]
 position = Vector2(140, 45)
 collectable_name = "light_bug_1"
 
-[node name="LightBug2" parent="Collectables" index="1" instance=ExtResource("5_il7g6")]
+[node name="LightBug2" parent="Collectables" index="1" unique_id=1951366546 instance=ExtResource("5_il7g6")]
 position = Vector2(60, 101)
 collectable_name = "light_bug_2"
 
-[node name="LightBug3" parent="Collectables" index="2" instance=ExtResource("5_il7g6")]
+[node name="LightBug3" parent="Collectables" index="2" unique_id=287071635 instance=ExtResource("5_il7g6")]
 position = Vector2(204, 85)
 collectable_name = "light_bug_3"
 
-[node name="LightBug4" parent="Collectables" index="3" instance=ExtResource("5_il7g6")]
+[node name="LightBug4" parent="Collectables" index="3" unique_id=2110339522 instance=ExtResource("5_il7g6")]
 position = Vector2(196, 37)
 collectable_name = "light_bug_4"
 
-[node name="LightBug5" parent="Collectables" index="4" instance=ExtResource("5_il7g6")]
+[node name="LightBug5" parent="Collectables" index="4" unique_id=1634238036 instance=ExtResource("5_il7g6")]
 position = Vector2(68, 37)
 collectable_name = "light_bug_5"
 
 [node name="LevelExit" parent="Interactables" index="0"]
 position = Vector2(140, 108)
 
-[node name="FrogStatue" parent="Interactables" index="1" instance=ExtResource("4_sovn5")]
+[node name="FrogStatue" parent="Interactables" index="1" unique_id=439933656 instance=ExtResource("4_sovn5")]
 position = Vector2(72, 64)
 
-[node name="FrogStatue2" parent="Interactables" index="2" instance=ExtResource("4_sovn5")]
+[node name="FrogStatue2" parent="Interactables" index="2" unique_id=233832166 instance=ExtResource("4_sovn5")]
 position = Vector2(169, 49)
 
-[node name="FrogStatue3" parent="Interactables" index="3" instance=ExtResource("4_sovn5")]
+[node name="FrogStatue3" parent="Interactables" index="3" unique_id=233340184 instance=ExtResource("4_sovn5")]
 position = Vector2(224, 112)
 
-[node name="ButterflyStatueYellow" parent="Interactables" index="4" instance=ExtResource("10_ibt73")]
+[node name="ButterflyStatueYellow" parent="Interactables" index="4" unique_id=2086110291 instance=ExtResource("10_ibt73")]
 position = Vector2(208, 48)
 
-[node name="ButterflyStatuePurple" parent="Interactables" index="5" instance=ExtResource("11_jdfag")]
+[node name="ButterflyStatuePurple" parent="Interactables" index="5" unique_id=1906852410 instance=ExtResource("11_jdfag")]
 position = Vector2(45, 104)
 
-[node name="ButterflyStatueGreen" parent="Interactables" index="6" instance=ExtResource("13_yy3cj")]
+[node name="ButterflyStatueGreen" parent="Interactables" index="6" unique_id=227901541 instance=ExtResource("13_yy3cj")]
 position = Vector2(41, 32)
 
-[node name="ButterflyBlockYellow" parent="Blocks" index="0" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow" parent="Blocks" index="0" unique_id=1471107434 instance=ExtResource("9_xisb8")]
 position = Vector2(84, 28)
 starts_active = true
 
-[node name="ButterflyBlockYellow2" parent="Blocks" index="1" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow2" parent="Blocks" index="1" unique_id=962823183 instance=ExtResource("9_xisb8")]
 position = Vector2(92, 28)
 starts_active = true
 
-[node name="ButterflyBlockYellow3" parent="Blocks" index="2" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow3" parent="Blocks" index="2" unique_id=611244758 instance=ExtResource("9_xisb8")]
 position = Vector2(100, 28)
 starts_active = true
 
-[node name="ButterflyBlockPurple" parent="Blocks" index="3" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple" parent="Blocks" index="3" unique_id=1148767193 instance=ExtResource("12_sqbp8")]
 position = Vector2(228, 76)
 starts_active = true
 
-[node name="ButterflyBlockPurple2" parent="Blocks" index="4" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple2" parent="Blocks" index="4" unique_id=2027008300 instance=ExtResource("12_sqbp8")]
 position = Vector2(220, 68)
 starts_active = true
 
-[node name="ButterflyBlockYellow4" parent="Blocks" index="5" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow4" parent="Blocks" index="5" unique_id=808604243 instance=ExtResource("9_xisb8")]
 position = Vector2(132, 44)
 
-[node name="ButterflyBlockGreen" parent="Blocks" index="6" instance=ExtResource("14_iwdb1")]
+[node name="ButterflyBlockGreen" parent="Blocks" index="6" unique_id=191100986 instance=ExtResource("14_iwdb1")]
 position = Vector2(52, 59)
 starts_active = true
 
-[node name="ButterflyBlockPurple3" parent="Blocks" index="7" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple3" parent="Blocks" index="7" unique_id=1140270127 instance=ExtResource("12_sqbp8")]
 position = Vector2(228, 92)
 
-[node name="ButterflyBlockGreen4" parent="Blocks" index="8" instance=ExtResource("14_iwdb1")]
+[node name="ButterflyBlockGreen4" parent="Blocks" index="8" unique_id=1733682051 instance=ExtResource("14_iwdb1")]
 position = Vector2(44, 84)
 starts_active = true
 
-[node name="ButterflyBlockGreen5" parent="Blocks" index="9" instance=ExtResource("14_iwdb1")]
+[node name="ButterflyBlockGreen5" parent="Blocks" index="9" unique_id=1644664015 instance=ExtResource("14_iwdb1")]
 position = Vector2(36, 76)
 starts_active = true
 
-[node name="ButterflyBlockGreen2" parent="Blocks" index="10" instance=ExtResource("14_iwdb1")]
+[node name="ButterflyBlockGreen2" parent="Blocks" index="10" unique_id=1426360145 instance=ExtResource("14_iwdb1")]
 position = Vector2(100, 76)
 starts_active = true
 
-[node name="ButterflyBlockYellow5" parent="Blocks" index="11" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow5" parent="Blocks" index="11" unique_id=905333452 instance=ExtResource("9_xisb8")]
 position = Vector2(100, 92)
 starts_active = true
 
-[node name="ButterflyBlockPurple4" parent="Blocks" index="12" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple4" parent="Blocks" index="12" unique_id=1066284397 instance=ExtResource("12_sqbp8")]
 position = Vector2(100, 84)
 
-[node name="ButterflyBlockYellow6" parent="Blocks" index="13" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow6" parent="Blocks" index="13" unique_id=247915641 instance=ExtResource("9_xisb8")]
 position = Vector2(156, 44)
 starts_active = true
 
-[node name="ButterflyBlockYellow7" parent="Blocks" index="14" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow7" parent="Blocks" index="14" unique_id=1290010810 instance=ExtResource("9_xisb8")]
 position = Vector2(156, 36)
 starts_active = true
 
-[node name="ButterflyBlockYellow8" parent="Blocks" index="15" instance=ExtResource("9_xisb8")]
+[node name="ButterflyBlockYellow8" parent="Blocks" index="15" unique_id=1717641952 instance=ExtResource("9_xisb8")]
 position = Vector2(156, 28)
 starts_active = true
 
-[node name="ButterflyBlockPurple5" parent="Blocks" index="16" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple5" parent="Blocks" index="16" unique_id=125554950 instance=ExtResource("12_sqbp8")]
 position = Vector2(196, 68)
 starts_active = true
 
-[node name="ButterflyBlockPurple6" parent="Blocks" index="17" instance=ExtResource("12_sqbp8")]
+[node name="ButterflyBlockPurple6" parent="Blocks" index="17" unique_id=1393803864 instance=ExtResource("12_sqbp8")]
 position = Vector2(188, 60)
 starts_active = true
 
-[node name="DarkBug" parent="Hazards" index="0" instance=ExtResource("2_eqte6")]
+[node name="DarkBug" parent="Hazards" index="0" unique_id=1145023994 instance=ExtResource("2_eqte6")]
 position = Vector2(140, 52)
 
-[node name="DarkBug2" parent="Hazards" index="1" instance=ExtResource("2_eqte6")]
+[node name="DarkBug2" parent="Hazards" index="1" unique_id=810847576 instance=ExtResource("2_eqte6")]
 position = Vector2(132, 52)
 
-[node name="DarkBug3" parent="Hazards" index="2" instance=ExtResource("2_eqte6")]
+[node name="DarkBug3" parent="Hazards" index="2" unique_id=25423828 instance=ExtResource("2_eqte6")]
 position = Vector2(124, 52)
 
-[node name="DarkBug4" parent="Hazards" index="3" instance=ExtResource("2_eqte6")]
+[node name="DarkBug4" parent="Hazards" index="3" unique_id=654596792 instance=ExtResource("2_eqte6")]
 position = Vector2(148, 52)
 
-[node name="DarkBug5" parent="Hazards" index="4" instance=ExtResource("2_eqte6")]
+[node name="DarkBug5" parent="Hazards" index="4" unique_id=597131926 instance=ExtResource("2_eqte6")]
 position = Vector2(116, 52)
 
-[node name="DarkBug6" parent="Hazards" index="5" instance=ExtResource("2_eqte6")]
+[node name="DarkBug6" parent="Hazards" index="5" unique_id=1612502498 instance=ExtResource("2_eqte6")]
 position = Vector2(76, 108)
 
-[node name="DarkBug7" parent="Hazards" index="6" instance=ExtResource("2_eqte6")]
+[node name="DarkBug7" parent="Hazards" index="6" unique_id=100691564 instance=ExtResource("2_eqte6")]
 position = Vector2(84, 108)
 
-[node name="DarkBug8" parent="Hazards" index="7" instance=ExtResource("2_eqte6")]
+[node name="DarkBug8" parent="Hazards" index="7" unique_id=902128481 instance=ExtResource("2_eqte6")]
 position = Vector2(52, 52)
 
-[node name="DarkBug9" parent="Hazards" index="8" instance=ExtResource("2_eqte6")]
+[node name="DarkBug9" parent="Hazards" index="8" unique_id=374935908 instance=ExtResource("2_eqte6")]
 position = Vector2(52, 44)
 
-[node name="DarkBug10" parent="Hazards" index="9" instance=ExtResource("2_eqte6")]
+[node name="DarkBug10" parent="Hazards" index="9" unique_id=968773814 instance=ExtResource("2_eqte6")]
 position = Vector2(196, 100)
 
-[node name="DarkBug11" parent="Hazards" index="10" instance=ExtResource("2_eqte6")]
+[node name="DarkBug11" parent="Hazards" index="10" unique_id=744379952 instance=ExtResource("2_eqte6")]
 position = Vector2(236, 52)
 
-[node name="DarkBug12" parent="Hazards" index="11" instance=ExtResource("2_eqte6")]
+[node name="DarkBug12" parent="Hazards" index="11" unique_id=116582588 instance=ExtResource("2_eqte6")]
 position = Vector2(156, 92)
 
-[node name="DarkBug13" parent="Hazards" index="12" instance=ExtResource("2_eqte6")]
+[node name="DarkBug13" parent="Hazards" index="12" unique_id=1617350013 instance=ExtResource("2_eqte6")]
 position = Vector2(172, 100)
 
-[node name="DarkBug14" parent="Hazards" index="13" instance=ExtResource("2_eqte6")]
+[node name="DarkBug14" parent="Hazards" index="13" unique_id=35382748 instance=ExtResource("2_eqte6")]
 position = Vector2(212, 100)
 
-[node name="DarkBug15" parent="Hazards" index="14" instance=ExtResource("2_eqte6")]
+[node name="DarkBug15" parent="Hazards" index="14" unique_id=986295395 instance=ExtResource("2_eqte6")]
 position = Vector2(196, 60)
 
-[node name="DarkBug16" parent="Hazards" index="15" instance=ExtResource("2_eqte6")]
+[node name="DarkBug16" parent="Hazards" index="15" unique_id=14956031 instance=ExtResource("2_eqte6")]
 position = Vector2(188, 52)
 
-[node name="SpikesSmall" parent="Hazards" index="16" instance=ExtResource("5_otopu")]
+[node name="SpikesSmall" parent="Hazards" index="16" unique_id=1387046024 instance=ExtResource("5_otopu")]
 position = Vector2(76, 108)
 
-[node name="SpikesSmall2" parent="Hazards" index="17" instance=ExtResource("5_otopu")]
+[node name="SpikesSmall2" parent="Hazards" index="17" unique_id=1585524510 instance=ExtResource("5_otopu")]
 position = Vector2(84, 108)
+
+[node name="RespawnPoint1" parent="Points" index="0"]
+position = Vector2(140, 81)
 
 [node name="ScreenTransitionIndicator" parent="CameraObjects" index="1"]
 position = Vector2(304, 157)
