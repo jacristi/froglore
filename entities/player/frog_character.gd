@@ -519,10 +519,11 @@ func starfall():
 func spawn_dash_ghost():
     """ """
     var gh = dash_ghost_scene.instantiate()
-    var pos = Vector2(position.x, position.y-6.0)
+    var pos = Vector2(position.x, position.y-4.0)
     get_tree().current_scene.add_child(gh)
     gh.position = pos
     gh.flip_h = (velocity.x < 0)
+
 
 func spawn_starfall_ghost():
     """ """
@@ -551,17 +552,13 @@ func handle_starfalling():
         starfall_ghost_timer.stop()
         return
 
-    #var interval = .01
-    #if fmod(starfall_timer, interval) == 0.0 and starfall_ghost_scene != null:
-        #spawn_starfall_ghost()
-
 
 func get_next_portal_stone(current_number: int):
     var numbers = portal_stones_unlocked.keys()
     numbers.sort()
     var next_number = current_number
 
-    # Try to assign next number to the no right after current
+    # Try to assign next number to the no. right after current
     for i in numbers:
         if i <= current_number:
             continue
@@ -572,6 +569,7 @@ func get_next_portal_stone(current_number: int):
     if next_number == current_number:
         next_number = numbers[0]
     return next_number
+
 
 func handle_interacts_with_up_down():
     if state != states.IDLE: return
@@ -643,7 +641,7 @@ func starfall_impact(delta):
     s.position = Vector2(position.x, position.y-8)
     hop(delta, 1.5)
     time_slow()
-
+    Events.player_starfall_ended.emit()
 
 
 func handle_states_animations(delta):

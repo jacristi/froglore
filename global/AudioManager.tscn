@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bxq28plxba3el"]
+[gd_scene format=3 uid="uid://bxq28plxba3el"]
 
 [ext_resource type="Script" uid="uid://bmmxu4pr06env" path="res://global/audio_manager.gd" id="1_bmmmj"]
 [ext_resource type="AudioStream" uid="uid://bts8rror17rwk" path="res://assets/audio/light_bug_collected.wav" id="3_5vvyn"]
@@ -40,128 +40,128 @@
 [ext_resource type="AudioStream" uid="uid://bvbhnmoiocwvx" path="res://assets/audio/ui_nav_up.wav" id="35_s4fc5"]
 [ext_resource type="AudioStream" uid="uid://dt3g5eiol6kgc" path="res://assets/audio/ui_error.wav" id="36_vqqju"]
 
-[node name="AudioManager" type="Node"]
+[node name="AudioManager" type="Node" unique_id=1967308482]
 process_mode = 3
 script = ExtResource("1_bmmmj")
 
-[node name="AudioLightBugCollect" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioLightBugCollect" type="AudioStreamPlayer2D" parent="." unique_id=171586935]
 stream = ExtResource("3_5vvyn")
 
-[node name="AudioLevelComplete" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioLevelComplete" type="AudioStreamPlayer2D" parent="." unique_id=2005324692]
 stream = ExtResource("4_xla2n")
 
-[node name="AudioLevelReset" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioLevelReset" type="AudioStreamPlayer2D" parent="." unique_id=301215147]
 stream = ExtResource("5_7o0t7")
 
-[node name="AudioLevelPurified" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioLevelPurified" type="AudioStreamPlayer2D" parent="." unique_id=1977228427]
 stream = ExtResource("6_sjmel")
 
-[node name="AudioStatueActivated" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStatueActivated" type="AudioStreamPlayer2D" parent="." unique_id=185972444]
 stream = ExtResource("7_72olg")
 
-[node name="AudioLightBugSpawn" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioLightBugSpawn" type="AudioStreamPlayer2D" parent="." unique_id=1367703844]
 stream = ExtResource("8_e0p0f")
 
-[node name="AudioHitHazard" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHitHazard" type="AudioStreamPlayer2D" parent="." unique_id=110721598]
 stream = ExtResource("9_eadus")
 
-[node name="AudioPlayerRespawn" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioPlayerRespawn" type="AudioStreamPlayer2D" parent="." unique_id=1764892562]
 stream = ExtResource("10_q486s")
 
-[node name="AudioEnterUnpurified" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioEnterUnpurified" type="AudioStreamPlayer2D" parent="." unique_id=333681690]
 stream = ExtResource("11_lty0w")
 
-[node name="AudioEnterLevelNew" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioEnterLevelNew" type="AudioStreamPlayer2D" parent="." unique_id=1966205759]
 stream = ExtResource("12_yuqcn")
 
-[node name="AudioGoToNext" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGoToNext" type="AudioStreamPlayer2D" parent="." unique_id=1055517693]
 stream = ExtResource("13_dv0op")
 
-[node name="AudioGoToPrev" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGoToPrev" type="AudioStreamPlayer2D" parent="." unique_id=1318086694]
 stream = ExtResource("14_4bcwi")
 
-[node name="AudioHop1" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHop1" type="AudioStreamPlayer2D" parent="." unique_id=1334204362]
 stream = ExtResource("15_nv5hr")
 volume_db = -20.0
 
-[node name="AudioHop2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHop2" type="AudioStreamPlayer2D" parent="." unique_id=1601876260]
 stream = ExtResource("15_bfvqw")
 volume_db = -20.0
 
-[node name="AudioHop3" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHop3" type="AudioStreamPlayer2D" parent="." unique_id=1160920685]
 stream = ExtResource("16_5xncl")
 volume_db = -20.0
 
-[node name="AudioHopLanded1" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHopLanded1" type="AudioStreamPlayer2D" parent="." unique_id=187276082]
 stream = ExtResource("16_rub5u")
 volume_db = -20.0
 
-[node name="AudioHopLanded2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioHopLanded2" type="AudioStreamPlayer2D" parent="." unique_id=1604122094]
 stream = ExtResource("18_3ejxq")
 volume_db = -20.0
 
-[node name="AudioCroak" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioCroak" type="AudioStreamPlayer2D" parent="." unique_id=911732784]
 stream = ExtResource("17_sv6ye")
 
-[node name="AudioPlayButtonClicked" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioPlayButtonClicked" type="AudioStreamPlayer2D" parent="." unique_id=1440730865]
 stream = ExtResource("18_mdd3b")
 
-[node name="AudioExitButtonClicked" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioExitButtonClicked" type="AudioStreamPlayer2D" parent="." unique_id=1667193585]
 stream = ExtResource("19_0bmiy")
 
-[node name="AudioGameStarted" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGameStarted" type="AudioStreamPlayer2D" parent="." unique_id=677981507]
 stream = ExtResource("19_qmuw1")
 
-[node name="AudioGameComplete" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGameComplete" type="AudioStreamPlayer2D" parent="." unique_id=2126337213]
 stream = ExtResource("23_vf5i3")
 
-[node name="AudioGrass1" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGrass1" type="AudioStreamPlayer2D" parent="." unique_id=1767308924]
 stream = ExtResource("20_6foan")
 volume_db = -10.0
 
-[node name="AudioGrass2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGrass2" type="AudioStreamPlayer2D" parent="." unique_id=30858921]
 stream = ExtResource("21_8l4cy")
 
-[node name="AudioGrass3" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioGrass3" type="AudioStreamPlayer2D" parent="." unique_id=1452943554]
 stream = ExtResource("22_r4c7e")
 
-[node name="AudioSuperHopPrep1" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioSuperHopPrep1" type="AudioStreamPlayer2D" parent="." unique_id=613791924]
 stream = ExtResource("26_indlt")
 
-[node name="AudioSuperHopPrep2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioSuperHopPrep2" type="AudioStreamPlayer2D" parent="." unique_id=246339219]
 stream = ExtResource("27_llwfi")
 
-[node name="AudioDash" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioDash" type="AudioStreamPlayer2D" parent="." unique_id=1051533428]
 stream = ExtResource("29_s4fc5")
 
-[node name="AudioStarfall" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStarfall" type="AudioStreamPlayer2D" parent="." unique_id=1614330249]
 stream = ExtResource("33_43fn1")
 
-[node name="AudioButterflyActivate" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioButterflyActivate" type="AudioStreamPlayer2D" parent="." unique_id=99756933]
 stream = ExtResource("28_pmb4w")
 
-[node name="AudioButterflyDeactivate" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioButterflyDeactivate" type="AudioStreamPlayer2D" parent="." unique_id=481410812]
 stream = ExtResource("29_onbis")
 
-[node name="AudioSecretFound" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioSecretFound" type="AudioStreamPlayer2D" parent="." unique_id=971515554]
 stream = ExtResource("31_14cty")
 
-[node name="AudioTeleport" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioTeleport" type="AudioStreamPlayer2D" parent="." unique_id=994528017]
 stream = ExtResource("32_khmbp")
 
-[node name="AudioUISelect" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioUISelect" type="AudioStreamPlayer2D" parent="." unique_id=715726668]
 stream = ExtResource("33_43fn1")
 
-[node name="AudioUINavDown" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioUINavDown" type="AudioStreamPlayer2D" parent="." unique_id=409547712]
 stream = ExtResource("34_vqqju")
 
-[node name="AudioUINavUp" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioUINavUp" type="AudioStreamPlayer2D" parent="." unique_id=1858744871]
 stream = ExtResource("35_s4fc5")
 
-[node name="AudioUIError" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioUIError" type="AudioStreamPlayer2D" parent="." unique_id=923906425]
 stream = ExtResource("36_vqqju")
 
-[node name="AudioChangePlayerColor" type="AudioStreamPlayer" parent="."]
+[node name="AudioChangePlayerColor" type="AudioStreamPlayer" parent="." unique_id=973787042]
 stream = ExtResource("30_nb0bq")
 volume_db = -5.0
 script = ExtResource("31_houc0")
